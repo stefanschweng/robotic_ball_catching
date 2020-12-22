@@ -1,0 +1,38 @@
+// kuka_interfaceW32.idl : IDL source for kuka_interfaceW32.dll
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (kuka_interfaceW32.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+	[
+		object,
+		uuid(54EDF0AC-ACDE-4456-920E-A26D15A8503A),
+
+		helpstring("Ikuka_interface Interface"),
+		pointer_default(unique)
+	]
+	interface Ikuka_interfaceCtrl : IUnknown
+	{
+	};
+
+[
+	uuid(BF6DEC14-AD1A-44a6-82E2-5913CDE2288D),
+	version(1.0),
+	helpstring("kuka_interfaceW32 1.0 Type Library")
+]
+library KUKA_INTERFACEW32Lib
+{
+	importlib("stdole32.tlb");
+	importlib("stdole2.tlb");
+
+	[
+		uuid(F634CCE5-F3B1-47a9-8151-D2B004A4B8F3),
+		helpstring("kuka_interfaceCtrl Class")
+	]
+	coclass kuka_interfaceCtrl
+	{
+		[default] interface Ikuka_interfaceCtrl;
+	};
+};

@@ -1,0 +1,1626 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript" src="./js/coder_app.js"></script>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<script type="text/javascript" src="./rtwreport_utils.js"></script>
+<script type="text/javascript" src="./rtwannotate.js"></script>
+<link rel="stylesheet" type="text/css" href="./css/coder_app.css"/>
+</head>
+<body onload="srcFileOnload();">
+<pre id="code">
+<table class="code" id="codeTbl">
+<tr name="1" id="1">
+<td><a id="l1" class='ln'>1</a></td><td><span class="ct">/*</span></td></tr>
+<tr name="2" id="2">
+<td><a id="l2" class='ln'>2</a></td><td><span class="ct"> * Chart2_sf.cpp</span></td></tr>
+<tr name="3" id="3">
+<td><a id="l3" class='ln'>3</a></td><td><span class="ct"> *</span></td></tr>
+<tr name="4" id="4">
+<td><a id="l4" class='ln'>4</a></td><td><span class="ct"> * Academic License - for use in teaching, academic research, and meeting</span></td></tr>
+<tr name="5" id="5">
+<td><a id="l5" class='ln'>5</a></td><td><span class="ct"> * course requirements at degree granting institutions only.  Not for</span></td></tr>
+<tr name="6" id="6">
+<td><a id="l6" class='ln'>6</a></td><td><span class="ct"> * government, commercial, or other organizational use.</span></td></tr>
+<tr name="7" id="7">
+<td><a id="l7" class='ln'>7</a></td><td><span class="ct"> *</span></td></tr>
+<tr name="8" id="8">
+<td><a id="l8" class='ln'>8</a></td><td><span class="ct"> * Code generation for model "Chart2_sf".</span></td></tr>
+<tr name="9" id="9">
+<td><a id="l9" class='ln'>9</a></td><td><span class="ct"> *</span></td></tr>
+<tr name="10" id="10">
+<td><a id="l10" class='ln'>10</a></td><td><span class="ct"> * Model version              : 1.3679</span></td></tr>
+<tr name="11" id="11">
+<td><a id="l11" class='ln'>11</a></td><td><span class="ct"> * Simulink Coder version : 9.0 (R2018b) 24-May-2018</span></td></tr>
+<tr name="12" id="12">
+<td><a id="l12" class='ln'>12</a></td><td><span class="ct"> * C++ source code generated on : Tue Oct 13 22:10:48 2020</span></td></tr>
+<tr name="13" id="13">
+<td><a id="l13" class='ln'>13</a></td><td><span class="ct"> *</span></td></tr>
+<tr name="14" id="14">
+<td><a id="l14" class='ln'>14</a></td><td><span class="ct"> * Target selection: rtwsfcn.tlc</span></td></tr>
+<tr name="15" id="15">
+<td><a id="l15" class='ln'>15</a></td><td><span class="ct"> * Note: GRT includes extra infrastructure and instrumentation for prototyping</span></td></tr>
+<tr name="16" id="16">
+<td><a id="l16" class='ln'>16</a></td><td><span class="ct"> * Embedded hardware selection: Intel-&gt;x86-64 (Windows64)</span></td></tr>
+<tr name="17" id="17">
+<td><a id="l17" class='ln'>17</a></td><td><span class="ct"> * Code generation objective: Debugging</span></td></tr>
+<tr name="18" id="18">
+<td><a id="l18" class='ln'>18</a></td><td><span class="ct"> * Validation result: Not run</span></td></tr>
+<tr name="19" id="19">
+<td><a id="l19" class='ln'>19</a></td><td><span class="ct"> */</span></td></tr>
+<tr name="20" id="20">
+<td><a id="l20" class='ln'>20</a></td><td></td></tr>
+<tr name="21" id="21">
+<td><a id="l21" class='ln'>21</a></td><td><span class="pp">#include &lt;math.h&gt;</span></td></tr>
+<tr name="22" id="22">
+<td><a id="l22" class='ln'>22</a></td><td><span class="pp">#include "Chart2_sf.h"</span></td></tr>
+<tr name="23" id="23">
+<td><a id="l23" class='ln'>23</a></td><td><span class="pp">#include "Chart2_sf_private.h"</span></td></tr>
+<tr name="24" id="24">
+<td><a id="l24" class='ln'>24</a></td><td><span class="pp">#include "simstruc.h"</span></td></tr>
+<tr name="25" id="25">
+<td><a id="l25" class='ln'>25</a></td><td><span class="pp">#include "fixedpoint.h"</span></td></tr>
+<tr name="26" id="26">
+<td><a id="l26" class='ln'>26</a></td><td></td></tr>
+<tr name="27" id="27">
+<td><a id="l27" class='ln'>27</a></td><td><span class="ct">/* Named constants for Chart: '&lt;Root&gt;/Chart2' */</span></td></tr>
+<tr name="28" id="28">
+<td><a id="l28" class='ln'>28</a></td><td><span class="pp">#define</span> <a id="28c9" class="tk">Chart2_IN_CATCH</a>                ((<a id="28c42" class="tk">uint8_T</a>)1U)</td></tr>
+<tr name="29" id="29">
+<td><a id="l29" class='ln'>29</a></td><td><span class="pp">#define</span> <a id="29c9" class="tk">Chart2_IN_GO_TO_START_FROM_NO_CATCH</a> ((<a id="29c47" class="tk">uint8_T</a>)2U)</td></tr>
+<tr name="30" id="30">
+<td><a id="l30" class='ln'>30</a></td><td><span class="pp">#define</span> <a id="30c9" class="tk">Chart2_IN_INIT</a>                 ((<a id="30c42" class="tk">uint8_T</a>)3U)</td></tr>
+<tr name="31" id="31">
+<td><a id="l31" class='ln'>31</a></td><td><span class="pp">#define</span> <a id="31c9" class="tk">Chart2_IN_INIT_GOTO_START</a>      ((<a id="31c42" class="tk">uint8_T</a>)4U)</td></tr>
+<tr name="32" id="32">
+<td><a id="l32" class='ln'>32</a></td><td><span class="pp">#define</span> <a id="32c9" class="tk">Chart2_IN_NO_ACTIVE_CHILD</a>      ((<a id="32c42" class="tk">uint8_T</a>)0U)</td></tr>
+<tr name="33" id="33">
+<td><a id="l33" class='ln'>33</a></td><td><span class="pp">#define</span> <a id="33c9" class="tk">Chart2_IN_NO_VALID_BALL_VALUE</a>  ((<a id="33c42" class="tk">uint8_T</a>)5U)</td></tr>
+<tr name="34" id="34">
+<td><a id="l34" class='ln'>34</a></td><td><span class="pp">#define</span> <a id="34c9" class="tk">Chart2_IN_READY</a>                ((<a id="34c42" class="tk">uint8_T</a>)6U)</td></tr>
+<tr name="35" id="35">
+<td><a id="l35" class='ln'>35</a></td><td><span class="pp">#if</span> <a id="35c5" class="tk">defined</a>(<a id="35c13" class="tk">RT_MALLOC</a>) <a id="35c24" class="tk">||</a> <a id="35c27" class="tk">defined</a>(<a id="35c35" class="tk">MATLAB_MEX_FILE</a>)</td></tr>
+<tr name="36" id="36">
+<td><a id="l36" class='ln'>36</a></td><td></td></tr>
+<tr name="37" id="37">
+<td><a id="l37" class='ln'>37</a></td><td><span class="kw">extern</span> <span class="kw">void</span> <a id="37c13" class="tk">*</a><a id="37c14" class="tk">Chart2_malloc</a>(<a id="37c28" class="tk">SimStruct</a> <a id="37c38" class="tk">*</a><a id="37c39" class="tk">S</a>);</td></tr>
+<tr name="38" id="38">
+<td><a id="l38" class='ln'>38</a></td><td></td></tr>
+<tr name="39" id="39">
+<td><a id="l39" class='ln'>39</a></td><td><span class="pp">#endif</span></td></tr>
+<tr name="40" id="40">
+<td><a id="l40" class='ln'>40</a></td><td></td></tr>
+<tr name="41" id="41">
+<td><a id="l41" class='ln'>41</a></td><td><span class="pp">#ifndef</span> <a id="41c9" class="tk">__RTW_UTFREE__</a></td></tr>
+<tr name="42" id="42">
+<td><a id="l42" class='ln'>42</a></td><td><span class="pp">#if</span> <a id="42c5" class="tk">defined</a> (<a id="42c14" class="tk">MATLAB_MEX_FILE</a>)</td></tr>
+<tr name="43" id="43">
+<td><a id="l43" class='ln'>43</a></td><td><span class="pp">#ifdef</span> <a id="43c8" class="tk">__cplusplus</a></td></tr>
+<tr name="44" id="44">
+<td><a id="l44" class='ln'>44</a></td><td></td></tr>
+<tr name="45" id="45">
+<td><a id="l45" class='ln'>45</a></td><td><span class="kw">extern</span> "C" <span class="br">{</span></td></tr>
+<tr name="46" id="46">
+<td><a id="l46" class='ln'>46</a></td><td></td></tr>
+<tr name="47" id="47">
+<td><a id="l47" class='ln'>47</a></td><td><span class="pp">#endif</span></td></tr>
+<tr name="48" id="48">
+<td><a id="l48" class='ln'>48</a></td><td></td></tr>
+<tr name="49" id="49">
+<td><a id="l49" class='ln'>49</a></td><td>  <span class="kw">extern</span> <span class="kw">void</span> <a id="49c15" class="tk">*</a> <a id="49c17" class="tk">utMalloc</a>(<a id="49c26" class="tk">size_t</a>);</td></tr>
+<tr name="50" id="50">
+<td><a id="l50" class='ln'>50</a></td><td>  <span class="kw">extern</span> <span class="kw">void</span> <a id="50c15" class="tk">utFree</a>(<span class="kw">void</span> <a id="50c27" class="tk">*</a>);</td></tr>
+<tr name="51" id="51">
+<td><a id="l51" class='ln'>51</a></td><td></td></tr>
+<tr name="52" id="52">
+<td><a id="l52" class='ln'>52</a></td><td><span class="pp">#ifdef</span> <a id="52c8" class="tk">__cplusplus</a></td></tr>
+<tr name="53" id="53">
+<td><a id="l53" class='ln'>53</a></td><td></td></tr>
+<tr name="54" id="54">
+<td><a id="l54" class='ln'>54</a></td><td><span class="br">}</span></td></tr>
+<tr name="55" id="55">
+<td><a id="l55" class='ln'>55</a></td><td><span class="pp">#endif</span></td></tr>
+<tr name="56" id="56">
+<td><a id="l56" class='ln'>56</a></td><td><span class="pp">#endif</span></td></tr>
+<tr name="57" id="57">
+<td><a id="l57" class='ln'>57</a></td><td><span class="pp">#endif</span>                                 <span class="ct">/* #ifndef __RTW_UTFREE__ */</span></td></tr>
+<tr name="58" id="58">
+<td><a id="l58" class='ln'>58</a></td><td></td></tr>
+<tr name="59" id="59">
+<td><a id="l59" class='ln'>59</a></td><td><span class="ct">/* Forward declaration for local functions */</span></td></tr>
+<tr name="60" id="60">
+<td><a id="l60" class='ln'>60</a></td><td><span class="kw">static</span> <a id="60c8" class="tk">boolean_T</a> <a id="60c18" class="tk">Chart2_isBallValueValid</a>(<span class="kw">const</span> <a id="60c48" class="tk">real_T</a> <a id="60c55" class="tk">data_point</a>[3]);</td></tr>
+<tr name="61" id="61">
+<td><a id="l61" class='ln'>61</a></td><td></td></tr>
+<tr name="62" id="62">
+<td><a id="l62" class='ln'>62</a></td><td><span class="pp">#if</span> <a id="62c5" class="tk">defined</a>(<a id="62c13" class="tk">MATLAB_MEX_FILE</a>)</td></tr>
+<tr name="63" id="63">
+<td><a id="l63" class='ln'>63</a></td><td><span class="pp">#include "rt_nonfinite.cpp"</span></td></tr>
+<tr name="64" id="64">
+<td><a id="l64" class='ln'>64</a></td><td><span class="pp">#endif</span></td></tr>
+<tr name="65" id="65">
+<td><a id="l65" class='ln'>65</a></td><td></td></tr>
+<tr name="66" id="66">
+<td><a id="l66" class='ln'>66</a></td><td><span class="kw">static</span> <span class="kw">const</span> <a id="66c14" class="tk">char_T</a> <a id="66c21" class="tk">*</a><a id="66c22" class="tk">RT_MEMORY_ALLOCATION_ERROR</a> =</td></tr>
+<tr name="67" id="67">
+<td><a id="l67" class='ln'>67</a></td><td>  "memory allocation error in generated S-Function";</td></tr>
+<tr name="68" id="68">
+<td><a id="l68" class='ln'>68</a></td><td></td></tr>
+<tr name="69" id="69">
+<td><a id="l69" class='ln'>69</a></td><td><span class="ct">/*</span></td></tr>
+<tr name="70" id="70">
+<td><a id="l70" class='ln'>70</a></td><td><span class="ct"> * Function for Chart: '&lt;Root&gt;/Chart2'</span></td></tr>
+<tr name="71" id="71">
+<td><a id="l71" class='ln'>71</a></td><td><span class="ct"> * function valid  = isBallValueValid(data_point)</span></td></tr>
+<tr name="72" id="72">
+<td><a id="l72" class='ln'>72</a></td><td><span class="ct"> */</span></td></tr>
+<tr name="73" id="73">
+<td><a id="l73" class='ln'>73</a></td><td><span class="kw">static</span> <a id="73c8" class="tk">boolean_T</a> <a id="73c18" class="tk">Chart2_isBallValueValid</a>(<span class="kw">const</span> <a id="73c48" class="tk">real_T</a> <a id="73c55" class="tk">data_point</a>[3])</td></tr>
+<tr name="74" id="74">
+<td><a id="l74" class='ln'>74</a></td><td><span class="br">{</span></td></tr>
+<tr name="75" id="75">
+<td><a id="l75" class='ln'>75</a></td><td>  <a id="75c3" class="tk">boolean_T</a> <a id="75c13" class="tk">b</a>;</td></tr>
+<tr name="76" id="76">
+<td><a id="l76" class='ln'>76</a></td><td></td></tr>
+<tr name="77" id="77">
+<td><a id="l77" class='ln'>77</a></td><td>  <span class="ct">/* MATLAB Function 'isBallValueValid': '&lt;S1&gt;:66' */</span></td></tr>
+<tr name="78" id="78">
+<td><a id="l78" class='ln'>78</a></td><td>  <span class="ct">/* '&lt;S1&gt;:66:2' valid = ~(data_point(1) == 0 &amp;&amp; data_point(2) == 0 &amp;&amp; data_point(3) == 0); */</span></td></tr>
+<tr name="79" id="79">
+<td><a id="l79" class='ln'>79</a></td><td>  <span class="kw">if</span> ((<a id="79c8" class="tk">data_point</a>[0] <a id="79c22" class="tk">==</a> 0.0) <a id="79c30" class="tk">&amp;&amp;</a> (<a id="79c34" class="tk">data_point</a>[1] <a id="79c48" class="tk">==</a> 0.0) <a id="79c56" class="tk">&amp;&amp;</a> (<a id="79c60" class="tk">data_point</a>[2] <a id="79c74" class="tk">==</a> 0.0))</td></tr>
+<tr name="80" id="80">
+<td><a id="l80" class='ln'>80</a></td><td>  <span class="br">{</span></td></tr>
+<tr name="81" id="81">
+<td><a id="l81" class='ln'>81</a></td><td>    <a id="81c5" class="tk">b</a> = true;</td></tr>
+<tr name="82" id="82">
+<td><a id="l82" class='ln'>82</a></td><td>  <span class="br">}</span> <span class="kw">else</span> <span class="br">{</span></td></tr>
+<tr name="83" id="83">
+<td><a id="l83" class='ln'>83</a></td><td>    <a id="83c5" class="tk">b</a> = false;</td></tr>
+<tr name="84" id="84">
+<td><a id="l84" class='ln'>84</a></td><td>  <span class="br">}</span></td></tr>
+<tr name="85" id="85">
+<td><a id="l85" class='ln'>85</a></td><td></td></tr>
+<tr name="86" id="86">
+<td><a id="l86" class='ln'>86</a></td><td>  <span class="kw">return</span> <a id="86c10" class="tk">!</a><a id="86c11" class="tk">b</a>;</td></tr>
+<tr name="87" id="87">
+<td><a id="l87" class='ln'>87</a></td><td><span class="br">}</span></td></tr>
+<tr name="88" id="88">
+<td><a id="l88" class='ln'>88</a></td><td></td></tr>
+<tr name="89" id="89">
+<td><a id="l89" class='ln'>89</a></td><td><span class="ct">/* System initialize for root system: '&lt;Root&gt;' */</span></td></tr>
+<tr name="90" id="90">
+<td><a id="l90" class='ln'>90</a></td><td><span class="pp">#define</span> <a id="90c9" class="tk">MDL_INITIALIZE_CONDITIONS</a></td></tr>
+<tr name="91" id="91">
+<td><a id="l91" class='ln'>91</a></td><td></td></tr>
+<tr name="92" id="92">
+<td><a id="l92" class='ln'>92</a></td><td><span class="kw">static</span> <span class="kw">void</span> <a id="92c13" class="tk">mdlInitializeConditions</a>(<a id="92c37" class="tk">SimStruct</a> <a id="92c47" class="tk">*</a><a id="92c48" class="tk">S</a>)</td></tr>
+<tr name="93" id="93">
+<td><a id="l93" class='ln'>93</a></td><td><span class="br">{</span></td></tr>
+<tr name="94" id="94">
+<td><a id="l94" class='ln'>94</a></td><td>  <span class="kw">if</span> (<a id="94c7" class="tk">ssIsFirstInitCond</a>(<a id="94c25" class="tk">S</a>)) <span class="br">{</span></td></tr>
+<tr name="95" id="95">
+<td><a id="l95" class='ln'>95</a></td><td>    <span class="ct">/* SystemInitialize for Chart: '&lt;Root&gt;/Chart2' */</span></td></tr>
+<tr name="96" id="96">
+<td><a id="l96" class='ln'>96</a></td><td>    ((<a id="96c7" class="tk">uint32_T</a> <a id="96c16" class="tk">*</a>)<a id="96c18" class="tk">ssGetDWork</a>(<a id="96c29" class="tk">S</a>, 0))[0] = 0U;</td></tr>
+<tr name="97" id="97">
+<td><a id="l97" class='ln'>97</a></td><td>    ((<a id="97c7" class="tk">uint8_T</a> <a id="97c15" class="tk">*</a>)<a id="97c17" class="tk">ssGetDWork</a>(<a id="97c28" class="tk">S</a>, 1))[0] = 0U;</td></tr>
+<tr name="98" id="98">
+<td><a id="l98" class='ln'>98</a></td><td>    ((<a id="98c7" class="tk">uint8_T</a> <a id="98c15" class="tk">*</a>)<a id="98c17" class="tk">ssGetDWork</a>(<a id="98c28" class="tk">S</a>, 2))[0] = <a id="98c40" class="tk">Chart2_IN_NO_ACTIVE_CHILD</a>;</td></tr>
+<tr name="99" id="99">
+<td><a id="l99" class='ln'>99</a></td><td>  <span class="br">}</span> <span class="kw">else</span> <span class="br">{</span>                             <span class="ct">/* SystemReset for Chart: '&lt;Root&gt;/Chart2' */</span></td></tr>
+<tr name="100" id="100">
+<td><a id="l100" class='ln'>100</a></td><td>    ((<a id="100c7" class="tk">uint32_T</a> <a id="100c16" class="tk">*</a>)<a id="100c18" class="tk">ssGetDWork</a>(<a id="100c29" class="tk">S</a>, 0))[0] = 0U;</td></tr>
+<tr name="101" id="101">
+<td><a id="l101" class='ln'>101</a></td><td>    ((<a id="101c7" class="tk">uint8_T</a> <a id="101c15" class="tk">*</a>)<a id="101c17" class="tk">ssGetDWork</a>(<a id="101c28" class="tk">S</a>, 1))[0] = 0U;</td></tr>
+<tr name="102" id="102">
+<td><a id="l102" class='ln'>102</a></td><td>    ((<a id="102c7" class="tk">uint8_T</a> <a id="102c15" class="tk">*</a>)<a id="102c17" class="tk">ssGetDWork</a>(<a id="102c28" class="tk">S</a>, 2))[0] = <a id="102c40" class="tk">Chart2_IN_NO_ACTIVE_CHILD</a>;</td></tr>
+<tr name="103" id="103">
+<td><a id="l103" class='ln'>103</a></td><td>  <span class="br">}</span></td></tr>
+<tr name="104" id="104">
+<td><a id="l104" class='ln'>104</a></td><td><span class="br">}</span></td></tr>
+<tr name="105" id="105">
+<td><a id="l105" class='ln'>105</a></td><td></td></tr>
+<tr name="106" id="106">
+<td><a id="l106" class='ln'>106</a></td><td><span class="ct">/* Start for root system: '&lt;Root&gt;' */</span></td></tr>
+<tr name="107" id="107">
+<td><a id="l107" class='ln'>107</a></td><td><span class="pp">#define</span> <a id="107c9" class="tk">MDL_START</a></td></tr>
+<tr name="108" id="108">
+<td><a id="l108" class='ln'>108</a></td><td></td></tr>
+<tr name="109" id="109">
+<td><a id="l109" class='ln'>109</a></td><td><span class="kw">static</span> <span class="kw">void</span> <a id="109c13" class="tk">mdlStart</a>(<a id="109c22" class="tk">SimStruct</a> <a id="109c32" class="tk">*</a><a id="109c33" class="tk">S</a>)</td></tr>
+<tr name="110" id="110">
+<td><a id="l110" class='ln'>110</a></td><td><span class="br">{</span></td></tr>
+<tr name="111" id="111">
+<td><a id="l111" class='ln'>111</a></td><td>  <span class="ct">/* instance underlying S-Function data */</span></td></tr>
+<tr name="112" id="112">
+<td><a id="l112" class='ln'>112</a></td><td><span class="pp">#if</span> <a id="112c5" class="tk">defined</a>(<a id="112c13" class="tk">RT_MALLOC</a>) <a id="112c24" class="tk">||</a> <a id="112c27" class="tk">defined</a>(<a id="112c35" class="tk">MATLAB_MEX_FILE</a>)</td></tr>
+<tr name="113" id="113">
+<td><a id="l113" class='ln'>113</a></td><td><span class="pp">#  if</span> <a id="113c7" class="tk">defined</a>(<a id="113c15" class="tk">MATLAB_MEX_FILE</a>)</td></tr>
+<tr name="114" id="114">
+<td><a id="l114" class='ln'>114</a></td><td></td></tr>
+<tr name="115" id="115">
+<td><a id="l115" class='ln'>115</a></td><td>  <span class="ct">/* non-finites */</span></td></tr>
+<tr name="116" id="116">
+<td><a id="l116" class='ln'>116</a></td><td>  <a id="116c3" class="tk">rt_InitInfAndNaN</a>(<span class="kw">sizeof</span>(<a id="116c27" class="tk">real_T</a>));</td></tr>
+<tr name="117" id="117">
+<td><a id="l117" class='ln'>117</a></td><td>  <span class="kw">if</span> (<a id="117c7" class="tk">ssGetSolverMode</a>(<a id="117c23" class="tk">S</a>) <a id="117c26" class="tk">==</a> <a id="117c29" class="tk">SOLVER_MODE_MULTITASKING</a>) <span class="br">{</span></td></tr>
+<tr name="118" id="118">
+<td><a id="l118" class='ln'>118</a></td><td>    <a id="118c5" class="tk">ssSetErrorStatus</a>(<a id="118c22" class="tk">S</a>, "This Simulink Coder generated "</td></tr>
+<tr name="119" id="119">
+<td><a id="l119" class='ln'>119</a></td><td>                     "S-Function cannot be used in a simulation with "</td></tr>
+<tr name="120" id="120">
+<td><a id="l120" class='ln'>120</a></td><td>                     "solver mode set to auto or multitasking "</td></tr>
+<tr name="121" id="121">
+<td><a id="l121" class='ln'>121</a></td><td>                     "because this S-Function was created from a model with "</td></tr>
+<tr name="122" id="122">
+<td><a id="l122" class='ln'>122</a></td><td>                     "solver mode set to singletasking. "</td></tr>
+<tr name="123" id="123">
+<td><a id="l123" class='ln'>123</a></td><td>                     "See the Solver page of the simulation parameters dialog.");</td></tr>
+<tr name="124" id="124">
+<td><a id="l124" class='ln'>124</a></td><td>    <span class="kw">return</span>;</td></tr>
+<tr name="125" id="125">
+<td><a id="l125" class='ln'>125</a></td><td>  <span class="br">}</span></td></tr>
+<tr name="126" id="126">
+<td><a id="l126" class='ln'>126</a></td><td></td></tr>
+<tr name="127" id="127">
+<td><a id="l127" class='ln'>127</a></td><td><span class="pp">#  endif</span></td></tr>
+<tr name="128" id="128">
+<td><a id="l128" class='ln'>128</a></td><td></td></tr>
+<tr name="129" id="129">
+<td><a id="l129" class='ln'>129</a></td><td>  <a id="129c3" class="tk">Chart2_malloc</a>(<a id="129c17" class="tk">S</a>);</td></tr>
+<tr name="130" id="130">
+<td><a id="l130" class='ln'>130</a></td><td>  <span class="kw">if</span> (<a id="130c7" class="tk">ssGetErrorStatus</a>(<a id="130c24" class="tk">S</a>) <a id="130c27" class="tk">!=</a> (<a id="130c31" class="tk">NULL</a>) ) <span class="br">{</span></td></tr>
+<tr name="131" id="131">
+<td><a id="l131" class='ln'>131</a></td><td>    <span class="kw">return</span>;</td></tr>
+<tr name="132" id="132">
+<td><a id="l132" class='ln'>132</a></td><td>  <span class="br">}</span></td></tr>
+<tr name="133" id="133">
+<td><a id="l133" class='ln'>133</a></td><td></td></tr>
+<tr name="134" id="134">
+<td><a id="l134" class='ln'>134</a></td><td><span class="pp">#endif</span></td></tr>
+<tr name="135" id="135">
+<td><a id="l135" class='ln'>135</a></td><td></td></tr>
+<tr name="136" id="136">
+<td><a id="l136" class='ln'>136</a></td><td>  <span class="br">{</span></td></tr>
+<tr name="137" id="137">
+<td><a id="l137" class='ln'>137</a></td><td>  <span class="br">}</span></td></tr>
+<tr name="138" id="138">
+<td><a id="l138" class='ln'>138</a></td><td><span class="br">}</span></td></tr>
+<tr name="139" id="139">
+<td><a id="l139" class='ln'>139</a></td><td></td></tr>
+<tr name="140" id="140">
+<td><a id="l140" class='ln'>140</a></td><td><span class="ct">/* Outputs for root system: '&lt;Root&gt;' */</span></td></tr>
+<tr name="141" id="141">
+<td><a id="l141" class='ln'>141</a></td><td><span class="kw">static</span> <span class="kw">void</span> <a id="141c13" class="tk">mdlOutputs</a>(<a id="141c24" class="tk">SimStruct</a> <a id="141c34" class="tk">*</a><a id="141c35" class="tk">S</a>, <a id="141c38" class="tk">int_T</a> <a id="141c44" class="tk">tid</a>)</td></tr>
+<tr name="142" id="142">
+<td><a id="l142" class='ln'>142</a></td><td><span class="br">{</span></td></tr>
+<tr name="143" id="143">
+<td><a id="l143" class='ln'>143</a></td><td>  <a id="143c3" class="tk">B_Chart2_T</a> <a id="143c14" class="tk">*</a><a id="143c15" class="tk">_rtB</a>;</td></tr>
+<tr name="144" id="144">
+<td><a id="l144" class='ln'>144</a></td><td>  <a id="144c3" class="tk">_rtB</a> = ((<a id="144c12" class="tk">B_Chart2_T</a> <a id="144c23" class="tk">*</a>) <a id="144c26" class="tk">ssGetLocalBlockIO</a>(<a id="144c44" class="tk">S</a>));</td></tr>
+<tr name="145" id="145">
+<td><a id="l145" class='ln'>145</a></td><td>  <span class="kw">if</span> (<a id="145c7" class="tk">ssIsSampleHit</a>(<a id="145c21" class="tk">S</a>, 0, 0)) <span class="br">{</span></td></tr>
+<tr name="146" id="146">
+<td><a id="l146" class='ln'>146</a></td><td>    <span class="ct">/* Chart: '&lt;Root&gt;/Chart2' */</span></td></tr>
+<tr name="147" id="147">
+<td><a id="l147" class='ln'>147</a></td><td>    <span class="kw">if</span> (((<a id="147c11" class="tk">uint32_T</a> <a id="147c20" class="tk">*</a>)<a id="147c22" class="tk">ssGetDWork</a>(<a id="147c33" class="tk">S</a>, 0))[0] <a id="147c43" class="tk">&lt;</a> 262143U) <span class="br">{</span></td></tr>
+<tr name="148" id="148">
+<td><a id="l148" class='ln'>148</a></td><td>      ((<a id="148c9" class="tk">uint32_T</a> <a id="148c18" class="tk">*</a>)<a id="148c20" class="tk">ssGetDWork</a>(<a id="148c31" class="tk">S</a>, 0))[0] = ((<a id="148c45" class="tk">uint32_T</a> <a id="148c54" class="tk">*</a>)<a id="148c56" class="tk">ssGetDWork</a>(<a id="148c67" class="tk">S</a>, 0))[0] <a id="148c77" class="tk">+</a> 1U;</td></tr>
+<tr name="149" id="149">
+<td><a id="l149" class='ln'>149</a></td><td>    <span class="br">}</span></td></tr>
+<tr name="150" id="150">
+<td><a id="l150" class='ln'>150</a></td><td></td></tr>
+<tr name="151" id="151">
+<td><a id="l151" class='ln'>151</a></td><td>    <span class="ct">/* Gateway: Chart2 */</span></td></tr>
+<tr name="152" id="152">
+<td><a id="l152" class='ln'>152</a></td><td>    <span class="ct">/* During: Chart2 */</span></td></tr>
+<tr name="153" id="153">
+<td><a id="l153" class='ln'>153</a></td><td>    <span class="kw">if</span> (((<a id="153c11" class="tk">uint8_T</a> <a id="153c19" class="tk">*</a>)<a id="153c21" class="tk">ssGetDWork</a>(<a id="153c32" class="tk">S</a>, 1))[0] <a id="153c42" class="tk">==</a> 0U) <span class="br">{</span></td></tr>
+<tr name="154" id="154">
+<td><a id="l154" class='ln'>154</a></td><td>      <span class="ct">/* Entry: Chart2 */</span></td></tr>
+<tr name="155" id="155">
+<td><a id="l155" class='ln'>155</a></td><td>      ((<a id="155c9" class="tk">uint8_T</a> <a id="155c17" class="tk">*</a>)<a id="155c19" class="tk">ssGetDWork</a>(<a id="155c30" class="tk">S</a>, 1))[0] = 1U;</td></tr>
+<tr name="156" id="156">
+<td><a id="l156" class='ln'>156</a></td><td></td></tr>
+<tr name="157" id="157">
+<td><a id="l157" class='ln'>157</a></td><td>      <span class="ct">/* Entry Internal: Chart2 */</span></td></tr>
+<tr name="158" id="158">
+<td><a id="l158" class='ln'>158</a></td><td>      <span class="ct">/* Transition: '&lt;S1&gt;:27' */</span></td></tr>
+<tr name="159" id="159">
+<td><a id="l159" class='ln'>159</a></td><td>      ((<a id="159c9" class="tk">uint8_T</a> <a id="159c17" class="tk">*</a>)<a id="159c19" class="tk">ssGetDWork</a>(<a id="159c30" class="tk">S</a>, 2))[0] = <a id="159c42" class="tk">Chart2_IN_INIT</a>;</td></tr>
+<tr name="160" id="160">
+<td><a id="l160" class='ln'>160</a></td><td></td></tr>
+<tr name="161" id="161">
+<td><a id="l161" class='ln'>161</a></td><td>      <span class="ct">/* Entry 'INIT': '&lt;S1&gt;:95' */</span></td></tr>
+<tr name="162" id="162">
+<td><a id="l162" class='ln'>162</a></td><td>      <span class="ct">/* '&lt;S1&gt;:95:1' state=0; */</span></td></tr>
+<tr name="163" id="163">
+<td><a id="l163" class='ln'>163</a></td><td>      <a id="163c7" class="tk">_rtB</a>-&gt;<a id="163c13" class="tk">state</a> = 0.0;</td></tr>
+<tr name="164" id="164">
+<td><a id="l164" class='ln'>164</a></td><td></td></tr>
+<tr name="165" id="165">
+<td><a id="l165" class='ln'>165</a></td><td>      <span class="ct">/* '&lt;S1&gt;:95:1' use_pred=0; */</span></td></tr>
+<tr name="166" id="166">
+<td><a id="l166" class='ln'>166</a></td><td>      <a id="166c7" class="tk">_rtB</a>-&gt;<a id="166c13" class="tk">use_pred</a> = 0.0;</td></tr>
+<tr name="167" id="167">
+<td><a id="l167" class='ln'>167</a></td><td></td></tr>
+<tr name="168" id="168">
+<td><a id="l168" class='ln'>168</a></td><td>      <span class="ct">/* '&lt;S1&gt;:95:1' trajectory_update = 0; */</span></td></tr>
+<tr name="169" id="169">
+<td><a id="l169" class='ln'>169</a></td><td>      <a id="169c7" class="tk">_rtB</a>-&gt;<a id="169c13" class="tk">trajectory_update</a> = 0.0;</td></tr>
+<tr name="170" id="170">
+<td><a id="l170" class='ln'>170</a></td><td></td></tr>
+<tr name="171" id="171">
+<td><a id="l171" class='ln'>171</a></td><td>      <span class="ct">/* '&lt;S1&gt;:95:4' t_catch_predict=[0,0]; */</span></td></tr>
+<tr name="172" id="172">
+<td><a id="l172" class='ln'>172</a></td><td>      <a id="172c7" class="tk">_rtB</a>-&gt;<a id="172c13" class="tk">t_catch_predict</a>[0] = 0.0;</td></tr>
+<tr name="173" id="173">
+<td><a id="l173" class='ln'>173</a></td><td>      <a id="173c7" class="tk">_rtB</a>-&gt;<a id="173c13" class="tk">t_catch_predict</a>[1] = 0.0;</td></tr>
+<tr name="174" id="174">
+<td><a id="l174" class='ln'>174</a></td><td>    <span class="br">}</span> <span class="kw">else</span> <span class="br">{</span></td></tr>
+<tr name="175" id="175">
+<td><a id="l175" class='ln'>175</a></td><td>      <span class="kw">switch</span> (((<a id="175c17" class="tk">uint8_T</a> <a id="175c25" class="tk">*</a>)<a id="175c27" class="tk">ssGetDWork</a>(<a id="175c38" class="tk">S</a>, 2))[0]) <span class="br">{</span></td></tr>
+<tr name="176" id="176">
+<td><a id="l176" class='ln'>176</a></td><td>       <span class="kw">case</span> <a id="176c13" class="tk">Chart2_IN_CATCH</a><a id="176c28" class="tk">:</a></td></tr>
+<tr name="177" id="177">
+<td><a id="l177" class='ln'>177</a></td><td>        <a id="177c9" class="tk">_rtB</a>-&gt;<a id="177c15" class="tk">state</a> = 2.0;</td></tr>
+<tr name="178" id="178">
+<td><a id="l178" class='ln'>178</a></td><td></td></tr>
+<tr name="179" id="179">
+<td><a id="l179" class='ln'>179</a></td><td>        <span class="ct">/* During 'CATCH': '&lt;S1&gt;:17' */</span></td></tr>
+<tr name="180" id="180">
+<td><a id="l180" class='ln'>180</a></td><td>        <span class="ct">/* '&lt;S1&gt;:128:1' sf_internal_predicateOutput = reset_flow_chart; */</span></td></tr>
+<tr name="181" id="181">
+<td><a id="l181" class='ln'>181</a></td><td>        <span class="kw">if</span> (<a id="181c13" class="tk">*</a>((<span class="kw">const</span> <a id="181c22" class="tk">boolean_T</a> <a id="181c32" class="tk">*</a><a id="181c33" class="tk">*</a>)<a id="181c35" class="tk">ssGetInputPortSignalPtrs</a>(<a id="181c60" class="tk">S</a>, 3))[0]) <span class="br">{</span></td></tr>
+<tr name="182" id="182">
+<td><a id="l182" class='ln'>182</a></td><td>          <span class="ct">/* Transition: '&lt;S1&gt;:128' */</span></td></tr>
+<tr name="183" id="183">
+<td><a id="l183" class='ln'>183</a></td><td>          ((<a id="183c13" class="tk">uint8_T</a> <a id="183c21" class="tk">*</a>)<a id="183c23" class="tk">ssGetDWork</a>(<a id="183c34" class="tk">S</a>, 2))[0] = <a id="183c46" class="tk">Chart2_IN_INIT</a>;</td></tr>
+<tr name="184" id="184">
+<td><a id="l184" class='ln'>184</a></td><td></td></tr>
+<tr name="185" id="185">
+<td><a id="l185" class='ln'>185</a></td><td>          <span class="ct">/* Entry 'INIT': '&lt;S1&gt;:95' */</span></td></tr>
+<tr name="186" id="186">
+<td><a id="l186" class='ln'>186</a></td><td>          <span class="ct">/* '&lt;S1&gt;:95:1' state=0; */</span></td></tr>
+<tr name="187" id="187">
+<td><a id="l187" class='ln'>187</a></td><td>          <a id="187c11" class="tk">_rtB</a>-&gt;<a id="187c17" class="tk">state</a> = 0.0;</td></tr>
+<tr name="188" id="188">
+<td><a id="l188" class='ln'>188</a></td><td></td></tr>
+<tr name="189" id="189">
+<td><a id="l189" class='ln'>189</a></td><td>          <span class="ct">/* '&lt;S1&gt;:95:1' use_pred=0; */</span></td></tr>
+<tr name="190" id="190">
+<td><a id="l190" class='ln'>190</a></td><td>          <a id="190c11" class="tk">_rtB</a>-&gt;<a id="190c17" class="tk">use_pred</a> = 0.0;</td></tr>
+<tr name="191" id="191">
+<td><a id="l191" class='ln'>191</a></td><td></td></tr>
+<tr name="192" id="192">
+<td><a id="l192" class='ln'>192</a></td><td>          <span class="ct">/* '&lt;S1&gt;:95:1' trajectory_update = 0; */</span></td></tr>
+<tr name="193" id="193">
+<td><a id="l193" class='ln'>193</a></td><td>          <a id="193c11" class="tk">_rtB</a>-&gt;<a id="193c17" class="tk">trajectory_update</a> = 0.0;</td></tr>
+<tr name="194" id="194">
+<td><a id="l194" class='ln'>194</a></td><td></td></tr>
+<tr name="195" id="195">
+<td><a id="l195" class='ln'>195</a></td><td>          <span class="ct">/* '&lt;S1&gt;:95:4' t_catch_predict=[0,0]; */</span></td></tr>
+<tr name="196" id="196">
+<td><a id="l196" class='ln'>196</a></td><td>          <a id="196c11" class="tk">_rtB</a>-&gt;<a id="196c17" class="tk">t_catch_predict</a>[0] = 0.0;</td></tr>
+<tr name="197" id="197">
+<td><a id="l197" class='ln'>197</a></td><td>          <a id="197c11" class="tk">_rtB</a>-&gt;<a id="197c17" class="tk">t_catch_predict</a>[1] = 0.0;</td></tr>
+<tr name="198" id="198">
+<td><a id="l198" class='ln'>198</a></td><td>        <span class="br">}</span> <span class="kw">else</span> <span class="br">{</span></td></tr>
+<tr name="199" id="199">
+<td><a id="l199" class='ln'>199</a></td><td>          <span class="ct">/* '&lt;S1&gt;:20:1' sf_internal_predicateOutput = t_in &gt; t_catch_predict(2); */</span></td></tr>
+<tr name="200" id="200">
+<td><a id="l200" class='ln'>200</a></td><td>          <span class="kw">if</span> (<a id="200c15" class="tk">*</a>((<span class="kw">const</span> <a id="200c24" class="tk">real_T</a> <a id="200c31" class="tk">*</a><a id="200c32" class="tk">*</a>)<a id="200c34" class="tk">ssGetInputPortSignalPtrs</a>(<a id="200c59" class="tk">S</a>, 0))[0] <a id="200c69" class="tk">&gt;</a></td></tr>
+<tr name="201" id="201">
+<td><a id="l201" class='ln'>201</a></td><td>              <a id="201c15" class="tk">_rtB</a>-&gt;<a id="201c21" class="tk">t_catch_predict</a>[1]) <span class="br">{</span></td></tr>
+<tr name="202" id="202">
+<td><a id="l202" class='ln'>202</a></td><td>            <span class="ct">/* Transition: '&lt;S1&gt;:20' */</span></td></tr>
+<tr name="203" id="203">
+<td><a id="l203" class='ln'>203</a></td><td>            ((<a id="203c15" class="tk">uint8_T</a> <a id="203c23" class="tk">*</a>)<a id="203c25" class="tk">ssGetDWork</a>(<a id="203c36" class="tk">S</a>, 2))[0] = <a id="203c48" class="tk">Chart2_IN_NO_VALID_BALL_VALUE</a>;</td></tr>
+<tr name="204" id="204">
+<td><a id="l204" class='ln'>204</a></td><td>            ((<a id="204c15" class="tk">uint32_T</a> <a id="204c24" class="tk">*</a>)<a id="204c26" class="tk">ssGetDWork</a>(<a id="204c37" class="tk">S</a>, 0))[0] = 0U;</td></tr>
+<tr name="205" id="205">
+<td><a id="l205" class='ln'>205</a></td><td></td></tr>
+<tr name="206" id="206">
+<td><a id="l206" class='ln'>206</a></td><td>            <span class="ct">/* Entry 'NO_VALID_BALL_VALUE': '&lt;S1&gt;:79' */</span></td></tr>
+<tr name="207" id="207">
+<td><a id="l207" class='ln'>207</a></td><td>            <span class="ct">/* '&lt;S1&gt;:79:1' state=3; */</span></td></tr>
+<tr name="208" id="208">
+<td><a id="l208" class='ln'>208</a></td><td>            <a id="208c13" class="tk">_rtB</a>-&gt;<a id="208c19" class="tk">state</a> = 3.0;</td></tr>
+<tr name="209" id="209">
+<td><a id="l209" class='ln'>209</a></td><td></td></tr>
+<tr name="210" id="210">
+<td><a id="l210" class='ln'>210</a></td><td>            <span class="ct">/* '&lt;S1&gt;:79:1' use_pred=0; */</span></td></tr>
+<tr name="211" id="211">
+<td><a id="l211" class='ln'>211</a></td><td>            <a id="211c13" class="tk">_rtB</a>-&gt;<a id="211c19" class="tk">use_pred</a> = 0.0;</td></tr>
+<tr name="212" id="212">
+<td><a id="l212" class='ln'>212</a></td><td></td></tr>
+<tr name="213" id="213">
+<td><a id="l213" class='ln'>213</a></td><td>            <span class="ct">/* '&lt;S1&gt;:79:1' trajectory_update = 0; */</span></td></tr>
+<tr name="214" id="214">
+<td><a id="l214" class='ln'>214</a></td><td>            <a id="214c13" class="tk">_rtB</a>-&gt;<a id="214c19" class="tk">trajectory_update</a> = 0.0;</td></tr>
+<tr name="215" id="215">
+<td><a id="l215" class='ln'>215</a></td><td>          <span class="br">}</span> <span class="kw">else</span> <span class="br">{</span></td></tr>
+<tr name="216" id="216">
+<td><a id="l216" class='ln'>216</a></td><td>            <span class="ct">/* '&lt;S1&gt;:17:4' init_estimator=0; */</span></td></tr>
+<tr name="217" id="217">
+<td><a id="l217" class='ln'>217</a></td><td>            <a id="217c13" class="tk">_rtB</a>-&gt;<a id="217c19" class="tk">init_estimator</a> = 0.0;</td></tr>
+<tr name="218" id="218">
+<td><a id="l218" class='ln'>218</a></td><td>          <span class="br">}</span></td></tr>
+<tr name="219" id="219">
+<td><a id="l219" class='ln'>219</a></td><td>        <span class="br">}</span></td></tr>
+<tr name="220" id="220">
+<td><a id="l220" class='ln'>220</a></td><td>        <span class="kw">break</span>;</td></tr>
+<tr name="221" id="221">
+<td><a id="l221" class='ln'>221</a></td><td></td></tr>
+<tr name="222" id="222">
+<td><a id="l222" class='ln'>222</a></td><td>       <span class="kw">case</span> <a id="222c13" class="tk">Chart2_IN_GO_TO_START_FROM_NO_CATCH</a><a id="222c48" class="tk">:</a></td></tr>
+<tr name="223" id="223">
+<td><a id="l223" class='ln'>223</a></td><td>        <a id="223c9" class="tk">_rtB</a>-&gt;<a id="223c15" class="tk">state</a> = 4.0;</td></tr>
+<tr name="224" id="224">
+<td><a id="l224" class='ln'>224</a></td><td></td></tr>
+<tr name="225" id="225">
+<td><a id="l225" class='ln'>225</a></td><td>        <span class="ct">/* During 'GO_TO_START_FROM_NO_CATCH': '&lt;S1&gt;:87' */</span></td></tr>
+<tr name="226" id="226">
+<td><a id="l226" class='ln'>226</a></td><td>        <span class="ct">/* '&lt;S1&gt;:127:1' sf_internal_predicateOutput = reset_flow_chart; */</span></td></tr>
+<tr name="227" id="227">
+<td><a id="l227" class='ln'>227</a></td><td>        <span class="kw">if</span> (<a id="227c13" class="tk">*</a>((<span class="kw">const</span> <a id="227c22" class="tk">boolean_T</a> <a id="227c32" class="tk">*</a><a id="227c33" class="tk">*</a>)<a id="227c35" class="tk">ssGetInputPortSignalPtrs</a>(<a id="227c60" class="tk">S</a>, 3))[0]) <span class="br">{</span></td></tr>
+<tr name="228" id="228">
+<td><a id="l228" class='ln'>228</a></td><td>          <span class="ct">/* Transition: '&lt;S1&gt;:127' */</span></td></tr>
+<tr name="229" id="229">
+<td><a id="l229" class='ln'>229</a></td><td>          ((<a id="229c13" class="tk">uint8_T</a> <a id="229c21" class="tk">*</a>)<a id="229c23" class="tk">ssGetDWork</a>(<a id="229c34" class="tk">S</a>, 2))[0] = <a id="229c46" class="tk">Chart2_IN_INIT</a>;</td></tr>
+<tr name="230" id="230">
+<td><a id="l230" class='ln'>230</a></td><td></td></tr>
+<tr name="231" id="231">
+<td><a id="l231" class='ln'>231</a></td><td>          <span class="ct">/* Entry 'INIT': '&lt;S1&gt;:95' */</span></td></tr>
+<tr name="232" id="232">
+<td><a id="l232" class='ln'>232</a></td><td>          <span class="ct">/* '&lt;S1&gt;:95:1' state=0; */</span></td></tr>
+<tr name="233" id="233">
+<td><a id="l233" class='ln'>233</a></td><td>          <a id="233c11" class="tk">_rtB</a>-&gt;<a id="233c17" class="tk">state</a> = 0.0;</td></tr>
+<tr name="234" id="234">
+<td><a id="l234" class='ln'>234</a></td><td></td></tr>
+<tr name="235" id="235">
+<td><a id="l235" class='ln'>235</a></td><td>          <span class="ct">/* '&lt;S1&gt;:95:1' use_pred=0; */</span></td></tr>
+<tr name="236" id="236">
+<td><a id="l236" class='ln'>236</a></td><td>          <a id="236c11" class="tk">_rtB</a>-&gt;<a id="236c17" class="tk">use_pred</a> = 0.0;</td></tr>
+<tr name="237" id="237">
+<td><a id="l237" class='ln'>237</a></td><td></td></tr>
+<tr name="238" id="238">
+<td><a id="l238" class='ln'>238</a></td><td>          <span class="ct">/* '&lt;S1&gt;:95:1' trajectory_update = 0; */</span></td></tr>
+<tr name="239" id="239">
+<td><a id="l239" class='ln'>239</a></td><td>          <a id="239c11" class="tk">_rtB</a>-&gt;<a id="239c17" class="tk">trajectory_update</a> = 0.0;</td></tr>
+<tr name="240" id="240">
+<td><a id="l240" class='ln'>240</a></td><td></td></tr>
+<tr name="241" id="241">
+<td><a id="l241" class='ln'>241</a></td><td>          <span class="ct">/* '&lt;S1&gt;:95:4' t_catch_predict=[0,0]; */</span></td></tr>
+<tr name="242" id="242">
+<td><a id="l242" class='ln'>242</a></td><td>          <a id="242c11" class="tk">_rtB</a>-&gt;<a id="242c17" class="tk">t_catch_predict</a>[0] = 0.0;</td></tr>
+<tr name="243" id="243">
+<td><a id="l243" class='ln'>243</a></td><td>          <a id="243c11" class="tk">_rtB</a>-&gt;<a id="243c17" class="tk">t_catch_predict</a>[1] = 0.0;</td></tr>
+<tr name="244" id="244">
+<td><a id="l244" class='ln'>244</a></td><td>        <span class="br">}</span> <span class="kw">else</span> <span class="br">{</span></td></tr>
+<tr name="245" id="245">
+<td><a id="l245" class='ln'>245</a></td><td>          <span class="ct">/* '&lt;S1&gt;:25:1' sf_internal_predicateOutput = after(10,sec); */</span></td></tr>
+<tr name="246" id="246">
+<td><a id="l246" class='ln'>246</a></td><td>          <span class="kw">if</span> (((<a id="246c17" class="tk">uint32_T</a> <a id="246c26" class="tk">*</a>)<a id="246c28" class="tk">ssGetDWork</a>(<a id="246c39" class="tk">S</a>, 0))[0] <a id="246c49" class="tk">&gt;=</a> 200000U) <span class="br">{</span></td></tr>
+<tr name="247" id="247">
+<td><a id="l247" class='ln'>247</a></td><td>            <span class="ct">/* Transition: '&lt;S1&gt;:25' */</span></td></tr>
+<tr name="248" id="248">
+<td><a id="l248" class='ln'>248</a></td><td>            ((<a id="248c15" class="tk">uint8_T</a> <a id="248c23" class="tk">*</a>)<a id="248c25" class="tk">ssGetDWork</a>(<a id="248c36" class="tk">S</a>, 2))[0] = <a id="248c48" class="tk">Chart2_IN_READY</a>;</td></tr>
+<tr name="249" id="249">
+<td><a id="l249" class='ln'>249</a></td><td></td></tr>
+<tr name="250" id="250">
+<td><a id="l250" class='ln'>250</a></td><td>            <span class="ct">/* Entry 'READY': '&lt;S1&gt;:16' */</span></td></tr>
+<tr name="251" id="251">
+<td><a id="l251" class='ln'>251</a></td><td>            <span class="ct">/* '&lt;S1&gt;:16:1' state=1; */</span></td></tr>
+<tr name="252" id="252">
+<td><a id="l252" class='ln'>252</a></td><td>            <a id="252c13" class="tk">_rtB</a>-&gt;<a id="252c19" class="tk">state</a> = 1.0;</td></tr>
+<tr name="253" id="253">
+<td><a id="l253" class='ln'>253</a></td><td></td></tr>
+<tr name="254" id="254">
+<td><a id="l254" class='ln'>254</a></td><td>            <span class="ct">/* '&lt;S1&gt;:16:1' trajectory_update = 0; */</span></td></tr>
+<tr name="255" id="255">
+<td><a id="l255" class='ln'>255</a></td><td>            <a id="255c13" class="tk">_rtB</a>-&gt;<a id="255c19" class="tk">trajectory_update</a> = 0.0;</td></tr>
+<tr name="256" id="256">
+<td><a id="l256" class='ln'>256</a></td><td>          <span class="br">}</span> <span class="kw">else</span> <span class="br">{</span></td></tr>
+<tr name="257" id="257">
+<td><a id="l257" class='ln'>257</a></td><td>            <span class="ct">/* '&lt;S1&gt;:87:3' trajectory_update = 0; */</span></td></tr>
+<tr name="258" id="258">
+<td><a id="l258" class='ln'>258</a></td><td>            <a id="258c13" class="tk">_rtB</a>-&gt;<a id="258c19" class="tk">trajectory_update</a> = 0.0;</td></tr>
+<tr name="259" id="259">
+<td><a id="l259" class='ln'>259</a></td><td>          <span class="br">}</span></td></tr>
+<tr name="260" id="260">
+<td><a id="l260" class='ln'>260</a></td><td>        <span class="br">}</span></td></tr>
+<tr name="261" id="261">
+<td><a id="l261" class='ln'>261</a></td><td>        <span class="kw">break</span>;</td></tr>
+<tr name="262" id="262">
+<td><a id="l262" class='ln'>262</a></td><td></td></tr>
+<tr name="263" id="263">
+<td><a id="l263" class='ln'>263</a></td><td>       <span class="kw">case</span> <a id="263c13" class="tk">Chart2_IN_INIT</a><a id="263c27" class="tk">:</a></td></tr>
+<tr name="264" id="264">
+<td><a id="l264" class='ln'>264</a></td><td>        <a id="264c9" class="tk">_rtB</a>-&gt;<a id="264c15" class="tk">state</a> = 0.0;</td></tr>
+<tr name="265" id="265">
+<td><a id="l265" class='ln'>265</a></td><td>        <a id="265c9" class="tk">_rtB</a>-&gt;<a id="265c15" class="tk">use_pred</a> = 0.0;</td></tr>
+<tr name="266" id="266">
+<td><a id="l266" class='ln'>266</a></td><td></td></tr>
+<tr name="267" id="267">
+<td><a id="l267" class='ln'>267</a></td><td>        <span class="ct">/* During 'INIT': '&lt;S1&gt;:95' */</span></td></tr>
+<tr name="268" id="268">
+<td><a id="l268" class='ln'>268</a></td><td>        <span class="ct">/* '&lt;S1&gt;:107:1' sf_internal_predicateOutput = init_goto_start &amp;&amp; motion_enable; */</span></td></tr>
+<tr name="269" id="269">
+<td><a id="l269" class='ln'>269</a></td><td>        <span class="kw">if</span> ((<a id="269c14" class="tk">*</a>((<span class="kw">const</span> <a id="269c23" class="tk">real_T</a> <a id="269c30" class="tk">*</a><a id="269c31" class="tk">*</a>)<a id="269c33" class="tk">ssGetInputPortSignalPtrs</a>(<a id="269c58" class="tk">S</a>, 2))[0] <a id="269c68" class="tk">!=</a> 0.0) <a id="269c76" class="tk">&amp;&amp;</a></td></tr>
+<tr name="270" id="270">
+<td><a id="l270" class='ln'>270</a></td><td>            (<a id="270c14" class="tk">*</a>((<span class="kw">const</span> <a id="270c23" class="tk">real_T</a> <a id="270c30" class="tk">*</a><a id="270c31" class="tk">*</a>)<a id="270c33" class="tk">ssGetInputPortSignalPtrs</a>(<a id="270c58" class="tk">S</a>, 5))[0] <a id="270c68" class="tk">!=</a> 0.0)) <span class="br">{</span></td></tr>
+<tr name="271" id="271">
+<td><a id="l271" class='ln'>271</a></td><td>          <span class="ct">/* Transition: '&lt;S1&gt;:107' */</span></td></tr>
+<tr name="272" id="272">
+<td><a id="l272" class='ln'>272</a></td><td>          ((<a id="272c13" class="tk">uint8_T</a> <a id="272c21" class="tk">*</a>)<a id="272c23" class="tk">ssGetDWork</a>(<a id="272c34" class="tk">S</a>, 2))[0] = <a id="272c46" class="tk">Chart2_IN_INIT_GOTO_START</a>;</td></tr>
+<tr name="273" id="273">
+<td><a id="l273" class='ln'>273</a></td><td>          ((<a id="273c13" class="tk">uint32_T</a> <a id="273c22" class="tk">*</a>)<a id="273c24" class="tk">ssGetDWork</a>(<a id="273c35" class="tk">S</a>, 0))[0] = 0U;</td></tr>
+<tr name="274" id="274">
+<td><a id="l274" class='ln'>274</a></td><td></td></tr>
+<tr name="275" id="275">
+<td><a id="l275" class='ln'>275</a></td><td>          <span class="ct">/* Entry 'INIT_GOTO_START': '&lt;S1&gt;:103' */</span></td></tr>
+<tr name="276" id="276">
+<td><a id="l276" class='ln'>276</a></td><td>          <span class="ct">/* '&lt;S1&gt;:103:1' trajectory_update = 1; */</span></td></tr>
+<tr name="277" id="277">
+<td><a id="l277" class='ln'>277</a></td><td>          <a id="277c11" class="tk">_rtB</a>-&gt;<a id="277c17" class="tk">trajectory_update</a> = 1.0;</td></tr>
+<tr name="278" id="278">
+<td><a id="l278" class='ln'>278</a></td><td></td></tr>
+<tr name="279" id="279">
+<td><a id="l279" class='ln'>279</a></td><td>          <span class="ct">/* '&lt;S1&gt;:103:1' t_catch_predict=[t_in,t_in+10]; */</span></td></tr>
+<tr name="280" id="280">
+<td><a id="l280" class='ln'>280</a></td><td>          <a id="280c11" class="tk">_rtB</a>-&gt;<a id="280c17" class="tk">t_catch_predict</a>[0] = <a id="280c38" class="tk">*</a>((<span class="kw">const</span> <a id="280c47" class="tk">real_T</a> <a id="280c54" class="tk">*</a><a id="280c55" class="tk">*</a>)<a id="280c57" class="tk">ssGetInputPortSignalPtrs</a></td></tr>
+<tr name="281" id="281">
+<td><a id="l281" class='ln'>281</a></td><td>            (<a id="281c14" class="tk">S</a>, 0))[0];</td></tr>
+<tr name="282" id="282">
+<td><a id="l282" class='ln'>282</a></td><td>          <a id="282c11" class="tk">_rtB</a>-&gt;<a id="282c17" class="tk">t_catch_predict</a>[1] = <a id="282c38" class="tk">*</a>((<span class="kw">const</span> <a id="282c47" class="tk">real_T</a> <a id="282c54" class="tk">*</a><a id="282c55" class="tk">*</a>)<a id="282c57" class="tk">ssGetInputPortSignalPtrs</a></td></tr>
+<tr name="283" id="283">
+<td><a id="l283" class='ln'>283</a></td><td>            (<a id="283c14" class="tk">S</a>, 0))[0] <a id="283c24" class="tk">+</a> 10.0;</td></tr>
+<tr name="284" id="284">
+<td><a id="l284" class='ln'>284</a></td><td></td></tr>
+<tr name="285" id="285">
+<td><a id="l285" class='ln'>285</a></td><td>          <span class="ct">/* '&lt;S1&gt;:103:3' pd=motive_ts; */</span></td></tr>
+<tr name="286" id="286">
+<td><a id="l286" class='ln'>286</a></td><td>          <span class="ct">/* '&lt;S1&gt;:103:4' pd_p=positions.start_p; */</span></td></tr>
+<tr name="287" id="287">
+<td><a id="l287" class='ln'>287</a></td><td>          <a id="287c11" class="tk">_rtB</a>-&gt;<a id="287c17" class="tk">pd</a>[0] = <a id="287c25" class="tk">*</a>((<span class="kw">const</span> <a id="287c34" class="tk">real_T</a> <a id="287c41" class="tk">*</a><a id="287c42" class="tk">*</a>)<a id="287c44" class="tk">ssGetInputPortSignalPtrs</a>(<a id="287c69" class="tk">S</a>, 6))[0];</td></tr>
+<tr name="288" id="288">
+<td><a id="l288" class='ln'>288</a></td><td>          <a id="288c11" class="tk">_rtB</a>-&gt;<a id="288c17" class="tk">pd_p</a>[0] = 0.0;</td></tr>
+<tr name="289" id="289">
+<td><a id="l289" class='ln'>289</a></td><td>          <a id="289c11" class="tk">_rtB</a>-&gt;<a id="289c17" class="tk">pd</a>[1] = <a id="289c25" class="tk">*</a>((<span class="kw">const</span> <a id="289c34" class="tk">real_T</a> <a id="289c41" class="tk">*</a><a id="289c42" class="tk">*</a>)<a id="289c44" class="tk">ssGetInputPortSignalPtrs</a>(<a id="289c69" class="tk">S</a>, 6))[1];</td></tr>
+<tr name="290" id="290">
+<td><a id="l290" class='ln'>290</a></td><td>          <a id="290c11" class="tk">_rtB</a>-&gt;<a id="290c17" class="tk">pd_p</a>[1] = 0.0;</td></tr>
+<tr name="291" id="291">
+<td><a id="l291" class='ln'>291</a></td><td>          <a id="291c11" class="tk">_rtB</a>-&gt;<a id="291c17" class="tk">pd</a>[2] = <a id="291c25" class="tk">*</a>((<span class="kw">const</span> <a id="291c34" class="tk">real_T</a> <a id="291c41" class="tk">*</a><a id="291c42" class="tk">*</a>)<a id="291c44" class="tk">ssGetInputPortSignalPtrs</a>(<a id="291c69" class="tk">S</a>, 6))[2];</td></tr>
+<tr name="292" id="292">
+<td><a id="l292" class='ln'>292</a></td><td>          <a id="292c11" class="tk">_rtB</a>-&gt;<a id="292c17" class="tk">pd_p</a>[2] = 0.0;</td></tr>
+<tr name="293" id="293">
+<td><a id="l293" class='ln'>293</a></td><td>        <span class="br">}</span></td></tr>
+<tr name="294" id="294">
+<td><a id="l294" class='ln'>294</a></td><td>        <span class="kw">break</span>;</td></tr>
+<tr name="295" id="295">
+<td><a id="l295" class='ln'>295</a></td><td></td></tr>
+<tr name="296" id="296">
+<td><a id="l296" class='ln'>296</a></td><td>       <span class="kw">case</span> <a id="296c13" class="tk">Chart2_IN_INIT_GOTO_START</a><a id="296c38" class="tk">:</a></td></tr>
+<tr name="297" id="297">
+<td><a id="l297" class='ln'>297</a></td><td>        <span class="ct">/* During 'INIT_GOTO_START': '&lt;S1&gt;:103' */</span></td></tr>
+<tr name="298" id="298">
+<td><a id="l298" class='ln'>298</a></td><td>        <span class="ct">/* '&lt;S1&gt;:126:1' sf_internal_predicateOutput = reset_flow_chart; */</span></td></tr>
+<tr name="299" id="299">
+<td><a id="l299" class='ln'>299</a></td><td>        <span class="kw">if</span> (<a id="299c13" class="tk">*</a>((<span class="kw">const</span> <a id="299c22" class="tk">boolean_T</a> <a id="299c32" class="tk">*</a><a id="299c33" class="tk">*</a>)<a id="299c35" class="tk">ssGetInputPortSignalPtrs</a>(<a id="299c60" class="tk">S</a>, 3))[0]) <span class="br">{</span></td></tr>
+<tr name="300" id="300">
+<td><a id="l300" class='ln'>300</a></td><td>          <span class="ct">/* Transition: '&lt;S1&gt;:126' */</span></td></tr>
+<tr name="301" id="301">
+<td><a id="l301" class='ln'>301</a></td><td>          ((<a id="301c13" class="tk">uint8_T</a> <a id="301c21" class="tk">*</a>)<a id="301c23" class="tk">ssGetDWork</a>(<a id="301c34" class="tk">S</a>, 2))[0] = <a id="301c46" class="tk">Chart2_IN_INIT</a>;</td></tr>
+<tr name="302" id="302">
+<td><a id="l302" class='ln'>302</a></td><td></td></tr>
+<tr name="303" id="303">
+<td><a id="l303" class='ln'>303</a></td><td>          <span class="ct">/* Entry 'INIT': '&lt;S1&gt;:95' */</span></td></tr>
+<tr name="304" id="304">
+<td><a id="l304" class='ln'>304</a></td><td>          <span class="ct">/* '&lt;S1&gt;:95:1' state=0; */</span></td></tr>
+<tr name="305" id="305">
+<td><a id="l305" class='ln'>305</a></td><td>          <a id="305c11" class="tk">_rtB</a>-&gt;<a id="305c17" class="tk">state</a> = 0.0;</td></tr>
+<tr name="306" id="306">
+<td><a id="l306" class='ln'>306</a></td><td></td></tr>
+<tr name="307" id="307">
+<td><a id="l307" class='ln'>307</a></td><td>          <span class="ct">/* '&lt;S1&gt;:95:1' use_pred=0; */</span></td></tr>
+<tr name="308" id="308">
+<td><a id="l308" class='ln'>308</a></td><td>          <a id="308c11" class="tk">_rtB</a>-&gt;<a id="308c17" class="tk">use_pred</a> = 0.0;</td></tr>
+<tr name="309" id="309">
+<td><a id="l309" class='ln'>309</a></td><td></td></tr>
+<tr name="310" id="310">
+<td><a id="l310" class='ln'>310</a></td><td>          <span class="ct">/* '&lt;S1&gt;:95:1' trajectory_update = 0; */</span></td></tr>
+<tr name="311" id="311">
+<td><a id="l311" class='ln'>311</a></td><td>          <a id="311c11" class="tk">_rtB</a>-&gt;<a id="311c17" class="tk">trajectory_update</a> = 0.0;</td></tr>
+<tr name="312" id="312">
+<td><a id="l312" class='ln'>312</a></td><td></td></tr>
+<tr name="313" id="313">
+<td><a id="l313" class='ln'>313</a></td><td>          <span class="ct">/* '&lt;S1&gt;:95:4' t_catch_predict=[0,0]; */</span></td></tr>
+<tr name="314" id="314">
+<td><a id="l314" class='ln'>314</a></td><td>          <a id="314c11" class="tk">_rtB</a>-&gt;<a id="314c17" class="tk">t_catch_predict</a>[0] = 0.0;</td></tr>
+<tr name="315" id="315">
+<td><a id="l315" class='ln'>315</a></td><td>          <a id="315c11" class="tk">_rtB</a>-&gt;<a id="315c17" class="tk">t_catch_predict</a>[1] = 0.0;</td></tr>
+<tr name="316" id="316">
+<td><a id="l316" class='ln'>316</a></td><td>        <span class="br">}</span> <span class="kw">else</span> <span class="br">{</span></td></tr>
+<tr name="317" id="317">
+<td><a id="l317" class='ln'>317</a></td><td>          <span class="ct">/* '&lt;S1&gt;:123:1' sf_internal_predicateOutput = after(10,sec); */</span></td></tr>
+<tr name="318" id="318">
+<td><a id="l318" class='ln'>318</a></td><td>          <span class="kw">if</span> (((<a id="318c17" class="tk">uint32_T</a> <a id="318c26" class="tk">*</a>)<a id="318c28" class="tk">ssGetDWork</a>(<a id="318c39" class="tk">S</a>, 0))[0] <a id="318c49" class="tk">&gt;=</a> 200000U) <span class="br">{</span></td></tr>
+<tr name="319" id="319">
+<td><a id="l319" class='ln'>319</a></td><td>            <span class="ct">/* Transition: '&lt;S1&gt;:123' */</span></td></tr>
+<tr name="320" id="320">
+<td><a id="l320" class='ln'>320</a></td><td>            ((<a id="320c15" class="tk">uint8_T</a> <a id="320c23" class="tk">*</a>)<a id="320c25" class="tk">ssGetDWork</a>(<a id="320c36" class="tk">S</a>, 2))[0] = <a id="320c48" class="tk">Chart2_IN_READY</a>;</td></tr>
+<tr name="321" id="321">
+<td><a id="l321" class='ln'>321</a></td><td></td></tr>
+<tr name="322" id="322">
+<td><a id="l322" class='ln'>322</a></td><td>            <span class="ct">/* Entry 'READY': '&lt;S1&gt;:16' */</span></td></tr>
+<tr name="323" id="323">
+<td><a id="l323" class='ln'>323</a></td><td>            <span class="ct">/* '&lt;S1&gt;:16:1' state=1; */</span></td></tr>
+<tr name="324" id="324">
+<td><a id="l324" class='ln'>324</a></td><td>            <a id="324c13" class="tk">_rtB</a>-&gt;<a id="324c19" class="tk">state</a> = 1.0;</td></tr>
+<tr name="325" id="325">
+<td><a id="l325" class='ln'>325</a></td><td></td></tr>
+<tr name="326" id="326">
+<td><a id="l326" class='ln'>326</a></td><td>            <span class="ct">/* '&lt;S1&gt;:16:1' trajectory_update = 0; */</span></td></tr>
+<tr name="327" id="327">
+<td><a id="l327" class='ln'>327</a></td><td>            <a id="327c13" class="tk">_rtB</a>-&gt;<a id="327c19" class="tk">trajectory_update</a> = 0.0;</td></tr>
+<tr name="328" id="328">
+<td><a id="l328" class='ln'>328</a></td><td>          <span class="br">}</span> <span class="kw">else</span> <span class="br">{</span></td></tr>
+<tr name="329" id="329">
+<td><a id="l329" class='ln'>329</a></td><td>            <span class="ct">/* '&lt;S1&gt;:103:4' trajectory_update = 0; */</span></td></tr>
+<tr name="330" id="330">
+<td><a id="l330" class='ln'>330</a></td><td>            <a id="330c13" class="tk">_rtB</a>-&gt;<a id="330c19" class="tk">trajectory_update</a> = 0.0;</td></tr>
+<tr name="331" id="331">
+<td><a id="l331" class='ln'>331</a></td><td>          <span class="br">}</span></td></tr>
+<tr name="332" id="332">
+<td><a id="l332" class='ln'>332</a></td><td>        <span class="br">}</span></td></tr>
+<tr name="333" id="333">
+<td><a id="l333" class='ln'>333</a></td><td>        <span class="kw">break</span>;</td></tr>
+<tr name="334" id="334">
+<td><a id="l334" class='ln'>334</a></td><td></td></tr>
+<tr name="335" id="335">
+<td><a id="l335" class='ln'>335</a></td><td>       <span class="kw">case</span> <a id="335c13" class="tk">Chart2_IN_NO_VALID_BALL_VALUE</a><a id="335c42" class="tk">:</a></td></tr>
+<tr name="336" id="336">
+<td><a id="l336" class='ln'>336</a></td><td>        <a id="336c9" class="tk">_rtB</a>-&gt;<a id="336c15" class="tk">state</a> = 3.0;</td></tr>
+<tr name="337" id="337">
+<td><a id="l337" class='ln'>337</a></td><td>        <a id="337c9" class="tk">_rtB</a>-&gt;<a id="337c15" class="tk">use_pred</a> = 0.0;</td></tr>
+<tr name="338" id="338">
+<td><a id="l338" class='ln'>338</a></td><td></td></tr>
+<tr name="339" id="339">
+<td><a id="l339" class='ln'>339</a></td><td>        <span class="ct">/* During 'NO_VALID_BALL_VALUE': '&lt;S1&gt;:79' */</span></td></tr>
+<tr name="340" id="340">
+<td><a id="l340" class='ln'>340</a></td><td>        <span class="ct">/* '&lt;S1&gt;:129:1' sf_internal_predicateOutput = reset_flow_chart; */</span></td></tr>
+<tr name="341" id="341">
+<td><a id="l341" class='ln'>341</a></td><td>        <span class="kw">if</span> (<a id="341c13" class="tk">*</a>((<span class="kw">const</span> <a id="341c22" class="tk">boolean_T</a> <a id="341c32" class="tk">*</a><a id="341c33" class="tk">*</a>)<a id="341c35" class="tk">ssGetInputPortSignalPtrs</a>(<a id="341c60" class="tk">S</a>, 3))[0]) <span class="br">{</span></td></tr>
+<tr name="342" id="342">
+<td><a id="l342" class='ln'>342</a></td><td>          <span class="ct">/* Transition: '&lt;S1&gt;:129' */</span></td></tr>
+<tr name="343" id="343">
+<td><a id="l343" class='ln'>343</a></td><td>          ((<a id="343c13" class="tk">uint8_T</a> <a id="343c21" class="tk">*</a>)<a id="343c23" class="tk">ssGetDWork</a>(<a id="343c34" class="tk">S</a>, 2))[0] = <a id="343c46" class="tk">Chart2_IN_INIT</a>;</td></tr>
+<tr name="344" id="344">
+<td><a id="l344" class='ln'>344</a></td><td></td></tr>
+<tr name="345" id="345">
+<td><a id="l345" class='ln'>345</a></td><td>          <span class="ct">/* Entry 'INIT': '&lt;S1&gt;:95' */</span></td></tr>
+<tr name="346" id="346">
+<td><a id="l346" class='ln'>346</a></td><td>          <span class="ct">/* '&lt;S1&gt;:95:1' state=0; */</span></td></tr>
+<tr name="347" id="347">
+<td><a id="l347" class='ln'>347</a></td><td>          <a id="347c11" class="tk">_rtB</a>-&gt;<a id="347c17" class="tk">state</a> = 0.0;</td></tr>
+<tr name="348" id="348">
+<td><a id="l348" class='ln'>348</a></td><td></td></tr>
+<tr name="349" id="349">
+<td><a id="l349" class='ln'>349</a></td><td>          <span class="ct">/* '&lt;S1&gt;:95:1' use_pred=0; */</span></td></tr>
+<tr name="350" id="350">
+<td><a id="l350" class='ln'>350</a></td><td>          <a id="350c11" class="tk">_rtB</a>-&gt;<a id="350c17" class="tk">use_pred</a> = 0.0;</td></tr>
+<tr name="351" id="351">
+<td><a id="l351" class='ln'>351</a></td><td></td></tr>
+<tr name="352" id="352">
+<td><a id="l352" class='ln'>352</a></td><td>          <span class="ct">/* '&lt;S1&gt;:95:1' trajectory_update = 0; */</span></td></tr>
+<tr name="353" id="353">
+<td><a id="l353" class='ln'>353</a></td><td>          <a id="353c11" class="tk">_rtB</a>-&gt;<a id="353c17" class="tk">trajectory_update</a> = 0.0;</td></tr>
+<tr name="354" id="354">
+<td><a id="l354" class='ln'>354</a></td><td></td></tr>
+<tr name="355" id="355">
+<td><a id="l355" class='ln'>355</a></td><td>          <span class="ct">/* '&lt;S1&gt;:95:4' t_catch_predict=[0,0]; */</span></td></tr>
+<tr name="356" id="356">
+<td><a id="l356" class='ln'>356</a></td><td>          <a id="356c11" class="tk">_rtB</a>-&gt;<a id="356c17" class="tk">t_catch_predict</a>[0] = 0.0;</td></tr>
+<tr name="357" id="357">
+<td><a id="l357" class='ln'>357</a></td><td>          <a id="357c11" class="tk">_rtB</a>-&gt;<a id="357c17" class="tk">t_catch_predict</a>[1] = 0.0;</td></tr>
+<tr name="358" id="358">
+<td><a id="l358" class='ln'>358</a></td><td>        <span class="br">}</span> <span class="kw">else</span> <span class="br">{</span></td></tr>
+<tr name="359" id="359">
+<td><a id="l359" class='ln'>359</a></td><td>          <span class="ct">/* '&lt;S1&gt;:88:1' sf_internal_predicateOutput = after(3,sec); */</span></td></tr>
+<tr name="360" id="360">
+<td><a id="l360" class='ln'>360</a></td><td>          <span class="kw">if</span> (((<a id="360c17" class="tk">uint32_T</a> <a id="360c26" class="tk">*</a>)<a id="360c28" class="tk">ssGetDWork</a>(<a id="360c39" class="tk">S</a>, 0))[0] <a id="360c49" class="tk">&gt;=</a> 60000U) <span class="br">{</span></td></tr>
+<tr name="361" id="361">
+<td><a id="l361" class='ln'>361</a></td><td>            <span class="ct">/* Transition: '&lt;S1&gt;:88' */</span></td></tr>
+<tr name="362" id="362">
+<td><a id="l362" class='ln'>362</a></td><td>            ((<a id="362c15" class="tk">uint8_T</a> <a id="362c23" class="tk">*</a>)<a id="362c25" class="tk">ssGetDWork</a>(<a id="362c36" class="tk">S</a>, 2))[0] =</td></tr>
+<tr name="363" id="363">
+<td><a id="l363" class='ln'>363</a></td><td>              <a id="363c15" class="tk">Chart2_IN_GO_TO_START_FROM_NO_CATCH</a>;</td></tr>
+<tr name="364" id="364">
+<td><a id="l364" class='ln'>364</a></td><td>            ((<a id="364c15" class="tk">uint32_T</a> <a id="364c24" class="tk">*</a>)<a id="364c26" class="tk">ssGetDWork</a>(<a id="364c37" class="tk">S</a>, 0))[0] = 0U;</td></tr>
+<tr name="365" id="365">
+<td><a id="l365" class='ln'>365</a></td><td></td></tr>
+<tr name="366" id="366">
+<td><a id="l366" class='ln'>366</a></td><td>            <span class="ct">/* Entry 'GO_TO_START_FROM_NO_CATCH': '&lt;S1&gt;:87' */</span></td></tr>
+<tr name="367" id="367">
+<td><a id="l367" class='ln'>367</a></td><td>            <span class="ct">/* '&lt;S1&gt;:87:1' trajectory_update = 1; */</span></td></tr>
+<tr name="368" id="368">
+<td><a id="l368" class='ln'>368</a></td><td>            <a id="368c13" class="tk">_rtB</a>-&gt;<a id="368c19" class="tk">trajectory_update</a> = 1.0;</td></tr>
+<tr name="369" id="369">
+<td><a id="l369" class='ln'>369</a></td><td></td></tr>
+<tr name="370" id="370">
+<td><a id="l370" class='ln'>370</a></td><td>            <span class="ct">/* '&lt;S1&gt;:87:1' state=4; */</span></td></tr>
+<tr name="371" id="371">
+<td><a id="l371" class='ln'>371</a></td><td>            <a id="371c13" class="tk">_rtB</a>-&gt;<a id="371c19" class="tk">state</a> = 4.0;</td></tr>
+<tr name="372" id="372">
+<td><a id="l372" class='ln'>372</a></td><td></td></tr>
+<tr name="373" id="373">
+<td><a id="l373" class='ln'>373</a></td><td>            <span class="ct">/* '&lt;S1&gt;:87:2' t_catch_predict=[t_in,t_in+10]; */</span></td></tr>
+<tr name="374" id="374">
+<td><a id="l374" class='ln'>374</a></td><td>            <a id="374c13" class="tk">_rtB</a>-&gt;<a id="374c19" class="tk">t_catch_predict</a>[0] = <a id="374c40" class="tk">*</a>((<span class="kw">const</span> <a id="374c49" class="tk">real_T</a> <a id="374c56" class="tk">*</a><a id="374c57" class="tk">*</a>)</td></tr>
+<tr name="375" id="375">
+<td><a id="l375" class='ln'>375</a></td><td>              <a id="375c15" class="tk">ssGetInputPortSignalPtrs</a>(<a id="375c40" class="tk">S</a>, 0))[0];</td></tr>
+<tr name="376" id="376">
+<td><a id="l376" class='ln'>376</a></td><td>            <a id="376c13" class="tk">_rtB</a>-&gt;<a id="376c19" class="tk">t_catch_predict</a>[1] = <a id="376c40" class="tk">*</a>((<span class="kw">const</span> <a id="376c49" class="tk">real_T</a> <a id="376c56" class="tk">*</a><a id="376c57" class="tk">*</a>)</td></tr>
+<tr name="377" id="377">
+<td><a id="l377" class='ln'>377</a></td><td>              <a id="377c15" class="tk">ssGetInputPortSignalPtrs</a>(<a id="377c40" class="tk">S</a>, 0))[0] <a id="377c50" class="tk">+</a> 10.0;</td></tr>
+<tr name="378" id="378">
+<td><a id="l378" class='ln'>378</a></td><td></td></tr>
+<tr name="379" id="379">
+<td><a id="l379" class='ln'>379</a></td><td>            <span class="ct">/* '&lt;S1&gt;:87:4' pd=positions.start; */</span></td></tr>
+<tr name="380" id="380">
+<td><a id="l380" class='ln'>380</a></td><td>            <span class="ct">/* '&lt;S1&gt;:87:5' pd_p=positions.start_p; */</span></td></tr>
+<tr name="381" id="381">
+<td><a id="l381" class='ln'>381</a></td><td>            <a id="381c13" class="tk">_rtB</a>-&gt;<a id="381c19" class="tk">pd</a>[0] = 0.4;</td></tr>
+<tr name="382" id="382">
+<td><a id="l382" class='ln'>382</a></td><td>            <a id="382c13" class="tk">_rtB</a>-&gt;<a id="382c19" class="tk">pd_p</a>[0] = 0.0;</td></tr>
+<tr name="383" id="383">
+<td><a id="l383" class='ln'>383</a></td><td>            <a id="383c13" class="tk">_rtB</a>-&gt;<a id="383c19" class="tk">pd</a>[1] = 0.0;</td></tr>
+<tr name="384" id="384">
+<td><a id="l384" class='ln'>384</a></td><td>            <a id="384c13" class="tk">_rtB</a>-&gt;<a id="384c19" class="tk">pd_p</a>[1] = 0.0;</td></tr>
+<tr name="385" id="385">
+<td><a id="l385" class='ln'>385</a></td><td>            <a id="385c13" class="tk">_rtB</a>-&gt;<a id="385c19" class="tk">pd</a>[2] = 0.95;</td></tr>
+<tr name="386" id="386">
+<td><a id="l386" class='ln'>386</a></td><td>            <a id="386c13" class="tk">_rtB</a>-&gt;<a id="386c19" class="tk">pd_p</a>[2] = 0.0;</td></tr>
+<tr name="387" id="387">
+<td><a id="l387" class='ln'>387</a></td><td>          <span class="br">}</span></td></tr>
+<tr name="388" id="388">
+<td><a id="l388" class='ln'>388</a></td><td>        <span class="br">}</span></td></tr>
+<tr name="389" id="389">
+<td><a id="l389" class='ln'>389</a></td><td>        <span class="kw">break</span>;</td></tr>
+<tr name="390" id="390">
+<td><a id="l390" class='ln'>390</a></td><td></td></tr>
+<tr name="391" id="391">
+<td><a id="l391" class='ln'>391</a></td><td>       <span class="kw">default</span><a id="391c15" class="tk">:</a></td></tr>
+<tr name="392" id="392">
+<td><a id="l392" class='ln'>392</a></td><td>        <a id="392c9" class="tk">_rtB</a>-&gt;<a id="392c15" class="tk">state</a> = 1.0;</td></tr>
+<tr name="393" id="393">
+<td><a id="l393" class='ln'>393</a></td><td></td></tr>
+<tr name="394" id="394">
+<td><a id="l394" class='ln'>394</a></td><td>        <span class="ct">/* During 'READY': '&lt;S1&gt;:16' */</span></td></tr>
+<tr name="395" id="395">
+<td><a id="l395" class='ln'>395</a></td><td>        <span class="ct">/* '&lt;S1&gt;:111:1' sf_internal_predicateOutput = reset_flow_chart; */</span></td></tr>
+<tr name="396" id="396">
+<td><a id="l396" class='ln'>396</a></td><td>        <span class="kw">if</span> (<a id="396c13" class="tk">*</a>((<span class="kw">const</span> <a id="396c22" class="tk">boolean_T</a> <a id="396c32" class="tk">*</a><a id="396c33" class="tk">*</a>)<a id="396c35" class="tk">ssGetInputPortSignalPtrs</a>(<a id="396c60" class="tk">S</a>, 3))[0]) <span class="br">{</span></td></tr>
+<tr name="397" id="397">
+<td><a id="l397" class='ln'>397</a></td><td>          <span class="ct">/* Transition: '&lt;S1&gt;:111' */</span></td></tr>
+<tr name="398" id="398">
+<td><a id="l398" class='ln'>398</a></td><td>          ((<a id="398c13" class="tk">uint8_T</a> <a id="398c21" class="tk">*</a>)<a id="398c23" class="tk">ssGetDWork</a>(<a id="398c34" class="tk">S</a>, 2))[0] = <a id="398c46" class="tk">Chart2_IN_INIT</a>;</td></tr>
+<tr name="399" id="399">
+<td><a id="l399" class='ln'>399</a></td><td></td></tr>
+<tr name="400" id="400">
+<td><a id="l400" class='ln'>400</a></td><td>          <span class="ct">/* Entry 'INIT': '&lt;S1&gt;:95' */</span></td></tr>
+<tr name="401" id="401">
+<td><a id="l401" class='ln'>401</a></td><td>          <span class="ct">/* '&lt;S1&gt;:95:1' state=0; */</span></td></tr>
+<tr name="402" id="402">
+<td><a id="l402" class='ln'>402</a></td><td>          <a id="402c11" class="tk">_rtB</a>-&gt;<a id="402c17" class="tk">state</a> = 0.0;</td></tr>
+<tr name="403" id="403">
+<td><a id="l403" class='ln'>403</a></td><td></td></tr>
+<tr name="404" id="404">
+<td><a id="l404" class='ln'>404</a></td><td>          <span class="ct">/* '&lt;S1&gt;:95:1' use_pred=0; */</span></td></tr>
+<tr name="405" id="405">
+<td><a id="l405" class='ln'>405</a></td><td>          <a id="405c11" class="tk">_rtB</a>-&gt;<a id="405c17" class="tk">use_pred</a> = 0.0;</td></tr>
+<tr name="406" id="406">
+<td><a id="l406" class='ln'>406</a></td><td></td></tr>
+<tr name="407" id="407">
+<td><a id="l407" class='ln'>407</a></td><td>          <span class="ct">/* '&lt;S1&gt;:95:1' trajectory_update = 0; */</span></td></tr>
+<tr name="408" id="408">
+<td><a id="l408" class='ln'>408</a></td><td>          <a id="408c11" class="tk">_rtB</a>-&gt;<a id="408c17" class="tk">trajectory_update</a> = 0.0;</td></tr>
+<tr name="409" id="409">
+<td><a id="l409" class='ln'>409</a></td><td></td></tr>
+<tr name="410" id="410">
+<td><a id="l410" class='ln'>410</a></td><td>          <span class="ct">/* '&lt;S1&gt;:95:4' t_catch_predict=[0,0]; */</span></td></tr>
+<tr name="411" id="411">
+<td><a id="l411" class='ln'>411</a></td><td>          <a id="411c11" class="tk">_rtB</a>-&gt;<a id="411c17" class="tk">t_catch_predict</a>[0] = 0.0;</td></tr>
+<tr name="412" id="412">
+<td><a id="l412" class='ln'>412</a></td><td>          <a id="412c11" class="tk">_rtB</a>-&gt;<a id="412c17" class="tk">t_catch_predict</a>[1] = 0.0;</td></tr>
+<tr name="413" id="413">
+<td><a id="l413" class='ln'>413</a></td><td>        <span class="br">}</span> <span class="kw">else</span> <span class="br">{</span></td></tr>
+<tr name="414" id="414">
+<td><a id="l414" class='ln'>414</a></td><td>          <span class="ct">/* '&lt;S1&gt;:26:1' sf_internal_predicateOutput = isBallValueValid(point_in); */</span></td></tr>
+<tr name="415" id="415">
+<td><a id="l415" class='ln'>415</a></td><td>          <span class="kw">if</span> (<a id="415c15" class="tk">Chart2_isBallValueValid</a>(<a id="415c39" class="tk">*</a>(<span class="kw">const</span> <a id="415c47" class="tk">real_T</a> <a id="415c54" class="tk">*</a><a id="415c55" class="tk">*</a>)<a id="415c57" class="tk">ssGetInputPortSignalPtrs</a></td></tr>
+<tr name="416" id="416">
+<td><a id="l416" class='ln'>416</a></td><td>               (<a id="416c17" class="tk">S</a>, 1))) <span class="br">{</span></td></tr>
+<tr name="417" id="417">
+<td><a id="l417" class='ln'>417</a></td><td>            <span class="ct">/* Transition: '&lt;S1&gt;:26' */</span></td></tr>
+<tr name="418" id="418">
+<td><a id="l418" class='ln'>418</a></td><td>            ((<a id="418c15" class="tk">uint8_T</a> <a id="418c23" class="tk">*</a>)<a id="418c25" class="tk">ssGetDWork</a>(<a id="418c36" class="tk">S</a>, 2))[0] = <a id="418c48" class="tk">Chart2_IN_CATCH</a>;</td></tr>
+<tr name="419" id="419">
+<td><a id="l419" class='ln'>419</a></td><td></td></tr>
+<tr name="420" id="420">
+<td><a id="l420" class='ln'>420</a></td><td>            <span class="ct">/* Entry 'CATCH': '&lt;S1&gt;:17' */</span></td></tr>
+<tr name="421" id="421">
+<td><a id="l421" class='ln'>421</a></td><td>            <span class="ct">/* '&lt;S1&gt;:17:1' t_catch_predict=[t_in+1,t_in+2]; */</span></td></tr>
+<tr name="422" id="422">
+<td><a id="l422" class='ln'>422</a></td><td>            <a id="422c13" class="tk">_rtB</a>-&gt;<a id="422c19" class="tk">t_catch_predict</a>[0] = <a id="422c40" class="tk">*</a>((<span class="kw">const</span> <a id="422c49" class="tk">real_T</a> <a id="422c56" class="tk">*</a><a id="422c57" class="tk">*</a>)</td></tr>
+<tr name="423" id="423">
+<td><a id="l423" class='ln'>423</a></td><td>              <a id="423c15" class="tk">ssGetInputPortSignalPtrs</a>(<a id="423c40" class="tk">S</a>, 0))[0] <a id="423c50" class="tk">+</a> 1.0;</td></tr>
+<tr name="424" id="424">
+<td><a id="l424" class='ln'>424</a></td><td>            <a id="424c13" class="tk">_rtB</a>-&gt;<a id="424c19" class="tk">t_catch_predict</a>[1] = <a id="424c40" class="tk">*</a>((<span class="kw">const</span> <a id="424c49" class="tk">real_T</a> <a id="424c56" class="tk">*</a><a id="424c57" class="tk">*</a>)</td></tr>
+<tr name="425" id="425">
+<td><a id="l425" class='ln'>425</a></td><td>              <a id="425c15" class="tk">ssGetInputPortSignalPtrs</a>(<a id="425c40" class="tk">S</a>, 0))[0] <a id="425c50" class="tk">+</a> 2.0;</td></tr>
+<tr name="426" id="426">
+<td><a id="l426" class='ln'>426</a></td><td></td></tr>
+<tr name="427" id="427">
+<td><a id="l427" class='ln'>427</a></td><td>            <span class="ct">/* '&lt;S1&gt;:17:2' state=2; */</span></td></tr>
+<tr name="428" id="428">
+<td><a id="l428" class='ln'>428</a></td><td>            <a id="428c13" class="tk">_rtB</a>-&gt;<a id="428c19" class="tk">state</a> = 2.0;</td></tr>
+<tr name="429" id="429">
+<td><a id="l429" class='ln'>429</a></td><td></td></tr>
+<tr name="430" id="430">
+<td><a id="l430" class='ln'>430</a></td><td>            <span class="ct">/* '&lt;S1&gt;:17:3' t_start=t_in; */</span></td></tr>
+<tr name="431" id="431">
+<td><a id="l431" class='ln'>431</a></td><td>            <a id="431c13" class="tk">_rtB</a>-&gt;<a id="431c19" class="tk">t_start</a> = <a id="431c29" class="tk">*</a>((<span class="kw">const</span> <a id="431c38" class="tk">real_T</a> <a id="431c45" class="tk">*</a><a id="431c46" class="tk">*</a>)<a id="431c48" class="tk">ssGetInputPortSignalPtrs</a>(<a id="431c73" class="tk">S</a>, 0))[0];</td></tr>
+<tr name="432" id="432">
+<td><a id="l432" class='ln'>432</a></td><td></td></tr>
+<tr name="433" id="433">
+<td><a id="l433" class='ln'>433</a></td><td>            <span class="ct">/* '&lt;S1&gt;:17:3' init_estimator=1; */</span></td></tr>
+<tr name="434" id="434">
+<td><a id="l434" class='ln'>434</a></td><td>            <a id="434c13" class="tk">_rtB</a>-&gt;<a id="434c19" class="tk">init_estimator</a> = 1.0;</td></tr>
+<tr name="435" id="435">
+<td><a id="l435" class='ln'>435</a></td><td>          <span class="br">}</span></td></tr>
+<tr name="436" id="436">
+<td><a id="l436" class='ln'>436</a></td><td>        <span class="br">}</span></td></tr>
+<tr name="437" id="437">
+<td><a id="l437" class='ln'>437</a></td><td>        <span class="kw">break</span>;</td></tr>
+<tr name="438" id="438">
+<td><a id="l438" class='ln'>438</a></td><td>      <span class="br">}</span></td></tr>
+<tr name="439" id="439">
+<td><a id="l439" class='ln'>439</a></td><td>    <span class="br">}</span></td></tr>
+<tr name="440" id="440">
+<td><a id="l440" class='ln'>440</a></td><td></td></tr>
+<tr name="441" id="441">
+<td><a id="l441" class='ln'>441</a></td><td>    <span class="ct">/* End of Chart: '&lt;Root&gt;/Chart2' */</span></td></tr>
+<tr name="442" id="442">
+<td><a id="l442" class='ln'>442</a></td><td></td></tr>
+<tr name="443" id="443">
+<td><a id="l443" class='ln'>443</a></td><td>    <span class="ct">/* Outport: '&lt;Root&gt;/pd' */</span></td></tr>
+<tr name="444" id="444">
+<td><a id="l444" class='ln'>444</a></td><td>    ((<a id="444c7" class="tk">real_T</a> <a id="444c14" class="tk">*</a>)<a id="444c16" class="tk">ssGetOutputPortSignal</a>(<a id="444c38" class="tk">S</a>, 1))[0] = <a id="444c50" class="tk">_rtB</a>-&gt;<a id="444c56" class="tk">pd</a>[0];</td></tr>
+<tr name="445" id="445">
+<td><a id="l445" class='ln'>445</a></td><td></td></tr>
+<tr name="446" id="446">
+<td><a id="l446" class='ln'>446</a></td><td>    <span class="ct">/* Outport: '&lt;Root&gt;/pd_p' */</span></td></tr>
+<tr name="447" id="447">
+<td><a id="l447" class='ln'>447</a></td><td>    ((<a id="447c7" class="tk">real_T</a> <a id="447c14" class="tk">*</a>)<a id="447c16" class="tk">ssGetOutputPortSignal</a>(<a id="447c38" class="tk">S</a>, 2))[0] = <a id="447c50" class="tk">_rtB</a>-&gt;<a id="447c56" class="tk">pd_p</a>[0];</td></tr>
+<tr name="448" id="448">
+<td><a id="l448" class='ln'>448</a></td><td></td></tr>
+<tr name="449" id="449">
+<td><a id="l449" class='ln'>449</a></td><td>    <span class="ct">/* Outport: '&lt;Root&gt;/pd' */</span></td></tr>
+<tr name="450" id="450">
+<td><a id="l450" class='ln'>450</a></td><td>    ((<a id="450c7" class="tk">real_T</a> <a id="450c14" class="tk">*</a>)<a id="450c16" class="tk">ssGetOutputPortSignal</a>(<a id="450c38" class="tk">S</a>, 1))[1] = <a id="450c50" class="tk">_rtB</a>-&gt;<a id="450c56" class="tk">pd</a>[1];</td></tr>
+<tr name="451" id="451">
+<td><a id="l451" class='ln'>451</a></td><td></td></tr>
+<tr name="452" id="452">
+<td><a id="l452" class='ln'>452</a></td><td>    <span class="ct">/* Outport: '&lt;Root&gt;/pd_p' */</span></td></tr>
+<tr name="453" id="453">
+<td><a id="l453" class='ln'>453</a></td><td>    ((<a id="453c7" class="tk">real_T</a> <a id="453c14" class="tk">*</a>)<a id="453c16" class="tk">ssGetOutputPortSignal</a>(<a id="453c38" class="tk">S</a>, 2))[1] = <a id="453c50" class="tk">_rtB</a>-&gt;<a id="453c56" class="tk">pd_p</a>[1];</td></tr>
+<tr name="454" id="454">
+<td><a id="l454" class='ln'>454</a></td><td></td></tr>
+<tr name="455" id="455">
+<td><a id="l455" class='ln'>455</a></td><td>    <span class="ct">/* Outport: '&lt;Root&gt;/pd' */</span></td></tr>
+<tr name="456" id="456">
+<td><a id="l456" class='ln'>456</a></td><td>    ((<a id="456c7" class="tk">real_T</a> <a id="456c14" class="tk">*</a>)<a id="456c16" class="tk">ssGetOutputPortSignal</a>(<a id="456c38" class="tk">S</a>, 1))[2] = <a id="456c50" class="tk">_rtB</a>-&gt;<a id="456c56" class="tk">pd</a>[2];</td></tr>
+<tr name="457" id="457">
+<td><a id="l457" class='ln'>457</a></td><td></td></tr>
+<tr name="458" id="458">
+<td><a id="l458" class='ln'>458</a></td><td>    <span class="ct">/* Outport: '&lt;Root&gt;/pd_p' */</span></td></tr>
+<tr name="459" id="459">
+<td><a id="l459" class='ln'>459</a></td><td>    ((<a id="459c7" class="tk">real_T</a> <a id="459c14" class="tk">*</a>)<a id="459c16" class="tk">ssGetOutputPortSignal</a>(<a id="459c38" class="tk">S</a>, 2))[2] = <a id="459c50" class="tk">_rtB</a>-&gt;<a id="459c56" class="tk">pd_p</a>[2];</td></tr>
+<tr name="460" id="460">
+<td><a id="l460" class='ln'>460</a></td><td></td></tr>
+<tr name="461" id="461">
+<td><a id="l461" class='ln'>461</a></td><td>    <span class="ct">/* Outport: '&lt;Root&gt;/t_catch_predict' */</span></td></tr>
+<tr name="462" id="462">
+<td><a id="l462" class='ln'>462</a></td><td>    ((<a id="462c7" class="tk">real_T</a> <a id="462c14" class="tk">*</a>)<a id="462c16" class="tk">ssGetOutputPortSignal</a>(<a id="462c38" class="tk">S</a>, 3))[0] = <a id="462c50" class="tk">_rtB</a>-&gt;<a id="462c56" class="tk">t_catch_predict</a>[0];</td></tr>
+<tr name="463" id="463">
+<td><a id="l463" class='ln'>463</a></td><td>    ((<a id="463c7" class="tk">real_T</a> <a id="463c14" class="tk">*</a>)<a id="463c16" class="tk">ssGetOutputPortSignal</a>(<a id="463c38" class="tk">S</a>, 3))[1] = <a id="463c50" class="tk">_rtB</a>-&gt;<a id="463c56" class="tk">t_catch_predict</a>[1];</td></tr>
+<tr name="464" id="464">
+<td><a id="l464" class='ln'>464</a></td><td></td></tr>
+<tr name="465" id="465">
+<td><a id="l465" class='ln'>465</a></td><td>    <span class="ct">/* Outport: '&lt;Root&gt;/state' */</span></td></tr>
+<tr name="466" id="466">
+<td><a id="l466" class='ln'>466</a></td><td>    ((<a id="466c7" class="tk">real_T</a> <a id="466c14" class="tk">*</a>)<a id="466c16" class="tk">ssGetOutputPortSignal</a>(<a id="466c38" class="tk">S</a>, 0))[0] = <a id="466c50" class="tk">_rtB</a>-&gt;<a id="466c56" class="tk">state</a>;</td></tr>
+<tr name="467" id="467">
+<td><a id="l467" class='ln'>467</a></td><td></td></tr>
+<tr name="468" id="468">
+<td><a id="l468" class='ln'>468</a></td><td>    <span class="ct">/* Outport: '&lt;Root&gt;/use_pred' */</span></td></tr>
+<tr name="469" id="469">
+<td><a id="l469" class='ln'>469</a></td><td>    ((<a id="469c7" class="tk">real_T</a> <a id="469c14" class="tk">*</a>)<a id="469c16" class="tk">ssGetOutputPortSignal</a>(<a id="469c38" class="tk">S</a>, 4))[0] = <a id="469c50" class="tk">_rtB</a>-&gt;<a id="469c56" class="tk">use_pred</a>;</td></tr>
+<tr name="470" id="470">
+<td><a id="l470" class='ln'>470</a></td><td></td></tr>
+<tr name="471" id="471">
+<td><a id="l471" class='ln'>471</a></td><td>    <span class="ct">/* Outport: '&lt;Root&gt;/t_start' */</span></td></tr>
+<tr name="472" id="472">
+<td><a id="l472" class='ln'>472</a></td><td>    ((<a id="472c7" class="tk">real_T</a> <a id="472c14" class="tk">*</a>)<a id="472c16" class="tk">ssGetOutputPortSignal</a>(<a id="472c38" class="tk">S</a>, 5))[0] = <a id="472c50" class="tk">_rtB</a>-&gt;<a id="472c56" class="tk">t_start</a>;</td></tr>
+<tr name="473" id="473">
+<td><a id="l473" class='ln'>473</a></td><td></td></tr>
+<tr name="474" id="474">
+<td><a id="l474" class='ln'>474</a></td><td>    <span class="ct">/* Outport: '&lt;Root&gt;/trajectory_update' */</span></td></tr>
+<tr name="475" id="475">
+<td><a id="l475" class='ln'>475</a></td><td>    ((<a id="475c7" class="tk">real_T</a> <a id="475c14" class="tk">*</a>)<a id="475c16" class="tk">ssGetOutputPortSignal</a>(<a id="475c38" class="tk">S</a>, 6))[0] = <a id="475c50" class="tk">_rtB</a>-&gt;<a id="475c56" class="tk">trajectory_update</a>;</td></tr>
+<tr name="476" id="476">
+<td><a id="l476" class='ln'>476</a></td><td></td></tr>
+<tr name="477" id="477">
+<td><a id="l477" class='ln'>477</a></td><td>    <span class="ct">/* Outport: '&lt;Root&gt;/init_estimator' */</span></td></tr>
+<tr name="478" id="478">
+<td><a id="l478" class='ln'>478</a></td><td>    ((<a id="478c7" class="tk">real_T</a> <a id="478c14" class="tk">*</a>)<a id="478c16" class="tk">ssGetOutputPortSignal</a>(<a id="478c38" class="tk">S</a>, 7))[0] = <a id="478c50" class="tk">_rtB</a>-&gt;<a id="478c56" class="tk">init_estimator</a>;</td></tr>
+<tr name="479" id="479">
+<td><a id="l479" class='ln'>479</a></td><td>  <span class="br">}</span></td></tr>
+<tr name="480" id="480">
+<td><a id="l480" class='ln'>480</a></td><td></td></tr>
+<tr name="481" id="481">
+<td><a id="l481" class='ln'>481</a></td><td>  <a id="481c3" class="tk">UNUSED_PARAMETER</a>(<a id="481c20" class="tk">tid</a>);</td></tr>
+<tr name="482" id="482">
+<td><a id="l482" class='ln'>482</a></td><td><span class="br">}</span></td></tr>
+<tr name="483" id="483">
+<td><a id="l483" class='ln'>483</a></td><td></td></tr>
+<tr name="484" id="484">
+<td><a id="l484" class='ln'>484</a></td><td><span class="ct">/* Update for root system: '&lt;Root&gt;' */</span></td></tr>
+<tr name="485" id="485">
+<td><a id="l485" class='ln'>485</a></td><td><span class="pp">#define</span> <a id="485c9" class="tk">MDL_UPDATE</a></td></tr>
+<tr name="486" id="486">
+<td><a id="l486" class='ln'>486</a></td><td></td></tr>
+<tr name="487" id="487">
+<td><a id="l487" class='ln'>487</a></td><td><span class="kw">static</span> <span class="kw">void</span> <a id="487c13" class="tk">mdlUpdate</a>(<a id="487c23" class="tk">SimStruct</a> <a id="487c33" class="tk">*</a><a id="487c34" class="tk">S</a>, <a id="487c37" class="tk">int_T</a> <a id="487c43" class="tk">tid</a>)</td></tr>
+<tr name="488" id="488">
+<td><a id="l488" class='ln'>488</a></td><td><span class="br">{</span></td></tr>
+<tr name="489" id="489">
+<td><a id="l489" class='ln'>489</a></td><td>  <a id="489c3" class="tk">UNUSED_PARAMETER</a>(<a id="489c20" class="tk">tid</a>);</td></tr>
+<tr name="490" id="490">
+<td><a id="l490" class='ln'>490</a></td><td><span class="br">}</span></td></tr>
+<tr name="491" id="491">
+<td><a id="l491" class='ln'>491</a></td><td></td></tr>
+<tr name="492" id="492">
+<td><a id="l492" class='ln'>492</a></td><td><span class="ct">/* Termination for root system: '&lt;Root&gt;' */</span></td></tr>
+<tr name="493" id="493">
+<td><a id="l493" class='ln'>493</a></td><td><span class="kw">static</span> <span class="kw">void</span> <a id="493c13" class="tk">mdlTerminate</a>(<a id="493c26" class="tk">SimStruct</a> <a id="493c36" class="tk">*</a><a id="493c37" class="tk">S</a>)</td></tr>
+<tr name="494" id="494">
+<td><a id="l494" class='ln'>494</a></td><td><span class="br">{</span></td></tr>
+<tr name="495" id="495">
+<td><a id="l495" class='ln'>495</a></td><td></td></tr>
+<tr name="496" id="496">
+<td><a id="l496" class='ln'>496</a></td><td><span class="pp">#if</span> <a id="496c5" class="tk">defined</a>(<a id="496c13" class="tk">RT_MALLOC</a>) <a id="496c24" class="tk">||</a> <a id="496c27" class="tk">defined</a>(<a id="496c35" class="tk">MATLAB_MEX_FILE</a>)</td></tr>
+<tr name="497" id="497">
+<td><a id="l497" class='ln'>497</a></td><td></td></tr>
+<tr name="498" id="498">
+<td><a id="l498" class='ln'>498</a></td><td>  <span class="kw">if</span> (<a id="498c7" class="tk">ssGetUserData</a>(<a id="498c21" class="tk">S</a>) <a id="498c24" class="tk">!=</a> (<a id="498c28" class="tk">NULL</a>) ) <span class="br">{</span></td></tr>
+<tr name="499" id="499">
+<td><a id="l499" class='ln'>499</a></td><td>    <a id="499c5" class="tk">rt_FREE</a>(<a id="499c13" class="tk">ssGetLocalBlockIO</a>(<a id="499c31" class="tk">S</a>));</td></tr>
+<tr name="500" id="500">
+<td><a id="l500" class='ln'>500</a></td><td>  <span class="br">}</span></td></tr>
+<tr name="501" id="501">
+<td><a id="l501" class='ln'>501</a></td><td></td></tr>
+<tr name="502" id="502">
+<td><a id="l502" class='ln'>502</a></td><td>  <a id="502c3" class="tk">rt_FREE</a>(<a id="502c11" class="tk">ssGetUserData</a>(<a id="502c25" class="tk">S</a>));</td></tr>
+<tr name="503" id="503">
+<td><a id="l503" class='ln'>503</a></td><td></td></tr>
+<tr name="504" id="504">
+<td><a id="l504" class='ln'>504</a></td><td><span class="pp">#endif</span></td></tr>
+<tr name="505" id="505">
+<td><a id="l505" class='ln'>505</a></td><td></td></tr>
+<tr name="506" id="506">
+<td><a id="l506" class='ln'>506</a></td><td><span class="br">}</span></td></tr>
+<tr name="507" id="507">
+<td><a id="l507" class='ln'>507</a></td><td></td></tr>
+<tr name="508" id="508">
+<td><a id="l508" class='ln'>508</a></td><td><span class="pp">#if</span> <a id="508c5" class="tk">defined</a>(<a id="508c13" class="tk">RT_MALLOC</a>) <a id="508c24" class="tk">||</a> <a id="508c27" class="tk">defined</a>(<a id="508c35" class="tk">MATLAB_MEX_FILE</a>)</td></tr>
+<tr name="509" id="509">
+<td><a id="l509" class='ln'>509</a></td><td><span class="pp">#  include "Chart2_mid.h"</span></td></tr>
+<tr name="510" id="510">
+<td><a id="l510" class='ln'>510</a></td><td><span class="pp">#endif</span></td></tr>
+<tr name="511" id="511">
+<td><a id="l511" class='ln'>511</a></td><td></td></tr>
+<tr name="512" id="512">
+<td><a id="l512" class='ln'>512</a></td><td><span class="ct">/* Function to initialize sizes. */</span></td></tr>
+<tr name="513" id="513">
+<td><a id="l513" class='ln'>513</a></td><td><span class="kw">static</span> <span class="kw">void</span> <a id="513c13" class="tk">mdlInitializeSizes</a>(<a id="513c32" class="tk">SimStruct</a> <a id="513c42" class="tk">*</a><a id="513c43" class="tk">S</a>)</td></tr>
+<tr name="514" id="514">
+<td><a id="l514" class='ln'>514</a></td><td><span class="br">{</span></td></tr>
+<tr name="515" id="515">
+<td><a id="l515" class='ln'>515</a></td><td>  <a id="515c3" class="tk">ssSetNumSampleTimes</a>(<a id="515c23" class="tk">S</a>, 2);           <span class="ct">/* Number of sample times */</span></td></tr>
+<tr name="516" id="516">
+<td><a id="l516" class='ln'>516</a></td><td>  <a id="516c3" class="tk">ssSetNumContStates</a>(<a id="516c22" class="tk">S</a>, 0);            <span class="ct">/* Number of continuous states */</span></td></tr>
+<tr name="517" id="517">
+<td><a id="l517" class='ln'>517</a></td><td>  <a id="517c3" class="tk">ssSetNumNonsampledZCs</a>(<a id="517c25" class="tk">S</a>, 0);         <span class="ct">/* Number of nonsampled ZCs */</span></td></tr>
+<tr name="518" id="518">
+<td><a id="l518" class='ln'>518</a></td><td></td></tr>
+<tr name="519" id="519">
+<td><a id="l519" class='ln'>519</a></td><td>  <span class="ct">/* Number of output ports */</span></td></tr>
+<tr name="520" id="520">
+<td><a id="l520" class='ln'>520</a></td><td>  <span class="kw">if</span> (<a id="520c7" class="tk">!</a><a id="520c8" class="tk">ssSetNumOutputPorts</a>(<a id="520c28" class="tk">S</a>, 8))</td></tr>
+<tr name="521" id="521">
+<td><a id="l521" class='ln'>521</a></td><td>    <span class="kw">return</span>;</td></tr>
+<tr name="522" id="522">
+<td><a id="l522" class='ln'>522</a></td><td></td></tr>
+<tr name="523" id="523">
+<td><a id="l523" class='ln'>523</a></td><td>  <span class="ct">/* outport number: 0 */</span></td></tr>
+<tr name="524" id="524">
+<td><a id="l524" class='ln'>524</a></td><td>  <span class="kw">if</span> (<a id="524c7" class="tk">!</a><a id="524c8" class="tk">ssSetOutputPortVectorDimension</a>(<a id="524c39" class="tk">S</a>, 0, 1))</td></tr>
+<tr name="525" id="525">
+<td><a id="l525" class='ln'>525</a></td><td>    <span class="kw">return</span>;</td></tr>
+<tr name="526" id="526">
+<td><a id="l526" class='ln'>526</a></td><td>  <span class="kw">if</span> (<a id="526c7" class="tk">ssGetSimMode</a>(<a id="526c20" class="tk">S</a>) <a id="526c23" class="tk">!=</a> <a id="526c26" class="tk">SS_SIMMODE_SIZES_CALL_ONLY</a>) <span class="br">{</span></td></tr>
+<tr name="527" id="527">
+<td><a id="l527" class='ln'>527</a></td><td>    <a id="527c5" class="tk">ssSetOutputPortDataType</a>(<a id="527c29" class="tk">S</a>, 0, <a id="527c35" class="tk">SS_DOUBLE</a>);</td></tr>
+<tr name="528" id="528">
+<td><a id="l528" class='ln'>528</a></td><td>  <span class="br">}</span></td></tr>
+<tr name="529" id="529">
+<td><a id="l529" class='ln'>529</a></td><td></td></tr>
+<tr name="530" id="530">
+<td><a id="l530" class='ln'>530</a></td><td>  <a id="530c3" class="tk">ssSetOutputPortSampleTime</a>(<a id="530c29" class="tk">S</a>, 0, 5.0E-5);</td></tr>
+<tr name="531" id="531">
+<td><a id="l531" class='ln'>531</a></td><td>  <a id="531c3" class="tk">ssSetOutputPortOffsetTime</a>(<a id="531c29" class="tk">S</a>, 0, 0.0);</td></tr>
+<tr name="532" id="532">
+<td><a id="l532" class='ln'>532</a></td><td>  <a id="532c3" class="tk">ssSetOutputPortOptimOpts</a>(<a id="532c28" class="tk">S</a>, 0, <a id="532c34" class="tk">SS_REUSABLE_AND_LOCAL</a>);</td></tr>
+<tr name="533" id="533">
+<td><a id="l533" class='ln'>533</a></td><td></td></tr>
+<tr name="534" id="534">
+<td><a id="l534" class='ln'>534</a></td><td>  <span class="ct">/* outport number: 1 */</span></td></tr>
+<tr name="535" id="535">
+<td><a id="l535" class='ln'>535</a></td><td>  <span class="kw">if</span> (<a id="535c7" class="tk">!</a><a id="535c8" class="tk">ssSetOutputPortVectorDimension</a>(<a id="535c39" class="tk">S</a>, 1, 3))</td></tr>
+<tr name="536" id="536">
+<td><a id="l536" class='ln'>536</a></td><td>    <span class="kw">return</span>;</td></tr>
+<tr name="537" id="537">
+<td><a id="l537" class='ln'>537</a></td><td>  <span class="kw">if</span> (<a id="537c7" class="tk">ssGetSimMode</a>(<a id="537c20" class="tk">S</a>) <a id="537c23" class="tk">!=</a> <a id="537c26" class="tk">SS_SIMMODE_SIZES_CALL_ONLY</a>) <span class="br">{</span></td></tr>
+<tr name="538" id="538">
+<td><a id="l538" class='ln'>538</a></td><td>    <a id="538c5" class="tk">ssSetOutputPortDataType</a>(<a id="538c29" class="tk">S</a>, 1, <a id="538c35" class="tk">SS_DOUBLE</a>);</td></tr>
+<tr name="539" id="539">
+<td><a id="l539" class='ln'>539</a></td><td>  <span class="br">}</span></td></tr>
+<tr name="540" id="540">
+<td><a id="l540" class='ln'>540</a></td><td></td></tr>
+<tr name="541" id="541">
+<td><a id="l541" class='ln'>541</a></td><td>  <a id="541c3" class="tk">ssSetOutputPortSampleTime</a>(<a id="541c29" class="tk">S</a>, 1, 5.0E-5);</td></tr>
+<tr name="542" id="542">
+<td><a id="l542" class='ln'>542</a></td><td>  <a id="542c3" class="tk">ssSetOutputPortOffsetTime</a>(<a id="542c29" class="tk">S</a>, 1, 0.0);</td></tr>
+<tr name="543" id="543">
+<td><a id="l543" class='ln'>543</a></td><td>  <a id="543c3" class="tk">ssSetOutputPortOptimOpts</a>(<a id="543c28" class="tk">S</a>, 1, <a id="543c34" class="tk">SS_REUSABLE_AND_LOCAL</a>);</td></tr>
+<tr name="544" id="544">
+<td><a id="l544" class='ln'>544</a></td><td></td></tr>
+<tr name="545" id="545">
+<td><a id="l545" class='ln'>545</a></td><td>  <span class="ct">/* outport number: 2 */</span></td></tr>
+<tr name="546" id="546">
+<td><a id="l546" class='ln'>546</a></td><td>  <span class="kw">if</span> (<a id="546c7" class="tk">!</a><a id="546c8" class="tk">ssSetOutputPortVectorDimension</a>(<a id="546c39" class="tk">S</a>, 2, 3))</td></tr>
+<tr name="547" id="547">
+<td><a id="l547" class='ln'>547</a></td><td>    <span class="kw">return</span>;</td></tr>
+<tr name="548" id="548">
+<td><a id="l548" class='ln'>548</a></td><td>  <span class="kw">if</span> (<a id="548c7" class="tk">ssGetSimMode</a>(<a id="548c20" class="tk">S</a>) <a id="548c23" class="tk">!=</a> <a id="548c26" class="tk">SS_SIMMODE_SIZES_CALL_ONLY</a>) <span class="br">{</span></td></tr>
+<tr name="549" id="549">
+<td><a id="l549" class='ln'>549</a></td><td>    <a id="549c5" class="tk">ssSetOutputPortDataType</a>(<a id="549c29" class="tk">S</a>, 2, <a id="549c35" class="tk">SS_DOUBLE</a>);</td></tr>
+<tr name="550" id="550">
+<td><a id="l550" class='ln'>550</a></td><td>  <span class="br">}</span></td></tr>
+<tr name="551" id="551">
+<td><a id="l551" class='ln'>551</a></td><td></td></tr>
+<tr name="552" id="552">
+<td><a id="l552" class='ln'>552</a></td><td>  <a id="552c3" class="tk">ssSetOutputPortSampleTime</a>(<a id="552c29" class="tk">S</a>, 2, 5.0E-5);</td></tr>
+<tr name="553" id="553">
+<td><a id="l553" class='ln'>553</a></td><td>  <a id="553c3" class="tk">ssSetOutputPortOffsetTime</a>(<a id="553c29" class="tk">S</a>, 2, 0.0);</td></tr>
+<tr name="554" id="554">
+<td><a id="l554" class='ln'>554</a></td><td>  <a id="554c3" class="tk">ssSetOutputPortOptimOpts</a>(<a id="554c28" class="tk">S</a>, 2, <a id="554c34" class="tk">SS_REUSABLE_AND_LOCAL</a>);</td></tr>
+<tr name="555" id="555">
+<td><a id="l555" class='ln'>555</a></td><td></td></tr>
+<tr name="556" id="556">
+<td><a id="l556" class='ln'>556</a></td><td>  <span class="ct">/* outport number: 3 */</span></td></tr>
+<tr name="557" id="557">
+<td><a id="l557" class='ln'>557</a></td><td>  <span class="kw">if</span> (<a id="557c7" class="tk">!</a><a id="557c8" class="tk">ssSetOutputPortMatrixDimensions</a>(<a id="557c40" class="tk">S</a>, 3, 1, 2))</td></tr>
+<tr name="558" id="558">
+<td><a id="l558" class='ln'>558</a></td><td>    <span class="kw">return</span>;</td></tr>
+<tr name="559" id="559">
+<td><a id="l559" class='ln'>559</a></td><td>  <span class="kw">if</span> (<a id="559c7" class="tk">ssGetSimMode</a>(<a id="559c20" class="tk">S</a>) <a id="559c23" class="tk">!=</a> <a id="559c26" class="tk">SS_SIMMODE_SIZES_CALL_ONLY</a>) <span class="br">{</span></td></tr>
+<tr name="560" id="560">
+<td><a id="l560" class='ln'>560</a></td><td>    <a id="560c5" class="tk">ssSetOutputPortDataType</a>(<a id="560c29" class="tk">S</a>, 3, <a id="560c35" class="tk">SS_DOUBLE</a>);</td></tr>
+<tr name="561" id="561">
+<td><a id="l561" class='ln'>561</a></td><td>  <span class="br">}</span></td></tr>
+<tr name="562" id="562">
+<td><a id="l562" class='ln'>562</a></td><td></td></tr>
+<tr name="563" id="563">
+<td><a id="l563" class='ln'>563</a></td><td>  <a id="563c3" class="tk">ssSetOutputPortSampleTime</a>(<a id="563c29" class="tk">S</a>, 3, 5.0E-5);</td></tr>
+<tr name="564" id="564">
+<td><a id="l564" class='ln'>564</a></td><td>  <a id="564c3" class="tk">ssSetOutputPortOffsetTime</a>(<a id="564c29" class="tk">S</a>, 3, 0.0);</td></tr>
+<tr name="565" id="565">
+<td><a id="l565" class='ln'>565</a></td><td>  <a id="565c3" class="tk">ssSetOutputPortOptimOpts</a>(<a id="565c28" class="tk">S</a>, 3, <a id="565c34" class="tk">SS_REUSABLE_AND_LOCAL</a>);</td></tr>
+<tr name="566" id="566">
+<td><a id="l566" class='ln'>566</a></td><td></td></tr>
+<tr name="567" id="567">
+<td><a id="l567" class='ln'>567</a></td><td>  <span class="ct">/* outport number: 4 */</span></td></tr>
+<tr name="568" id="568">
+<td><a id="l568" class='ln'>568</a></td><td>  <span class="kw">if</span> (<a id="568c7" class="tk">!</a><a id="568c8" class="tk">ssSetOutputPortVectorDimension</a>(<a id="568c39" class="tk">S</a>, 4, 1))</td></tr>
+<tr name="569" id="569">
+<td><a id="l569" class='ln'>569</a></td><td>    <span class="kw">return</span>;</td></tr>
+<tr name="570" id="570">
+<td><a id="l570" class='ln'>570</a></td><td>  <span class="kw">if</span> (<a id="570c7" class="tk">ssGetSimMode</a>(<a id="570c20" class="tk">S</a>) <a id="570c23" class="tk">!=</a> <a id="570c26" class="tk">SS_SIMMODE_SIZES_CALL_ONLY</a>) <span class="br">{</span></td></tr>
+<tr name="571" id="571">
+<td><a id="l571" class='ln'>571</a></td><td>    <a id="571c5" class="tk">ssSetOutputPortDataType</a>(<a id="571c29" class="tk">S</a>, 4, <a id="571c35" class="tk">SS_DOUBLE</a>);</td></tr>
+<tr name="572" id="572">
+<td><a id="l572" class='ln'>572</a></td><td>  <span class="br">}</span></td></tr>
+<tr name="573" id="573">
+<td><a id="l573" class='ln'>573</a></td><td></td></tr>
+<tr name="574" id="574">
+<td><a id="l574" class='ln'>574</a></td><td>  <a id="574c3" class="tk">ssSetOutputPortSampleTime</a>(<a id="574c29" class="tk">S</a>, 4, 5.0E-5);</td></tr>
+<tr name="575" id="575">
+<td><a id="l575" class='ln'>575</a></td><td>  <a id="575c3" class="tk">ssSetOutputPortOffsetTime</a>(<a id="575c29" class="tk">S</a>, 4, 0.0);</td></tr>
+<tr name="576" id="576">
+<td><a id="l576" class='ln'>576</a></td><td>  <a id="576c3" class="tk">ssSetOutputPortOptimOpts</a>(<a id="576c28" class="tk">S</a>, 4, <a id="576c34" class="tk">SS_REUSABLE_AND_LOCAL</a>);</td></tr>
+<tr name="577" id="577">
+<td><a id="l577" class='ln'>577</a></td><td></td></tr>
+<tr name="578" id="578">
+<td><a id="l578" class='ln'>578</a></td><td>  <span class="ct">/* outport number: 5 */</span></td></tr>
+<tr name="579" id="579">
+<td><a id="l579" class='ln'>579</a></td><td>  <span class="kw">if</span> (<a id="579c7" class="tk">!</a><a id="579c8" class="tk">ssSetOutputPortVectorDimension</a>(<a id="579c39" class="tk">S</a>, 5, 1))</td></tr>
+<tr name="580" id="580">
+<td><a id="l580" class='ln'>580</a></td><td>    <span class="kw">return</span>;</td></tr>
+<tr name="581" id="581">
+<td><a id="l581" class='ln'>581</a></td><td>  <span class="kw">if</span> (<a id="581c7" class="tk">ssGetSimMode</a>(<a id="581c20" class="tk">S</a>) <a id="581c23" class="tk">!=</a> <a id="581c26" class="tk">SS_SIMMODE_SIZES_CALL_ONLY</a>) <span class="br">{</span></td></tr>
+<tr name="582" id="582">
+<td><a id="l582" class='ln'>582</a></td><td>    <a id="582c5" class="tk">ssSetOutputPortDataType</a>(<a id="582c29" class="tk">S</a>, 5, <a id="582c35" class="tk">SS_DOUBLE</a>);</td></tr>
+<tr name="583" id="583">
+<td><a id="l583" class='ln'>583</a></td><td>  <span class="br">}</span></td></tr>
+<tr name="584" id="584">
+<td><a id="l584" class='ln'>584</a></td><td></td></tr>
+<tr name="585" id="585">
+<td><a id="l585" class='ln'>585</a></td><td>  <a id="585c3" class="tk">ssSetOutputPortSampleTime</a>(<a id="585c29" class="tk">S</a>, 5, 5.0E-5);</td></tr>
+<tr name="586" id="586">
+<td><a id="l586" class='ln'>586</a></td><td>  <a id="586c3" class="tk">ssSetOutputPortOffsetTime</a>(<a id="586c29" class="tk">S</a>, 5, 0.0);</td></tr>
+<tr name="587" id="587">
+<td><a id="l587" class='ln'>587</a></td><td>  <a id="587c3" class="tk">ssSetOutputPortOptimOpts</a>(<a id="587c28" class="tk">S</a>, 5, <a id="587c34" class="tk">SS_REUSABLE_AND_LOCAL</a>);</td></tr>
+<tr name="588" id="588">
+<td><a id="l588" class='ln'>588</a></td><td></td></tr>
+<tr name="589" id="589">
+<td><a id="l589" class='ln'>589</a></td><td>  <span class="ct">/* outport number: 6 */</span></td></tr>
+<tr name="590" id="590">
+<td><a id="l590" class='ln'>590</a></td><td>  <span class="kw">if</span> (<a id="590c7" class="tk">!</a><a id="590c8" class="tk">ssSetOutputPortVectorDimension</a>(<a id="590c39" class="tk">S</a>, 6, 1))</td></tr>
+<tr name="591" id="591">
+<td><a id="l591" class='ln'>591</a></td><td>    <span class="kw">return</span>;</td></tr>
+<tr name="592" id="592">
+<td><a id="l592" class='ln'>592</a></td><td>  <span class="kw">if</span> (<a id="592c7" class="tk">ssGetSimMode</a>(<a id="592c20" class="tk">S</a>) <a id="592c23" class="tk">!=</a> <a id="592c26" class="tk">SS_SIMMODE_SIZES_CALL_ONLY</a>) <span class="br">{</span></td></tr>
+<tr name="593" id="593">
+<td><a id="l593" class='ln'>593</a></td><td>    <a id="593c5" class="tk">ssSetOutputPortDataType</a>(<a id="593c29" class="tk">S</a>, 6, <a id="593c35" class="tk">SS_DOUBLE</a>);</td></tr>
+<tr name="594" id="594">
+<td><a id="l594" class='ln'>594</a></td><td>  <span class="br">}</span></td></tr>
+<tr name="595" id="595">
+<td><a id="l595" class='ln'>595</a></td><td></td></tr>
+<tr name="596" id="596">
+<td><a id="l596" class='ln'>596</a></td><td>  <a id="596c3" class="tk">ssSetOutputPortSampleTime</a>(<a id="596c29" class="tk">S</a>, 6, 5.0E-5);</td></tr>
+<tr name="597" id="597">
+<td><a id="l597" class='ln'>597</a></td><td>  <a id="597c3" class="tk">ssSetOutputPortOffsetTime</a>(<a id="597c29" class="tk">S</a>, 6, 0.0);</td></tr>
+<tr name="598" id="598">
+<td><a id="l598" class='ln'>598</a></td><td>  <a id="598c3" class="tk">ssSetOutputPortOptimOpts</a>(<a id="598c28" class="tk">S</a>, 6, <a id="598c34" class="tk">SS_REUSABLE_AND_LOCAL</a>);</td></tr>
+<tr name="599" id="599">
+<td><a id="l599" class='ln'>599</a></td><td></td></tr>
+<tr name="600" id="600">
+<td><a id="l600" class='ln'>600</a></td><td>  <span class="ct">/* outport number: 7 */</span></td></tr>
+<tr name="601" id="601">
+<td><a id="l601" class='ln'>601</a></td><td>  <span class="kw">if</span> (<a id="601c7" class="tk">!</a><a id="601c8" class="tk">ssSetOutputPortVectorDimension</a>(<a id="601c39" class="tk">S</a>, 7, 1))</td></tr>
+<tr name="602" id="602">
+<td><a id="l602" class='ln'>602</a></td><td>    <span class="kw">return</span>;</td></tr>
+<tr name="603" id="603">
+<td><a id="l603" class='ln'>603</a></td><td>  <span class="kw">if</span> (<a id="603c7" class="tk">ssGetSimMode</a>(<a id="603c20" class="tk">S</a>) <a id="603c23" class="tk">!=</a> <a id="603c26" class="tk">SS_SIMMODE_SIZES_CALL_ONLY</a>) <span class="br">{</span></td></tr>
+<tr name="604" id="604">
+<td><a id="l604" class='ln'>604</a></td><td>    <a id="604c5" class="tk">ssSetOutputPortDataType</a>(<a id="604c29" class="tk">S</a>, 7, <a id="604c35" class="tk">SS_DOUBLE</a>);</td></tr>
+<tr name="605" id="605">
+<td><a id="l605" class='ln'>605</a></td><td>  <span class="br">}</span></td></tr>
+<tr name="606" id="606">
+<td><a id="l606" class='ln'>606</a></td><td></td></tr>
+<tr name="607" id="607">
+<td><a id="l607" class='ln'>607</a></td><td>  <a id="607c3" class="tk">ssSetOutputPortSampleTime</a>(<a id="607c29" class="tk">S</a>, 7, 5.0E-5);</td></tr>
+<tr name="608" id="608">
+<td><a id="l608" class='ln'>608</a></td><td>  <a id="608c3" class="tk">ssSetOutputPortOffsetTime</a>(<a id="608c29" class="tk">S</a>, 7, 0.0);</td></tr>
+<tr name="609" id="609">
+<td><a id="l609" class='ln'>609</a></td><td>  <a id="609c3" class="tk">ssSetOutputPortOptimOpts</a>(<a id="609c28" class="tk">S</a>, 7, <a id="609c34" class="tk">SS_REUSABLE_AND_LOCAL</a>);</td></tr>
+<tr name="610" id="610">
+<td><a id="l610" class='ln'>610</a></td><td></td></tr>
+<tr name="611" id="611">
+<td><a id="l611" class='ln'>611</a></td><td>  <span class="ct">/* Number of input ports */</span></td></tr>
+<tr name="612" id="612">
+<td><a id="l612" class='ln'>612</a></td><td>  <span class="kw">if</span> (<a id="612c7" class="tk">!</a><a id="612c8" class="tk">ssSetNumInputPorts</a>(<a id="612c27" class="tk">S</a>, 7))</td></tr>
+<tr name="613" id="613">
+<td><a id="l613" class='ln'>613</a></td><td>    <span class="kw">return</span>;</td></tr>
+<tr name="614" id="614">
+<td><a id="l614" class='ln'>614</a></td><td></td></tr>
+<tr name="615" id="615">
+<td><a id="l615" class='ln'>615</a></td><td>  <span class="ct">/* inport number: 0 */</span></td></tr>
+<tr name="616" id="616">
+<td><a id="l616" class='ln'>616</a></td><td>  <span class="br">{</span></td></tr>
+<tr name="617" id="617">
+<td><a id="l617" class='ln'>617</a></td><td>    <span class="kw">if</span> (<a id="617c9" class="tk">!</a><a id="617c10" class="tk">ssSetInputPortVectorDimension</a>(<a id="617c40" class="tk">S</a>, 0, 1))</td></tr>
+<tr name="618" id="618">
+<td><a id="l618" class='ln'>618</a></td><td>      <span class="kw">return</span>;</td></tr>
+<tr name="619" id="619">
+<td><a id="l619" class='ln'>619</a></td><td>    <span class="kw">if</span> (<a id="619c9" class="tk">ssGetSimMode</a>(<a id="619c22" class="tk">S</a>) <a id="619c25" class="tk">!=</a> <a id="619c28" class="tk">SS_SIMMODE_SIZES_CALL_ONLY</a>) <span class="br">{</span></td></tr>
+<tr name="620" id="620">
+<td><a id="l620" class='ln'>620</a></td><td>      <a id="620c7" class="tk">ssSetInputPortDataType</a>(<a id="620c30" class="tk">S</a>, 0, <a id="620c36" class="tk">SS_DOUBLE</a>);</td></tr>
+<tr name="621" id="621">
+<td><a id="l621" class='ln'>621</a></td><td>    <span class="br">}</span></td></tr>
+<tr name="622" id="622">
+<td><a id="l622" class='ln'>622</a></td><td></td></tr>
+<tr name="623" id="623">
+<td><a id="l623" class='ln'>623</a></td><td>    <a id="623c5" class="tk">ssSetInputPortDirectFeedThrough</a>(<a id="623c37" class="tk">S</a>, 0, 1);</td></tr>
+<tr name="624" id="624">
+<td><a id="l624" class='ln'>624</a></td><td>    <a id="624c5" class="tk">ssSetInputPortSampleTime</a>(<a id="624c30" class="tk">S</a>, 0, 0.004);</td></tr>
+<tr name="625" id="625">
+<td><a id="l625" class='ln'>625</a></td><td>    <a id="625c5" class="tk">ssSetInputPortOffsetTime</a>(<a id="625c30" class="tk">S</a>, 0, 0.0);</td></tr>
+<tr name="626" id="626">
+<td><a id="l626" class='ln'>626</a></td><td>    <a id="626c5" class="tk">ssSetInputPortOverWritable</a>(<a id="626c32" class="tk">S</a>, 0, 0);</td></tr>
+<tr name="627" id="627">
+<td><a id="l627" class='ln'>627</a></td><td>    <a id="627c5" class="tk">ssSetInputPortOptimOpts</a>(<a id="627c29" class="tk">S</a>, 0, <a id="627c35" class="tk">SS_NOT_REUSABLE_AND_GLOBAL</a>);</td></tr>
+<tr name="628" id="628">
+<td><a id="l628" class='ln'>628</a></td><td>  <span class="br">}</span></td></tr>
+<tr name="629" id="629">
+<td><a id="l629" class='ln'>629</a></td><td></td></tr>
+<tr name="630" id="630">
+<td><a id="l630" class='ln'>630</a></td><td>  <span class="ct">/* inport number: 1 */</span></td></tr>
+<tr name="631" id="631">
+<td><a id="l631" class='ln'>631</a></td><td>  <span class="br">{</span></td></tr>
+<tr name="632" id="632">
+<td><a id="l632" class='ln'>632</a></td><td>    <span class="kw">if</span> (<a id="632c9" class="tk">!</a><a id="632c10" class="tk">ssSetInputPortVectorDimension</a>(<a id="632c40" class="tk">S</a>, 1, 3))</td></tr>
+<tr name="633" id="633">
+<td><a id="l633" class='ln'>633</a></td><td>      <span class="kw">return</span>;</td></tr>
+<tr name="634" id="634">
+<td><a id="l634" class='ln'>634</a></td><td>    <span class="kw">if</span> (<a id="634c9" class="tk">ssGetSimMode</a>(<a id="634c22" class="tk">S</a>) <a id="634c25" class="tk">!=</a> <a id="634c28" class="tk">SS_SIMMODE_SIZES_CALL_ONLY</a>) <span class="br">{</span></td></tr>
+<tr name="635" id="635">
+<td><a id="l635" class='ln'>635</a></td><td>      <a id="635c7" class="tk">ssSetInputPortDataType</a>(<a id="635c30" class="tk">S</a>, 1, <a id="635c36" class="tk">SS_DOUBLE</a>);</td></tr>
+<tr name="636" id="636">
+<td><a id="l636" class='ln'>636</a></td><td>    <span class="br">}</span></td></tr>
+<tr name="637" id="637">
+<td><a id="l637" class='ln'>637</a></td><td></td></tr>
+<tr name="638" id="638">
+<td><a id="l638" class='ln'>638</a></td><td>    <a id="638c5" class="tk">ssSetInputPortDirectFeedThrough</a>(<a id="638c37" class="tk">S</a>, 1, 1);</td></tr>
+<tr name="639" id="639">
+<td><a id="l639" class='ln'>639</a></td><td>    <a id="639c5" class="tk">ssSetInputPortSampleTime</a>(<a id="639c30" class="tk">S</a>, 1, 5.0E-5);</td></tr>
+<tr name="640" id="640">
+<td><a id="l640" class='ln'>640</a></td><td>    <a id="640c5" class="tk">ssSetInputPortOffsetTime</a>(<a id="640c30" class="tk">S</a>, 1, 0.0);</td></tr>
+<tr name="641" id="641">
+<td><a id="l641" class='ln'>641</a></td><td>    <a id="641c5" class="tk">ssSetInputPortOverWritable</a>(<a id="641c32" class="tk">S</a>, 1, 0);</td></tr>
+<tr name="642" id="642">
+<td><a id="l642" class='ln'>642</a></td><td>    <a id="642c5" class="tk">ssSetInputPortOptimOpts</a>(<a id="642c29" class="tk">S</a>, 1, <a id="642c35" class="tk">SS_NOT_REUSABLE_AND_GLOBAL</a>);</td></tr>
+<tr name="643" id="643">
+<td><a id="l643" class='ln'>643</a></td><td>  <span class="br">}</span></td></tr>
+<tr name="644" id="644">
+<td><a id="l644" class='ln'>644</a></td><td></td></tr>
+<tr name="645" id="645">
+<td><a id="l645" class='ln'>645</a></td><td>  <span class="ct">/* inport number: 2 */</span></td></tr>
+<tr name="646" id="646">
+<td><a id="l646" class='ln'>646</a></td><td>  <span class="br">{</span></td></tr>
+<tr name="647" id="647">
+<td><a id="l647" class='ln'>647</a></td><td>    <span class="kw">if</span> (<a id="647c9" class="tk">!</a><a id="647c10" class="tk">ssSetInputPortVectorDimension</a>(<a id="647c40" class="tk">S</a>, 2, 1))</td></tr>
+<tr name="648" id="648">
+<td><a id="l648" class='ln'>648</a></td><td>      <span class="kw">return</span>;</td></tr>
+<tr name="649" id="649">
+<td><a id="l649" class='ln'>649</a></td><td>    <span class="kw">if</span> (<a id="649c9" class="tk">ssGetSimMode</a>(<a id="649c22" class="tk">S</a>) <a id="649c25" class="tk">!=</a> <a id="649c28" class="tk">SS_SIMMODE_SIZES_CALL_ONLY</a>) <span class="br">{</span></td></tr>
+<tr name="650" id="650">
+<td><a id="l650" class='ln'>650</a></td><td>      <a id="650c7" class="tk">ssSetInputPortDataType</a>(<a id="650c30" class="tk">S</a>, 2, <a id="650c36" class="tk">SS_DOUBLE</a>);</td></tr>
+<tr name="651" id="651">
+<td><a id="l651" class='ln'>651</a></td><td>    <span class="br">}</span></td></tr>
+<tr name="652" id="652">
+<td><a id="l652" class='ln'>652</a></td><td></td></tr>
+<tr name="653" id="653">
+<td><a id="l653" class='ln'>653</a></td><td>    <a id="653c5" class="tk">ssSetInputPortDirectFeedThrough</a>(<a id="653c37" class="tk">S</a>, 2, 1);</td></tr>
+<tr name="654" id="654">
+<td><a id="l654" class='ln'>654</a></td><td>    <a id="654c5" class="tk">ssSetInputPortSampleTime</a>(<a id="654c30" class="tk">S</a>, 2, 5.0E-5);</td></tr>
+<tr name="655" id="655">
+<td><a id="l655" class='ln'>655</a></td><td>    <a id="655c5" class="tk">ssSetInputPortOffsetTime</a>(<a id="655c30" class="tk">S</a>, 2, 0.0);</td></tr>
+<tr name="656" id="656">
+<td><a id="l656" class='ln'>656</a></td><td>    <a id="656c5" class="tk">ssSetInputPortOverWritable</a>(<a id="656c32" class="tk">S</a>, 2, 0);</td></tr>
+<tr name="657" id="657">
+<td><a id="l657" class='ln'>657</a></td><td>    <a id="657c5" class="tk">ssSetInputPortOptimOpts</a>(<a id="657c29" class="tk">S</a>, 2, <a id="657c35" class="tk">SS_NOT_REUSABLE_AND_GLOBAL</a>);</td></tr>
+<tr name="658" id="658">
+<td><a id="l658" class='ln'>658</a></td><td>  <span class="br">}</span></td></tr>
+<tr name="659" id="659">
+<td><a id="l659" class='ln'>659</a></td><td></td></tr>
+<tr name="660" id="660">
+<td><a id="l660" class='ln'>660</a></td><td>  <span class="ct">/* inport number: 3 */</span></td></tr>
+<tr name="661" id="661">
+<td><a id="l661" class='ln'>661</a></td><td>  <span class="br">{</span></td></tr>
+<tr name="662" id="662">
+<td><a id="l662" class='ln'>662</a></td><td>    <span class="kw">if</span> (<a id="662c9" class="tk">!</a><a id="662c10" class="tk">ssSetInputPortVectorDimension</a>(<a id="662c40" class="tk">S</a>, 3, 1))</td></tr>
+<tr name="663" id="663">
+<td><a id="l663" class='ln'>663</a></td><td>      <span class="kw">return</span>;</td></tr>
+<tr name="664" id="664">
+<td><a id="l664" class='ln'>664</a></td><td>    <span class="kw">if</span> (<a id="664c9" class="tk">ssGetSimMode</a>(<a id="664c22" class="tk">S</a>) <a id="664c25" class="tk">!=</a> <a id="664c28" class="tk">SS_SIMMODE_SIZES_CALL_ONLY</a>) <span class="br">{</span></td></tr>
+<tr name="665" id="665">
+<td><a id="l665" class='ln'>665</a></td><td>      <a id="665c7" class="tk">ssSetInputPortDataType</a>(<a id="665c30" class="tk">S</a>, 3, <a id="665c36" class="tk">SS_BOOLEAN</a>);</td></tr>
+<tr name="666" id="666">
+<td><a id="l666" class='ln'>666</a></td><td>    <span class="br">}</span></td></tr>
+<tr name="667" id="667">
+<td><a id="l667" class='ln'>667</a></td><td></td></tr>
+<tr name="668" id="668">
+<td><a id="l668" class='ln'>668</a></td><td>    <a id="668c5" class="tk">ssSetInputPortDirectFeedThrough</a>(<a id="668c37" class="tk">S</a>, 3, 1);</td></tr>
+<tr name="669" id="669">
+<td><a id="l669" class='ln'>669</a></td><td>    <a id="669c5" class="tk">ssSetInputPortSampleTime</a>(<a id="669c30" class="tk">S</a>, 3, 5.0E-5);</td></tr>
+<tr name="670" id="670">
+<td><a id="l670" class='ln'>670</a></td><td>    <a id="670c5" class="tk">ssSetInputPortOffsetTime</a>(<a id="670c30" class="tk">S</a>, 3, 0.0);</td></tr>
+<tr name="671" id="671">
+<td><a id="l671" class='ln'>671</a></td><td>    <a id="671c5" class="tk">ssSetInputPortOverWritable</a>(<a id="671c32" class="tk">S</a>, 3, 0);</td></tr>
+<tr name="672" id="672">
+<td><a id="l672" class='ln'>672</a></td><td>    <a id="672c5" class="tk">ssSetInputPortOptimOpts</a>(<a id="672c29" class="tk">S</a>, 3, <a id="672c35" class="tk">SS_NOT_REUSABLE_AND_GLOBAL</a>);</td></tr>
+<tr name="673" id="673">
+<td><a id="l673" class='ln'>673</a></td><td>  <span class="br">}</span></td></tr>
+<tr name="674" id="674">
+<td><a id="l674" class='ln'>674</a></td><td></td></tr>
+<tr name="675" id="675">
+<td><a id="l675" class='ln'>675</a></td><td>  <span class="ct">/* inport number: 4 */</span></td></tr>
+<tr name="676" id="676">
+<td><a id="l676" class='ln'>676</a></td><td>  <span class="br">{</span></td></tr>
+<tr name="677" id="677">
+<td><a id="l677" class='ln'>677</a></td><td>    <span class="kw">if</span> (<a id="677c9" class="tk">!</a><a id="677c10" class="tk">ssSetInputPortVectorDimension</a>(<a id="677c40" class="tk">S</a>, 4, 1))</td></tr>
+<tr name="678" id="678">
+<td><a id="l678" class='ln'>678</a></td><td>      <span class="kw">return</span>;</td></tr>
+<tr name="679" id="679">
+<td><a id="l679" class='ln'>679</a></td><td>    <span class="kw">if</span> (<a id="679c9" class="tk">ssGetSimMode</a>(<a id="679c22" class="tk">S</a>) <a id="679c25" class="tk">!=</a> <a id="679c28" class="tk">SS_SIMMODE_SIZES_CALL_ONLY</a>) <span class="br">{</span></td></tr>
+<tr name="680" id="680">
+<td><a id="l680" class='ln'>680</a></td><td>      <a id="680c7" class="tk">ssSetInputPortDataType</a>(<a id="680c30" class="tk">S</a>, 4, <a id="680c36" class="tk">SS_DOUBLE</a>);</td></tr>
+<tr name="681" id="681">
+<td><a id="l681" class='ln'>681</a></td><td>    <span class="br">}</span></td></tr>
+<tr name="682" id="682">
+<td><a id="l682" class='ln'>682</a></td><td></td></tr>
+<tr name="683" id="683">
+<td><a id="l683" class='ln'>683</a></td><td>    <a id="683c5" class="tk">ssSetInputPortDirectFeedThrough</a>(<a id="683c37" class="tk">S</a>, 4, 1);</td></tr>
+<tr name="684" id="684">
+<td><a id="l684" class='ln'>684</a></td><td>    <a id="684c5" class="tk">ssSetInputPortSampleTime</a>(<a id="684c30" class="tk">S</a>, 4, 5.0E-5);</td></tr>
+<tr name="685" id="685">
+<td><a id="l685" class='ln'>685</a></td><td>    <a id="685c5" class="tk">ssSetInputPortOffsetTime</a>(<a id="685c30" class="tk">S</a>, 4, 0.0);</td></tr>
+<tr name="686" id="686">
+<td><a id="l686" class='ln'>686</a></td><td>    <a id="686c5" class="tk">ssSetInputPortOverWritable</a>(<a id="686c32" class="tk">S</a>, 4, 0);</td></tr>
+<tr name="687" id="687">
+<td><a id="l687" class='ln'>687</a></td><td>    <a id="687c5" class="tk">ssSetInputPortOptimOpts</a>(<a id="687c29" class="tk">S</a>, 4, <a id="687c35" class="tk">SS_NOT_REUSABLE_AND_GLOBAL</a>);</td></tr>
+<tr name="688" id="688">
+<td><a id="l688" class='ln'>688</a></td><td>  <span class="br">}</span></td></tr>
+<tr name="689" id="689">
+<td><a id="l689" class='ln'>689</a></td><td></td></tr>
+<tr name="690" id="690">
+<td><a id="l690" class='ln'>690</a></td><td>  <span class="ct">/* inport number: 5 */</span></td></tr>
+<tr name="691" id="691">
+<td><a id="l691" class='ln'>691</a></td><td>  <span class="br">{</span></td></tr>
+<tr name="692" id="692">
+<td><a id="l692" class='ln'>692</a></td><td>    <span class="kw">if</span> (<a id="692c9" class="tk">!</a><a id="692c10" class="tk">ssSetInputPortVectorDimension</a>(<a id="692c40" class="tk">S</a>, 5, 1))</td></tr>
+<tr name="693" id="693">
+<td><a id="l693" class='ln'>693</a></td><td>      <span class="kw">return</span>;</td></tr>
+<tr name="694" id="694">
+<td><a id="l694" class='ln'>694</a></td><td>    <span class="kw">if</span> (<a id="694c9" class="tk">ssGetSimMode</a>(<a id="694c22" class="tk">S</a>) <a id="694c25" class="tk">!=</a> <a id="694c28" class="tk">SS_SIMMODE_SIZES_CALL_ONLY</a>) <span class="br">{</span></td></tr>
+<tr name="695" id="695">
+<td><a id="l695" class='ln'>695</a></td><td>      <a id="695c7" class="tk">ssSetInputPortDataType</a>(<a id="695c30" class="tk">S</a>, 5, <a id="695c36" class="tk">SS_DOUBLE</a>);</td></tr>
+<tr name="696" id="696">
+<td><a id="l696" class='ln'>696</a></td><td>    <span class="br">}</span></td></tr>
+<tr name="697" id="697">
+<td><a id="l697" class='ln'>697</a></td><td></td></tr>
+<tr name="698" id="698">
+<td><a id="l698" class='ln'>698</a></td><td>    <a id="698c5" class="tk">ssSetInputPortDirectFeedThrough</a>(<a id="698c37" class="tk">S</a>, 5, 1);</td></tr>
+<tr name="699" id="699">
+<td><a id="l699" class='ln'>699</a></td><td>    <a id="699c5" class="tk">ssSetInputPortSampleTime</a>(<a id="699c30" class="tk">S</a>, 5, 5.0E-5);</td></tr>
+<tr name="700" id="700">
+<td><a id="l700" class='ln'>700</a></td><td>    <a id="700c5" class="tk">ssSetInputPortOffsetTime</a>(<a id="700c30" class="tk">S</a>, 5, 0.0);</td></tr>
+<tr name="701" id="701">
+<td><a id="l701" class='ln'>701</a></td><td>    <a id="701c5" class="tk">ssSetInputPortOverWritable</a>(<a id="701c32" class="tk">S</a>, 5, 0);</td></tr>
+<tr name="702" id="702">
+<td><a id="l702" class='ln'>702</a></td><td>    <a id="702c5" class="tk">ssSetInputPortOptimOpts</a>(<a id="702c29" class="tk">S</a>, 5, <a id="702c35" class="tk">SS_NOT_REUSABLE_AND_GLOBAL</a>);</td></tr>
+<tr name="703" id="703">
+<td><a id="l703" class='ln'>703</a></td><td>  <span class="br">}</span></td></tr>
+<tr name="704" id="704">
+<td><a id="l704" class='ln'>704</a></td><td></td></tr>
+<tr name="705" id="705">
+<td><a id="l705" class='ln'>705</a></td><td>  <span class="ct">/* inport number: 6 */</span></td></tr>
+<tr name="706" id="706">
+<td><a id="l706" class='ln'>706</a></td><td>  <span class="br">{</span></td></tr>
+<tr name="707" id="707">
+<td><a id="l707" class='ln'>707</a></td><td>    <span class="kw">if</span> (<a id="707c9" class="tk">!</a><a id="707c10" class="tk">ssSetInputPortVectorDimension</a>(<a id="707c40" class="tk">S</a>, 6, 3))</td></tr>
+<tr name="708" id="708">
+<td><a id="l708" class='ln'>708</a></td><td>      <span class="kw">return</span>;</td></tr>
+<tr name="709" id="709">
+<td><a id="l709" class='ln'>709</a></td><td>    <span class="kw">if</span> (<a id="709c9" class="tk">ssGetSimMode</a>(<a id="709c22" class="tk">S</a>) <a id="709c25" class="tk">!=</a> <a id="709c28" class="tk">SS_SIMMODE_SIZES_CALL_ONLY</a>) <span class="br">{</span></td></tr>
+<tr name="710" id="710">
+<td><a id="l710" class='ln'>710</a></td><td>      <a id="710c7" class="tk">ssSetInputPortDataType</a>(<a id="710c30" class="tk">S</a>, 6, <a id="710c36" class="tk">SS_DOUBLE</a>);</td></tr>
+<tr name="711" id="711">
+<td><a id="l711" class='ln'>711</a></td><td>    <span class="br">}</span></td></tr>
+<tr name="712" id="712">
+<td><a id="l712" class='ln'>712</a></td><td></td></tr>
+<tr name="713" id="713">
+<td><a id="l713" class='ln'>713</a></td><td>    <a id="713c5" class="tk">ssSetInputPortDirectFeedThrough</a>(<a id="713c37" class="tk">S</a>, 6, 1);</td></tr>
+<tr name="714" id="714">
+<td><a id="l714" class='ln'>714</a></td><td>    <a id="714c5" class="tk">ssSetInputPortSampleTime</a>(<a id="714c30" class="tk">S</a>, 6, 5.0E-5);</td></tr>
+<tr name="715" id="715">
+<td><a id="l715" class='ln'>715</a></td><td>    <a id="715c5" class="tk">ssSetInputPortOffsetTime</a>(<a id="715c30" class="tk">S</a>, 6, 0.0);</td></tr>
+<tr name="716" id="716">
+<td><a id="l716" class='ln'>716</a></td><td>    <a id="716c5" class="tk">ssSetInputPortOverWritable</a>(<a id="716c32" class="tk">S</a>, 6, 0);</td></tr>
+<tr name="717" id="717">
+<td><a id="l717" class='ln'>717</a></td><td>    <a id="717c5" class="tk">ssSetInputPortOptimOpts</a>(<a id="717c29" class="tk">S</a>, 6, <a id="717c35" class="tk">SS_NOT_REUSABLE_AND_GLOBAL</a>);</td></tr>
+<tr name="718" id="718">
+<td><a id="l718" class='ln'>718</a></td><td>  <span class="br">}</span></td></tr>
+<tr name="719" id="719">
+<td><a id="l719" class='ln'>719</a></td><td></td></tr>
+<tr name="720" id="720">
+<td><a id="l720" class='ln'>720</a></td><td>  <a id="720c3" class="tk">ssSetRTWGeneratedSFcn</a>(<a id="720c25" class="tk">S</a>, 1);         <span class="ct">/* Generated S-function */</span></td></tr>
+<tr name="721" id="721">
+<td><a id="l721" class='ln'>721</a></td><td></td></tr>
+<tr name="722" id="722">
+<td><a id="l722" class='ln'>722</a></td><td>  <span class="ct">/* DWork */</span></td></tr>
+<tr name="723" id="723">
+<td><a id="l723" class='ln'>723</a></td><td>  <span class="kw">if</span> (<a id="723c7" class="tk">!</a><a id="723c8" class="tk">ssSetNumDWork</a>(<a id="723c22" class="tk">S</a>, 3)) <span class="br">{</span></td></tr>
+<tr name="724" id="724">
+<td><a id="l724" class='ln'>724</a></td><td>    <span class="kw">return</span>;</td></tr>
+<tr name="725" id="725">
+<td><a id="l725" class='ln'>725</a></td><td>  <span class="br">}</span></td></tr>
+<tr name="726" id="726">
+<td><a id="l726" class='ln'>726</a></td><td></td></tr>
+<tr name="727" id="727">
+<td><a id="l727" class='ln'>727</a></td><td>  <span class="ct">/* '&lt;Root&gt;/Chart2': DWORK3 */</span></td></tr>
+<tr name="728" id="728">
+<td><a id="l728" class='ln'>728</a></td><td>  <a id="728c3" class="tk">ssSetDWorkName</a>(<a id="728c18" class="tk">S</a>, 0, "DWORK0");</td></tr>
+<tr name="729" id="729">
+<td><a id="l729" class='ln'>729</a></td><td>  <a id="729c3" class="tk">ssSetDWorkWidth</a>(<a id="729c19" class="tk">S</a>, 0, 1);</td></tr>
+<tr name="730" id="730">
+<td><a id="l730" class='ln'>730</a></td><td>  <a id="730c3" class="tk">ssSetDWorkDataType</a>(<a id="730c22" class="tk">S</a>, 0, <a id="730c28" class="tk">SS_UINT32</a>);</td></tr>
+<tr name="731" id="731">
+<td><a id="l731" class='ln'>731</a></td><td></td></tr>
+<tr name="732" id="732">
+<td><a id="l732" class='ln'>732</a></td><td>  <span class="ct">/* '&lt;Root&gt;/Chart2': DWORK1 */</span></td></tr>
+<tr name="733" id="733">
+<td><a id="l733" class='ln'>733</a></td><td>  <a id="733c3" class="tk">ssSetDWorkName</a>(<a id="733c18" class="tk">S</a>, 1, "DWORK1");</td></tr>
+<tr name="734" id="734">
+<td><a id="l734" class='ln'>734</a></td><td>  <a id="734c3" class="tk">ssSetDWorkWidth</a>(<a id="734c19" class="tk">S</a>, 1, 1);</td></tr>
+<tr name="735" id="735">
+<td><a id="l735" class='ln'>735</a></td><td>  <a id="735c3" class="tk">ssSetDWorkDataType</a>(<a id="735c22" class="tk">S</a>, 1, <a id="735c28" class="tk">SS_UINT8</a>);</td></tr>
+<tr name="736" id="736">
+<td><a id="l736" class='ln'>736</a></td><td></td></tr>
+<tr name="737" id="737">
+<td><a id="l737" class='ln'>737</a></td><td>  <span class="ct">/* '&lt;Root&gt;/Chart2': DWORK2 */</span></td></tr>
+<tr name="738" id="738">
+<td><a id="l738" class='ln'>738</a></td><td>  <a id="738c3" class="tk">ssSetDWorkName</a>(<a id="738c18" class="tk">S</a>, 2, "DWORK2");</td></tr>
+<tr name="739" id="739">
+<td><a id="l739" class='ln'>739</a></td><td>  <a id="739c3" class="tk">ssSetDWorkWidth</a>(<a id="739c19" class="tk">S</a>, 2, 1);</td></tr>
+<tr name="740" id="740">
+<td><a id="l740" class='ln'>740</a></td><td>  <a id="740c3" class="tk">ssSetDWorkDataType</a>(<a id="740c22" class="tk">S</a>, 2, <a id="740c28" class="tk">SS_UINT8</a>);</td></tr>
+<tr name="741" id="741">
+<td><a id="l741" class='ln'>741</a></td><td></td></tr>
+<tr name="742" id="742">
+<td><a id="l742" class='ln'>742</a></td><td>  <span class="ct">/* Tunable Parameters */</span></td></tr>
+<tr name="743" id="743">
+<td><a id="l743" class='ln'>743</a></td><td>  <a id="743c3" class="tk">ssSetNumSFcnParams</a>(<a id="743c22" class="tk">S</a>, 0);</td></tr>
+<tr name="744" id="744">
+<td><a id="l744" class='ln'>744</a></td><td></td></tr>
+<tr name="745" id="745">
+<td><a id="l745" class='ln'>745</a></td><td>  <span class="ct">/* Number of expected parameters */</span></td></tr>
+<tr name="746" id="746">
+<td><a id="l746" class='ln'>746</a></td><td><span class="pp">#if</span> <a id="746c5" class="tk">defined</a>(<a id="746c13" class="tk">MATLAB_MEX_FILE</a>)</td></tr>
+<tr name="747" id="747">
+<td><a id="l747" class='ln'>747</a></td><td></td></tr>
+<tr name="748" id="748">
+<td><a id="l748" class='ln'>748</a></td><td>  <span class="kw">if</span> (<a id="748c7" class="tk">ssGetNumSFcnParams</a>(<a id="748c26" class="tk">S</a>) <a id="748c29" class="tk">==</a> <a id="748c32" class="tk">ssGetSFcnParamsCount</a>(<a id="748c53" class="tk">S</a>)) <span class="br">{</span></td></tr>
+<tr name="749" id="749">
+<td><a id="l749" class='ln'>749</a></td><td></td></tr>
+<tr name="750" id="750">
+<td><a id="l750" class='ln'>750</a></td><td><span class="pp">#if</span> <a id="750c5" class="tk">defined</a>(<a id="750c13" class="tk">MDL_CHECK_PARAMETERS</a>)</td></tr>
+<tr name="751" id="751">
+<td><a id="l751" class='ln'>751</a></td><td></td></tr>
+<tr name="752" id="752">
+<td><a id="l752" class='ln'>752</a></td><td>    <a id="752c5" class="tk">mdlCheckParameters</a>(<a id="752c24" class="tk">S</a>);</td></tr>
+<tr name="753" id="753">
+<td><a id="l753" class='ln'>753</a></td><td></td></tr>
+<tr name="754" id="754">
+<td><a id="l754" class='ln'>754</a></td><td><span class="pp">#endif</span>                                 <span class="ct">/* MDL_CHECK_PARAMETERS */</span></td></tr>
+<tr name="755" id="755">
+<td><a id="l755" class='ln'>755</a></td><td></td></tr>
+<tr name="756" id="756">
+<td><a id="l756" class='ln'>756</a></td><td>    <span class="kw">if</span> (<a id="756c9" class="tk">ssGetErrorStatus</a>(<a id="756c26" class="tk">S</a>) <a id="756c29" class="tk">!=</a> (<a id="756c33" class="tk">NULL</a>) ) <span class="br">{</span></td></tr>
+<tr name="757" id="757">
+<td><a id="l757" class='ln'>757</a></td><td>      <span class="kw">return</span>;</td></tr>
+<tr name="758" id="758">
+<td><a id="l758" class='ln'>758</a></td><td>    <span class="br">}</span></td></tr>
+<tr name="759" id="759">
+<td><a id="l759" class='ln'>759</a></td><td>  <span class="br">}</span> <span class="kw">else</span> <span class="br">{</span></td></tr>
+<tr name="760" id="760">
+<td><a id="l760" class='ln'>760</a></td><td>    <span class="kw">return</span>;                            <span class="ct">/* Parameter mismatch will be reported by Simulink */</span></td></tr>
+<tr name="761" id="761">
+<td><a id="l761" class='ln'>761</a></td><td>  <span class="br">}</span></td></tr>
+<tr name="762" id="762">
+<td><a id="l762" class='ln'>762</a></td><td></td></tr>
+<tr name="763" id="763">
+<td><a id="l763" class='ln'>763</a></td><td><span class="pp">#endif</span>                                 <span class="ct">/* MATLAB_MEX_FILE */</span></td></tr>
+<tr name="764" id="764">
+<td><a id="l764" class='ln'>764</a></td><td></td></tr>
+<tr name="765" id="765">
+<td><a id="l765" class='ln'>765</a></td><td>  <span class="ct">/* Options */</span></td></tr>
+<tr name="766" id="766">
+<td><a id="l766" class='ln'>766</a></td><td>  <a id="766c3" class="tk">ssSetOptions</a>(<a id="766c16" class="tk">S</a>, (<a id="766c20" class="tk">SS_OPTION_RUNTIME_EXCEPTION_FREE_CODE</a> <a id="766c58" class="tk">|</a></td></tr>
+<tr name="767" id="767">
+<td><a id="l767" class='ln'>767</a></td><td>                   <a id="767c20" class="tk">SS_OPTION_PORT_SAMPLE_TIMES_ASSIGNED</a> ));</td></tr>
+<tr name="768" id="768">
+<td><a id="l768" class='ln'>768</a></td><td></td></tr>
+<tr name="769" id="769">
+<td><a id="l769" class='ln'>769</a></td><td><span class="pp">#if</span> <a id="769c5" class="tk">SS_SFCN_FOR_SIM</a></td></tr>
+<tr name="770" id="770">
+<td><a id="l770" class='ln'>770</a></td><td></td></tr>
+<tr name="771" id="771">
+<td><a id="l771" class='ln'>771</a></td><td>  <span class="br">{</span></td></tr>
+<tr name="772" id="772">
+<td><a id="l772" class='ln'>772</a></td><td>    <a id="772c5" class="tk">ssSupportsMultipleExecInstances</a>(<a id="772c37" class="tk">S</a>, true);</td></tr>
+<tr name="773" id="773">
+<td><a id="l773" class='ln'>773</a></td><td>    <a id="773c5" class="tk">ssHasStateInsideForEachSS</a>(<a id="773c31" class="tk">S</a>, false);</td></tr>
+<tr name="774" id="774">
+<td><a id="l774" class='ln'>774</a></td><td>  <span class="br">}</span></td></tr>
+<tr name="775" id="775">
+<td><a id="l775" class='ln'>775</a></td><td></td></tr>
+<tr name="776" id="776">
+<td><a id="l776" class='ln'>776</a></td><td><span class="pp">#endif</span></td></tr>
+<tr name="777" id="777">
+<td><a id="l777" class='ln'>777</a></td><td></td></tr>
+<tr name="778" id="778">
+<td><a id="l778" class='ln'>778</a></td><td><span class="br">}</span></td></tr>
+<tr name="779" id="779">
+<td><a id="l779" class='ln'>779</a></td><td></td></tr>
+<tr name="780" id="780">
+<td><a id="l780" class='ln'>780</a></td><td><span class="ct">/* Function to initialize sample times. */</span></td></tr>
+<tr name="781" id="781">
+<td><a id="l781" class='ln'>781</a></td><td><span class="kw">static</span> <span class="kw">void</span> <a id="781c13" class="tk">mdlInitializeSampleTimes</a>(<a id="781c38" class="tk">SimStruct</a> <a id="781c48" class="tk">*</a><a id="781c49" class="tk">S</a>)</td></tr>
+<tr name="782" id="782">
+<td><a id="l782" class='ln'>782</a></td><td><span class="br">{</span></td></tr>
+<tr name="783" id="783">
+<td><a id="l783" class='ln'>783</a></td><td>  <span class="ct">/* task periods */</span></td></tr>
+<tr name="784" id="784">
+<td><a id="l784" class='ln'>784</a></td><td>  <a id="784c3" class="tk">ssSetSampleTime</a>(<a id="784c19" class="tk">S</a>, 0, 5.0E-5);</td></tr>
+<tr name="785" id="785">
+<td><a id="l785" class='ln'>785</a></td><td>  <a id="785c3" class="tk">ssSetSampleTime</a>(<a id="785c19" class="tk">S</a>, 1, 0.004);</td></tr>
+<tr name="786" id="786">
+<td><a id="l786" class='ln'>786</a></td><td></td></tr>
+<tr name="787" id="787">
+<td><a id="l787" class='ln'>787</a></td><td>  <span class="ct">/* task offsets */</span></td></tr>
+<tr name="788" id="788">
+<td><a id="l788" class='ln'>788</a></td><td>  <a id="788c3" class="tk">ssSetOffsetTime</a>(<a id="788c19" class="tk">S</a>, 0, 0.0);</td></tr>
+<tr name="789" id="789">
+<td><a id="l789" class='ln'>789</a></td><td>  <a id="789c3" class="tk">ssSetOffsetTime</a>(<a id="789c19" class="tk">S</a>, 1, 0.0);</td></tr>
+<tr name="790" id="790">
+<td><a id="l790" class='ln'>790</a></td><td><span class="br">}</span></td></tr>
+<tr name="791" id="791">
+<td><a id="l791" class='ln'>791</a></td><td></td></tr>
+<tr name="792" id="792">
+<td><a id="l792" class='ln'>792</a></td><td><span class="pp">#if</span> <a id="792c5" class="tk">defined</a>(<a id="792c13" class="tk">MATLAB_MEX_FILE</a>)</td></tr>
+<tr name="793" id="793">
+<td><a id="l793" class='ln'>793</a></td><td><span class="pp"># include "fixedpoint.c"</span></td></tr>
+<tr name="794" id="794">
+<td><a id="l794" class='ln'>794</a></td><td><span class="pp"># include "simulink.c"</span></td></tr>
+<tr name="795" id="795">
+<td><a id="l795" class='ln'>795</a></td><td><span class="pp">#else</span></td></tr>
+<tr name="796" id="796">
+<td><a id="l796" class='ln'>796</a></td><td><span class="pp"># undef</span> <a id="796c9" class="tk">S_FUNCTION_NAME</a></td></tr>
+<tr name="797" id="797">
+<td><a id="l797" class='ln'>797</a></td><td><span class="pp"># define</span> <a id="797c10" class="tk">S_FUNCTION_NAME</a>               <a id="797c40" class="tk">Chart2_sf</a></td></tr>
+<tr name="798" id="798">
+<td><a id="l798" class='ln'>798</a></td><td></td></tr>
+<tr name="799" id="799">
+<td><a id="l799" class='ln'>799</a></td><td><span class="kw">extern</span> "C" <span class="br">{</span></td></tr>
+<tr name="800" id="800">
+<td><a id="l800" class='ln'>800</a></td><td></td></tr>
+<tr name="801" id="801">
+<td><a id="l801" class='ln'>801</a></td><td><span class="pp"># include "cg_sfun.h"</span></td></tr>
+<tr name="802" id="802">
+<td><a id="l802" class='ln'>802</a></td><td></td></tr>
+<tr name="803" id="803">
+<td><a id="l803" class='ln'>803</a></td><td><span class="br">}</span></td></tr>
+<tr name="804" id="804">
+<td><a id="l804" class='ln'>804</a></td><td><span class="pp">#endif</span>                                 <span class="ct">/* defined(MATLAB_MEX_FILE) */</span></td></tr>
+<tr name="805" id="805">
+<td><a id="l805" class='ln'>805</a></td><td></td></tr>
+</table>
+</pre>
+</body>
+</html>

@@ -1,0 +1,414 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>RTW Report - controller_ballcatcher_data.cpp</title>
+<style type="text/css"> .LN { font-style: italic; color: #888888 } </style>
+<style type="text/css"> .CT { font-style: italic; color: #117755 } </style>
+<style type="text/css"> .PP { font-style: bold;   color: #992211 } </style>
+<style type="text/css"> .KW { font-style: bold;   color: #1122dd } </style>
+<style type="text/css"> .DT { font-style: bold;   color: #112266 } </style>
+<link rel="stylesheet" type="text/css" href="rtwreport.css"></link><script language="JavaScript" type="text/javascript" src="rtwreport_utils.js"></script>
+<SCRIPT type="text/javascript" src="rtwannotate.js"></SCRIPT>
+</head>
+<body bgcolor="#eeeeee" text="#1122aa" onload="try {if (top) { if (top.rtwFileOnLoad) top.rtwFileOnLoad(window.document); else local_onload();}} catch(err) {};if (rtwannotate) {rtwannotate('StateRun_cpp_cov.xml');}">
+<p>
+<table border="0" cellspacing="0" cellpadding="6" width="100%" height="100%"><tr><td width="100%" valign="top" bgcolor="#ffffff">
+<h4>File: <a href="../controller_ballcatcher_data.cpp" target="rtwreport_document_frame" id="linkToText_plain">controller_ballcatcher_data.cpp</a></h4>
+<pre id="RTWcode" style="color:black;">
+<a class="LN" name="1">   1</a>	<span class="CT">/*
+<a class="LN" name="2">   2</a>	 * controller_ballcatcher_data.cpp
+<a class="LN" name="3">   3</a>	 *
+<a class="LN" name="4">   4</a>	 * Academic License - for use in teaching, academic research, and meeting
+<a class="LN" name="5">   5</a>	 * course requirements at degree granting institutions only.  Not for
+<a class="LN" name="6">   6</a>	 * government, commercial, or other organizational use.
+<a class="LN" name="7">   7</a>	 *
+<a class="LN" name="8">   8</a>	 * Code generation for model "controller_ballcatcher".
+<a class="LN" name="9">   9</a>	 *
+<a class="LN" name="10">  10</a>	 * Model version              : 1.3592
+<a class="LN" name="11">  11</a>	 * Simulink Coder version : 9.0 (R2018b) 24-May-2018
+<a class="LN" name="12">  12</a>	 * C++ source code generated on : Tue Oct 13 22:18:08 2020
+<a class="LN" name="13">  13</a>	 *
+<a class="LN" name="14">  14</a>	 * Target selection: TwinCAT.tlc
+<a class="LN" name="15">  15</a>	 * Note: GRT includes extra infrastructure and instrumentation for prototyping
+<a class="LN" name="16">  16</a>	 * Embedded hardware selection: Intel-&gt;x86-64 (Windows64)
+<a class="LN" name="17">  17</a>	 * Code generation objective: Debugging
+<a class="LN" name="18">  18</a>	 * Validation result: Not run
+<a class="LN" name="19">  19</a>	 */</span>
+<a class="LN" name="20">  20</a>	
+<a class="LN" name="21">  21</a>	<span class="KW">#include</span> <span class="PP">&quot;controller_ballcatcher.h&quot;</span>
+<a class="LN" name="22">  22</a>	<span class="KW">#include</span> <span class="PP">&quot;controller_ballcatcher_private.h&quot;</span>
+<a class="LN" name="23">  23</a>	
+<a class="LN" name="24">  24</a>	<span class="CT">/* Block parameters (default storage) */</span>
+<a class="LN" name="25">  25</a>	P_controller_ballcatcher_T controller_ballcatcher_P = {
+<a class="LN" name="26">  26</a>	  <span class="CT">/* Variable: param_robot
+<a class="LN" name="27">  27</a>	   * Referenced by: '&lt;Root&gt;/Trajectory Generator'
+<a class="LN" name="28">  28</a>	   */</span>
+<a class="LN" name="29">  29</a>	  {
+<a class="LN" name="30">  30</a>	    0,
+<a class="LN" name="31">  31</a>	
+<a class="LN" name="32">  32</a>	    { 1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0 },
+<a class="LN" name="33">  33</a>	
+<a class="LN" name="34">  34</a>	    { 0.0, 0.0, 0.0 },
+<a class="LN" name="35">  35</a>	    7.0,
+<a class="LN" name="36">  36</a>	    9.81,
+<a class="LN" name="37">  37</a>	    0.0,
+<a class="LN" name="38">  38</a>	    0.1525,
+<a class="LN" name="39">  39</a>	    0.2075,
+<a class="LN" name="40">  40</a>	    0.2325,
+<a class="LN" name="41">  41</a>	    0.1875,
+<a class="LN" name="42">  42</a>	    0.2125,
+<a class="LN" name="43">  43</a>	    0.1875,
+<a class="LN" name="44">  44</a>	    0.0796,
+<a class="LN" name="45">  45</a>	    0.0724,
+<a class="LN" name="46">  46</a>	    0.013,
+<a class="LN" name="47">  47</a>	    0.011,
+<a class="LN" name="48">  48</a>	    0.062,
+<a class="LN" name="49">  49</a>	    6.495,
+<a class="LN" name="50">  50</a>	    8.807,
+<a class="LN" name="51">  51</a>	    2.8,
+<a class="LN" name="52">  52</a>	    5.283,
+<a class="LN" name="53">  53</a>	    1.889,
+<a class="LN" name="54">  54</a>	    2.32,
+<a class="LN" name="55">  55</a>	    0.863,
+<a class="LN" name="56">  56</a>	    0.0,
+<a class="LN" name="57">  57</a>	    -0.01439,
+<a class="LN" name="58">  58</a>	    0.102503,
+<a class="LN" name="59">  59</a>	    -1.2e-5,
+<a class="LN" name="60">  60</a>	    -0.06472,
+<a class="LN" name="61">  61</a>	    0.017804,
+<a class="LN" name="62">  62</a>	    -0.000208,
+<a class="LN" name="63">  63</a>	    0.01601,
+<a class="LN" name="64">  64</a>	    0.087283,
+<a class="LN" name="65">  65</a>	    -0.000203,
+<a class="LN" name="66">  66</a>	    0.098639,
+<a class="LN" name="67">  67</a>	    0.022478,
+<a class="LN" name="68">  68</a>	    -5.7e-5,
+<a class="LN" name="69">  69</a>	    -0.014468,
+<a class="LN" name="70">  70</a>	    0.062938,
+<a class="LN" name="71">  71</a>	    -0.000363,
+<a class="LN" name="72">  72</a>	    -0.016982,
+<a class="LN" name="73">  73</a>	    0.042269,
+<a class="LN" name="74">  74</a>	    0.0019040000000000003,
+<a class="LN" name="75">  75</a>	    -9.3e-5,
+<a class="LN" name="76">  76</a>	    0.018862000000000004,
+<a class="LN" name="77">  77</a>	    0.0690761441316632,
+<a class="LN" name="78">  78</a>	    0.0711085586914514,
+<a class="LN" name="79">  79</a>	    0.0200625854402119,
+<a class="LN" name="80">  80</a>	    0.0824701683534692,
+<a class="LN" name="81">  81</a>	    0.0164110968055191,
+<a class="LN" name="82">  82</a>	    0.0873510892661361,
+<a class="LN" name="83">  83</a>	    0.0230152941318817,
+<a class="LN" name="84">  84</a>	    0.0228661554143474,
+<a class="LN" name="85">  85</a>	    0.0554482283748983,
+<a class="LN" name="86">  86</a>	    0.0472789668341968,
+<a class="LN" name="87">  87</a>	    0.00964726804146909,
+<a class="LN" name="88">  88</a>	    0.0466529007761679,
+<a class="LN" name="89">  89</a>	    0.0138359953358589,
+<a class="LN" name="90">  90</a>	    0.0116859337751969,
+<a class="LN" name="91">  91</a>	    0.00571863785412578,
+<a class="LN" name="92">  92</a>	    0.00732758787216765,
+<a class="LN" name="93">  93</a>	    0.00477633755783711,
+<a class="LN" name="94">  94</a>	    0.00606797638550296,
+<a class="LN" name="95">  95</a>	    0.000884,
+<a class="LN" name="96">  96</a>	    0.000888,
+<a class="LN" name="97">  97</a>	    0.001105,
+<a class="LN" name="98">  98</a>	    160.0,
+<a class="LN" name="99">  99</a>	    160.0,
+<a class="LN" name="100"> 100</a>	    160.0,
+<a class="LN" name="101"> 101</a>	    160.0,
+<a class="LN" name="102"> 102</a>	    100.0,
+<a class="LN" name="103"> 103</a>	    160.0,
+<a class="LN" name="104"> 104</a>	    160.0,
+<a class="LN" name="105"> 105</a>	
+<a class="LN" name="106"> 106</a>	    { 160.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 160.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+<a class="LN" name="107"> 107</a>	      0.0, 0.0, 160.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 160.0, 0.0, 0.0, 0.0,
+<a class="LN" name="108"> 108</a>	      0.0, 0.0, 0.0, 0.0, 100.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 160.0, 0.0,
+<a class="LN" name="109"> 109</a>	      0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 160.0 },
+<a class="LN" name="110"> 110</a>	    0.000185,
+<a class="LN" name="111"> 111</a>	    0.000185,
+<a class="LN" name="112"> 112</a>	    0.00042316695312500003,
+<a class="LN" name="113"> 113</a>	    0.000185,
+<a class="LN" name="114"> 114</a>	    0.000185,
+<a class="LN" name="115"> 115</a>	    0.00042316695312500003,
+<a class="LN" name="116"> 116</a>	    0.000129,
+<a class="LN" name="117"> 117</a>	    0.000129,
+<a class="LN" name="118"> 118</a>	    0.0001910384375,
+<a class="LN" name="119"> 119</a>	    0.000129,
+<a class="LN" name="120"> 120</a>	    0.000129,
+<a class="LN" name="121"> 121</a>	    0.0001910384375,
+<a class="LN" name="122"> 122</a>	    7.5e-5,
+<a class="LN" name="123"> 123</a>	    7.5e-5,
+<a class="LN" name="124"> 124</a>	    0.0001470968,
+<a class="LN" name="125"> 125</a>	    1.5e-5,
+<a class="LN" name="126"> 126</a>	    1.5e-5,
+<a class="LN" name="127"> 127</a>	    1.851125e-5,
+<a class="LN" name="128"> 128</a>	    1.5e-5,
+<a class="LN" name="129"> 129</a>	    1.5e-5,
+<a class="LN" name="130"> 130</a>	    1.851125e-5,
+<a class="LN" name="131"> 131</a>	
+<a class="LN" name="132"> 132</a>	    { 10.833074000000002, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 10.833074000000002,
+<a class="LN" name="133"> 133</a>	      0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 4.890584, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+<a class="LN" name="134"> 134</a>	      0.0, 4.890584, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.4709679999999998, 0.0,
+<a class="LN" name="135"> 135</a>	      0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.473888, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+<a class="LN" name="136"> 136</a>	      0.473888 },
+<a class="LN" name="137"> 137</a>	    60000.0,
+<a class="LN" name="138"> 138</a>	    60000.0,
+<a class="LN" name="139"> 139</a>	    40000.0,
+<a class="LN" name="140"> 140</a>	    40000.0,
+<a class="LN" name="141"> 141</a>	    40000.0,
+<a class="LN" name="142"> 142</a>	    20000.0,
+<a class="LN" name="143"> 143</a>	    20000.0,
+<a class="LN" name="144"> 144</a>	
+<a class="LN" name="145"> 145</a>	    { 60000.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 60000.0, 0.0, 0.0, 0.0, 0.0,
+<a class="LN" name="146"> 146</a>	      0.0, 0.0, 0.0, 40000.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 40000.0, 0.0,
+<a class="LN" name="147"> 147</a>	      0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 40000.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+<a class="LN" name="148"> 148</a>	      20000.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 20000.0 },
+<a class="LN" name="149"> 149</a>	
+<a class="LN" name="150"> 150</a>	    { 320.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 320.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+<a class="LN" name="151"> 151</a>	      0.0, 0.0, 176.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 176.0, 0.0, 0.0, 0.0,
+<a class="LN" name="152"> 152</a>	      0.0, 0.0, 0.0, 0.0, 110.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 40.0, 0.0,
+<a class="LN" name="153"> 153</a>	      0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 40.0 },
+<a class="LN" name="154"> 154</a>	
+<a class="LN" name="155"> 155</a>	    { 160.0, 160.0, 88.0, 88.0, 55.0, 20.0, 20.0 },
+<a class="LN" name="156"> 156</a>	
+<a class="LN" name="157"> 157</a>	    { 2.9670597283903604, 2.0943951023931953, 2.9670597283903604,
+<a class="LN" name="158"> 158</a>	      2.0943951023931953, 2.9670597283903604, 2.0943951023931953,
+<a class="LN" name="159"> 159</a>	      3.0543261909900763 },
+<a class="LN" name="160"> 160</a>	
+<a class="LN" name="161"> 161</a>	    { -2.9670597283903604, -2.0943951023931953, -2.9670597283903604,
+<a class="LN" name="162"> 162</a>	      -2.0943951023931953, -2.9670597283903604, -2.0943951023931953,
+<a class="LN" name="163"> 163</a>	      -3.0543261909900763 },
+<a class="LN" name="164"> 164</a>	
+<a class="LN" name="165"> 165</a>	    { 1.4835298641951802, 1.4835298641951802, 1.7453292519943295,
+<a class="LN" name="166"> 166</a>	      1.3089969389957472, 2.2689280275926285, 2.3561944901923448,
+<a class="LN" name="167"> 167</a>	      2.3561944901923448 },
+<a class="LN" name="168"> 168</a>	
+<a class="LN" name="169"> 169</a>	    { -1.4835298641951802, -1.4835298641951802, -1.7453292519943295,
+<a class="LN" name="170"> 170</a>	      -1.3089969389957472, -2.2689280275926285, -2.3561944901923448,
+<a class="LN" name="171"> 171</a>	      -2.3561944901923448 }
+<a class="LN" name="172"> 172</a>	  },
+<a class="LN" name="173"> 173</a>	
+<a class="LN" name="174"> 174</a>	  <span class="CT">/* Variable: timing
+<a class="LN" name="175"> 175</a>	   * Referenced by: '&lt;Root&gt;/Trajectory Generator'
+<a class="LN" name="176"> 176</a>	   */</span>
+<a class="LN" name="177"> 177</a>	  {
+<a class="LN" name="178"> 178</a>	    0.004,
+<a class="LN" name="179"> 179</a>	    0.000125,
+<a class="LN" name="180"> 180</a>	    5.0e-5,
+<a class="LN" name="181"> 181</a>	    80.0
+<a class="LN" name="182"> 182</a>	  },
+<a class="LN" name="183"> 183</a>	
+<a class="LN" name="184"> 184</a>	  <span class="CT">/* Variable: filter_tau_T_1
+<a class="LN" name="185"> 185</a>	   * Referenced by: '&lt;S5&gt;/f_tau'
+<a class="LN" name="186"> 186</a>	   */</span>
+<a class="LN" name="187"> 187</a>	  { 0.00039788735772973834, 0.00039788735772973834, 0.00039788735772973834,
+<a class="LN" name="188"> 188</a>	    0.00039788735772973834, 0.0003183098861837907, 0.00015915494309189535,
+<a class="LN" name="189"> 189</a>	    0.00015915494309189535 },
+<a class="LN" name="190"> 190</a>	
+<a class="LN" name="191"> 191</a>	  <span class="CT">/* Variable: filter_tau_p_T_1
+<a class="LN" name="192"> 192</a>	   * Referenced by: '&lt;S5&gt;/f_tau_p'
+<a class="LN" name="193"> 193</a>	   */</span>
+<a class="LN" name="194"> 194</a>	  { 0.00039788735772973834, 0.00039788735772973834, 0.00039788735772973834,
+<a class="LN" name="195"> 195</a>	    0.00039788735772973834, 0.0003183098861837907, 0.00015915494309189535,
+<a class="LN" name="196"> 196</a>	    0.00015915494309189535 },
+<a class="LN" name="197"> 197</a>	
+<a class="LN" name="198"> 198</a>	  <span class="CT">/* Variable: filter_tau_p_slow_T_1
+<a class="LN" name="199"> 199</a>	   * Referenced by: '&lt;S5&gt;/f_tau_p_slow'
+<a class="LN" name="200"> 200</a>	   */</span>
+<a class="LN" name="201"> 201</a>	  { 0.00079577471545947667, 0.00079577471545947667, 0.00079577471545947667,
+<a class="LN" name="202"> 202</a>	    0.00079577471545947667, 0.00079577471545947667, 0.00079577471545947667,
+<a class="LN" name="203"> 203</a>	    0.00079577471545947667 },
+<a class="LN" name="204"> 204</a>	
+<a class="LN" name="205"> 205</a>	  <span class="CT">/* Variable: filter_tau_slow_T_1
+<a class="LN" name="206"> 206</a>	   * Referenced by: '&lt;S5&gt;/f_tau_slow'
+<a class="LN" name="207"> 207</a>	   */</span>
+<a class="LN" name="208"> 208</a>	  { 0.00079577471545947667, 0.00079577471545947667, 0.00079577471545947667,
+<a class="LN" name="209"> 209</a>	    0.00079577471545947667, 0.00079577471545947667, 0.00079577471545947667,
+<a class="LN" name="210"> 210</a>	    0.00079577471545947667 },
+<a class="LN" name="211"> 211</a>	
+<a class="LN" name="212"> 212</a>	  <span class="CT">/* Variable: filter_theta_p_T_1
+<a class="LN" name="213"> 213</a>	   * Referenced by: '&lt;S5&gt;/f_theta_p'
+<a class="LN" name="214"> 214</a>	   */</span>
+<a class="LN" name="215"> 215</a>	  { 0.00039788735772973834, 0.00039788735772973834, 0.00039788735772973834,
+<a class="LN" name="216"> 216</a>	    0.00039788735772973834, 0.0003183098861837907, 0.00015915494309189535,
+<a class="LN" name="217"> 217</a>	    0.00015915494309189535 },
+<a class="LN" name="218"> 218</a>	
+<a class="LN" name="219"> 219</a>	  <span class="CT">/* Variable: filter_theta_p_slow_T_1
+<a class="LN" name="220"> 220</a>	   * Referenced by: '&lt;S5&gt;/f_theta_p_slow'
+<a class="LN" name="221"> 221</a>	   */</span>
+<a class="LN" name="222"> 222</a>	  { 0.00079577471545947667, 0.00079577471545947667, 0.00079577471545947667,
+<a class="LN" name="223"> 223</a>	    0.00079577471545947667, 0.00079577471545947667, 0.00079577471545947667,
+<a class="LN" name="224"> 224</a>	    0.00079577471545947667 },
+<a class="LN" name="225"> 225</a>	
+<a class="LN" name="226"> 226</a>	  <span class="CT">/* Variable: filter_theta_slow_T_1
+<a class="LN" name="227"> 227</a>	   * Referenced by: '&lt;S5&gt;/f_theta_slow'
+<a class="LN" name="228"> 228</a>	   */</span>
+<a class="LN" name="229"> 229</a>	  { 0.00079577471545947667, 0.00079577471545947667, 0.00079577471545947667,
+<a class="LN" name="230"> 230</a>	    0.00079577471545947667, 0.00079577471545947667, 0.00079577471545947667,
+<a class="LN" name="231"> 231</a>	    0.00079577471545947667 },
+<a class="LN" name="232"> 232</a>	
+<a class="LN" name="233"> 233</a>	  <span class="CT">/* Variable: sensor_torque_offset
+<a class="LN" name="234"> 234</a>	   * Referenced by: '&lt;S5&gt;/Constant'
+<a class="LN" name="235"> 235</a>	   */</span>
+<a class="LN" name="236"> 236</a>	  { 0.53, -0.095, -0.189, 0.07, -0.058, 0.0025, -0.12 },
+<a class="LN" name="237"> 237</a>	
+<a class="LN" name="238"> 238</a>	  <span class="CT">/* Computed Parameter: tau_fm_hat_Y0
+<a class="LN" name="239"> 239</a>	   * Referenced by: '&lt;S1&gt;/tau_fm_hat'
+<a class="LN" name="240"> 240</a>	   */</span>
+<a class="LN" name="241"> 241</a>	  0.0,
+<a class="LN" name="242"> 242</a>	
+<a class="LN" name="243"> 243</a>	  <span class="CT">/* Expression: [200;200;300;300;500;1000;1000]
+<a class="LN" name="244"> 244</a>	   * Referenced by: '&lt;S1&gt;/L'
+<a class="LN" name="245"> 245</a>	   */</span>
+<a class="LN" name="246"> 246</a>	  { 200.0, 200.0, 300.0, 300.0, 500.0, 1000.0, 1000.0 },
+<a class="LN" name="247"> 247</a>	
+<a class="LN" name="248"> 248</a>	  <span class="CT">/* Expression: 0
+<a class="LN" name="249"> 249</a>	   * Referenced by: '&lt;S1&gt;/use_theta_p_hat'
+<a class="LN" name="250"> 250</a>	   */</span>
+<a class="LN" name="251"> 251</a>	  0.0,
+<a class="LN" name="252"> 252</a>	
+<a class="LN" name="253"> 253</a>	  <span class="CT">/* Expression: 0
+<a class="LN" name="254"> 254</a>	   * Referenced by: '&lt;S1&gt;/use_q_p'
+<a class="LN" name="255"> 255</a>	   */</span>
+<a class="LN" name="256"> 256</a>	  0.0,
+<a class="LN" name="257"> 257</a>	
+<a class="LN" name="258"> 258</a>	  <span class="CT">/* Expression: 0
+<a class="LN" name="259"> 259</a>	   * Referenced by: '&lt;S1&gt;/subtract_model'
+<a class="LN" name="260"> 260</a>	   */</span>
+<a class="LN" name="261"> 261</a>	  0.0,
+<a class="LN" name="262"> 262</a>	
+<a class="LN" name="263"> 263</a>	  <span class="CT">/* Expression: [zeros(6,1);0.2]
+<a class="LN" name="264"> 264</a>	   * Referenced by: '&lt;S1&gt;/tau_c_plus'
+<a class="LN" name="265"> 265</a>	   */</span>
+<a class="LN" name="266"> 266</a>	  { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.2 },
+<a class="LN" name="267"> 267</a>	
+<a class="LN" name="268"> 268</a>	  <span class="CT">/* Expression: [zeros(6,1);0.28]
+<a class="LN" name="269"> 269</a>	   * Referenced by: '&lt;S1&gt;/tau_c_minus'
+<a class="LN" name="270"> 270</a>	   */</span>
+<a class="LN" name="271"> 271</a>	  { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.28 },
+<a class="LN" name="272"> 272</a>	
+<a class="LN" name="273"> 273</a>	  <span class="CT">/* Expression: [zeros(6,1);120]
+<a class="LN" name="274"> 274</a>	   * Referenced by: '&lt;S1&gt;/E'
+<a class="LN" name="275"> 275</a>	   */</span>
+<a class="LN" name="276"> 276</a>	  { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 120.0 },
+<a class="LN" name="277"> 277</a>	
+<a class="LN" name="278"> 278</a>	  <span class="CT">/* Expression: [zeros(6,1);0.5]
+<a class="LN" name="279"> 279</a>	   * Referenced by: '&lt;S1&gt;/tau_v'
+<a class="LN" name="280"> 280</a>	   */</span>
+<a class="LN" name="281"> 281</a>	  { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.5 },
+<a class="LN" name="282"> 282</a>	
+<a class="LN" name="283"> 283</a>	  <span class="CT">/* Expression: zeros(param_robot.n,1)
+<a class="LN" name="284"> 284</a>	   * Referenced by: '&lt;S1&gt;/Constant'
+<a class="LN" name="285"> 285</a>	   */</span>
+<a class="LN" name="286"> 286</a>	  { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0 },
+<a class="LN" name="287"> 287</a>	
+<a class="LN" name="288"> 288</a>	  <span class="CT">/* Computed Parameter: tau_d_gravcomp_q_Y0
+<a class="LN" name="289"> 289</a>	   * Referenced by: '&lt;S11&gt;/tau_d_gravcomp_q'
+<a class="LN" name="290"> 290</a>	   */</span>
+<a class="LN" name="291"> 291</a>	  0.0,
+<a class="LN" name="292"> 292</a>	
+<a class="LN" name="293"> 293</a>	  <span class="CT">/* Expression: 1
+<a class="LN" name="294"> 294</a>	   * Referenced by: '&lt;S11&gt;/Gravitation compensation K_D'
+<a class="LN" name="295"> 295</a>	   */</span>
+<a class="LN" name="296"> 296</a>	  1.0,
+<a class="LN" name="297"> 297</a>	
+<a class="LN" name="298"> 298</a>	  <span class="CT">/* Expression: 1
+<a class="LN" name="299"> 299</a>	   * Referenced by: '&lt;S11&gt;/slope_factor'
+<a class="LN" name="300"> 300</a>	   */</span>
+<a class="LN" name="301"> 301</a>	  1.0,
+<a class="LN" name="302"> 302</a>	
+<a class="LN" name="303"> 303</a>	  <span class="CT">/* Computed Parameter: tau_d_joint_ea_Y0
+<a class="LN" name="304"> 304</a>	   * Referenced by: '&lt;S12&gt;/tau_d_joint_ea'
+<a class="LN" name="305"> 305</a>	   */</span>
+<a class="LN" name="306"> 306</a>	  0.0,
+<a class="LN" name="307"> 307</a>	
+<a class="LN" name="308"> 308</a>	  <span class="CT">/* Expression: 0
+<a class="LN" name="309"> 309</a>	   * Referenced by: '&lt;S12&gt;/Joint-based E//A Linearization K_I'
+<a class="LN" name="310"> 310</a>	   */</span>
+<a class="LN" name="311"> 311</a>	  0.0,
+<a class="LN" name="312"> 312</a>	
+<a class="LN" name="313"> 313</a>	  <span class="CT">/* Expression: 100
+<a class="LN" name="314"> 314</a>	   * Referenced by: '&lt;S12&gt;/Joint-based E//A Linearization K_0'
+<a class="LN" name="315"> 315</a>	   */</span>
+<a class="LN" name="316"> 316</a>	  100.0,
+<a class="LN" name="317"> 317</a>	
+<a class="LN" name="318"> 318</a>	  <span class="CT">/* Expression: 20
+<a class="LN" name="319"> 319</a>	   * Referenced by: '&lt;S12&gt;/Joint-based E//A Linearization K_1'
+<a class="LN" name="320"> 320</a>	   */</span>
+<a class="LN" name="321"> 321</a>	  20.0,
+<a class="LN" name="322"> 322</a>	
+<a class="LN" name="323"> 323</a>	  <span class="CT">/* Expression: 0
+<a class="LN" name="324"> 324</a>	   * Referenced by: '&lt;Root&gt;/Unit Delay'
+<a class="LN" name="325"> 325</a>	   */</span>
+<a class="LN" name="326"> 326</a>	  0.0,
+<a class="LN" name="327"> 327</a>	
+<a class="LN" name="328"> 328</a>	  <span class="CT">/* Expression: 50e-3
+<a class="LN" name="329"> 329</a>	   * Referenced by: '&lt;Root&gt;/Constant'
+<a class="LN" name="330"> 330</a>	   */</span>
+<a class="LN" name="331"> 331</a>	  0.05,
+<a class="LN" name="332"> 332</a>	
+<a class="LN" name="333"> 333</a>	  <span class="CT">/* Expression: zeros(7,1)
+<a class="LN" name="334"> 334</a>	   * Referenced by: '&lt;S2&gt;/Constant'
+<a class="LN" name="335"> 335</a>	   */</span>
+<a class="LN" name="336"> 336</a>	  { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0 },
+<a class="LN" name="337"> 337</a>	
+<a class="LN" name="338"> 338</a>	  <span class="CT">/* Expression: 1
+<a class="LN" name="339"> 339</a>	   * Referenced by: '&lt;Root&gt;/FictionCompensationEnabled'
+<a class="LN" name="340"> 340</a>	   */</span>
+<a class="LN" name="341"> 341</a>	  1.0,
+<a class="LN" name="342"> 342</a>	
+<a class="LN" name="343"> 343</a>	  <span class="CT">/* Expression: 1
+<a class="LN" name="344"> 344</a>	   * Referenced by: '&lt;Root&gt;/Constant22'
+<a class="LN" name="345"> 345</a>	   */</span>
+<a class="LN" name="346"> 346</a>	  1.0,
+<a class="LN" name="347"> 347</a>	
+<a class="LN" name="348"> 348</a>	  <span class="CT">/* Expression: 1
+<a class="LN" name="349"> 349</a>	   * Referenced by: '&lt;Root&gt;/Constant4'
+<a class="LN" name="350"> 350</a>	   */</span>
+<a class="LN" name="351"> 351</a>	  1.0,
+<a class="LN" name="352"> 352</a>	
+<a class="LN" name="353"> 353</a>	  <span class="CT">/* Expression: 1
+<a class="LN" name="354"> 354</a>	   * Referenced by: '&lt;Root&gt;/Constant7'
+<a class="LN" name="355"> 355</a>	   */</span>
+<a class="LN" name="356"> 356</a>	  1.0,
+<a class="LN" name="357"> 357</a>	
+<a class="LN" name="358"> 358</a>	  <span class="CT">/* Expression: 1
+<a class="LN" name="359"> 359</a>	   * Referenced by: '&lt;Root&gt;/Constant8'
+<a class="LN" name="360"> 360</a>	   */</span>
+<a class="LN" name="361"> 361</a>	  1.0,
+<a class="LN" name="362"> 362</a>	
+<a class="LN" name="363"> 363</a>	  <span class="CT">/* Expression: 1
+<a class="LN" name="364"> 364</a>	   * Referenced by: '&lt;Root&gt;/Constant9'
+<a class="LN" name="365"> 365</a>	   */</span>
+<a class="LN" name="366"> 366</a>	  1.0,
+<a class="LN" name="367"> 367</a>	
+<a class="LN" name="368"> 368</a>	  <span class="CT">/* Expression: 1
+<a class="LN" name="369"> 369</a>	   * Referenced by: '&lt;Root&gt;/Constant10'
+<a class="LN" name="370"> 370</a>	   */</span>
+<a class="LN" name="371"> 371</a>	  1.0,
+<a class="LN" name="372"> 372</a>	
+<a class="LN" name="373"> 373</a>	  <span class="CT">/* Expression: 1
+<a class="LN" name="374"> 374</a>	   * Referenced by: '&lt;Root&gt;/Constant23'
+<a class="LN" name="375"> 375</a>	   */</span>
+<a class="LN" name="376"> 376</a>	  1.0,
+<a class="LN" name="377"> 377</a>	
+<a class="LN" name="378"> 378</a>	  <span class="CT">/* Computed Parameter: UnitDelay1_InitialCondition
+<a class="LN" name="379"> 379</a>	   * Referenced by: '&lt;Root&gt;/Unit Delay1'
+<a class="LN" name="380"> 380</a>	   */</span>
+<a class="LN" name="381"> 381</a>	  0,
+<a class="LN" name="382"> 382</a>	
+<a class="LN" name="383"> 383</a>	  <span class="CT">/* Computed Parameter: ManualSwitch2_CurrentSetting
+<a class="LN" name="384"> 384</a>	   * Referenced by: '&lt;S1&gt;/Manual Switch2'
+<a class="LN" name="385"> 385</a>	   */</span>
+<a class="LN" name="386"> 386</a>	  1U,
+<a class="LN" name="387"> 387</a>	
+<a class="LN" name="388"> 388</a>	  <span class="CT">/* Computed Parameter: ManualSwitch4_CurrentSetting
+<a class="LN" name="389"> 389</a>	   * Referenced by: '&lt;S1&gt;/Manual Switch4'
+<a class="LN" name="390"> 390</a>	   */</span>
+<a class="LN" name="391"> 391</a>	  0U
+<a class="LN" name="392"> 392</a>	};
+<a class="LN" name="393"> 393</a>	</pre>
+</td></tr></table>
+</p>
+</body>
+</html>

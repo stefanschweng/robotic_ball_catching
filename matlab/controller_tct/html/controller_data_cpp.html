@@ -1,0 +1,326 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>RTW Report - controller_data.cpp</title>
+<style type="text/css"> .LN { font-style: italic; color: #888888 } </style>
+<style type="text/css"> .CT { font-style: italic; color: #117755 } </style>
+<style type="text/css"> .PP { font-style: bold;   color: #992211 } </style>
+<style type="text/css"> .KW { font-style: bold;   color: #1122dd } </style>
+<style type="text/css"> .DT { font-style: bold;   color: #112266 } </style>
+<link rel="stylesheet" type="text/css" href="rtwreport.css"></link><script language="JavaScript" type="text/javascript" src="rtwreport_utils.js"></script>
+<SCRIPT type="text/javascript" src="rtwannotate.js"></SCRIPT>
+</head>
+<body bgcolor="#eeeeee" text="#1122aa" onload="try {if (top) { if (top.rtwFileOnLoad) top.rtwFileOnLoad(window.document); else local_onload();}} catch(err) {};if (rtwannotate) {rtwannotate('StateRun_cpp_cov.xml');}">
+<p>
+<table border="0" cellspacing="0" cellpadding="6" width="100%" height="100%"><tr><td width="100%" valign="top" bgcolor="#ffffff">
+<h4>File: <a href="../controller_data.cpp" target="rtwreport_document_frame" id="linkToText_plain">controller_data.cpp</a></h4>
+<pre id="RTWcode" style="color:black;">
+<a class="LN" name="1">   1</a>	<span class="CT">/*
+<a class="LN" name="2">   2</a>	 * controller_data.cpp
+<a class="LN" name="3">   3</a>	 *
+<a class="LN" name="4">   4</a>	 * Academic License - for use in teaching, academic research, and meeting
+<a class="LN" name="5">   5</a>	 * course requirements at degree granting institutions only.  Not for
+<a class="LN" name="6">   6</a>	 * government, commercial, or other organizational use.
+<a class="LN" name="7">   7</a>	 *
+<a class="LN" name="8">   8</a>	 * Code generation for model "controller".
+<a class="LN" name="9">   9</a>	 *
+<a class="LN" name="10">  10</a>	 * Model version              : 1.2877
+<a class="LN" name="11">  11</a>	 * Simulink Coder version : 8.13 (R2017b) 24-Jul-2017
+<a class="LN" name="12">  12</a>	 * C++ source code generated on : Mon Jun 22 12:41:17 2020
+<a class="LN" name="13">  13</a>	 *
+<a class="LN" name="14">  14</a>	 * Target selection: TwinCAT.tlc
+<a class="LN" name="15">  15</a>	 * Note: GRT includes extra infrastructure and instrumentation for prototyping
+<a class="LN" name="16">  16</a>	 * Embedded hardware selection: Intel-&gt;x86-64 (Windows64)
+<a class="LN" name="17">  17</a>	 * Code generation objective: Execution efficiency
+<a class="LN" name="18">  18</a>	 * Validation result: Not run
+<a class="LN" name="19">  19</a>	 */</span>
+<a class="LN" name="20">  20</a>	
+<a class="LN" name="21">  21</a>	<span class="KW">#include</span> <span class="PP">&quot;controller.h&quot;</span>
+<a class="LN" name="22">  22</a>	<span class="KW">#include</span> <span class="PP">&quot;controller_private.h&quot;</span>
+<a class="LN" name="23">  23</a>	
+<a class="LN" name="24">  24</a>	<span class="CT">/* Block parameters (auto storage) */</span>
+<a class="LN" name="25">  25</a>	P_controller_T controller_P = {
+<a class="LN" name="26">  26</a>	  <span class="CT">/* Variable: filter_tau_T_1
+<a class="LN" name="27">  27</a>	   * Referenced by: '&lt;S6&gt;/f_tau'
+<a class="LN" name="28">  28</a>	   */</span>
+<a class="LN" name="29">  29</a>	  { 0.00039788735772973834, 0.00039788735772973834, 0.00039788735772973834,
+<a class="LN" name="30">  30</a>	    0.00039788735772973834, 0.0003183098861837907, 0.00015915494309189535,
+<a class="LN" name="31">  31</a>	    0.00015915494309189535 },
+<a class="LN" name="32">  32</a>	
+<a class="LN" name="33">  33</a>	  <span class="CT">/* Variable: filter_tau_p_T_1
+<a class="LN" name="34">  34</a>	   * Referenced by: '&lt;S6&gt;/f_tau_p'
+<a class="LN" name="35">  35</a>	   */</span>
+<a class="LN" name="36">  36</a>	  { 0.00039788735772973834, 0.00039788735772973834, 0.00039788735772973834,
+<a class="LN" name="37">  37</a>	    0.00039788735772973834, 0.0003183098861837907, 0.00015915494309189535,
+<a class="LN" name="38">  38</a>	    0.00015915494309189535 },
+<a class="LN" name="39">  39</a>	
+<a class="LN" name="40">  40</a>	  <span class="CT">/* Variable: filter_tau_p_slow_T_1
+<a class="LN" name="41">  41</a>	   * Referenced by: '&lt;S6&gt;/f_tau_p_slow'
+<a class="LN" name="42">  42</a>	   */</span>
+<a class="LN" name="43">  43</a>	  { 0.00079577471545947667, 0.00079577471545947667, 0.00079577471545947667,
+<a class="LN" name="44">  44</a>	    0.00079577471545947667, 0.00079577471545947667, 0.00079577471545947667,
+<a class="LN" name="45">  45</a>	    0.00079577471545947667 },
+<a class="LN" name="46">  46</a>	
+<a class="LN" name="47">  47</a>	  <span class="CT">/* Variable: filter_tau_slow_T_1
+<a class="LN" name="48">  48</a>	   * Referenced by: '&lt;S6&gt;/f_tau_slow'
+<a class="LN" name="49">  49</a>	   */</span>
+<a class="LN" name="50">  50</a>	  { 0.00079577471545947667, 0.00079577471545947667, 0.00079577471545947667,
+<a class="LN" name="51">  51</a>	    0.00079577471545947667, 0.00079577471545947667, 0.00079577471545947667,
+<a class="LN" name="52">  52</a>	    0.00079577471545947667 },
+<a class="LN" name="53">  53</a>	
+<a class="LN" name="54">  54</a>	  <span class="CT">/* Variable: filter_theta_p_T_1
+<a class="LN" name="55">  55</a>	   * Referenced by: '&lt;S6&gt;/f_theta_p'
+<a class="LN" name="56">  56</a>	   */</span>
+<a class="LN" name="57">  57</a>	  { 0.00039788735772973834, 0.00039788735772973834, 0.00039788735772973834,
+<a class="LN" name="58">  58</a>	    0.00039788735772973834, 0.0003183098861837907, 0.00015915494309189535,
+<a class="LN" name="59">  59</a>	    0.00015915494309189535 },
+<a class="LN" name="60">  60</a>	
+<a class="LN" name="61">  61</a>	  <span class="CT">/* Variable: filter_theta_p_slow_T_1
+<a class="LN" name="62">  62</a>	   * Referenced by: '&lt;S6&gt;/f_theta_p_slow'
+<a class="LN" name="63">  63</a>	   */</span>
+<a class="LN" name="64">  64</a>	  { 0.00079577471545947667, 0.00079577471545947667, 0.00079577471545947667,
+<a class="LN" name="65">  65</a>	    0.00079577471545947667, 0.00079577471545947667, 0.00079577471545947667,
+<a class="LN" name="66">  66</a>	    0.00079577471545947667 },
+<a class="LN" name="67">  67</a>	
+<a class="LN" name="68">  68</a>	  <span class="CT">/* Variable: filter_theta_slow_T_1
+<a class="LN" name="69">  69</a>	   * Referenced by: '&lt;S6&gt;/f_theta_slow'
+<a class="LN" name="70">  70</a>	   */</span>
+<a class="LN" name="71">  71</a>	  { 0.00079577471545947667, 0.00079577471545947667, 0.00079577471545947667,
+<a class="LN" name="72">  72</a>	    0.00079577471545947667, 0.00079577471545947667, 0.00079577471545947667,
+<a class="LN" name="73">  73</a>	    0.00079577471545947667 },
+<a class="LN" name="74">  74</a>	
+<a class="LN" name="75">  75</a>	  <span class="CT">/* Variable: sensor_torque_offset
+<a class="LN" name="76">  76</a>	   * Referenced by: '&lt;S6&gt;/Constant'
+<a class="LN" name="77">  77</a>	   */</span>
+<a class="LN" name="78">  78</a>	  { 0.53, -0.095, -0.189, 0.07, -0.058, 0.0025, -0.12 },
+<a class="LN" name="79">  79</a>	
+<a class="LN" name="80">  80</a>	  <span class="CT">/* Computed Parameter: tau_fm_hat_Y0
+<a class="LN" name="81">  81</a>	   * Referenced by: '&lt;S2&gt;/tau_fm_hat'
+<a class="LN" name="82">  82</a>	   */</span>
+<a class="LN" name="83">  83</a>	  0.0,
+<a class="LN" name="84">  84</a>	
+<a class="LN" name="85">  85</a>	  <span class="CT">/* Expression: [200;200;300;300;500;1000;1000]
+<a class="LN" name="86">  86</a>	   * Referenced by: '&lt;S2&gt;/L'
+<a class="LN" name="87">  87</a>	   */</span>
+<a class="LN" name="88">  88</a>	  { 200.0, 200.0, 300.0, 300.0, 500.0, 1000.0, 1000.0 },
+<a class="LN" name="89">  89</a>	
+<a class="LN" name="90">  90</a>	  <span class="CT">/* Expression: [zeros(6,1);0.2]
+<a class="LN" name="91">  91</a>	   * Referenced by: '&lt;S2&gt;/tau_c_plus'
+<a class="LN" name="92">  92</a>	   */</span>
+<a class="LN" name="93">  93</a>	  { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.2 },
+<a class="LN" name="94">  94</a>	
+<a class="LN" name="95">  95</a>	  <span class="CT">/* Expression: [zeros(6,1);0.28]
+<a class="LN" name="96">  96</a>	   * Referenced by: '&lt;S2&gt;/tau_c_minus'
+<a class="LN" name="97">  97</a>	   */</span>
+<a class="LN" name="98">  98</a>	  { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.28 },
+<a class="LN" name="99">  99</a>	
+<a class="LN" name="100"> 100</a>	  <span class="CT">/* Expression: [zeros(6,1);120]
+<a class="LN" name="101"> 101</a>	   * Referenced by: '&lt;S2&gt;/E'
+<a class="LN" name="102"> 102</a>	   */</span>
+<a class="LN" name="103"> 103</a>	  { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 120.0 },
+<a class="LN" name="104"> 104</a>	
+<a class="LN" name="105"> 105</a>	  <span class="CT">/* Expression: [zeros(6,1);0.5]
+<a class="LN" name="106"> 106</a>	   * Referenced by: '&lt;S2&gt;/tau_v'
+<a class="LN" name="107"> 107</a>	   */</span>
+<a class="LN" name="108"> 108</a>	  { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.5 },
+<a class="LN" name="109"> 109</a>	
+<a class="LN" name="110"> 110</a>	  <span class="CT">/* Expression: 0
+<a class="LN" name="111"> 111</a>	   * Referenced by: '&lt;S2&gt;/use_theta_p_hat'
+<a class="LN" name="112"> 112</a>	   */</span>
+<a class="LN" name="113"> 113</a>	  0.0,
+<a class="LN" name="114"> 114</a>	
+<a class="LN" name="115"> 115</a>	  <span class="CT">/* Expression: 0
+<a class="LN" name="116"> 116</a>	   * Referenced by: '&lt;S2&gt;/use_q_p'
+<a class="LN" name="117"> 117</a>	   */</span>
+<a class="LN" name="118"> 118</a>	  0.0,
+<a class="LN" name="119"> 119</a>	
+<a class="LN" name="120"> 120</a>	  <span class="CT">/* Expression: 0
+<a class="LN" name="121"> 121</a>	   * Referenced by: '&lt;S2&gt;/subtract_model'
+<a class="LN" name="122"> 122</a>	   */</span>
+<a class="LN" name="123"> 123</a>	  0.0,
+<a class="LN" name="124"> 124</a>	
+<a class="LN" name="125"> 125</a>	  <span class="CT">/* Expression: zeros(param_robot.n,1)
+<a class="LN" name="126"> 126</a>	   * Referenced by: '&lt;S2&gt;/Constant'
+<a class="LN" name="127"> 127</a>	   */</span>
+<a class="LN" name="128"> 128</a>	  { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0 },
+<a class="LN" name="129"> 129</a>	
+<a class="LN" name="130"> 130</a>	  <span class="CT">/* Computed Parameter: tau_d_gravcomp_q_Y0
+<a class="LN" name="131"> 131</a>	   * Referenced by: '&lt;S12&gt;/tau_d_gravcomp_q'
+<a class="LN" name="132"> 132</a>	   */</span>
+<a class="LN" name="133"> 133</a>	  0.0,
+<a class="LN" name="134"> 134</a>	
+<a class="LN" name="135"> 135</a>	  <span class="CT">/* Expression: 1
+<a class="LN" name="136"> 136</a>	   * Referenced by: '&lt;S12&gt;/Gravitation compensation K_D'
+<a class="LN" name="137"> 137</a>	   */</span>
+<a class="LN" name="138"> 138</a>	  1.0,
+<a class="LN" name="139"> 139</a>	
+<a class="LN" name="140"> 140</a>	  <span class="CT">/* Expression: 1
+<a class="LN" name="141"> 141</a>	   * Referenced by: '&lt;S12&gt;/slope_factor'
+<a class="LN" name="142"> 142</a>	   */</span>
+<a class="LN" name="143"> 143</a>	  1.0,
+<a class="LN" name="144"> 144</a>	
+<a class="LN" name="145"> 145</a>	  <span class="CT">/* Computed Parameter: tau_d_joint_ea_Y0
+<a class="LN" name="146"> 146</a>	   * Referenced by: '&lt;S13&gt;/tau_d_joint_ea'
+<a class="LN" name="147"> 147</a>	   */</span>
+<a class="LN" name="148"> 148</a>	  0.0,
+<a class="LN" name="149"> 149</a>	
+<a class="LN" name="150"> 150</a>	  <span class="CT">/* Expression: 8000
+<a class="LN" name="151"> 151</a>	   * Referenced by: '&lt;S13&gt;/Joint-based E//A Linearization K_I'
+<a class="LN" name="152"> 152</a>	   */</span>
+<a class="LN" name="153"> 153</a>	  8000.0,
+<a class="LN" name="154"> 154</a>	
+<a class="LN" name="155"> 155</a>	  <span class="CT">/* Expression: 1200
+<a class="LN" name="156"> 156</a>	   * Referenced by: '&lt;S13&gt;/Joint-based E//A Linearization K_0'
+<a class="LN" name="157"> 157</a>	   */</span>
+<a class="LN" name="158"> 158</a>	  1200.0,
+<a class="LN" name="159"> 159</a>	
+<a class="LN" name="160"> 160</a>	  <span class="CT">/* Expression: 60
+<a class="LN" name="161"> 161</a>	   * Referenced by: '&lt;S13&gt;/Joint-based E//A Linearization K_1'
+<a class="LN" name="162"> 162</a>	   */</span>
+<a class="LN" name="163"> 163</a>	  60.0,
+<a class="LN" name="164"> 164</a>	
+<a class="LN" name="165"> 165</a>	  <span class="CT">/* Expression: zeros(param_robot.n,1)
+<a class="LN" name="166"> 166</a>	   * Referenced by: '&lt;S8&gt;/Constant'
+<a class="LN" name="167"> 167</a>	   */</span>
+<a class="LN" name="168"> 168</a>	  { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0 },
+<a class="LN" name="169"> 169</a>	
+<a class="LN" name="170"> 170</a>	  <span class="CT">/* Expression: 0
+<a class="LN" name="171"> 171</a>	   * Referenced by: '&lt;Root&gt;/Constant6'
+<a class="LN" name="172"> 172</a>	   */</span>
+<a class="LN" name="173"> 173</a>	  0.0,
+<a class="LN" name="174"> 174</a>	
+<a class="LN" name="175"> 175</a>	  <span class="CT">/* Expression: 0
+<a class="LN" name="176"> 176</a>	   * Referenced by: '&lt;Root&gt;/Constant2'
+<a class="LN" name="177"> 177</a>	   */</span>
+<a class="LN" name="178"> 178</a>	  0.0,
+<a class="LN" name="179"> 179</a>	
+<a class="LN" name="180"> 180</a>	  <span class="CT">/* Expression: 0
+<a class="LN" name="181"> 181</a>	   * Referenced by: '&lt;Root&gt;/Constant16'
+<a class="LN" name="182"> 182</a>	   */</span>
+<a class="LN" name="183"> 183</a>	  0.0,
+<a class="LN" name="184"> 184</a>	
+<a class="LN" name="185"> 185</a>	  <span class="CT">/* Expression: 0
+<a class="LN" name="186"> 186</a>	   * Referenced by: '&lt;Root&gt;/Constant15'
+<a class="LN" name="187"> 187</a>	   */</span>
+<a class="LN" name="188"> 188</a>	  0.0,
+<a class="LN" name="189"> 189</a>	
+<a class="LN" name="190"> 190</a>	  <span class="CT">/* Expression: 0
+<a class="LN" name="191"> 191</a>	   * Referenced by: '&lt;Root&gt;/Constant14'
+<a class="LN" name="192"> 192</a>	   */</span>
+<a class="LN" name="193"> 193</a>	  0.0,
+<a class="LN" name="194"> 194</a>	
+<a class="LN" name="195"> 195</a>	  <span class="CT">/* Expression: 0
+<a class="LN" name="196"> 196</a>	   * Referenced by: '&lt;Root&gt;/Constant13'
+<a class="LN" name="197"> 197</a>	   */</span>
+<a class="LN" name="198"> 198</a>	  0.0,
+<a class="LN" name="199"> 199</a>	
+<a class="LN" name="200"> 200</a>	  <span class="CT">/* Expression: 90
+<a class="LN" name="201"> 201</a>	   * Referenced by: '&lt;Root&gt;/Constant12'
+<a class="LN" name="202"> 202</a>	   */</span>
+<a class="LN" name="203"> 203</a>	  90.0,
+<a class="LN" name="204"> 204</a>	
+<a class="LN" name="205"> 205</a>	  <span class="CT">/* Expression: pi/180
+<a class="LN" name="206"> 206</a>	   * Referenced by: '&lt;S1&gt;/Gain1'
+<a class="LN" name="207"> 207</a>	   */</span>
+<a class="LN" name="208"> 208</a>	  0.017453292519943295,
+<a class="LN" name="209"> 209</a>	
+<a class="LN" name="210"> 210</a>	  <span class="CT">/* Expression: 0
+<a class="LN" name="211"> 211</a>	   * Referenced by: '&lt;Root&gt;/Constant5'
+<a class="LN" name="212"> 212</a>	   */</span>
+<a class="LN" name="213"> 213</a>	  0.0,
+<a class="LN" name="214"> 214</a>	
+<a class="LN" name="215"> 215</a>	  <span class="CT">/* Expression: 0
+<a class="LN" name="216"> 216</a>	   * Referenced by: '&lt;Root&gt;/Constant11'
+<a class="LN" name="217"> 217</a>	   */</span>
+<a class="LN" name="218"> 218</a>	  0.0,
+<a class="LN" name="219"> 219</a>	
+<a class="LN" name="220"> 220</a>	  <span class="CT">/* Expression: 0
+<a class="LN" name="221"> 221</a>	   * Referenced by: '&lt;Root&gt;/Constant17'
+<a class="LN" name="222"> 222</a>	   */</span>
+<a class="LN" name="223"> 223</a>	  0.0,
+<a class="LN" name="224"> 224</a>	
+<a class="LN" name="225"> 225</a>	  <span class="CT">/* Expression: 15
+<a class="LN" name="226"> 226</a>	   * Referenced by: '&lt;S8&gt;/T'
+<a class="LN" name="227"> 227</a>	   */</span>
+<a class="LN" name="228"> 228</a>	  15.0,
+<a class="LN" name="229"> 229</a>	
+<a class="LN" name="230"> 230</a>	  <span class="CT">/* Expression: zeros(7,1)
+<a class="LN" name="231"> 231</a>	   * Referenced by: '&lt;S3&gt;/Constant'
+<a class="LN" name="232"> 232</a>	   */</span>
+<a class="LN" name="233"> 233</a>	  { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0 },
+<a class="LN" name="234"> 234</a>	
+<a class="LN" name="235"> 235</a>	  <span class="CT">/* Expression: 1
+<a class="LN" name="236"> 236</a>	   * Referenced by: '&lt;Root&gt;/FictionCompensationEnabled'
+<a class="LN" name="237"> 237</a>	   */</span>
+<a class="LN" name="238"> 238</a>	  1.0,
+<a class="LN" name="239"> 239</a>	
+<a class="LN" name="240"> 240</a>	  <span class="CT">/* Expression: 0
+<a class="LN" name="241"> 241</a>	   * Referenced by: '&lt;Root&gt;/MotionEnableValue'
+<a class="LN" name="242"> 242</a>	   */</span>
+<a class="LN" name="243"> 243</a>	  0.0,
+<a class="LN" name="244"> 244</a>	
+<a class="LN" name="245"> 245</a>	  <span class="CT">/* Expression: 0
+<a class="LN" name="246"> 246</a>	   * Referenced by: '&lt;Root&gt;/MotionDisableValue'
+<a class="LN" name="247"> 247</a>	   */</span>
+<a class="LN" name="248"> 248</a>	  0.0,
+<a class="LN" name="249"> 249</a>	
+<a class="LN" name="250"> 250</a>	  <span class="CT">/* Expression: 1
+<a class="LN" name="251"> 251</a>	   * Referenced by: '&lt;Root&gt;/Constant22'
+<a class="LN" name="252"> 252</a>	   */</span>
+<a class="LN" name="253"> 253</a>	  1.0,
+<a class="LN" name="254"> 254</a>	
+<a class="LN" name="255"> 255</a>	  <span class="CT">/* Expression: 1
+<a class="LN" name="256"> 256</a>	   * Referenced by: '&lt;Root&gt;/Constant4'
+<a class="LN" name="257"> 257</a>	   */</span>
+<a class="LN" name="258"> 258</a>	  1.0,
+<a class="LN" name="259"> 259</a>	
+<a class="LN" name="260"> 260</a>	  <span class="CT">/* Expression: 1
+<a class="LN" name="261"> 261</a>	   * Referenced by: '&lt;Root&gt;/Constant7'
+<a class="LN" name="262"> 262</a>	   */</span>
+<a class="LN" name="263"> 263</a>	  1.0,
+<a class="LN" name="264"> 264</a>	
+<a class="LN" name="265"> 265</a>	  <span class="CT">/* Expression: 1
+<a class="LN" name="266"> 266</a>	   * Referenced by: '&lt;Root&gt;/Constant8'
+<a class="LN" name="267"> 267</a>	   */</span>
+<a class="LN" name="268"> 268</a>	  1.0,
+<a class="LN" name="269"> 269</a>	
+<a class="LN" name="270"> 270</a>	  <span class="CT">/* Expression: 1
+<a class="LN" name="271"> 271</a>	   * Referenced by: '&lt;Root&gt;/Constant9'
+<a class="LN" name="272"> 272</a>	   */</span>
+<a class="LN" name="273"> 273</a>	  1.0,
+<a class="LN" name="274"> 274</a>	
+<a class="LN" name="275"> 275</a>	  <span class="CT">/* Expression: 1
+<a class="LN" name="276"> 276</a>	   * Referenced by: '&lt;Root&gt;/Constant10'
+<a class="LN" name="277"> 277</a>	   */</span>
+<a class="LN" name="278"> 278</a>	  1.0,
+<a class="LN" name="279"> 279</a>	
+<a class="LN" name="280"> 280</a>	  <span class="CT">/* Expression: 1
+<a class="LN" name="281"> 281</a>	   * Referenced by: '&lt;Root&gt;/Constant23'
+<a class="LN" name="282"> 282</a>	   */</span>
+<a class="LN" name="283"> 283</a>	  1.0,
+<a class="LN" name="284"> 284</a>	
+<a class="LN" name="285"> 285</a>	  <span class="CT">/* Computed Parameter: RigidBodyControllerSelector_Value
+<a class="LN" name="286"> 286</a>	   * Referenced by: '&lt;Root&gt;/Rigid Body Controller Selector'
+<a class="LN" name="287"> 287</a>	   */</span>
+<a class="LN" name="288"> 288</a>	  1U,
+<a class="LN" name="289"> 289</a>	
+<a class="LN" name="290"> 290</a>	  <span class="CT">/* Computed Parameter: JointTargetPositionSelector_Value
+<a class="LN" name="291"> 291</a>	   * Referenced by: '&lt;Root&gt;/Joint Target Position Selector'
+<a class="LN" name="292"> 292</a>	   */</span>
+<a class="LN" name="293"> 293</a>	  0U,
+<a class="LN" name="294"> 294</a>	
+<a class="LN" name="295"> 295</a>	  <span class="CT">/* Computed Parameter: ManualSwitch2_CurrentSetting
+<a class="LN" name="296"> 296</a>	   * Referenced by: '&lt;S2&gt;/Manual Switch2'
+<a class="LN" name="297"> 297</a>	   */</span>
+<a class="LN" name="298"> 298</a>	  1U,
+<a class="LN" name="299"> 299</a>	
+<a class="LN" name="300"> 300</a>	  <span class="CT">/* Computed Parameter: ManualSwitch4_CurrentSetting
+<a class="LN" name="301"> 301</a>	   * Referenced by: '&lt;S2&gt;/Manual Switch4'
+<a class="LN" name="302"> 302</a>	   */</span>
+<a class="LN" name="303"> 303</a>	  0U
+<a class="LN" name="304"> 304</a>	};
+<a class="LN" name="305"> 305</a>	</pre>
+</td></tr></table>
+</p>
+</body>
+</html>

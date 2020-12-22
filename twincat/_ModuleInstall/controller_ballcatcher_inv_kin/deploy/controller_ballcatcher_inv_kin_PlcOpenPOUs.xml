@@ -1,0 +1,3467 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!-- Beckhoff Automation GmbH & Co. KG -->
+<!-- TwinCAT Target for MATLAB/Simulink 1.2.1237.0-->
+<project xmlns="http://www.plcopen.org/xml/tc6_0200">
+  <fileHeader companyName="Beckhoff Automation GmbH &amp; Co. KG" companyURL="www.beckhoff.com" productName="TwinCAT 3 Function - TE1400" productVersion="1.2.1237" creationDateTime="2020-10-13T20:13:54" />
+  <contentHeader name="TC3_TE1400_GeneratedModule_controller_ballcatcher_inv_kin_FB">
+    <coordinateInfo>
+      <fbd>
+        <scaling x="1" y="1" />
+      </fbd>
+      <ld>
+        <scaling x="1" y="1" />
+      </ld>
+      <sfc>
+        <scaling x="1" y="1" />
+      </sfc>
+    </coordinateInfo>
+    <addData>
+      <data name="http://www.3s-software.com/plcopenxml/projectinformation" handleUnknown="implementation">
+        <ProjectInformation />
+      </data>
+    </addData>
+  </contentHeader>
+  <types>
+    <dataTypes>
+      <dataType name="E_TcMatSimDataAreaType">
+        <baseType>
+          <enum>
+            <values>
+              <value name="NotSpecified" value="0"/>
+              <value name="Standard"/>
+              <value name="InputSrc"/>
+              <value name="InputDst"/>
+              <value name="OutputSrc"/>
+              <value name="OutputDst"/>
+              <value name="InternalDa"/>
+              <value name="MArea"/>
+              <value name="RetainDa"/>
+            </values>
+          </enum>
+        </baseType>
+        <addData/>
+      </dataType>
+      <dataType name="ST_TcMatSimObjectDataAreaInfo">
+        <baseType>
+          <struct>
+            <variable name="pPlcVar">
+              <type>
+                <derived name="PVOID"/>
+              </type>
+            </variable>
+            <variable name="pModuleProcImg">
+              <type>
+                <derived name="PVOID"/>
+              </type>
+            </variable>
+            <variable name="nSize">
+              <type>
+                <UDINT/>
+              </type>
+            </variable>
+            <variable name="nDataAreaId">
+              <type>
+                <UDINT/>
+              </type>
+            </variable>
+            <variable name="eDataAreaType">
+              <type>
+                <derived name="E_TcMatSimDataAreaType"/>
+              </type>
+            </variable>
+          </struct>
+        </baseType>
+        <addData/>
+      </dataType>
+      <dataType name="ST_controller_ballcatcher_inv_kinInitData">
+        <baseType>
+          <struct>
+            	<variable name="Header">
+		<type>
+			<derived name="TComInitDataHdr" />
+		</type>
+	</variable>
+<variable name="CallByHdr">
+	<type>
+		<derived name="TComInitDataElmHdr" />
+	</type>
+</variable>
+<variable name="CallBy">
+	<type>
+		<derived name="TctModuleCallByType" />
+	</type>
+</variable>
+<variable name="ExecutionSequenceHdr">
+	<type>
+		<derived name="TComInitDataElmHdr" />
+	</type>
+</variable>
+<variable name="ExecutionSequence">
+	<type>
+		<derived name="TctModuleExecutionSequenceType" />
+	</type>
+</variable>
+<variable name="StepSizeHdr">
+	<type>
+		<derived name="TComInitDataElmHdr" />
+	</type>
+</variable>
+<variable name="StepSize">
+	<type>
+		<derived name="TctStepSizeType" />
+	</type>
+</variable>
+<variable name="ExtModeParametersHdr">
+	<type>
+		<derived name="TComInitDataElmHdr" />
+	</type>
+</variable>
+<variable name="ExtModeParameters">
+	<type>
+		<derived name="TctExtModeParametersType" />
+	</type>
+</variable>
+<variable name="ExecuteModelCodeHdr">
+	<type>
+		<derived name="TComInitDataElmHdr" />
+	</type>
+</variable>
+<variable name="ExecuteModelCode">
+	<type>
+		<derived name="BOOL" />
+	</type>
+</variable>
+<variable name="ModelParametersHdr">
+	<type>
+		<derived name="TComInitDataElmHdr" />
+	</type>
+</variable>
+<variable name="ModelParameters">
+	<type>
+		<derived name="P_controller_ballcatcher_inv_kin_T" />
+	</type>
+</variable>
+<variable name="ContextInfoArr_0_TaskOidHdr">
+	<type>
+		<derived name="TComInitDataElmHdr" />
+	</type>
+</variable>
+<variable name="ContextInfoArr_0_TaskOid">
+	<type>
+		<derived name="OTCID" />
+	</type>
+</variable>
+<variable name="ContextInfoArr_0_TaskPriorityHdr">
+	<type>
+		<derived name="TComInitDataElmHdr" />
+	</type>
+</variable>
+<variable name="ContextInfoArr_0_TaskPriority">
+	<type>
+		<derived name="UDINT" />
+	</type>
+</variable>
+<variable name="ContextInfoArr_0_TaskCycleTimeNsHdr">
+	<type>
+		<derived name="TComInitDataElmHdr" />
+	</type>
+</variable>
+<variable name="ContextInfoArr_0_TaskCycleTimeNs">
+	<type>
+		<derived name="UDINT" />
+	</type>
+</variable>
+<variable name="ContextInfoArr_0_TaskPortHdr">
+	<type>
+		<derived name="TComInitDataElmHdr" />
+	</type>
+</variable>
+<variable name="ContextInfoArr_0_TaskPort">
+	<type>
+		<derived name="UINT" />
+	</type>
+</variable>
+<variable name="ContextInfoArr_0_TaskSortOrderHdr">
+	<type>
+		<derived name="TComInitDataElmHdr" />
+	</type>
+</variable>
+<variable name="ContextInfoArr_0_TaskSortOrder">
+	<type>
+		<derived name="UDINT" />
+	</type>
+</variable>
+
+          </struct>
+        </baseType>
+        <addData>
+          <data name="http://www.3s-software.com/plcopenxml/attributes" handleUnknown="implementation">
+            <Attributes>
+              <Attribute Value="4" Name="pack_mode"/>
+            </Attributes>
+          </data>
+        </addData>
+      </dataType>
+ 			<dataType name = "ST_controller_ballcatcher_inv_kin_Input">
+				<baseType>
+					<struct>
+						<variable name="fast_sensor_torque">
+							<type>
+								<derived name="matrix_7_real_T" />
+							</type>
+						</variable>
+						<variable name="fast_sensor_position">
+							<type>
+								<derived name="matrix_7_real_T" />
+							</type>
+						</variable>
+						<variable name="motion_enabled">
+							<type>
+								<derived name="LREAL" />
+							</type>
+						</variable>
+						<variable name="motive_marker_input_0">
+							<type>
+								<derived name="Marker" />
+							</type>
+						</variable>
+						<variable name="traj_gen_error">
+							<type>
+								<derived name="BOOL" />
+							</type>
+						</variable>
+					</struct>
+				</baseType>
+			</dataType>
+			<dataType name = "ST_controller_ballcatcher_inv_kin_Output">
+				<baseType>
+					<struct>
+						<variable name="q_d">
+							<type>
+								<derived name="matrix_7_real_T" />
+							</type>
+						</variable>
+						<variable name="p_d">
+							<type>
+								<derived name="matrix_3_real_T" />
+							</type>
+						</variable>
+						<variable name="parabola_points">
+							<type>
+								<derived name="matrix_3_real_T" />
+							</type>
+						</variable>
+						<variable name="traj_update_index">
+							<type>
+								<derived name="LREAL" />
+							</type>
+						</variable>
+						<variable name="traj_time_interval">
+							<type>
+								<derived name="matrix_2_real_T" />
+							</type>
+						</variable>
+						<variable name="chart_state">
+							<type>
+								<derived name="LREAL" />
+							</type>
+						</variable>
+						<variable name="traj_reset">
+							<type>
+								<derived name="LREAL" />
+							</type>
+						</variable>
+						<variable name="MotionEnable">
+							<type>
+								<derived name="LREAL" />
+							</type>
+						</variable>
+						<variable name="MotionDisable">
+							<type>
+								<derived name="LREAL" />
+							</type>
+						</variable>
+						<variable name="controller_select">
+							<type>
+								<derived name="UDINT" />
+							</type>
+						</variable>
+					</struct>
+				</baseType>
+			</dataType>
+
+    </dataTypes>
+    <pous>
+      <pou name="FB_TcMatSimObject" pouType="functionBlock">
+        <interface>
+          <inputVars>
+            <variable name="bWriteFbInputValues">
+              <type>
+                <derived name="BOOL"/>
+              </type>
+              <initialValue>
+                <simpleValue value="TRUE"/>
+              </initialValue>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> set this flag to write FB input values to the TcComObject's input DataAreas. This will overwrite the mapped input values before module execution. Set to FALSE to read the mapped input values from the TcComObject to the FB.</xhtml>
+              </documentation>
+            </variable>
+          </inputVars>
+          <localVars>
+            <variable name="pDataAreas">
+              <type>
+                <pointer>
+                  <baseType>
+                    <derived name="ST_TcMatSimObjectDataAreaInfo"/>
+                  </baseType>
+                </pointer>
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> process image src and dst pointers and sizes</xhtml>
+              </documentation>
+            </variable>
+            <variable name="nDataAreas">
+              <type>
+                <UDINT/>
+              </type>
+            </variable>
+            <variable name="ipObjSrv">
+              <type>
+                <derived name="ITComObjectServer"/>
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> global interface pointers</xhtml>
+              </documentation>
+            </variable>
+            <variable name="ipTcComObj">
+              <type>
+                <derived name="ITComObject"/>
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> object interface pointers</xhtml>
+              </documentation>
+            </variable>
+            <variable name="ipTcCyclic">
+              <type>
+                <derived name="ITcCyclic"/>
+              </type>
+            </variable>
+            <variable name="ipTcPostCyclic">
+              <type>
+                <derived name="ITcPostCyclic"/>
+              </type>
+            </variable>
+            <variable name="ipTcAdi">
+              <type>
+                <derived name="ITcADI"/>
+              </type>
+            </variable>
+            <variable name="ipTask">
+              <type>
+                <derived name="ITcTask"/>
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> task interface pointers</xhtml>
+              </documentation>
+            </variable>
+            <variable name="pInitData">
+              <type>
+                <pointer>
+                  <baseType>
+                    <derived name="TComInitDataHdr"/>
+                  </baseType>
+                </pointer>
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> initial parameters</xhtml>
+              </documentation>
+            </variable>
+            <variable name="hResult">
+              <type>
+                <derived name="HRESULT"/>
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> hResult of interface calls (0 if no error)</xhtml>
+              </documentation>
+            </variable>
+            <variable name="moduleClsId">
+              <type>
+                <derived name="CLSID"/>
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> module class ID</xhtml>
+              </documentation>
+            </variable>
+            <variable name="assignedClsId">
+              <type>
+                <derived name="CLSID"/>
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> expected/desired module class ID</xhtml>
+              </documentation>
+            </variable>
+            <variable name="bClassIdVerified">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="bDynInstance">
+              <type>
+                <BOOL/>
+              </type>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> flag indicating whether the module instance was created dynamically</xhtml>
+              </documentation>
+            </variable>
+            <variable name="eInitialObjState">
+              <type>
+                <derived name="TCOM_STATE"/>
+              </type>
+              <initialValue>
+                <simpleValue value="TCOM_STATE.TCOM_STATE_INIT"/>
+              </initialValue>
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml"> the object state at the time FB_init was called, FB_exit will try to switch to this state (only if this means to shift down)</xhtml>
+              </documentation>
+            </variable>
+          </localVars>
+        </interface>
+        <body>
+          <ST>
+            <xhtml xmlns="http://www.w3.org/1999/xhtml"/>
+          </ST>
+        </body>
+        <addData>
+          <data name="http://www.3s-software.com/plcopenxml/method" handleUnknown="implementation">
+            <Method name="ReleaseTcComInterface">
+              <interface>
+                <returnType>
+                  <derived name="HRESULT"/>
+                </returnType>
+                <localVars>
+                  <variable name="nStateChangeCnt">
+                    <type>
+                      <DINT/>
+                    </type>
+                    <initialValue>
+                      <simpleValue value="0"/>
+                    </initialValue>
+                  </variable>
+                </localVars>
+                <addData>
+                  <data name="http://www.3s-software.com/plcopenxml/accessmodifiers" handleUnknown="implementation">
+                    <AccessModifiers Private="true"/>
+                  </data>
+                  <data name="http://www.3s-software.com/plcopenxml/attributes" handleUnknown="implementation">
+                    <Attributes>
+                      <Attribute Name="object_name" Value="ReleaseTcComInterface"/>
+                    </Attributes>
+                  </data>
+                </addData>
+              </interface>
+              <body>
+                <ST>
+                  <xhtml xmlns="http://www.w3.org/1999/xhtml">
+IF (ipTcComObj&lt;&gt;0) THEN
+  WHILE (State&gt;eInitialObjState AND nStateChangeCnt&lt;1000) DO
+    State := eInitialObjState;
+    nStateChangeCnt := nStateChangeCnt+1;
+  END_WHILE
+  ReleaseObjInterfaces();
+  IF (bDynInstance) THEN
+    ReleaseTcComInterface := TC3_MODULE.FW_ObjMgr_DeleteInstance(ADR(ipTcComObj));
+  ELSE
+    ipTcComObj.TcRelease();
+  END_IF
+  ipTcComObj := 0;
+END_IF
+                  </xhtml>
+                </ST>
+              </body>
+              <addData/>
+            </Method>
+          </data>
+          <data name="http://www.3s-software.com/plcopenxml/method" handleUnknown="implementation">
+            <Method name="ReleaseObjInterfaces">
+              <interface>
+                <returnType>
+                  <derived name="HRESULT"/>
+                </returnType>
+                <addData>
+                  <data name="http://www.3s-software.com/plcopenxml/accessmodifiers" handleUnknown="implementation">
+                    <AccessModifiers Private="true"/>
+                  </data>
+                  <data name="http://www.3s-software.com/plcopenxml/attributes" handleUnknown="implementation">
+                    <Attributes>
+                      <Attribute Name="object_name" Value="ReleaseObjInterfaces"/>
+                    </Attributes>
+                  </data>
+                </addData>
+              </interface>
+              <body>
+                <ST>
+                  <xhtml xmlns="http://www.w3.org/1999/xhtml">
+// release interface pointers
+IF (ipTcCyclic&lt;&gt;0) THEN
+  ipTcCyclic.TcRelease();
+  ipTcCyclic := 0;
+END_IF
+IF (ipTcPostCyclic&lt;&gt;0) THEN
+  ipTcPostCyclic.TcRelease();
+  ipTcPostCyclic := 0;
+END_IF
+IF (ipTcAdi&lt;&gt;0) THEN
+  ipTcAdi.TcRelease();
+  ipTcAdi := 0;
+END_IF
+                  </xhtml>
+                </ST>
+              </body>
+              <addData/>
+            </Method>
+          </data>
+          <data name="http://www.3s-software.com/plcopenxml/method" handleUnknown="implementation">
+            <Method name="Internal_SetObjState">
+              <interface>
+                <inputVars>
+                  <variable name="hr">
+                    <type>
+                      <derived name="REFERENCE TO HRESULT"/>
+                    </type>
+                  </variable>
+                  <variable name="nextState">
+                    <type>
+                      <derived name="TCOM_STATE"/>
+                    </type>
+                  </variable>
+                </inputVars>
+                <addData>
+                  <data name="http://www.3s-software.com/plcopenxml/accessmodifiers" handleUnknown="implementation">
+                    <AccessModifiers Protected="true"/>
+                  </data>
+                  <data name="http://www.3s-software.com/plcopenxml/attributes" handleUnknown="implementation">
+                    <Attributes>
+                      <Attribute Name="object_name" Value="Internal_SetObjState"/>
+                    </Attributes>
+                  </data>
+                </addData>
+              </interface>
+              <body>
+                <ST>
+                  <xhtml xmlns="http://www.w3.org/1999/xhtml">
+// verify class id
+IF (SUCCEEDED(hr)) THEN
+  hr := VerifyClassId();
+END_IF
+
+// switch object state
+IF (SUCCEEDED(hr) AND nextState&gt;=TCOM_STATE_INIT) THEN
+  IF (ipTcComObj=0) THEN
+    hr := Tc2_System.E_HRESULTAdsErr.NOINTERFACE;
+  END_IF
+  IF (ipObjSrv=0) THEN
+    hr := Tc2_System.E_HRESULTAdsErr.NOINTERFACE;
+  END_IF
+  IF (SUCCEEDED(hr)) THEN
+    hr := ipTcComObj.TcSetObjState(nextState,ipObjSrv,pInitData);
+  END_IF
+END_IF
+                  </xhtml>
+                </ST>
+              </body>
+              <addData/>
+            </Method>
+          </data>
+          <data name="http://www.3s-software.com/plcopenxml/method" handleUnknown="implementation">
+            <Method name="FB_init">
+              <interface>
+                <returnType>
+                  <BOOL/>
+                </returnType>
+                <inputVars>
+                  <variable name="bInitRetains">
+                    <type>
+                      <BOOL/>
+                    </type>
+                    <documentation>
+                      <xhtml xmlns="http://www.w3.org/1999/xhtml"> init retain variables</xhtml>
+                    </documentation>
+                  </variable>
+                  <variable name="bInCopyCode">
+                    <type>
+                      <BOOL/>
+                    </type>
+                    <documentation>
+                      <xhtml xmlns="http://www.w3.org/1999/xhtml"> Online Change</xhtml>
+                    </documentation>
+                  </variable>
+                  <variable name="oid">
+                    <type>
+                      <derived name="OTCID"/>
+                    </type>
+                  </variable>
+                </inputVars>
+                <addData>
+                  <data name="http://www.3s-software.com/plcopenxml/attributes" handleUnknown="implementation">
+                    <Attributes>
+                      <Attribute Name="object_name" Value="FB_init"/>
+                    </Attributes>
+                  </data>
+                </addData>
+              </interface>
+              <body>
+                <ST>
+                  <xhtml xmlns="http://www.w3.org/1999/xhtml">
+FB_init := SUCCEEDED(Init(oid));
+                  </xhtml>
+                </ST>
+              </body>
+              <addData/>
+            </Method>
+          </data>
+          <data name="http://www.3s-software.com/plcopenxml/method" handleUnknown="implementation">
+            <Method name="GetObjPara">
+              <interface>
+                <returnType>
+                  <derived name="HRESULT"/>
+                </returnType>
+                <inputVars>
+                  <variable name="pid">
+                    <type>
+                      <derived name="PTCID"/>
+                    </type>
+                  </variable>
+                  <variable name="nData">
+                    <type>
+                      <UDINT/>
+                    </type>
+                  </variable>
+                  <variable name="pData">
+                    <type>
+                      <derived name="PVOID"/>
+                    </type>
+                  </variable>
+                </inputVars>
+                <addData>
+                  <data name="http://www.3s-software.com/plcopenxml/attributes" handleUnknown="implementation">
+                    <Attributes>
+                      <Attribute Name="object_name" Value="GetObjPara"/>
+                    </Attributes>
+                  </data>
+                </addData>
+              </interface>
+              <body>
+                <ST>
+                  <xhtml xmlns="http://www.w3.org/1999/xhtml">
+IF (ipTcComObj=0) THEN
+  GetObjPara := Tc2_System.E_HRESULTAdsErr.NOINTERFACE;
+END_IF
+
+IF (SUCCEEDED(GetObjPara)) THEN
+  GetObjPara := ipTcComObj.TcGetObjPara(pid:=pid,nData,pData,0);
+END_IF
+                  </xhtml>
+                </ST>
+              </body>
+              <addData/>
+            </Method>
+          </data>
+          <data name="http://www.3s-software.com/plcopenxml/method" handleUnknown="implementation">
+            <Method name="QueryObjInterface">
+              <interface>
+                <inputVars>
+                  <variable name="hr">
+                    <type>
+                      <derived name="REFERENCE TO HRESULT"/>
+                    </type>
+                  </variable>
+                  <variable name="iid">
+                    <type>
+                      <derived name="REFERENCE TO IID"/>
+                    </type>
+                  </variable>
+                  <variable name="pipItf">
+                    <type>
+                      <pointer>
+                        <baseType>
+                          <derived name="ITcUnknown"/>
+                        </baseType>
+                      </pointer>
+                    </type>
+                  </variable>
+                </inputVars>
+                <localVars constant="true">
+                  <variable name="pNull">
+                    <type>
+                      <derived name="PVOID"/>
+                    </type>
+                    <initialValue>
+                      <simpleValue value="0"/>
+                    </initialValue>
+                  </variable>
+                </localVars>
+                <addData>
+                  <data name="http://www.3s-software.com/plcopenxml/accessmodifiers" handleUnknown="implementation">
+                    <AccessModifiers Private="true"/>
+                  </data>
+                  <data name="http://www.3s-software.com/plcopenxml/attributes" handleUnknown="implementation">
+                    <Attributes>
+                      <Attribute Name="object_name" Value="QueryObjInterface"/>
+                    </Attributes>
+                  </data>
+                </addData>
+              </interface>
+              <body>
+                <ST>
+                  <xhtml xmlns="http://www.w3.org/1999/xhtml">
+IF (SUCCEEDED(hr)) THEN
+  IF (ipTcComObj=0) THEN
+    hr := Tc2_System.E_HRESULTAdsErr.NOINTERFACE;
+  ELSIF (pipItf^=ULINT_TO_DWORD(pNull)) THEN
+    hr := ipTcComObj.TcQueryInterface(iid:= iid, pipItf:=pipItf);
+  END_IF
+END_IF
+                  </xhtml>
+                </ST>
+              </body>
+              <addData/>
+            </Method>
+          </data>
+          <data name="http://www.3s-software.com/plcopenxml/method" handleUnknown="implementation">
+            <Method name="SaveOnlineParametersForInit">
+              <interface>
+                <returnType>
+                  <derived name="HRESULT"/>
+                </returnType>
+                <localVars>
+                  <variable name="idx">
+                    <type>
+                      <UINT/>
+                    </type>
+                  </variable>
+                  <variable name="pInitElemHdr">
+                    <type>
+                      <pointer>
+                        <baseType>
+                          <derived name="TComInitDataElmHdr"/>
+                        </baseType>
+                      </pointer>
+                    </type>
+                  </variable>
+                  <variable name="pData">
+                    <type>
+                      <derived name="PVOID"/>
+                    </type>
+                  </variable>
+                  <variable name="nData">
+                    <type>
+                      <UDINT/>
+                    </type>
+                  </variable>
+                </localVars>
+                <localVars constant="true">
+                  <variable name="nInitDataAlignment">
+                    <type>
+                      <UDINT/>
+                    </type>
+                    <initialValue>
+                      <simpleValue value="4"/>
+                    </initialValue>
+                  </variable>
+                </localVars>
+                <addData>
+                  <data name="http://www.3s-software.com/plcopenxml/attributes" handleUnknown="implementation">
+                    <Attributes>
+                      <Attribute Name="object_name" Value="SaveOnlineParametersForInit"/>
+                    </Attributes>
+                  </data>
+                </addData>
+              </interface>
+              <body>
+                <ST>
+                  <xhtml xmlns="http://www.w3.org/1999/xhtml">IF (pInitData&lt;&gt;0) THEN
+  pInitElemHdr := pInitData + SIZEOF(pInitData^);
+  FOR idx:=1 TO pInitData^.uiElmCnt DO
+    pData := pInitElemHdr + ULINT_TO_DWORD(SIZEOF(pInitElemHdr^));
+    nData := pInitElemHdr^.cbData;
+    SaveOnlineParametersForInit := GetObjPara(pInitElemHdr^.indexOffset,nData,pData);
+    IF (FAILED(SaveOnlineParametersForInit)) THEN
+      RETURN;
+    END_IF
+    pInitElemHdr := pData + (nInitDataAlignment*((nData + nInitDataAlignment - 1)/nInitDataAlignment));
+  END_FOR
+ELSE
+	SaveOnlineParametersForInit := Tc2_System.E_HRESULTAdsErr.NOTINIT;
+END_IF
+                  </xhtml>
+                </ST>
+              </body>
+              <addData/>
+            </Method>
+          </data>
+          <data name="http://www.3s-software.com/plcopenxml/method" handleUnknown="implementation">
+            <Method name="ResetHresult">
+              <interface>
+                <addData>
+                  <data name="http://www.3s-software.com/plcopenxml/attributes" handleUnknown="implementation">
+                    <Attributes>
+                      <Attribute Name="object_name" Value="ResetHresult"/>
+                    </Attributes>
+                  </data>
+                </addData>
+              </interface>
+              <body>
+                <ST>
+                  <xhtml xmlns="http://www.w3.org/1999/xhtml">hResult := S_OK;</xhtml>
+                </ST>
+              </body>
+              <addData/>
+            </Method>
+          </data>
+          <data name="http://www.3s-software.com/plcopenxml/method" handleUnknown="implementation">
+            <Method name="Execute">
+              <interface>
+                <returnType>
+                  <derived name="HRESULT"/>
+                </returnType>
+                <localVars>
+                  <variable name="nDaIdx">
+                    <type>
+                      <UDINT/>
+                    </type>
+                  </variable>
+                  <variable name="pCurDataArea">
+                    <type>
+                      <pointer>
+                        <baseType>
+                          <derived name="ST_TcMatSimObjectDataAreaInfo"/>
+                        </baseType>
+                      </pointer>
+                    </type>
+                  </variable>
+                </localVars>
+                <addData>
+                  <data name="http://www.3s-software.com/plcopenxml/attributes" handleUnknown="implementation">
+                    <Attributes>
+                      <Attribute Name="object_name" Value="Execute"/>
+                    </Attributes>
+                  </data>
+                </addData>
+              </interface>
+              <body>
+                <ST>
+                  <xhtml xmlns="http://www.w3.org/1999/xhtml">
+IF (SUCCEEDED(hResult)) THEN
+  hResult := VerifyClassId();
+END_IF
+
+IF (SUCCEEDED(hResult) AND State&lt;&gt;TCOM_STATE_OP) THEN
+  hResult := Tc2_System.E_HRESULTAdsErr.NOTREADY;
+END_IF
+
+// get image pointers
+IF (SUCCEEDED(hResult)) THEN
+  GetImagePtrs(hResult);
+END_IF
+
+// copy inputs
+IF (pDataAreas&lt;&gt;0 AND nDataAreas&gt;0 AND bWriteFbInputValues) THEN
+  FOR nDaIdx:=0 TO nDataAreas-1 DO
+    IF (FAILED(hResult))THEN
+      CONTINUE;
+    END_IF
+    pCurDataArea := pDataAreas + nDaIdx*SIZEOF(ST_TcMatSimObjectDataAreaInfo);
+    IF ((pCurDataArea^.eDataAreaType &lt;&gt; E_TcMatSimDataAreaType.InputDst))THEN
+      CONTINUE;
+    END_IF
+    IF (pCurDataArea^.pModuleProcImg&lt;&gt;0 AND pCurDataArea^.pPlcVar&lt;&gt;0) THEN
+      MEMCPY(pCurDataArea^.pModuleProcImg,pCurDataArea^.pPlcVar,pCurDataArea^.nSize);
+    ELSE
+      hResult := Tc2_System.E_HRESULTAdsErr.NOINTERFACE;
+    END_IF
+  END_FOR
+END_IF
+
+// call cycle update
+IF (SUCCEEDED(hResult)) THEN
+  IF (ipTcCyclic&lt;&gt;0) THEN
+    hResult := ipTcCyclic.CycleUpdate(ipTask:= ipTask, ipCaller:= 0, context:= 0);
+  ELSE
+    hResult := Tc2_System.E_HRESULTAdsErr.NOINTERFACE;
+  END_IF
+END_IF
+
+// copy outputs
+IF (pDataAreas&lt;&gt;0 AND nDataAreas&gt;0) THEN
+  FOR nDaIdx:=0 TO nDataAreas-1 DO
+    IF (FAILED(hResult))THEN
+      CONTINUE;
+    END_IF
+    pCurDataArea := pDataAreas + nDaIdx*SIZEOF(ST_TcMatSimObjectDataAreaInfo);
+    IF ((pCurDataArea^.eDataAreaType = E_TcMatSimDataAreaType.OutputSrc) OR NOT bWriteFbInputValues) THEN
+      IF (pCurDataArea^.pModuleProcImg&lt;&gt;0 AND pCurDataArea^.pPlcVar&lt;&gt;0) THEN
+        MEMCPY(pCurDataArea^.pPlcVar,pCurDataArea^.pModuleProcImg,pCurDataArea^.nSize);
+      ELSE
+        hResult := Tc2_System.E_HRESULTAdsErr.NOINTERFACE;
+      END_IF
+    END_IF
+  END_FOR
+END_IF
+
+
+// call post cyclic update
+IF (SUCCEEDED(hResult)) THEN
+  IF (ipTcPostCyclic&lt;&gt;0) THEN
+    hResult := ipTcPostCyclic.PostCyclicUpdate(ipTask:= 0, ipCaller:= 0, context:= 0);
+  ELSE
+    hResult := Tc2_System.E_HRESULTAdsErr.NOINTERFACE;
+  END_IF
+END_IF
+
+ReleaseImagePtrs();
+
+Execute := hResult;
+                  </xhtml>
+                </ST>
+              </body>
+              <addData/>
+            </Method>
+          </data>
+          <data name="http://www.3s-software.com/plcopenxml/method" handleUnknown="implementation">
+            <Method name="GetImagePtrs">
+              <interface>
+                <inputVars>
+                  <variable name="hr">
+                    <type>
+                      <derived name="REFERENCE TO HRESULT"/>
+                    </type>
+                  </variable>
+                </inputVars>
+                <localVars>
+                  <variable name="nDaIdx">
+                    <type>
+                      <UDINT/>
+                    </type>
+                  </variable>
+                  <variable name="pCurDataArea">
+                    <type>
+                      <pointer>
+                        <baseType>
+                          <derived name="ST_TcMatSimObjectDataAreaInfo"/>
+                        </baseType>
+                      </pointer>
+                    </type>
+                  </variable>
+                </localVars>
+                <addData>
+                  <data name="http://www.3s-software.com/plcopenxml/accessmodifiers" handleUnknown="implementation">
+                    <AccessModifiers Private="true"/>
+                  </data>
+                  <data name="http://www.3s-software.com/plcopenxml/attributes" handleUnknown="implementation">
+                    <Attributes>
+                      <Attribute Name="object_name" Value="GetImagePtrs"/>
+                    </Attributes>
+                  </data>
+                </addData>
+              </interface>
+              <body>
+                <ST>
+                  <xhtml xmlns="http://www.w3.org/1999/xhtml">
+IF (ipTcAdi=0) THEN
+  hr := Tc2_System.E_HRESULTAdsErr.NOINTERFACE;
+END_IF
+IF(State&lt;&gt;TCOM_STATE_OP)THEN
+  hr := Tc2_System.E_HRESULTAdsErr.INVALIDSTATE;
+END_IF
+
+
+// get pointers to process images
+IF (pDataAreas&lt;&gt;0 AND nDataAreas&gt;0) THEN
+  FOR nDaIdx:=0 TO nDataAreas-1 DO
+    pCurDataArea := pDataAreas + nDaIdx*SIZEOF(ST_TcMatSimObjectDataAreaInfo);
+    IF (FAILED(hr))THEN
+      CONTINUE;
+    END_IF
+    IF ((pCurDataArea^.eDataAreaType &lt;&gt; E_TcMatSimDataAreaType.InputDst) AND (pCurDataArea^.eDataAreaType &lt;&gt; E_TcMatSimDataAreaType.OutputSrc))THEN
+      CONTINUE;
+    END_IF
+    IF (pCurDataArea^.pModuleProcImg=0 AND pCurDataArea^.nSize&gt;0) THEN
+      hr := ipTcAdi.GetImagePtr(size:= pCurDataArea^.nSize , offs:=0 , adi_x:=pCurDataArea^.nDataAreaId , ppData:=ADR(pCurDataArea^.pModuleProcImg));
+    END_IF
+  END_FOR
+END_IF
+
+IF (FAILED(hr)) THEN
+  ReleaseImagePtrs();
+END_IF
+                  </xhtml>
+                </ST>
+              </body>
+              <addData/>
+            </Method>
+          </data>
+          <data name="http://www.3s-software.com/plcopenxml/method" handleUnknown="implementation">
+            <Method name="VerifyClassId" ObjectId="239bccd7-2f3a-47e3-959e-96b59c3eff01">
+              <interface>
+                <returnType>
+                  <derived name="HRESULT" />
+                </returnType>
+                <localVars>
+                  <variable name="emptyClsId">
+                    <type>
+                      <derived name="CLSID" />
+                    </type>
+                  </variable>
+                </localVars>
+                <addData>
+                  <data name="http://www.3s-software.com/plcopenxml/accessmodifiers" handleUnknown="implementation">
+                    <AccessModifiers Private="true" />
+                  </data>
+                  <data name="http://www.3s-software.com/plcopenxml/attributes" handleUnknown="implementation">
+                    <Attributes>
+                      <Attribute Name="object_name" Value="VerifyClassId" />
+                    </Attributes>
+                  </data>
+                </addData>
+              </interface>
+              <body>
+                <ST>
+                  <xhtml xmlns="http://www.w3.org/1999/xhtml">memset(ADR(emptyClsId),0,SIZEOF(emptyClsId));
+IF (bClassIdVerified) THEN
+  // class ID was already verified
+  VerifyClassId := Tc2_System.E_HRESULTAdsErr.HRESULT_ADS_NOERROR;
+ELSIF (memcmp(ADR(assignedClsId),ADR(emptyClsId),SIZEOF(assignedClsId))=0) THEN
+  // skip class ID verification if no assignedClsId specified
+  VerifyClassId := Tc2_System.E_HRESULTAdsErr.HRESULT_ADS_NOERROR;
+ELSE
+  // verify class ID
+  VerifyClassId := ReadModuleClassId();
+
+  IF (SUCCEEDED(VerifyClassId)) THEN
+    IF (memcmp(ADR(assignedClsId),ADR(moduleClsId),SIZEOF(assignedClsId))&lt;&gt;0) THEN
+     VerifyClassId := Tc2_System.E_HRESULTAdsErr.INVALIDCLSID;
+    END_IF
+  END_IF
+  bClassIdVerified := SUCCEEDED(VerifyClassId);
+END_IF
+                  </xhtml>
+                </ST>
+              </body>
+              <addData />
+            </Method>
+          </data>
+          <data name="http://www.3s-software.com/plcopenxml/method" handleUnknown="implementation">
+            <Method name="SetObjPara">
+              <interface>
+                <returnType>
+                  <derived name="HRESULT"/>
+                </returnType>
+                <inputVars>
+                  <variable name="pid">
+                    <type>
+                      <derived name="PTCID"/>
+                    </type>
+                  </variable>
+                  <variable name="nData">
+                    <type>
+                      <UDINT/>
+                    </type>
+                  </variable>
+                  <variable name="pData">
+                    <type>
+                      <derived name="PVOID"/>
+                    </type>
+                  </variable>
+                </inputVars>
+                <addData>
+                  <data name="http://www.3s-software.com/plcopenxml/attributes" handleUnknown="implementation">
+                    <Attributes>
+                      <Attribute Name="object_name" Value="SetObjPara"/>
+                    </Attributes>
+                  </data>
+                </addData>
+              </interface>
+              <body>
+                <ST>
+                  <xhtml xmlns="http://www.w3.org/1999/xhtml">
+IF (ipTcComObj=0) THEN
+  SetObjPara := Tc2_System.E_HRESULTAdsErr.NOINTERFACE;
+END_IF
+
+IF (SUCCEEDED(SetObjPara)) THEN
+  SetObjPara := ipTcComObj.TcSetObjPara(pid:=pid,nData,pData,0);
+END_IF
+                  </xhtml>
+                </ST>
+              </body>
+              <addData/>
+            </Method>
+          </data>
+          <data name="http://www.3s-software.com/plcopenxml/method" handleUnknown="implementation">
+            <Method name="QueryTcComInterface">
+              <interface>
+                <inputVars>
+                  <variable name="hr">
+                    <type>
+                      <derived name="REFERENCE TO HRESULT"/>
+                    </type>
+                  </variable>
+                  <variable name="oid">
+                    <type>
+                      <derived name="OTCID"/>
+                    </type>
+                  </variable>
+                </inputVars>
+                <addData>
+                  <data name="http://www.3s-software.com/plcopenxml/accessmodifiers" handleUnknown="implementation">
+                    <AccessModifiers Private="true"/>
+                  </data>
+                  <data name="http://www.3s-software.com/plcopenxml/attributes" handleUnknown="implementation">
+                    <Attributes>
+                      <Attribute Name="object_name" Value="QueryTcComInterface"/>
+                    </Attributes>
+                  </data>
+                </addData>
+              </interface>
+              <body>
+                <ST>
+                  <xhtml xmlns="http://www.w3.org/1999/xhtml">
+IF (ipObjSrv=0) THEN
+  hr := Tc2_System.E_HRESULTAdsErr.NOINTERFACE;
+END_IF
+
+IF (SUCCEEDED(hr) AND ipTcComObj=0) THEN
+  bDynInstance := FALSE;
+  IF(oid&gt;0) THEN
+    // query interface of existing object
+    hr := ipObjSrv.TcQueryObjectInterface(oid,IID_ITComObject,ADR(ipTcComObj));
+  ELSE
+    // create new instance and get the object interface
+    hr := ipObjSrv.TcCreateInstance(assignedClsId,IID_ITComObject,ADR(ipTcComObj));
+    IF (SUCCEEDED(hr)) THEN
+      bDynInstance := TRUE;
+      hr := ipTcComObj.TcSetObjectId(OTCID_CreateNewId);
+    END_IF
+  END_IF
+  IF (SUCCEEDED(hr)) THEN
+    eInitialObjState := State;
+  END_IF
+END_IF
+                  </xhtml>
+                </ST>
+              </body>
+              <addData/>
+            </Method>
+          </data>
+          <data name="http://www.3s-software.com/plcopenxml/method" handleUnknown="implementation">
+            <Method name="ReleaseImagePtrs">
+              <interface>
+                <returnType>
+                  <derived name="HRESULT"/>
+                </returnType>
+                <localVars>
+                  <variable name="nDaIdx">
+                    <type>
+                      <UDINT/>
+                    </type>
+                  </variable>
+                  <variable name="pCurDataArea">
+                    <type>
+                      <pointer>
+                        <baseType>
+                          <derived name="ST_TcMatSimObjectDataAreaInfo"/>
+                        </baseType>
+                      </pointer>
+                    </type>
+                  </variable>
+                </localVars>
+                <addData>
+                  <data name="http://www.3s-software.com/plcopenxml/accessmodifiers" handleUnknown="implementation">
+                    <AccessModifiers Private="true"/>
+                  </data>
+                  <data name="http://www.3s-software.com/plcopenxml/attributes" handleUnknown="implementation">
+                    <Attributes>
+                      <Attribute Name="object_name" Value="ReleaseImagePtrs"/>
+                    </Attributes>
+                  </data>
+                </addData>
+              </interface>
+              <body>
+                <ST>
+                  <xhtml xmlns="http://www.w3.org/1999/xhtml">
+IF (ipTcAdi=0) THEN
+  ReleaseImagePtrs := Tc2_System.E_HRESULTAdsErr.NOINTERFACE;
+END_IF
+
+IF (SUCCEEDED(ReleaseImagePtrs) AND pDataAreas&lt;&gt;0 AND nDataAreas&gt;0) THEN
+  // release pointers to the simulink module process images
+  FOR nDaIdx:=0 TO nDataAreas-1 DO
+    pCurDataArea := pDataAreas + nDaIdx*SIZEOF(ST_TcMatSimObjectDataAreaInfo);
+
+    IF (pCurDataArea^.pModuleProcImg&lt;&gt;0) THEN
+      ipTcAdi.ReleaseImagePtr(pData:=pCurDataArea^.pModuleProcImg);
+      pCurDataArea^.pModuleProcImg := 0;
+    END_IF
+  END_FOR
+END_IF
+                  </xhtml>
+                </ST>
+              </body>
+              <addData/>
+            </Method>
+          </data>
+          <data name="http://www.3s-software.com/plcopenxml/method" handleUnknown="implementation">
+            <Method name="FB_exit">
+              <interface>
+                <returnType>
+                  <BOOL/>
+                </returnType>
+                <inputVars>
+                  <variable name="bInCopyCode">
+                    <type>
+                      <BOOL/>
+                    </type>
+                    <documentation>
+                      <xhtml xmlns="http://www.w3.org/1999/xhtml"> Online Change</xhtml>
+                    </documentation>
+                  </variable>
+                </inputVars>
+                <addData>
+                  <data name="http://www.3s-software.com/plcopenxml/attributes" handleUnknown="implementation">
+                    <Attributes>
+                      <Attribute Name="object_name" Value="FB_exit"/>
+                    </Attributes>
+                  </data>
+                </addData>
+              </interface>
+              <body>
+                <ST>
+                  <xhtml xmlns="http://www.w3.org/1999/xhtml">
+IF (NOT bInCopyCode) THEN
+  IF (ipObjSrv&lt;&gt;0) THEN
+    ipObjSrv.TcRelease();
+    ipObjSrv := 0;
+  END_IF
+
+  ReleaseTcComInterface();
+END_IF
+                  </xhtml>
+                </ST>
+              </body>
+              <addData/>
+            </Method>
+          </data>
+          <data name="http://www.3s-software.com/plcopenxml/method" handleUnknown="implementation">
+            <Method name="InitObjName">
+              <interface>
+                <inputVars>
+                  <variable name="hr">
+                    <type>
+                      <derived name="REFERENCE TO HRESULT"/>
+                    </type>
+                  </variable>
+                </inputVars>
+                <localVars>
+                  <variable name="objectName">
+                    <type>
+                      <string length="255"/>
+                    </type>
+                    <initialValue>
+                      <simpleValue value="'TcMatSimObject_PlcRtFbInstance'"/>
+                    </initialValue>
+                  </variable>
+                  <variable name="oid">
+                    <type>
+                      <derived name="OTCID"/>
+                    </type>
+                  </variable>
+                </localVars>
+                <addData>
+                  <data name="http://www.3s-software.com/plcopenxml/accessmodifiers" handleUnknown="implementation">
+                    <AccessModifiers Private="true"/>
+                  </data>
+                  <data name="http://www.3s-software.com/plcopenxml/attributes" handleUnknown="implementation">
+                    <Attributes>
+                      <Attribute Name="object_name" Value="InitObjName"/>
+                    </Attributes>
+                  </data>
+                </addData>
+              </interface>
+              <body>
+                <ST>
+                  <xhtml xmlns="http://www.w3.org/1999/xhtml">
+IF (SUCCEEDED(hr)) THEN
+  hr := ipTcComObj.TcGetObjectId(oid);
+END_IF
+
+IF (SUCCEEDED(hr) and bDynInstance) THEN
+  objectName := TC2_STANDARD.CONCAT(objectName,'_');
+  objectName := TC2_STANDARD.CONCAT(objectName,UDINT_TO_STRING(oid));
+  hr := ipTcComObj.TcSetObjectName(ADR(objectName));
+END_IF
+                  </xhtml>
+                </ST>
+              </body>
+              <addData/>
+            </Method>
+          </data>
+          <data name="http://www.3s-software.com/plcopenxml/method" handleUnknown="implementation">
+            <Method name="SetObjState">
+              <interface>
+                <returnType>
+                  <derived name="HRESULT"/>
+                </returnType>
+                <inputVars>
+                  <variable name="finalState">
+                    <type>
+                      <derived name="TCOM_STATE"/>
+                    </type>
+                  </variable>
+                </inputVars>
+                <localVars>
+                  <variable name="bShiftUp">
+                    <type>
+                      <BOOL/>
+                    </type>
+                  </variable>
+                  <variable name="bShiftDown">
+                    <type>
+                      <BOOL/>
+                    </type>
+                  </variable>
+                  <variable name="currentState">
+                    <type>
+                      <derived name="TCOM_STATE"/>
+                    </type>
+                  </variable>
+                </localVars>
+                <addData>
+                  <data name="http://www.3s-software.com/plcopenxml/attributes" handleUnknown="implementation">
+                    <Attributes>
+                      <Attribute Name="object_name" Value="SetObjState"/>
+                    </Attributes>
+                  </data>
+                </addData>
+              </interface>
+              <body>
+                <ST>
+                  <xhtml xmlns="http://www.w3.org/1999/xhtml">
+currentState := State;
+
+bShiftUp := finalState&gt;currentState;
+bShiftDown := finalState&lt;currentState;
+
+// do not switch up on error
+IF (FAILED(hresult)) THEN
+  bShiftUp := FALSE;
+END_IF
+// reset existing error on switching down
+IF (bShiftDown) THEN
+  ResetHresult();
+END_IF
+
+// prepared state switch
+CASE currentState OF
+  TCOM_STATE_INIT:
+    IF(bShiftUp) THEN
+      QueryTcComInterface(hResult,0);
+      Internal_SetObjState(hResult,TCOM_STATE.TCOM_STATE_PREOP);
+      InitObjName(hResult);
+    END_IF
+
+  TCOM_STATE_PREOP:
+    IF(bShiftUp) THEN
+      Internal_SetObjState(hResult,TCOM_STATE.TCOM_STATE_SAFEOP);
+      QueryObjInterfaces(hResult);
+    ELSIF (bShiftDown) THEN
+      Internal_SetObjState(hResult,TCOM_STATE.TCOM_STATE_INIT);
+    END_IF
+
+  TCOM_STATE_SAFEOP:
+    IF(bShiftUp) THEN
+      Internal_SetObjState(hResult,TCOM_STATE.TCOM_STATE_OP);
+      QueryObjInterfaces(hResult);
+    ELSIF (bShiftDown) THEN
+      Internal_SetObjState(hResult,TCOM_STATE.TCOM_STATE_PREOP);
+      ReleaseObjInterfaces();
+    END_IF
+
+
+  TCOM_STATE_OP:
+    IF (bShiftDown) THEN
+      Internal_SetObjState(hResult,TCOM_STATE.TCOM_STATE_SAFEOP);
+    END_IF
+END_CASE
+
+SetObjState := hResult;
+                  </xhtml>
+                </ST>
+              </body>
+              <addData/>
+            </Method>
+          </data>
+          <data name="http://www.3s-software.com/plcopenxml/method" handleUnknown="implementation">
+            <Method name="QueryObjInterfaces">
+              <interface>
+                <inputVars>
+                  <variable name="hr">
+                    <type>
+                      <derived name="REFERENCE TO HRESULT"/>
+                    </type>
+                  </variable>
+                </inputVars>
+                <addData>
+                  <data name="http://www.3s-software.com/plcopenxml/accessmodifiers" handleUnknown="implementation">
+                    <AccessModifiers Private="true"/>
+                  </data>
+                  <data name="http://www.3s-software.com/plcopenxml/attributes" handleUnknown="implementation">
+                    <Attributes>
+                      <Attribute Name="object_name" Value="QueryObjInterfaces"/>
+                    </Attributes>
+                  </data>
+                </addData>
+              </interface>
+              <body>
+                <ST>
+                  <xhtml xmlns="http://www.w3.org/1999/xhtml">
+IF(State&lt;TCOM_STATE_PREOP)THEN
+  hr := Tc2_System.E_HRESULTAdsErr.INVALIDSTATE;
+END_IF
+
+//cyclic interface
+QueryObjInterface(hr,IID_ITCCYCLIC,ADR(ipTcCyclic));
+//post cyclic interface
+QueryObjInterface(hr,IID_ITCPOSTCYCLIC,ADR(ipTcPostCyclic));
+//adi interface
+QueryObjInterface(hr,IID_ITcADI,ADR(ipTcAdi));
+                  </xhtml>
+                </ST>
+              </body>
+              <addData/>
+            </Method>
+          </data>
+          <data name="http://www.3s-software.com/plcopenxml/method" handleUnknown="implementation">
+            <Method name="Init">
+              <interface>
+                <returnType>
+                  <derived name="HRESULT"/>
+                </returnType>
+                <inputVars>
+                  <variable name="oid">
+                    <type>
+                      <derived name="OTCID"/>
+                    </type>
+                  </variable>
+                </inputVars>
+                <addData>
+                  <data name="http://www.3s-software.com/plcopenxml/accessmodifiers" handleUnknown="implementation">
+                    <AccessModifiers Protected="true"/>
+                  </data>
+                  <data name="http://www.3s-software.com/plcopenxml/attributes" handleUnknown="implementation">
+                    <Attributes>
+                      <Attribute Name="object_name" Value="Init"/>
+                    </Attributes>
+                  </data>
+                </addData>
+              </interface>
+              <body>
+                <ST>
+                  <xhtml xmlns="http://www.w3.org/1999/xhtml">
+// preinitialize variables
+memset(ADR(moduleClsId),0,SIZEOF(moduleClsId));
+bClassIdVerified := FALSE;
+hResult := Tc2_System.E_HRESULTAdsErr.HRESULT_ADS_NOERROR;
+
+// get object server
+IF (ipObjSrv=0) THEN
+  hResult := FW_ObjMgr_GetObjectServer(_AppInfo.ObjId,ADR(ipObjSrv));
+END_IF
+
+// try to get object interfaces
+IF (SUCCEEDED(hresult)) THEN
+  QueryTcComInterface(hResult,oid);
+END_IF
+
+// verify class id
+IF (SUCCEEDED(hresult)) THEN
+  hresult := VerifyClassId();
+END_IF
+
+// query interfaces, if the current state is higher than INIT
+IF (SUCCEEDED(hresult) AND State&gt;TCOM_STATE.TCOM_STATE_INIT) THEN
+  QueryObjInterfaces(hResult);
+END_IF
+
+// return value
+Init := hresult;
+                  </xhtml>
+                </ST>
+              </body>
+              <addData/>
+            </Method>
+          </data>
+          <data name="http://www.3s-software.com/plcopenxml/method" handleUnknown="implementation">
+            <Method name="ReadModuleClassId" ObjectId="4430359c-9c39-4c2f-b0ca-4e5015b398ea">
+              <interface>
+                <returnType>
+                  <derived name="HRESULT" />
+                </returnType>
+                <localVars>
+                  <variable name="emptyClsId">
+                    <type>
+                      <derived name="CLSID" />
+                    </type>
+                  </variable>
+                </localVars>
+                <addData>
+                  <data name="http://www.3s-software.com/plcopenxml/accessmodifiers" handleUnknown="implementation">
+                    <AccessModifiers Private="true"/>
+                  </data>
+                  <data name="http://www.3s-software.com/plcopenxml/attributes" handleUnknown="implementation">
+                    <Attributes>
+                      <Attribute Name="object_name" Value="ReadModuleClassId"/>
+                    </Attributes>
+                  </data>
+                </addData>
+              </interface>
+              <body>
+                <ST>
+                  <xhtml xmlns="http://www.w3.org/1999/xhtml">memset(ADR(emptyClsId),0,SIZEOF(emptyClsId));
+IF (memcmp(ADR(moduleClsId),ADR(emptyClsId),SIZEOF(moduleClsId))=0) THEN
+  IF (ipTcComObj=0) THEN
+    ReadModuleClassId := Tc2_System.E_HRESULTAdsErr.NOINTERFACE;
+  END_IF
+
+  //objectClsId := clsid;
+  IF (SUCCEEDED(ReadModuleClassId)) THEN
+    ReadModuleClassId := ipTcComObj.GetClassId(moduleClsId);
+  END_IF
+END_IF</xhtml>
+                </ST>
+              </body>
+              <addData />
+            </Method>
+          </data>
+          <data name="http://www.3s-software.com/plcopenxml/method" handleUnknown="implementation">
+            <Method name="AssignClassId" ObjectId="70aee05c-b7c0-4a1a-90db-a70048b378df">
+              <interface>
+                <inputVars>
+                  <variable name="clsId">
+                    <type>
+                      <derived name="CLSID" />
+                    </type>
+                  </variable>
+                </inputVars>
+                <addData>
+                  <data name="http://www.3s-software.com/plcopenxml/attributes" handleUnknown="implementation">
+                    <Attributes>
+                      <Attribute Name="object_name" Value="AssignClassId" />
+                    </Attributes>
+                  </data>
+                </addData>
+              </interface>
+              <body>
+                <ST>
+                  <xhtml xmlns="http://www.w3.org/1999/xhtml">assignedClsId := clsId;
+bClassIdVerified := false;
+                  </xhtml>
+                </ST>
+              </body>
+              <InterfaceAsPlainText>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml">METHOD PUBLIC AssignClassId
+VAR_INPUT
+	clsId : CLSID;
+END_VAR
+                </xhtml>
+              </InterfaceAsPlainText>
+              <addData />
+            </Method>
+          </data>
+          <data name="http://www.3s-software.com/plcopenxml/property" handleUnknown="implementation">
+            <Property name="Error">
+              <interface>
+                <returnType>
+                  <BOOL/>
+                </returnType>
+              </interface>
+              <GetAccessor>
+                <interface>
+                  <addData>
+                    <data name="http://www.3s-software.com/plcopenxml/attributes" handleUnknown="implementation">
+                      <Attributes>
+                        <Attribute Name="hide" Value=""/>
+                      </Attributes>
+                    </data>
+                  </addData>
+                </interface>
+                <body>
+                  <ST>
+                    <xhtml xmlns="http://www.w3.org/1999/xhtml">Error := FAILED(hResult);</xhtml>
+                  </ST>
+                </body>
+                <addData/>
+              </GetAccessor>
+              <addData/>
+            </Property>
+          </data>
+          <data name="http://www.3s-software.com/plcopenxml/method" handleUnknown="implementation">
+            <Method name="SetDataAreaInfo" ObjectId="11a4ecef-f4b8-4ea3-b32a-f5c95d2a16a3">
+              <interface>
+                <inputVars>
+                  <variable name="pDataAreas">
+                    <type>
+                      <pointer>
+                        <baseType>
+                          <derived name="ST_TcMatSimObjectDataAreaInfo" />
+                        </baseType>
+                      </pointer>
+                    </type>
+                  </variable>
+                  <variable name="nDataAreas">
+                    <type>
+                      <UDINT />
+                    </type>
+                  </variable>
+                </inputVars>
+                <addData>
+                  <data name="http://www.3s-software.com/plcopenxml/attributes" handleUnknown="implementation">
+                    <Attributes>
+                      <Attribute Name="object_name" Value="SetDataAreaInfo" />
+                    </Attributes>
+                  </data>
+                </addData>
+              </interface>
+              <body>
+                <ST>
+                  <xhtml xmlns="http://www.w3.org/1999/xhtml">
+THIS^.nDataAreas := nDataAreas;
+THIS^.pDataAreas := pDataAreas;
+                  </xhtml>
+                </ST>
+              </body>
+              <InterfaceAsPlainText>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml">
+METHOD PUBLIC SetDataAreaInfo
+VAR_INPUT
+  pDataAreas: POINTER TO ST_TcMatSimObjectDataAreaInfo;
+  nDataAreas: UDINT;
+END_VAR
+                </xhtml>
+              </InterfaceAsPlainText>
+              <addData />
+            </Method>
+          </data>
+          <data name="http://www.3s-software.com/plcopenxml/method" handleUnknown="implementation">
+            <Method name="SetInitDataInfo" ObjectId="a4b3eb8c-b58b-4cd6-a9be-95800eb47e3c">
+              <interface>
+                <inputVars>
+                  <variable name="pInitData">
+                    <type>
+                      <pointer>
+                        <baseType>
+                          <derived name="TComInitDataHdr" />
+                        </baseType>
+                      </pointer>
+                    </type>
+                  </variable>
+                </inputVars>
+                <addData>
+                  <data name="http://www.3s-software.com/plcopenxml/attributes" handleUnknown="implementation">
+                    <Attributes>
+                      <Attribute Name="object_name" Value="SetInitDataInfo" />
+                    </Attributes>
+                  </data>
+                </addData>
+              </interface>
+              <body>
+                <ST>
+                  <xhtml xmlns="http://www.w3.org/1999/xhtml">this^.pInitData := pInitData;</xhtml>
+                </ST>
+              </body>
+              <InterfaceAsPlainText>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml">
+METHOD PUBLIC SetInitDataInfo
+VAR_INPUT
+  pInitData : POINTER TO TComInitDataHdr;
+END_VAR
+                </xhtml>
+              </InterfaceAsPlainText>
+              <addData />
+            </Method>
+          </data>
+          <data name="http://www.3s-software.com/plcopenxml/property" handleUnknown="implementation">
+            <Property name="ClassId">
+              <interface>
+                <returnType>
+                  <derived name="CLSID"/>
+                </returnType>
+              </interface>
+              <GetAccessor>
+                <interface>
+                  <addData>
+                    <data name="http://www.3s-software.com/plcopenxml/attributes" handleUnknown="implementation">
+                      <Attributes>
+                        <Attribute Name="hide" Value=""/>
+                      </Attributes>
+                    </data>
+                  </addData>
+                </interface>
+                <body>
+                  <ST>
+                    <xhtml xmlns="http://www.w3.org/1999/xhtml">hResult := ReadModuleClassId();
+ClassId := moduleClsId;
+                    </xhtml>
+                  </ST>
+                </body>
+                <addData/>
+              </GetAccessor>
+              <addData/>
+            </Property>
+          </data>
+          <data name="http://www.3s-software.com/plcopenxml/property" handleUnknown="implementation">
+            <Property name="State">
+              <interface>
+                <returnType>
+                  <derived name="TCOM_STATE"/>
+                </returnType>
+              </interface>
+              <SetAccessor>
+                <interface>
+                  <addData>
+                    <data name="http://www.3s-software.com/plcopenxml/attributes" handleUnknown="implementation">
+                      <Attributes>
+                        <Attribute Name="hide" Value=""/>
+                      </Attributes>
+                    </data>
+                  </addData>
+                </interface>
+                <body>
+                  <ST>
+                    <xhtml xmlns="http://www.w3.org/1999/xhtml">SetObjState(State);</xhtml>
+                  </ST>
+                </body>
+                <addData/>
+              </SetAccessor>
+              <GetAccessor>
+                <interface>
+                  <localVars>
+                    <variable name="hr">
+                      <type>
+                        <derived name="HRESULT"/>
+                      </type>
+                      <initialValue>
+                        <simpleValue value="S_OK"/>
+                      </initialValue>
+                    </variable>
+                    <variable name="eObjState">
+                      <type>
+                        <derived name="TCOM_STATE"/>
+                      </type>
+                    </variable>
+                  </localVars>
+                  <addData>
+                    <data name="http://www.3s-software.com/plcopenxml/attributes" handleUnknown="implementation">
+                      <Attributes>
+                        <Attribute Name="hide" Value=""/>
+                      </Attributes>
+                    </data>
+                  </addData>
+                </interface>
+                <body>
+                  <ST>
+                    <xhtml xmlns="http://www.w3.org/1999/xhtml">
+IF (ipTcComObj&lt;&gt;0) THEN
+  hr := ipTcComObj.TcGetObjState(ADR(eObjState));
+IF (FAILED(hr)) THEN
+  eObjState := TCOM_STATE.TCOM_STATE_INIT;
+END_IF
+ELSE
+  eObjState := TCOM_STATE.TCOM_STATE_INIT;
+END_IF
+State := eObjState;
+                    </xhtml>
+                  </ST>
+                </body>
+                <addData/>
+              </GetAccessor>
+              <addData/>
+            </Property>
+          </data>
+          <data name="http://www.3s-software.com/plcopenxml/property" handleUnknown="implementation">
+            <Property name="ErrorCode">
+              <interface>
+                <returnType>
+                  <derived name="HRESULT"/>
+                </returnType>
+              </interface>
+              <GetAccessor>
+                <interface>
+                  <addData>
+                    <data name="http://www.3s-software.com/plcopenxml/attributes" handleUnknown="implementation">
+                      <Attributes>
+                        <Attribute Name="hide" Value=""/>
+                      </Attributes>
+                    </data>
+                  </addData>
+                </interface>
+                <body>
+                  <ST>
+                    <xhtml xmlns="http://www.w3.org/1999/xhtml">ErrorCode := hResult;</xhtml>
+                  </ST>
+                </body>
+                <addData/>
+              </GetAccessor>
+              <addData/>
+            </Property>
+          </data>
+        </addData>
+      </pou>
+      <pou name="FB_controller_ballcatcher_inv_kin" pouType="functionBlock">
+        <interface>
+          <inputVars>
+            <variable name="stInput">
+	<type>
+		<derived name="ST_controller_ballcatcher_inv_kin_Input" />
+	</type>
+</variable>
+
+          </inputVars>
+          <outputVars>
+            <variable name="stOutput">
+	<type>
+		<derived name="ST_controller_ballcatcher_inv_kin_Output" />
+	</type>
+</variable>
+
+          </outputVars>
+          <localVars>
+            <variable name="stInitData">
+              <type>
+                <derived name="ST_controller_ballcatcher_inv_kinInitData" />
+              </type>
+            </variable>
+            <variable name="arrDataAreas">
+              <type>
+                <array>
+                  <dimension lower="1" upper="2"/>
+                  <baseType>
+                    <derived name="ST_TcMatSimObjectDataAreaInfo"/>
+                  </baseType>
+                </array>
+              </type>
+            </variable>
+            <variable name="bParametersVerified">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+          </localVars>
+          <addData>
+            <data name="http://www.3s-software.com/plcopenxml/pouinheritance" handleUnknown="implementation">
+              <Inheritance>
+                <Extends>FB_TcMatSimObject</Extends>
+              </Inheritance>
+            </data>
+            <data name="http://www.3s-software.com/plcopenxml/attributes" handleUnknown="implementation">
+              <Attributes>
+                <Attribute Name="TcDependOnClassFactory" Value="controller_ballcatcher_inv_kin" />
+              </Attributes>
+            </data>
+          </addData>
+        </interface>
+        <body>
+          <ST>
+            <xhtml xmlns="http://www.w3.org/1999/xhtml" />
+          </ST>
+        </body>
+        <addData>
+          <data name="http://www.3s-software.com/plcopenxml/method" handleUnknown="implementation">
+            <Method name="Internal_SetObjState">
+              <interface>
+                <inputVars>
+                  <variable name="hr">
+                    <type>
+                      <derived name="REFERENCE TO HRESULT"/>
+                    </type>
+                  </variable>
+                  <variable name="nextState">
+                    <type>
+                      <derived name="TCOM_STATE"/>
+                    </type>
+                  </variable>
+                </inputVars>
+                <addData>
+                  <data name="http://www.3s-software.com/plcopenxml/accessmodifiers" handleUnknown="implementation">
+                    <AccessModifiers Protected="true"/>
+                  </data>
+                  <data name="http://www.3s-software.com/plcopenxml/attributes" handleUnknown="implementation">
+                    <Attributes>
+                      <Attribute Name="object_name" Value="Internal_SetObjState"/>
+                    </Attributes>
+                  </data>
+                </addData>
+              </interface>
+              <body>
+                <ST>
+                  <xhtml xmlns="http://www.w3.org/1999/xhtml">
+// update pointer to InitData structure
+SetInitDataInfo(ADR(stInitData));
+// call base method
+SUPER^.Internal_SetObjState(hr,nextState);
+                  </xhtml>
+                </ST>
+              </body>
+              <addData/>
+            </Method>
+          </data>
+
+          <data name="http://www.3s-software.com/plcopenxml/method" handleUnknown="implementation">
+            <Method name="SaveOnlineParametersForInit">
+              <interface>
+                <returnType>
+                  <derived name="HRESULT"/>
+                </returnType>
+                <localVars>
+                  <variable name="idx">
+                    <type>
+                      <UINT/>
+                    </type>
+                  </variable>
+                  <variable name="pInitElemHdr">
+                    <type>
+                      <pointer>
+                        <baseType>
+                          <derived name="TComInitDataElmHdr"/>
+                        </baseType>
+                      </pointer>
+                    </type>
+                  </variable>
+                  <variable name="pData">
+                    <type>
+                      <derived name="PVOID"/>
+                    </type>
+                  </variable>
+                  <variable name="nData">
+                    <type>
+                      <UDINT/>
+                    </type>
+                  </variable>
+                </localVars>
+                <localVars constant="true">
+                  <variable name="nInitDataAlignment">
+                    <type>
+                      <UDINT/>
+                    </type>
+                    <initialValue>
+                      <simpleValue value="4"/>
+                    </initialValue>
+                  </variable>
+                </localVars>
+                <addData>
+                  <data name="http://www.3s-software.com/plcopenxml/attributes" handleUnknown="implementation">
+                    <Attributes>
+                      <Attribute Name="object_name" Value="SaveOnlineParametersForInit"/>
+                    </Attributes>
+                  </data>
+                </addData>
+              </interface>
+              <body>
+                <ST>
+                  <xhtml xmlns="http://www.w3.org/1999/xhtml">
+// update pointer to InitData structure
+SetInitDataInfo(ADR(stInitData));
+// call base method
+SaveOnlineParametersForInit := SUPER^.SaveOnlineParametersForInit();
+                  </xhtml>
+                </ST>
+              </body>
+              <addData/>
+            </Method>
+          </data>
+          <data name="http://www.3s-software.com/plcopenxml/method" handleUnknown="implementation">
+            <Method name="FB_init">
+              <interface>
+                <returnType>
+                  <BOOL />
+                </returnType>
+                <inputVars>
+                  <variable name="bInitRetains">
+                    <type>
+                      <BOOL />
+                    </type>
+                    <documentation>
+                      <xhtml xmlns="http://www.w3.org/1999/xhtml"> if TRUE, the retain variables are initialized (warm start / cold start)</xhtml>
+                    </documentation>
+                  </variable>
+                  <variable name="bInCopyCode">
+                    <type>
+                      <BOOL />
+                    </type>
+                    <documentation>
+                      <xhtml xmlns="http://www.w3.org/1999/xhtml"> if TRUE, the instance afterwards gets moved into the copy code (online change)</xhtml>
+                    </documentation>
+                  </variable>
+                  <variable name="oid">
+                    <type>
+                      <derived name="OTCID" />
+                    </type>
+                  </variable>
+                </inputVars>
+                <localVars>
+                  <variable name="clsId">
+                    <type>
+                      <derived name="CLSID"/>
+                    </type>
+                  </variable>
+                </localVars>
+              </interface>
+              <body>
+                <ST>
+                  <xhtml xmlns="http://www.w3.org/1999/xhtml">
+// initialize flags
+bParametersVerified := false;
+                    
+// set module class id for compatibility check
+clsId.Data1 := 16#f3c475fc;
+clsId.Data2 := 16#facb;
+clsId.Data3 := 16#42bb;
+clsId.Data4[0] := 16#8e;
+clsId.Data4[1] := 16#4e;
+clsId.Data4[2] := 16#27;
+clsId.Data4[3] := 16#76;
+clsId.Data4[4] := 16#42;
+clsId.Data4[5] := 16#7b;
+clsId.Data4[6] := 16#49;
+clsId.Data4[7] := 16#79;
+
+AssignClassId(clsId);
+                    
+// initialize InitData structure with default values              
+stInitData.CallByHdr.indexGroup := 0;
+stInitData.CallByHdr.indexOffset := 16#00000000;
+stInitData.CallByHdr.cbData := SIZEOF(stInitData.CallBy);
+stInitData.CallBy := TctModuleCallByType.CyclicTask;
+stInitData.ExecutionSequenceHdr.indexGroup := 0;
+stInitData.ExecutionSequenceHdr.indexOffset := 16#00000001;
+stInitData.ExecutionSequenceHdr.cbData := SIZEOF(stInitData.ExecutionSequence);
+stInitData.ExecutionSequence := TctModuleExecutionSequenceType.StateUpdateAfterOutputMapping;
+stInitData.StepSizeHdr.indexGroup := 0;
+stInitData.StepSizeHdr.indexOffset := 16#00000002;
+stInitData.StepSizeHdr.cbData := SIZEOF(stInitData.StepSize);
+stInitData.StepSize := TctStepSizeType.RequireMatchingTaskCycleTime;
+stInitData.ExtModeParametersHdr.indexGroup := 0;
+stInitData.ExtModeParametersHdr.indexOffset := 16#bf002000;
+stInitData.ExtModeParametersHdr.cbData := SIZEOF(stInitData.ExtModeParameters);
+stInitData.ExtModeParameters.ConnectionTimeout := 3;
+stInitData.ExtModeParameters.InitIncomingPktBufferSize := 10000;
+stInitData.ExtModeParameters.InitOutgoingPktBufferSize := 10000;
+stInitData.ExtModeParameters.Activated := 1;
+stInitData.ExtModeParameters.AllowExecutionCommands := 1;
+stInitData.ExtModeParameters.WaitForStartCommand := 0;
+stInitData.ExtModeParameters.AllowParameterChange := 1;
+stInitData.ExecuteModelCodeHdr.indexGroup := 0;
+stInitData.ExecuteModelCodeHdr.indexOffset := 16#00000008;
+stInitData.ExecuteModelCodeHdr.cbData := SIZEOF(stInitData.ExecuteModelCode);
+stInitData.ExecuteModelCode := 1;
+stInitData.ModelParametersHdr.indexGroup := 0;
+stInitData.ModelParametersHdr.indexOffset := 16#83000000;
+stInitData.ModelParametersHdr.cbData := SIZEOF(stInitData.ModelParameters);
+stInitData.ModelParameters.optitrack_data.x[0] := 3.1016510000000004;
+stInitData.ModelParameters.optitrack_data.x[1] := 3.089226;
+stInitData.ModelParameters.optitrack_data.x[2] := 3.0765890000000002;
+stInitData.ModelParameters.optitrack_data.x[3] := 3.0635590000000001;
+stInitData.ModelParameters.optitrack_data.x[4] := 3.0509270000000002;
+stInitData.ModelParameters.optitrack_data.x[5] := 3.0381330000000002;
+stInitData.ModelParameters.optitrack_data.x[6] := 3.0255080000000003;
+stInitData.ModelParameters.optitrack_data.x[7] := 3.0128910000000002;
+stInitData.ModelParameters.optitrack_data.x[8] := 3.000238;
+stInitData.ModelParameters.optitrack_data.x[9] := 2.9874520000000002;
+stInitData.ModelParameters.optitrack_data.x[10] := 2.9748030000000001;
+stInitData.ModelParameters.optitrack_data.x[11] := 2.962075;
+stInitData.ModelParameters.optitrack_data.x[12] := 2.9493900000000002;
+stInitData.ModelParameters.optitrack_data.x[13] := 2.9370510000000003;
+stInitData.ModelParameters.optitrack_data.x[14] := 2.924569;
+stInitData.ModelParameters.optitrack_data.x[15] := 2.9119620000000004;
+stInitData.ModelParameters.optitrack_data.x[16] := 2.899311;
+stInitData.ModelParameters.optitrack_data.x[17] := 2.8868670000000001;
+stInitData.ModelParameters.optitrack_data.x[18] := 2.8743570000000003;
+stInitData.ModelParameters.optitrack_data.x[19] := 2.8617880000000002;
+stInitData.ModelParameters.optitrack_data.x[20] := 2.8489300000000002;
+stInitData.ModelParameters.optitrack_data.x[21] := 2.8363160000000001;
+stInitData.ModelParameters.optitrack_data.x[22] := 2.823769;
+stInitData.ModelParameters.optitrack_data.x[23] := 2.8112720000000002;
+stInitData.ModelParameters.optitrack_data.x[24] := 2.7986780000000002;
+stInitData.ModelParameters.optitrack_data.x[25] := 2.7860750000000003;
+stInitData.ModelParameters.optitrack_data.x[26] := 2.7735480000000003;
+stInitData.ModelParameters.optitrack_data.x[27] := 2.7608330000000003;
+stInitData.ModelParameters.optitrack_data.x[28] := 2.7482300000000004;
+stInitData.ModelParameters.optitrack_data.x[29] := 2.7357630000000004;
+stInitData.ModelParameters.optitrack_data.x[30] := 2.7233210000000003;
+stInitData.ModelParameters.optitrack_data.x[31] := 2.7110510000000003;
+stInitData.ModelParameters.optitrack_data.x[32] := 2.6984780000000002;
+stInitData.ModelParameters.optitrack_data.x[33] := 2.686013;
+stInitData.ModelParameters.optitrack_data.x[34] := 2.6735450000000003;
+stInitData.ModelParameters.optitrack_data.x[35] := 2.6611040000000004;
+stInitData.ModelParameters.optitrack_data.x[36] := 2.6487180000000001;
+stInitData.ModelParameters.optitrack_data.x[37] := 2.6360400000000004;
+stInitData.ModelParameters.optitrack_data.x[38] := 2.6234580000000003;
+stInitData.ModelParameters.optitrack_data.x[39] := 2.6109810000000002;
+stInitData.ModelParameters.optitrack_data.x[40] := 2.5986100000000003;
+stInitData.ModelParameters.optitrack_data.x[41] := 2.5860620000000001;
+stInitData.ModelParameters.optitrack_data.x[42] := 2.573674;
+stInitData.ModelParameters.optitrack_data.x[43] := 2.561185;
+stInitData.ModelParameters.optitrack_data.x[44] := 2.548762;
+stInitData.ModelParameters.optitrack_data.x[45] := 2.536098;
+stInitData.ModelParameters.optitrack_data.x[46] := 2.5237190000000003;
+stInitData.ModelParameters.optitrack_data.x[47] := 2.5114050000000003;
+stInitData.ModelParameters.optitrack_data.x[48] := 2.4993370000000001;
+stInitData.ModelParameters.optitrack_data.x[49] := 2.4868600000000001;
+stInitData.ModelParameters.optitrack_data.x[50] := 2.4742890000000002;
+stInitData.ModelParameters.optitrack_data.x[51] := 2.4618320000000002;
+stInitData.ModelParameters.optitrack_data.x[52] := 2.4495610000000001;
+stInitData.ModelParameters.optitrack_data.x[53] := 2.4373330000000002;
+stInitData.ModelParameters.optitrack_data.x[54] := 2.424855;
+stInitData.ModelParameters.optitrack_data.x[55] := 2.4124240000000001;
+stInitData.ModelParameters.optitrack_data.x[56] := 2.3999260000000002;
+stInitData.ModelParameters.optitrack_data.x[57] := 2.3876550000000001;
+stInitData.ModelParameters.optitrack_data.x[58] := 2.3752470000000003;
+stInitData.ModelParameters.optitrack_data.x[59] := 2.3629440000000002;
+stInitData.ModelParameters.optitrack_data.x[60] := 2.3505030000000002;
+stInitData.ModelParameters.optitrack_data.x[61] := 2.3382880000000004;
+stInitData.ModelParameters.optitrack_data.x[62] := 2.3257840000000001;
+stInitData.ModelParameters.optitrack_data.x[63] := 2.3133780000000002;
+stInitData.ModelParameters.optitrack_data.x[64] := 2.3012400000000004;
+stInitData.ModelParameters.optitrack_data.x[65] := 2.289145;
+stInitData.ModelParameters.optitrack_data.x[66] := 2.276783;
+stInitData.ModelParameters.optitrack_data.x[67] := 2.2643820000000003;
+stInitData.ModelParameters.optitrack_data.x[68] := 2.252084;
+stInitData.ModelParameters.optitrack_data.x[69] := 2.2397930000000001;
+stInitData.ModelParameters.optitrack_data.x[70] := 2.227732;
+stInitData.ModelParameters.optitrack_data.x[71] := 2.215373;
+stInitData.ModelParameters.optitrack_data.x[72] := 2.2031110000000003;
+stInitData.ModelParameters.optitrack_data.x[73] := 2.1908480000000004;
+stInitData.ModelParameters.optitrack_data.x[74] := 2.1784670000000004;
+stInitData.ModelParameters.optitrack_data.x[75] := 2.1661350000000001;
+stInitData.ModelParameters.optitrack_data.x[76] := 2.1542440000000003;
+stInitData.ModelParameters.optitrack_data.x[77] := 2.1419980000000001;
+stInitData.ModelParameters.optitrack_data.x[78] := 2.1293990000000003;
+stInitData.ModelParameters.optitrack_data.x[79] := 2.1170850000000003;
+stInitData.ModelParameters.optitrack_data.x[80] := 2.104867;
+stInitData.ModelParameters.optitrack_data.x[81] := 2.0927600000000002;
+stInitData.ModelParameters.optitrack_data.x[82] := 2.0806140000000002;
+stInitData.ModelParameters.optitrack_data.x[83] := 2.0684830000000001;
+stInitData.ModelParameters.optitrack_data.x[84] := 2.0563060000000002;
+stInitData.ModelParameters.optitrack_data.x[85] := 2.043927;
+stInitData.ModelParameters.optitrack_data.x[86] := 2.0317860000000003;
+stInitData.ModelParameters.optitrack_data.x[87] := 2.019641;
+stInitData.ModelParameters.optitrack_data.x[88] := 2.0073690000000002;
+stInitData.ModelParameters.optitrack_data.x[89] := 1.99536;
+stInitData.ModelParameters.optitrack_data.x[90] := 1.98322;
+stInitData.ModelParameters.optitrack_data.x[91] := 1.9709559999999999;
+stInitData.ModelParameters.optitrack_data.x[92] := 1.9586539999999999;
+stInitData.ModelParameters.optitrack_data.x[93] := 1.9463679999999999;
+stInitData.ModelParameters.optitrack_data.x[94] := 1.9343229999999998;
+stInitData.ModelParameters.optitrack_data.x[95] := 1.9222379999999999;
+stInitData.ModelParameters.optitrack_data.x[96] := 1.9100439999999999;
+stInitData.ModelParameters.optitrack_data.x[97] := 1.8976529999999998;
+stInitData.ModelParameters.optitrack_data.x[98] := 1.885591;
+stInitData.ModelParameters.optitrack_data.x[99] := 1.8735479999999998;
+stInitData.ModelParameters.optitrack_data.x[100] := 1.861518;
+stInitData.ModelParameters.optitrack_data.x[101] := 1.8496119999999998;
+stInitData.ModelParameters.optitrack_data.x[102] := 1.8376159999999999;
+stInitData.ModelParameters.optitrack_data.x[103] := 1.82548;
+stInitData.ModelParameters.optitrack_data.x[104] := 1.81342;
+stInitData.ModelParameters.optitrack_data.x[105] := 1.8010589999999997;
+stInitData.ModelParameters.optitrack_data.x[106] := 1.7891030000000001;
+stInitData.ModelParameters.optitrack_data.x[107] := 1.777147;
+stInitData.ModelParameters.optitrack_data.x[108] := 1.765096;
+stInitData.ModelParameters.optitrack_data.x[109] := 1.752718;
+stInitData.ModelParameters.optitrack_data.x[110] := 1.740658;
+stInitData.ModelParameters.optitrack_data.x[111] := 1.7287289999999997;
+stInitData.ModelParameters.optitrack_data.x[112] := 1.716626;
+stInitData.ModelParameters.optitrack_data.x[113] := 1.7046859999999999;
+stInitData.ModelParameters.optitrack_data.x[114] := 1.692115;
+stInitData.ModelParameters.optitrack_data.x[115] := 1.6801059999999999;
+stInitData.ModelParameters.optitrack_data.x[116] := 1.6681599999999999;
+stInitData.ModelParameters.optitrack_data.x[117] := 1.656191;
+stInitData.ModelParameters.optitrack_data.x[118] := 1.64422;
+stInitData.ModelParameters.optitrack_data.x[119] := 1.6325460000000001;
+stInitData.ModelParameters.optitrack_data.x[120] := 1.6204719999999999;
+stInitData.ModelParameters.optitrack_data.x[121] := 1.608368;
+stInitData.ModelParameters.optitrack_data.x[122] := 1.5963529999999999;
+stInitData.ModelParameters.optitrack_data.x[123] := 1.5842559999999999;
+stInitData.ModelParameters.optitrack_data.x[124] := 1.572476;
+stInitData.ModelParameters.optitrack_data.x[125] := 1.560676;
+stInitData.ModelParameters.optitrack_data.x[126] := 1.5484329999999999;
+stInitData.ModelParameters.optitrack_data.x[127] := 1.5361639999999999;
+stInitData.ModelParameters.optitrack_data.x[128] := 1.52424;
+stInitData.ModelParameters.optitrack_data.x[129] := 1.5123309999999999;
+stInitData.ModelParameters.optitrack_data.x[130] := 1.5003819999999999;
+stInitData.ModelParameters.optitrack_data.x[131] := 1.488267;
+stInitData.ModelParameters.optitrack_data.x[132] := 1.4762089999999999;
+stInitData.ModelParameters.optitrack_data.x[133] := 1.464342;
+stInitData.ModelParameters.optitrack_data.x[134] := 1.4523679999999999;
+stInitData.ModelParameters.optitrack_data.x[135] := 1.4406029999999999;
+stInitData.ModelParameters.optitrack_data.x[136] := 1.4288239999999999;
+stInitData.ModelParameters.optitrack_data.x[137] := 1.417036;
+stInitData.ModelParameters.optitrack_data.x[138] := 1.4050019999999999;
+stInitData.ModelParameters.optitrack_data.x[139] := 1.392989;
+stInitData.ModelParameters.optitrack_data.x[140] := 1.381113;
+stInitData.ModelParameters.optitrack_data.x[141] := 1.3694269999999999;
+stInitData.ModelParameters.optitrack_data.x[142] := 1.3576329999999999;
+stInitData.ModelParameters.optitrack_data.x[143] := 1.3456440000000001;
+stInitData.ModelParameters.optitrack_data.x[144] := 1.333288;
+stInitData.ModelParameters.optitrack_data.x[145] := 1.3214219999999999;
+stInitData.ModelParameters.optitrack_data.x[146] := 1.309634;
+stInitData.ModelParameters.optitrack_data.x[147] := 1.297795;
+stInitData.ModelParameters.optitrack_data.x[148] := 1.285927;
+stInitData.ModelParameters.optitrack_data.x[149] := 1.2739639999999999;
+stInitData.ModelParameters.optitrack_data.x[150] := 1.262157;
+stInitData.ModelParameters.optitrack_data.x[151] := 1.2502439999999999;
+stInitData.ModelParameters.optitrack_data.x[152] := 1.238526;
+stInitData.ModelParameters.optitrack_data.x[153] := 1.226891;
+stInitData.ModelParameters.optitrack_data.x[154] := 1.2152609999999999;
+stInitData.ModelParameters.optitrack_data.x[155] := 1.203282;
+stInitData.ModelParameters.optitrack_data.x[156] := 1.191522;
+stInitData.ModelParameters.optitrack_data.x[157] := 1.1795229999999999;
+stInitData.ModelParameters.optitrack_data.x[158] := 1.1679199999999998;
+stInitData.ModelParameters.optitrack_data.x[159] := 1.156236;
+stInitData.ModelParameters.optitrack_data.x[160] := 1.144523;
+stInitData.ModelParameters.optitrack_data.x[161] := 1.1323809999999999;
+stInitData.ModelParameters.optitrack_data.x[162] := 1.120439;
+stInitData.ModelParameters.optitrack_data.x[163] := 1.1086639999999999;
+stInitData.ModelParameters.optitrack_data.x[164] := 1.0969359999999999;
+stInitData.ModelParameters.optitrack_data.x[165] := 1.085275;
+stInitData.ModelParameters.optitrack_data.x[166] := 1.073453;
+stInitData.ModelParameters.optitrack_data.x[167] := 1.0617099999999999;
+stInitData.ModelParameters.optitrack_data.x[168] := 1.0500179999999999;
+stInitData.ModelParameters.optitrack_data.x[169] := 1.0382799999999999;
+stInitData.ModelParameters.optitrack_data.x[170] := 1.0266359999999999;
+stInitData.ModelParameters.optitrack_data.x[171] := 1.015137;
+stInitData.ModelParameters.optitrack_data.x[172] := 1.003514;
+stInitData.ModelParameters.optitrack_data.x[173] := 0.99169700000000005;
+stInitData.ModelParameters.optitrack_data.x[174] := 0.97987899999999994;
+stInitData.ModelParameters.optitrack_data.x[175] := 0.96823700000000001;
+stInitData.ModelParameters.optitrack_data.x[176] := 0.9567969999999999;
+stInitData.ModelParameters.optitrack_data.x[177] := 0.94511999999999996;
+stInitData.ModelParameters.optitrack_data.x[178] := 0.93329099999999987;
+stInitData.ModelParameters.optitrack_data.x[179] := 0.92137399999999992;
+stInitData.ModelParameters.optitrack_data.x[180] := 0.90964699999999987;
+stInitData.ModelParameters.optitrack_data.x[181] := 0.89805399999999991;
+stInitData.ModelParameters.optitrack_data.x[182] := 0.88655099999999987;
+stInitData.ModelParameters.optitrack_data.x[183] := 0.87485400000000002;
+stInitData.ModelParameters.optitrack_data.x[184] := 0.86321000000000003;
+stInitData.ModelParameters.optitrack_data.x[185] := 0.85163600000000006;
+stInitData.ModelParameters.optitrack_data.x[186] := 0.8400129999999999;
+stInitData.ModelParameters.optitrack_data.x[187] := 0.82853599999999994;
+stInitData.ModelParameters.optitrack_data.x[188] := 0.81710199999999999;
+stInitData.ModelParameters.optitrack_data.x[189] := 0.80566699999999991;
+stInitData.ModelParameters.optitrack_data.x[190] := 0.79403999999999986;
+stInitData.ModelParameters.optitrack_data.x[191] := 0.78219899999999987;
+stInitData.ModelParameters.optitrack_data.x[192] := 0.77065499999999987;
+stInitData.ModelParameters.optitrack_data.x[193] := 0.75933600000000001;
+stInitData.ModelParameters.optitrack_data.x[194] := 0.747892;
+stInitData.ModelParameters.optitrack_data.x[195] := 0.73637700000000006;
+stInitData.ModelParameters.optitrack_data.x[196] := 0.72442999999999991;
+stInitData.ModelParameters.optitrack_data.x[197] := 0.71280900000000003;
+stInitData.ModelParameters.optitrack_data.x[198] := 0.70134799999999986;
+stInitData.ModelParameters.optitrack_data.x[199] := 0.68998599999999999;
+stInitData.ModelParameters.optitrack_data.x[200] := 0.67853800000000009;
+stInitData.ModelParameters.optitrack_data.x[201] := 0.66695700000000002;
+stInitData.ModelParameters.optitrack_data.x[202] := 0.65535999999999994;
+stInitData.ModelParameters.optitrack_data.x[203] := 0.64388000000000001;
+stInitData.ModelParameters.optitrack_data.x[204] := 0.63249299999999997;
+stInitData.ModelParameters.optitrack_data.x[205] := 0.62119600000000008;
+stInitData.ModelParameters.optitrack_data.x[206] := 0.609761;
+stInitData.ModelParameters.optitrack_data.x[207] := 0.59830899999999998;
+stInitData.ModelParameters.optitrack_data.x[208] := 0.58686299999999991;
+stInitData.ModelParameters.optitrack_data.x[209] := 0.57542500000000008;
+stInitData.ModelParameters.optitrack_data.x[210] := 0.56412400000000007;
+stInitData.ModelParameters.optitrack_data.x[211] := 0.55296100000000004;
+stInitData.ModelParameters.optitrack_data.x[212] := 0.54156599999999999;
+stInitData.ModelParameters.optitrack_data.x[213] := 0.52959599999999996;
+stInitData.ModelParameters.optitrack_data.x[214] := 0.51814099999999996;
+stInitData.ModelParameters.optitrack_data.x[215] := 0.50699699999999992;
+stInitData.ModelParameters.optitrack_data.x[216] := 0.49583000000000005;
+stInitData.ModelParameters.optitrack_data.x[217] := 0.48452500000000004;
+stInitData.ModelParameters.optitrack_data.x[218] := 0.47319600000000001;
+stInitData.ModelParameters.optitrack_data.x[219] := 0.46180099999999996;
+stInitData.ModelParameters.optitrack_data.x[220] := 0.45051400000000003;
+stInitData.ModelParameters.optitrack_data.x[221] := 0.43909300000000001;
+stInitData.ModelParameters.optitrack_data.x[222] := 0.42783900000000002;
+stInitData.ModelParameters.optitrack_data.x[223] := 0.41661399999999998;
+stInitData.ModelParameters.optitrack_data.x[224] := 0.40516000000000002;
+stInitData.ModelParameters.optitrack_data.x[225] := 0.39392900000000003;
+stInitData.ModelParameters.optitrack_data.x[226] := 0.38262999999999997;
+stInitData.ModelParameters.optitrack_data.x[227] := 0.37155299999999997;
+stInitData.ModelParameters.optitrack_data.x[228] := 0.36040600000000006;
+stInitData.ModelParameters.optitrack_data.x[229] := 0.34935900000000003;
+stInitData.ModelParameters.optitrack_data.x[230] := 0.337868;
+stInitData.ModelParameters.optitrack_data.x[231] := 0.32642299999999996;
+stInitData.ModelParameters.optitrack_data.x[232] := 0.31506200000000001;
+stInitData.ModelParameters.optitrack_data.x[233] := 0.30419000000000002;
+stInitData.ModelParameters.optitrack_data.x[234] := 0.29319400000000001;
+stInitData.ModelParameters.optitrack_data.x[235] := 0.28200700000000006;
+stInitData.ModelParameters.optitrack_data.x[236] := 0.27082000000000001;
+stInitData.ModelParameters.optitrack_data.x[237] := 0.259573;
+stInitData.ModelParameters.optitrack_data.x[238] := 0.24842599999999998;
+stInitData.ModelParameters.optitrack_data.x[239] := 0.23727199999999998;
+stInitData.ModelParameters.optitrack_data.x[240] := 0.22608800000000001;
+stInitData.ModelParameters.optitrack_data.x[241] := 0.214945;
+stInitData.ModelParameters.optitrack_data.x[242] := 0.20373900000000006;
+stInitData.ModelParameters.optitrack_data.x[243] := 0.19268000000000002;
+stInitData.ModelParameters.optitrack_data.x[244] := 0.18170400000000003;
+stInitData.ModelParameters.optitrack_data.x[245] := 0.17077900000000001;
+stInitData.ModelParameters.optitrack_data.y[0] := 0.66638799999999998;
+stInitData.ModelParameters.optitrack_data.y[1] := 0.66316400000000009;
+stInitData.ModelParameters.optitrack_data.y[2] := 0.66000700000000001;
+stInitData.ModelParameters.optitrack_data.y[3] := 0.65634799999999993;
+stInitData.ModelParameters.optitrack_data.y[4] := 0.65349400000000002;
+stInitData.ModelParameters.optitrack_data.y[5] := 0.65040399999999998;
+stInitData.ModelParameters.optitrack_data.y[6] := 0.64718699999999996;
+stInitData.ModelParameters.optitrack_data.y[7] := 0.64438499999999999;
+stInitData.ModelParameters.optitrack_data.y[8] := 0.64141500000000007;
+stInitData.ModelParameters.optitrack_data.y[9] := 0.63832700000000009;
+stInitData.ModelParameters.optitrack_data.y[10] := 0.63550499999999999;
+stInitData.ModelParameters.optitrack_data.y[11] := 0.63245799999999996;
+stInitData.ModelParameters.optitrack_data.y[12] := 0.6295170000000001;
+stInitData.ModelParameters.optitrack_data.y[13] := 0.62655700000000003;
+stInitData.ModelParameters.optitrack_data.y[14] := 0.623529;
+stInitData.ModelParameters.optitrack_data.y[15] := 0.62051600000000007;
+stInitData.ModelParameters.optitrack_data.y[16] := 0.61758000000000002;
+stInitData.ModelParameters.optitrack_data.y[17] := 0.61531899999999995;
+stInitData.ModelParameters.optitrack_data.y[18] := 0.61239500000000002;
+stInitData.ModelParameters.optitrack_data.y[19] := 0.60923400000000005;
+stInitData.ModelParameters.optitrack_data.y[20] := 0.60558800000000002;
+stInitData.ModelParameters.optitrack_data.y[21] := 0.60267899999999996;
+stInitData.ModelParameters.optitrack_data.y[22] := 0.59967199999999998;
+stInitData.ModelParameters.optitrack_data.y[23] := 0.59674699999999992;
+stInitData.ModelParameters.optitrack_data.y[24] := 0.59356999999999993;
+stInitData.ModelParameters.optitrack_data.y[25] := 0.59068600000000004;
+stInitData.ModelParameters.optitrack_data.y[26] := 0.58783399999999997;
+stInitData.ModelParameters.optitrack_data.y[27] := 0.58489400000000002;
+stInitData.ModelParameters.optitrack_data.y[28] := 0.58197199999999993;
+stInitData.ModelParameters.optitrack_data.y[29] := 0.57902999999999993;
+stInitData.ModelParameters.optitrack_data.y[30] := 0.57602200000000003;
+stInitData.ModelParameters.optitrack_data.y[31] := 0.57306600000000008;
+stInitData.ModelParameters.optitrack_data.y[32] := 0.57020099999999996;
+stInitData.ModelParameters.optitrack_data.y[33] := 0.56724299999999994;
+stInitData.ModelParameters.optitrack_data.y[34] := 0.56499600000000005;
+stInitData.ModelParameters.optitrack_data.y[35] := 0.56187999999999994;
+stInitData.ModelParameters.optitrack_data.y[36] := 0.55874399999999991;
+stInitData.ModelParameters.optitrack_data.y[37] := 0.55562899999999993;
+stInitData.ModelParameters.optitrack_data.y[38] := 0.55235600000000007;
+stInitData.ModelParameters.optitrack_data.y[39] := 0.54935599999999996;
+stInitData.ModelParameters.optitrack_data.y[40] := 0.54633599999999993;
+stInitData.ModelParameters.optitrack_data.y[41] := 0.54330100000000003;
+stInitData.ModelParameters.optitrack_data.y[42] := 0.54043599999999992;
+stInitData.ModelParameters.optitrack_data.y[43] := 0.53758900000000009;
+stInitData.ModelParameters.optitrack_data.y[44] := 0.53472800000000009;
+stInitData.ModelParameters.optitrack_data.y[45] := 0.53169700000000009;
+stInitData.ModelParameters.optitrack_data.y[46] := 0.52872999999999992;
+stInitData.ModelParameters.optitrack_data.y[47] := 0.5257210000000001;
+stInitData.ModelParameters.optitrack_data.y[48] := 0.52286800000000011;
+stInitData.ModelParameters.optitrack_data.y[49] := 0.52001900000000001;
+stInitData.ModelParameters.optitrack_data.y[50] := 0.51705599999999996;
+stInitData.ModelParameters.optitrack_data.y[51] := 0.51405600000000007;
+stInitData.ModelParameters.optitrack_data.y[52] := 0.51109500000000008;
+stInitData.ModelParameters.optitrack_data.y[53] := 0.5085090000000001;
+stInitData.ModelParameters.optitrack_data.y[54] := 0.50522899999999993;
+stInitData.ModelParameters.optitrack_data.y[55] := 0.50226999999999999;
+stInitData.ModelParameters.optitrack_data.y[56] := 0.49935200000000002;
+stInitData.ModelParameters.optitrack_data.y[57] := 0.49631200000000009;
+stInitData.ModelParameters.optitrack_data.y[58] := 0.4932939999999999;
+stInitData.ModelParameters.optitrack_data.y[59] := 0.49039999999999995;
+stInitData.ModelParameters.optitrack_data.y[60] := 0.4874989999999999;
+stInitData.ModelParameters.optitrack_data.y[61] := 0.48466699999999996;
+stInitData.ModelParameters.optitrack_data.y[62] := 0.48179700000000003;
+stInitData.ModelParameters.optitrack_data.y[63] := 0.47879200000000011;
+stInitData.ModelParameters.optitrack_data.y[64] := 0.4758389999999999;
+stInitData.ModelParameters.optitrack_data.y[65] := 0.47297699999999998;
+stInitData.ModelParameters.optitrack_data.y[66] := 0.47022399999999998;
+stInitData.ModelParameters.optitrack_data.y[67] := 0.467279;
+stInitData.ModelParameters.optitrack_data.y[68] := 0.46430700000000003;
+stInitData.ModelParameters.optitrack_data.y[69] := 0.46121600000000007;
+stInitData.ModelParameters.optitrack_data.y[70] := 0.45868500000000001;
+stInitData.ModelParameters.optitrack_data.y[71] := 0.45541900000000002;
+stInitData.ModelParameters.optitrack_data.y[72] := 0.45250999999999997;
+stInitData.ModelParameters.optitrack_data.y[73] := 0.44959299999999991;
+stInitData.ModelParameters.optitrack_data.y[74] := 0.44655700000000009;
+stInitData.ModelParameters.optitrack_data.y[75] := 0.4435070000000001;
+stInitData.ModelParameters.optitrack_data.y[76] := 0.44062500000000004;
+stInitData.ModelParameters.optitrack_data.y[77] := 0.43769100000000005;
+stInitData.ModelParameters.optitrack_data.y[78] := 0.43486699999999989;
+stInitData.ModelParameters.optitrack_data.y[79] := 0.432056;
+stInitData.ModelParameters.optitrack_data.y[80] := 0.42908100000000005;
+stInitData.ModelParameters.optitrack_data.y[81] := 0.42611200000000005;
+stInitData.ModelParameters.optitrack_data.y[82] := 0.42332700000000001;
+stInitData.ModelParameters.optitrack_data.y[83] := 0.42060399999999998;
+stInitData.ModelParameters.optitrack_data.y[84] := 0.41771599999999998;
+stInitData.ModelParameters.optitrack_data.y[85] := 0.41480500000000009;
+stInitData.ModelParameters.optitrack_data.y[86] := 0.41176499999999994;
+stInitData.ModelParameters.optitrack_data.y[87] := 0.40881900000000004;
+stInitData.ModelParameters.optitrack_data.y[88] := 0.40578099999999995;
+stInitData.ModelParameters.optitrack_data.y[89] := 0.40294800000000008;
+stInitData.ModelParameters.optitrack_data.y[90] := 0.40013900000000002;
+stInitData.ModelParameters.optitrack_data.y[91] := 0.39717800000000003;
+stInitData.ModelParameters.optitrack_data.y[92] := 0.39420699999999997;
+stInitData.ModelParameters.optitrack_data.y[93] := 0.3911929999999999;
+stInitData.ModelParameters.optitrack_data.y[94] := 0.38837499999999991;
+stInitData.ModelParameters.optitrack_data.y[95] := 0.38554099999999991;
+stInitData.ModelParameters.optitrack_data.y[96] := 0.38310599999999995;
+stInitData.ModelParameters.optitrack_data.y[97] := 0.37976199999999993;
+stInitData.ModelParameters.optitrack_data.y[98] := 0.37668499999999994;
+stInitData.ModelParameters.optitrack_data.y[99] := 0.3737140000000001;
+stInitData.ModelParameters.optitrack_data.y[100] := 0.371197;
+stInitData.ModelParameters.optitrack_data.y[101] := 0.3687339999999999;
+stInitData.ModelParameters.optitrack_data.y[102] := 0.36632500000000001;
+stInitData.ModelParameters.optitrack_data.y[103] := 0.36325300000000005;
+stInitData.ModelParameters.optitrack_data.y[104] := 0.360317;
+stInitData.ModelParameters.optitrack_data.y[105] := 0.35710599999999992;
+stInitData.ModelParameters.optitrack_data.y[106] := 0.35398299999999994;
+stInitData.ModelParameters.optitrack_data.y[107] := 0.35123299999999991;
+stInitData.ModelParameters.optitrack_data.y[108] := 0.34834399999999999;
+stInitData.ModelParameters.optitrack_data.y[109] := 0.34526699999999999;
+stInitData.ModelParameters.optitrack_data.y[110] := 0.34254600000000002;
+stInitData.ModelParameters.optitrack_data.y[111] := 0.33988200000000002;
+stInitData.ModelParameters.optitrack_data.y[112] := 0.33697200000000005;
+stInitData.ModelParameters.optitrack_data.y[113] := 0.33435799999999993;
+stInitData.ModelParameters.optitrack_data.y[114] := 0.33087200000000005;
+stInitData.ModelParameters.optitrack_data.y[115] := 0.32783399999999996;
+stInitData.ModelParameters.optitrack_data.y[116] := 0.32488399999999995;
+stInitData.ModelParameters.optitrack_data.y[117] := 0.32221999999999995;
+stInitData.ModelParameters.optitrack_data.y[118] := 0.31994400000000001;
+stInitData.ModelParameters.optitrack_data.y[119] := 0.31732000000000005;
+stInitData.ModelParameters.optitrack_data.y[120] := 0.31449100000000008;
+stInitData.ModelParameters.optitrack_data.y[121] := 0.31159899999999996;
+stInitData.ModelParameters.optitrack_data.y[122] := 0.30837899999999996;
+stInitData.ModelParameters.optitrack_data.y[123] := 0.30523900000000004;
+stInitData.ModelParameters.optitrack_data.y[124] := 0.30252499999999993;
+stInitData.ModelParameters.optitrack_data.y[125] := 0.299655;
+stInitData.ModelParameters.optitrack_data.y[126] := 0.29678500000000008;
+stInitData.ModelParameters.optitrack_data.y[127] := 0.29372899999999991;
+stInitData.ModelParameters.optitrack_data.y[128] := 0.29109699999999994;
+stInitData.ModelParameters.optitrack_data.y[129] := 0.28831399999999996;
+stInitData.ModelParameters.optitrack_data.y[130] := 0.28566000000000003;
+stInitData.ModelParameters.optitrack_data.y[131] := 0.2826439999999999;
+stInitData.ModelParameters.optitrack_data.y[132] := 0.27933999999999992;
+stInitData.ModelParameters.optitrack_data.y[133] := 0.27635999999999994;
+stInitData.ModelParameters.optitrack_data.y[134] := 0.2737480000000001;
+stInitData.ModelParameters.optitrack_data.y[135] := 0.27131100000000008;
+stInitData.ModelParameters.optitrack_data.y[136] := 0.26886699999999997;
+stInitData.ModelParameters.optitrack_data.y[137] := 0.26612400000000003;
+stInitData.ModelParameters.optitrack_data.y[138] := 0.26321700000000003;
+stInitData.ModelParameters.optitrack_data.y[139] := 0.26015199999999994;
+stInitData.ModelParameters.optitrack_data.y[140] := 0.25711799999999996;
+stInitData.ModelParameters.optitrack_data.y[141] := 0.25423700000000005;
+stInitData.ModelParameters.optitrack_data.y[142] := 0.25162400000000007;
+stInitData.ModelParameters.optitrack_data.y[143] := 0.24876100000000001;
+stInitData.ModelParameters.optitrack_data.y[144] := 0.24546200000000007;
+stInitData.ModelParameters.optitrack_data.y[145] := 0.24283699999999997;
+stInitData.ModelParameters.optitrack_data.y[146] := 0.24008999999999991;
+stInitData.ModelParameters.optitrack_data.y[147] := 0.23746;
+stInitData.ModelParameters.optitrack_data.y[148] := 0.23458500000000004;
+stInitData.ModelParameters.optitrack_data.y[149] := 0.23136299999999999;
+stInitData.ModelParameters.optitrack_data.y[150] := 0.22834099999999991;
+stInitData.ModelParameters.optitrack_data.y[151] := 0.22575100000000003;
+stInitData.ModelParameters.optitrack_data.y[152] := 0.22337999999999991;
+stInitData.ModelParameters.optitrack_data.y[153] := 0.22083399999999997;
+stInitData.ModelParameters.optitrack_data.y[154] := 0.21838399999999991;
+stInitData.ModelParameters.optitrack_data.y[155] := 0.21545900000000007;
+stInitData.ModelParameters.optitrack_data.y[156] := 0.21259800000000006;
+stInitData.ModelParameters.optitrack_data.y[157] := 0.20944199999999991;
+stInitData.ModelParameters.optitrack_data.y[158] := 0.20661499999999999;
+stInitData.ModelParameters.optitrack_data.y[159] := 0.20385900000000001;
+stInitData.ModelParameters.optitrack_data.y[160] := 0.20136700000000007;
+stInitData.ModelParameters.optitrack_data.y[161] := 0.1980900000000001;
+stInitData.ModelParameters.optitrack_data.y[162] := 0.19528199999999996;
+stInitData.ModelParameters.optitrack_data.y[163] := 0.19218399999999991;
+stInitData.ModelParameters.optitrack_data.y[164] := 0.18988800000000006;
+stInitData.ModelParameters.optitrack_data.y[165] := 0.18724999999999992;
+stInitData.ModelParameters.optitrack_data.y[166] := 0.1841870000000001;
+stInitData.ModelParameters.optitrack_data.y[167] := 0.18114399999999997;
+stInitData.ModelParameters.optitrack_data.y[168] := 0.17846000000000006;
+stInitData.ModelParameters.optitrack_data.y[169] := 0.1760219999999999;
+stInitData.ModelParameters.optitrack_data.y[170] := 0.17367899999999992;
+stInitData.ModelParameters.optitrack_data.y[171] := 0.17120800000000003;
+stInitData.ModelParameters.optitrack_data.y[172] := 0.16841200000000001;
+stInitData.ModelParameters.optitrack_data.y[173] := 0.16552100000000003;
+stInitData.ModelParameters.optitrack_data.y[174] := 0.16260999999999992;
+stInitData.ModelParameters.optitrack_data.y[175] := 0.15956900000000007;
+stInitData.ModelParameters.optitrack_data.y[176] := 0.15679700000000008;
+stInitData.ModelParameters.optitrack_data.y[177] := 0.1542349999999999;
+stInitData.ModelParameters.optitrack_data.y[178] := 0.15139100000000005;
+stInitData.ModelParameters.optitrack_data.y[179] := 0.1483810000000001;
+stInitData.ModelParameters.optitrack_data.y[180] := 0.145702;
+stInitData.ModelParameters.optitrack_data.y[181] := 0.14298600000000006;
+stInitData.ModelParameters.optitrack_data.y[182] := 0.14051100000000005;
+stInitData.ModelParameters.optitrack_data.y[183] := 0.1375869999999999;
+stInitData.ModelParameters.optitrack_data.y[184] := 0.13469299999999995;
+stInitData.ModelParameters.optitrack_data.y[185] := 0.13186600000000004;
+stInitData.ModelParameters.optitrack_data.y[186] := 0.12953199999999998;
+stInitData.ModelParameters.optitrack_data.y[187] := 0.12720200000000004;
+stInitData.ModelParameters.optitrack_data.y[188] := 0.12478999999999996;
+stInitData.ModelParameters.optitrack_data.y[189] := 0.12211599999999989;
+stInitData.ModelParameters.optitrack_data.y[190] := 0.11925800000000009;
+stInitData.ModelParameters.optitrack_data.y[191] := 0.11643599999999998;
+stInitData.ModelParameters.optitrack_data.y[192] := 0.11334099999999991;
+stInitData.ModelParameters.optitrack_data.y[193] := 0.11063000000000001;
+stInitData.ModelParameters.optitrack_data.y[194] := 0.107823;
+stInitData.ModelParameters.optitrack_data.y[195] := 0.1055060000000001;
+stInitData.ModelParameters.optitrack_data.y[196] := 0.10238600000000009;
+stInitData.ModelParameters.optitrack_data.y[197] := 0.099425000000000097;
+stInitData.ModelParameters.optitrack_data.y[198] := 0.096921000000000035;
+stInitData.ModelParameters.optitrack_data.y[199] := 0.094672000000000089;
+stInitData.ModelParameters.optitrack_data.y[200] := 0.091866000000000003;
+stInitData.ModelParameters.optitrack_data.y[201] := 0.089018999999999959;
+stInitData.ModelParameters.optitrack_data.y[202] := 0.086297999999999986;
+stInitData.ModelParameters.optitrack_data.y[203] := 0.083828000000000014;
+stInitData.ModelParameters.optitrack_data.y[204] := 0.081463000000000063;
+stInitData.ModelParameters.optitrack_data.y[205] := 0.07921099999999992;
+stInitData.ModelParameters.optitrack_data.y[206] := 0.076208999999999971;
+stInitData.ModelParameters.optitrack_data.y[207] := 0.07352599999999998;
+stInitData.ModelParameters.optitrack_data.y[208] := 0.070721000000000034;
+stInitData.ModelParameters.optitrack_data.y[209] := 0.068095000000000017;
+stInitData.ModelParameters.optitrack_data.y[210] := 0.065423999999999927;
+stInitData.ModelParameters.optitrack_data.y[211] := 0.062861000000000056;
+stInitData.ModelParameters.optitrack_data.y[212] := 0.060257999999999923;
+stInitData.ModelParameters.optitrack_data.y[213] := 0.057404000000000011;
+stInitData.ModelParameters.optitrack_data.y[214] := 0.054654999999999898;
+stInitData.ModelParameters.optitrack_data.y[215] := 0.051846999999999976;
+stInitData.ModelParameters.optitrack_data.y[216] := 0.049423999999999912;
+stInitData.ModelParameters.optitrack_data.y[217] := 0.046969999999999956;
+stInitData.ModelParameters.optitrack_data.y[218] := 0.044370000000000021;
+stInitData.ModelParameters.optitrack_data.y[219] := 0.041768000000000027;
+stInitData.ModelParameters.optitrack_data.y[220] := 0.039334999999999898;
+stInitData.ModelParameters.optitrack_data.y[221] := 0.037026000000000003;
+stInitData.ModelParameters.optitrack_data.y[222] := 0.034677000000000069;
+stInitData.ModelParameters.optitrack_data.y[223] := 0.032121000000000066;
+stInitData.ModelParameters.optitrack_data.y[224] := 0.029450999999999894;
+stInitData.ModelParameters.optitrack_data.y[225] := 0.026628000000000096;
+stInitData.ModelParameters.optitrack_data.y[226] := 0.023952999999999891;
+stInitData.ModelParameters.optitrack_data.y[227] := 0.021366999999999914;
+stInitData.ModelParameters.optitrack_data.y[228] := 0.018705999999999889;
+stInitData.ModelParameters.optitrack_data.y[229] := 0.016291999999999973;
+stInitData.ModelParameters.optitrack_data.y[230] := 0.013587999999999933;
+stInitData.ModelParameters.optitrack_data.y[231] := 0.011017000000000055;
+stInitData.ModelParameters.optitrack_data.y[232] := 0.0084500000000000686;
+stInitData.ModelParameters.optitrack_data.y[233] := 0.0058100000000000929;
+stInitData.ModelParameters.optitrack_data.y[234] := 0.0034849999999999604;
+stInitData.ModelParameters.optitrack_data.y[235] := 0.00086699999999995114;
+stInitData.ModelParameters.optitrack_data.y[236] := -0.0017120000000000468;
+stInitData.ModelParameters.optitrack_data.y[237] := -0.0040930000000000133;
+stInitData.ModelParameters.optitrack_data.y[238] := -0.0063760000000000483;
+stInitData.ModelParameters.optitrack_data.y[239] := -0.0087530000000000108;
+stInitData.ModelParameters.optitrack_data.y[240] := -0.011102999999999974;
+stInitData.ModelParameters.optitrack_data.y[241] := -0.013615999999999961;
+stInitData.ModelParameters.optitrack_data.y[242] := -0.016085000000000016;
+stInitData.ModelParameters.optitrack_data.y[243] := -0.018727999999999967;
+stInitData.ModelParameters.optitrack_data.y[244] := -0.021437999999999957;
+stInitData.ModelParameters.optitrack_data.y[245] := -0.024042000000000008;
+stInitData.ModelParameters.optitrack_data.z[0] := 0.241954;
+stInitData.ModelParameters.optitrack_data.z[1] := 0.26258999999999999;
+stInitData.ModelParameters.optitrack_data.z[2] := 0.28263500000000003;
+stInitData.ModelParameters.optitrack_data.z[3] := 0.30222399999999999;
+stInitData.ModelParameters.optitrack_data.z[4] := 0.32221300000000003;
+stInitData.ModelParameters.optitrack_data.z[5] := 0.34193499999999999;
+stInitData.ModelParameters.optitrack_data.z[6] := 0.36111700000000002;
+stInitData.ModelParameters.optitrack_data.z[7] := 0.380056;
+stInitData.ModelParameters.optitrack_data.z[8] := 0.39900200000000002;
+stInitData.ModelParameters.optitrack_data.z[9] := 0.41760999999999998;
+stInitData.ModelParameters.optitrack_data.z[10] := 0.43614399999999998;
+stInitData.ModelParameters.optitrack_data.z[11] := 0.45455899999999999;
+stInitData.ModelParameters.optitrack_data.z[12] := 0.47273999999999999;
+stInitData.ModelParameters.optitrack_data.z[13] := 0.49101800000000001;
+stInitData.ModelParameters.optitrack_data.z[14] := 0.50922299999999998;
+stInitData.ModelParameters.optitrack_data.z[15] := 0.527034;
+stInitData.ModelParameters.optitrack_data.z[16] := 0.54452699999999998;
+stInitData.ModelParameters.optitrack_data.z[17] := 0.56216600000000005;
+stInitData.ModelParameters.optitrack_data.z[18] := 0.579758;
+stInitData.ModelParameters.optitrack_data.z[19] := 0.59704599999999997;
+stInitData.ModelParameters.optitrack_data.z[20] := 0.61360199999999998;
+stInitData.ModelParameters.optitrack_data.z[21] := 0.63047799999999998;
+stInitData.ModelParameters.optitrack_data.z[22] := 0.64721899999999999;
+stInitData.ModelParameters.optitrack_data.z[23] := 0.66361099999999995;
+stInitData.ModelParameters.optitrack_data.z[24] := 0.67991699999999999;
+stInitData.ModelParameters.optitrack_data.z[25] := 0.695932;
+stInitData.ModelParameters.optitrack_data.z[26] := 0.71171899999999999;
+stInitData.ModelParameters.optitrack_data.z[27] := 0.72731800000000002;
+stInitData.ModelParameters.optitrack_data.z[28] := 0.74273500000000003;
+stInitData.ModelParameters.optitrack_data.z[29] := 0.75806799999999996;
+stInitData.ModelParameters.optitrack_data.z[30] := 0.77344599999999997;
+stInitData.ModelParameters.optitrack_data.z[31] := 0.78868899999999997;
+stInitData.ModelParameters.optitrack_data.z[32] := 0.80363499999999999;
+stInitData.ModelParameters.optitrack_data.z[33] := 0.81833100000000003;
+stInitData.ModelParameters.optitrack_data.z[34] := 0.83306899999999995;
+stInitData.ModelParameters.optitrack_data.z[35] := 0.84763699999999997;
+stInitData.ModelParameters.optitrack_data.z[36] := 0.86215399999999998;
+stInitData.ModelParameters.optitrack_data.z[37] := 0.875942;
+stInitData.ModelParameters.optitrack_data.z[38] := 0.88951599999999997;
+stInitData.ModelParameters.optitrack_data.z[39] := 0.90341099999999996;
+stInitData.ModelParameters.optitrack_data.z[40] := 0.91715599999999997;
+stInitData.ModelParameters.optitrack_data.z[41] := 0.93068499999999998;
+stInitData.ModelParameters.optitrack_data.z[42] := 0.94377;
+stInitData.ModelParameters.optitrack_data.z[43] := 0.95675699999999997;
+stInitData.ModelParameters.optitrack_data.z[44] := 0.96957099999999996;
+stInitData.ModelParameters.optitrack_data.z[45] := 0.98197199999999996;
+stInitData.ModelParameters.optitrack_data.z[46] := 0.99444500000000002;
+stInitData.ModelParameters.optitrack_data.z[47] := 1.007023;
+stInitData.ModelParameters.optitrack_data.z[48] := 1.019414;
+stInitData.ModelParameters.optitrack_data.z[49] := 1.0314749999999999;
+stInitData.ModelParameters.optitrack_data.z[50] := 1.043336;
+stInitData.ModelParameters.optitrack_data.z[51] := 1.0552060000000001;
+stInitData.ModelParameters.optitrack_data.z[52] := 1.0668820000000001;
+stInitData.ModelParameters.optitrack_data.z[53] := 1.078716;
+stInitData.ModelParameters.optitrack_data.z[54] := 1.089461;
+stInitData.ModelParameters.optitrack_data.z[55] := 1.100285;
+stInitData.ModelParameters.optitrack_data.z[56] := 1.1113219999999999;
+stInitData.ModelParameters.optitrack_data.z[57] := 1.122376;
+stInitData.ModelParameters.optitrack_data.z[58] := 1.1331580000000001;
+stInitData.ModelParameters.optitrack_data.z[59] := 1.1434059999999999;
+stInitData.ModelParameters.optitrack_data.z[60] := 1.1535439999999999;
+stInitData.ModelParameters.optitrack_data.z[61] := 1.163562;
+stInitData.ModelParameters.optitrack_data.z[62] := 1.1732130000000001;
+stInitData.ModelParameters.optitrack_data.z[63] := 1.182841;
+stInitData.ModelParameters.optitrack_data.z[64] := 1.1925520000000001;
+stInitData.ModelParameters.optitrack_data.z[65] := 1.202118;
+stInitData.ModelParameters.optitrack_data.z[66] := 1.2113579999999999;
+stInitData.ModelParameters.optitrack_data.z[67] := 1.220529;
+stInitData.ModelParameters.optitrack_data.z[68] := 1.229608;
+stInitData.ModelParameters.optitrack_data.z[69] := 1.238502;
+stInitData.ModelParameters.optitrack_data.z[70] := 1.247498;
+stInitData.ModelParameters.optitrack_data.z[71] := 1.2555499999999999;
+stInitData.ModelParameters.optitrack_data.z[72] := 1.2634639999999999;
+stInitData.ModelParameters.optitrack_data.z[73] := 1.2716099999999999;
+stInitData.ModelParameters.optitrack_data.z[74] := 1.2800020000000001;
+stInitData.ModelParameters.optitrack_data.z[75] := 1.28807;
+stInitData.ModelParameters.optitrack_data.z[76] := 1.2955019999999999;
+stInitData.ModelParameters.optitrack_data.z[77] := 1.303078;
+stInitData.ModelParameters.optitrack_data.z[78] := 1.310073;
+stInitData.ModelParameters.optitrack_data.z[79] := 1.317078;
+stInitData.ModelParameters.optitrack_data.z[80] := 1.3239700000000001;
+stInitData.ModelParameters.optitrack_data.z[81] := 1.3307929999999999;
+stInitData.ModelParameters.optitrack_data.z[82] := 1.3375280000000001;
+stInitData.ModelParameters.optitrack_data.z[83] := 1.3440639999999999;
+stInitData.ModelParameters.optitrack_data.z[84] := 1.3505100000000001;
+stInitData.ModelParameters.optitrack_data.z[85] := 1.3567640000000001;
+stInitData.ModelParameters.optitrack_data.z[86] := 1.3629789999999999;
+stInitData.ModelParameters.optitrack_data.z[87] := 1.368938;
+stInitData.ModelParameters.optitrack_data.z[88] := 1.3743749999999999;
+stInitData.ModelParameters.optitrack_data.z[89] := 1.3795740000000001;
+stInitData.ModelParameters.optitrack_data.z[90] := 1.3849370000000001;
+stInitData.ModelParameters.optitrack_data.z[91] := 1.390487;
+stInitData.ModelParameters.optitrack_data.z[92] := 1.3960060000000001;
+stInitData.ModelParameters.optitrack_data.z[93] := 1.400801;
+stInitData.ModelParameters.optitrack_data.z[94] := 1.40541;
+stInitData.ModelParameters.optitrack_data.z[95] := 1.40981;
+stInitData.ModelParameters.optitrack_data.z[96] := 1.4141060000000001;
+stInitData.ModelParameters.optitrack_data.z[97] := 1.4182049999999999;
+stInitData.ModelParameters.optitrack_data.z[98] := 1.422277;
+stInitData.ModelParameters.optitrack_data.z[99] := 1.4263250000000001;
+stInitData.ModelParameters.optitrack_data.z[100] := 1.430018;
+stInitData.ModelParameters.optitrack_data.z[101] := 1.433664;
+stInitData.ModelParameters.optitrack_data.z[102] := 1.437103;
+stInitData.ModelParameters.optitrack_data.z[103] := 1.4408430000000001;
+stInitData.ModelParameters.optitrack_data.z[104] := 1.4439930000000001;
+stInitData.ModelParameters.optitrack_data.z[105] := 1.447055;
+stInitData.ModelParameters.optitrack_data.z[106] := 1.44933;
+stInitData.ModelParameters.optitrack_data.z[107] := 1.451667;
+stInitData.ModelParameters.optitrack_data.z[108] := 1.4544060000000001;
+stInitData.ModelParameters.optitrack_data.z[109] := 1.4571909999999999;
+stInitData.ModelParameters.optitrack_data.z[110] := 1.459438;
+stInitData.ModelParameters.optitrack_data.z[111] := 1.461387;
+stInitData.ModelParameters.optitrack_data.z[112] := 1.463139;
+stInitData.ModelParameters.optitrack_data.z[113] := 1.4648350000000001;
+stInitData.ModelParameters.optitrack_data.z[114] := 1.4660610000000001;
+stInitData.ModelParameters.optitrack_data.z[115] := 1.467368;
+stInitData.ModelParameters.optitrack_data.z[116] := 1.4687220000000001;
+stInitData.ModelParameters.optitrack_data.z[117] := 1.469789;
+stInitData.ModelParameters.optitrack_data.z[118] := 1.470577;
+stInitData.ModelParameters.optitrack_data.z[119] := 1.4714910000000001;
+stInitData.ModelParameters.optitrack_data.z[120] := 1.472375;
+stInitData.ModelParameters.optitrack_data.z[121] := 1.472891;
+stInitData.ModelParameters.optitrack_data.z[122] := 1.4732909999999999;
+stInitData.ModelParameters.optitrack_data.z[123] := 1.472893;
+stInitData.ModelParameters.optitrack_data.z[124] := 1.4724619999999999;
+stInitData.ModelParameters.optitrack_data.z[125] := 1.4723360000000001;
+stInitData.ModelParameters.optitrack_data.z[126] := 1.472496;
+stInitData.ModelParameters.optitrack_data.z[127] := 1.4721219999999999;
+stInitData.ModelParameters.optitrack_data.z[128] := 1.471473;
+stInitData.ModelParameters.optitrack_data.z[129] := 1.4704790000000001;
+stInitData.ModelParameters.optitrack_data.z[130] := 1.469444;
+stInitData.ModelParameters.optitrack_data.z[131] := 1.468202;
+stInitData.ModelParameters.optitrack_data.z[132] := 1.466731;
+stInitData.ModelParameters.optitrack_data.z[133] := 1.465249;
+stInitData.ModelParameters.optitrack_data.z[134] := 1.4634990000000001;
+stInitData.ModelParameters.optitrack_data.z[135] := 1.461773;
+stInitData.ModelParameters.optitrack_data.z[136] := 1.4599530000000001;
+stInitData.ModelParameters.optitrack_data.z[137] := 1.4580610000000001;
+stInitData.ModelParameters.optitrack_data.z[138] := 1.456029;
+stInitData.ModelParameters.optitrack_data.z[139] := 1.4536469999999999;
+stInitData.ModelParameters.optitrack_data.z[140] := 1.4507220000000001;
+stInitData.ModelParameters.optitrack_data.z[141] := 1.447546;
+stInitData.ModelParameters.optitrack_data.z[142] := 1.4446950000000001;
+stInitData.ModelParameters.optitrack_data.z[143] := 1.4420329999999999;
+stInitData.ModelParameters.optitrack_data.z[144] := 1.4392100000000001;
+stInitData.ModelParameters.optitrack_data.z[145] := 1.4358679999999999;
+stInitData.ModelParameters.optitrack_data.z[146] := 1.432148;
+stInitData.ModelParameters.optitrack_data.z[147] := 1.4284619999999999;
+stInitData.ModelParameters.optitrack_data.z[148] := 1.4247350000000001;
+stInitData.ModelParameters.optitrack_data.z[149] := 1.4205300000000001;
+stInitData.ModelParameters.optitrack_data.z[150] := 1.4162920000000001;
+stInitData.ModelParameters.optitrack_data.z[151] := 1.4119250000000001;
+stInitData.ModelParameters.optitrack_data.z[152] := 1.407475;
+stInitData.ModelParameters.optitrack_data.z[153] := 1.4028780000000001;
+stInitData.ModelParameters.optitrack_data.z[154] := 1.398393;
+stInitData.ModelParameters.optitrack_data.z[155] := 1.393653;
+stInitData.ModelParameters.optitrack_data.z[156] := 1.388819;
+stInitData.ModelParameters.optitrack_data.z[157] := 1.3832580000000001;
+stInitData.ModelParameters.optitrack_data.z[158] := 1.3773949999999999;
+stInitData.ModelParameters.optitrack_data.z[159] := 1.371688;
+stInitData.ModelParameters.optitrack_data.z[160] := 1.3661460000000001;
+stInitData.ModelParameters.optitrack_data.z[161] := 1.360851;
+stInitData.ModelParameters.optitrack_data.z[162] := 1.3548849999999999;
+stInitData.ModelParameters.optitrack_data.z[163] := 1.3489739999999999;
+stInitData.ModelParameters.optitrack_data.z[164] := 1.3423130000000001;
+stInitData.ModelParameters.optitrack_data.z[165] := 1.3359049999999999;
+stInitData.ModelParameters.optitrack_data.z[166] := 1.329202;
+stInitData.ModelParameters.optitrack_data.z[167] := 1.3222739999999999;
+stInitData.ModelParameters.optitrack_data.z[168] := 1.315218;
+stInitData.ModelParameters.optitrack_data.z[169] := 1.3080229999999999;
+stInitData.ModelParameters.optitrack_data.z[170] := 1.300894;
+stInitData.ModelParameters.optitrack_data.z[171] := 1.293701;
+stInitData.ModelParameters.optitrack_data.z[172] := 1.286316;
+stInitData.ModelParameters.optitrack_data.z[173] := 1.278807;
+stInitData.ModelParameters.optitrack_data.z[174] := 1.2709509999999999;
+stInitData.ModelParameters.optitrack_data.z[175] := 1.2623880000000001;
+stInitData.ModelParameters.optitrack_data.z[176] := 1.2537769999999999;
+stInitData.ModelParameters.optitrack_data.z[177] := 1.2457229999999999;
+stInitData.ModelParameters.optitrack_data.z[178] := 1.237611;
+stInitData.ModelParameters.optitrack_data.z[179] := 1.229171;
+stInitData.ModelParameters.optitrack_data.z[180] := 1.2203269999999999;
+stInitData.ModelParameters.optitrack_data.z[181] := 1.211274;
+stInitData.ModelParameters.optitrack_data.z[182] := 1.2023600000000001;
+stInitData.ModelParameters.optitrack_data.z[183] := 1.193147;
+stInitData.ModelParameters.optitrack_data.z[184] := 1.183643;
+stInitData.ModelParameters.optitrack_data.z[185] := 1.1739459999999999;
+stInitData.ModelParameters.optitrack_data.z[186] := 1.164042;
+stInitData.ModelParameters.optitrack_data.z[187] := 1.154182;
+stInitData.ModelParameters.optitrack_data.z[188] := 1.144409;
+stInitData.ModelParameters.optitrack_data.z[189] := 1.134317;
+stInitData.ModelParameters.optitrack_data.z[190] := 1.1242620000000001;
+stInitData.ModelParameters.optitrack_data.z[191] := 1.11389;
+stInitData.ModelParameters.optitrack_data.z[192] := 1.102887;
+stInitData.ModelParameters.optitrack_data.z[193] := 1.091588;
+stInitData.ModelParameters.optitrack_data.z[194] := 1.0806640000000001;
+stInitData.ModelParameters.optitrack_data.z[195] := 1.0698529999999999;
+stInitData.ModelParameters.optitrack_data.z[196] := 1.0590809999999999;
+stInitData.ModelParameters.optitrack_data.z[197] := 1.047833;
+stInitData.ModelParameters.optitrack_data.z[198] := 1.0360670000000001;
+stInitData.ModelParameters.optitrack_data.z[199] := 1.0244359999999999;
+stInitData.ModelParameters.optitrack_data.z[200] := 1.0128159999999999;
+stInitData.ModelParameters.optitrack_data.z[201] := 1.000785;
+stInitData.ModelParameters.optitrack_data.z[202] := 0.98855800000000005;
+stInitData.ModelParameters.optitrack_data.z[203] := 0.97593099999999999;
+stInitData.ModelParameters.optitrack_data.z[204] := 0.96338800000000002;
+stInitData.ModelParameters.optitrack_data.z[205] := 0.95094400000000001;
+stInitData.ModelParameters.optitrack_data.z[206] := 0.93838100000000002;
+stInitData.ModelParameters.optitrack_data.z[207] := 0.92566099999999996;
+stInitData.ModelParameters.optitrack_data.z[208] := 0.91258499999999998;
+stInitData.ModelParameters.optitrack_data.z[209] := 0.899316;
+stInitData.ModelParameters.optitrack_data.z[210] := 0.88573000000000002;
+stInitData.ModelParameters.optitrack_data.z[211] := 0.87205699999999997;
+stInitData.ModelParameters.optitrack_data.z[212] := 0.85858299999999999;
+stInitData.ModelParameters.optitrack_data.z[213] := 0.84508300000000003;
+stInitData.ModelParameters.optitrack_data.z[214] := 0.83127899999999999;
+stInitData.ModelParameters.optitrack_data.z[215] := 0.81723599999999996;
+stInitData.ModelParameters.optitrack_data.z[216] := 0.80283899999999997;
+stInitData.ModelParameters.optitrack_data.z[217] := 0.78865099999999999;
+stInitData.ModelParameters.optitrack_data.z[218] := 0.77424999999999999;
+stInitData.ModelParameters.optitrack_data.z[219] := 0.75945799999999997;
+stInitData.ModelParameters.optitrack_data.z[220] := 0.74440499999999998;
+stInitData.ModelParameters.optitrack_data.z[221] := 0.729298;
+stInitData.ModelParameters.optitrack_data.z[222] := 0.71413400000000005;
+stInitData.ModelParameters.optitrack_data.z[223] := 0.69904900000000003;
+stInitData.ModelParameters.optitrack_data.z[224] := 0.68378300000000003;
+stInitData.ModelParameters.optitrack_data.z[225] := 0.668319;
+stInitData.ModelParameters.optitrack_data.z[226] := 0.65261499999999995;
+stInitData.ModelParameters.optitrack_data.z[227] := 0.63656900000000005;
+stInitData.ModelParameters.optitrack_data.z[228] := 0.62032600000000004;
+stInitData.ModelParameters.optitrack_data.z[229] := 0.60414999999999996;
+stInitData.ModelParameters.optitrack_data.z[230] := 0.58824500000000002;
+stInitData.ModelParameters.optitrack_data.z[231] := 0.57198000000000004;
+stInitData.ModelParameters.optitrack_data.z[232] := 0.55541600000000002;
+stInitData.ModelParameters.optitrack_data.z[233] := 0.53837699999999999;
+stInitData.ModelParameters.optitrack_data.z[234] := 0.52176800000000001;
+stInitData.ModelParameters.optitrack_data.z[235] := 0.50489099999999998;
+stInitData.ModelParameters.optitrack_data.z[236] := 0.487765;
+stInitData.ModelParameters.optitrack_data.z[237] := 0.47026000000000001;
+stInitData.ModelParameters.optitrack_data.z[238] := 0.452573;
+stInitData.ModelParameters.optitrack_data.z[239] := 0.434923;
+stInitData.ModelParameters.optitrack_data.z[240] := 0.41722799999999999;
+stInitData.ModelParameters.optitrack_data.z[241] := 0.39955600000000002;
+stInitData.ModelParameters.optitrack_data.z[242] := 0.38155;
+stInitData.ModelParameters.optitrack_data.z[243] := 0.36344799999999999;
+stInitData.ModelParameters.optitrack_data.z[244] := 0.34505999999999998;
+stInitData.ModelParameters.optitrack_data.z[245] := 0.326513;
+stInitData.ModelParameters.param_robot.hanging := 0;
+stInitData.ModelParameters.param_robot.R_0[0] := 1;
+stInitData.ModelParameters.param_robot.R_0[1] := 0;
+stInitData.ModelParameters.param_robot.R_0[2] := 0;
+stInitData.ModelParameters.param_robot.R_0[3] := 0;
+stInitData.ModelParameters.param_robot.R_0[4] := 1;
+stInitData.ModelParameters.param_robot.R_0[5] := 0;
+stInitData.ModelParameters.param_robot.R_0[6] := 0;
+stInitData.ModelParameters.param_robot.R_0[7] := 0;
+stInitData.ModelParameters.param_robot.R_0[8] := 1;
+stInitData.ModelParameters.param_robot.p_0[0] := 0;
+stInitData.ModelParameters.param_robot.p_0[1] := 0;
+stInitData.ModelParameters.param_robot.p_0[2] := 0;
+stInitData.ModelParameters.param_robot.n := 7;
+stInitData.ModelParameters.param_robot.g := 9.8100000000000005;
+stInitData.ModelParameters.param_robot.beta := 0;
+stInitData.ModelParameters.param_robot.l_0 := 0.1525;
+stInitData.ModelParameters.param_robot.l_1 := 0.20749999999999999;
+stInitData.ModelParameters.param_robot.l_2 := 0.23250000000000001;
+stInitData.ModelParameters.param_robot.l_3 := 0.1875;
+stInitData.ModelParameters.param_robot.l_4 := 0.21249999999999999;
+stInitData.ModelParameters.param_robot.l_5 := 0.1875;
+stInitData.ModelParameters.param_robot.l_6 := 0.079600000000000004;
+stInitData.ModelParameters.param_robot.l_7 := 0.072400000000000006;
+stInitData.ModelParameters.param_robot.d_1 := 0.012999999999999999;
+stInitData.ModelParameters.param_robot.d_3 := 0.010999999999999999;
+stInitData.ModelParameters.param_robot.d_5 := 0.062;
+stInitData.ModelParameters.param_robot.m_l1 := 6.4950000000000001;
+stInitData.ModelParameters.param_robot.m_l2 := 8.8070000000000004;
+stInitData.ModelParameters.param_robot.m_l3 := 2.7999999999999998;
+stInitData.ModelParameters.param_robot.m_l4 := 5.2830000000000004;
+stInitData.ModelParameters.param_robot.m_l5 := 1.889;
+stInitData.ModelParameters.param_robot.m_l6 := 2.3199999999999998;
+stInitData.ModelParameters.param_robot.m_l7 := 0.86299999999999999;
+stInitData.ModelParameters.param_robot.s_l1x := 0;
+stInitData.ModelParameters.param_robot.s_l1y := -0.01439;
+stInitData.ModelParameters.param_robot.s_l1z := 0.102503;
+stInitData.ModelParameters.param_robot.s_l2x := -1.2e-05;
+stInitData.ModelParameters.param_robot.s_l2y := -0.06472;
+stInitData.ModelParameters.param_robot.s_l2z := 0.017804;
+stInitData.ModelParameters.param_robot.s_l3x := -0.00020799999999999999;
+stInitData.ModelParameters.param_robot.s_l3y := 0.01601;
+stInitData.ModelParameters.param_robot.s_l3z := 0.087282999999999999;
+stInitData.ModelParameters.param_robot.s_l4x := -0.000203;
+stInitData.ModelParameters.param_robot.s_l4y := 0.098639000000000004;
+stInitData.ModelParameters.param_robot.s_l4z := 0.022478000000000001;
+stInitData.ModelParameters.param_robot.s_l5x := -5.7000000000000003e-05;
+stInitData.ModelParameters.param_robot.s_l5y := -0.014468;
+stInitData.ModelParameters.param_robot.s_l5z := 0.062937999999999994;
+stInitData.ModelParameters.param_robot.s_l6x := -0.00036299999999999999;
+stInitData.ModelParameters.param_robot.s_l6y := -0.016982000000000001;
+stInitData.ModelParameters.param_robot.s_l6z := 0.042269000000000001;
+stInitData.ModelParameters.param_robot.s_l7x := 0.0019040000000000003;
+stInitData.ModelParameters.param_robot.s_l7y := -9.2999999999999997e-05;
+stInitData.ModelParameters.param_robot.s_l7z := 0.018862000000000004;
+stInitData.ModelParameters.param_robot.I_l1xx := 0.0690761441316632;
+stInitData.ModelParameters.param_robot.I_l1yy := 0.071108558691451398;
+stInitData.ModelParameters.param_robot.I_l1zz := 0.020062585440211899;
+stInitData.ModelParameters.param_robot.I_l2xx := 0.082470168353469195;
+stInitData.ModelParameters.param_robot.I_l2yy := 0.016411096805519099;
+stInitData.ModelParameters.param_robot.I_l2zz := 0.087351089266136106;
+stInitData.ModelParameters.param_robot.I_l3xx := 0.023015294131881699;
+stInitData.ModelParameters.param_robot.I_l3yy := 0.022866155414347399;
+stInitData.ModelParameters.param_robot.I_l3zz := 0.055448228374898302;
+stInitData.ModelParameters.param_robot.I_l4xx := 0.047278966834196801;
+stInitData.ModelParameters.param_robot.I_l4yy := 0.0096472680414690908;
+stInitData.ModelParameters.param_robot.I_l4zz := 0.046652900776167898;
+stInitData.ModelParameters.param_robot.I_l5xx := 0.0138359953358589;
+stInitData.ModelParameters.param_robot.I_l5yy := 0.011685933775196901;
+stInitData.ModelParameters.param_robot.I_l5zz := 0.00571863785412578;
+stInitData.ModelParameters.param_robot.I_l6xx := 0.0073275878721676497;
+stInitData.ModelParameters.param_robot.I_l6yy := 0.0047763375578371101;
+stInitData.ModelParameters.param_robot.I_l6zz := 0.0060679763855029604;
+stInitData.ModelParameters.param_robot.I_l7xx := 0.00088400000000000002;
+stInitData.ModelParameters.param_robot.I_l7yy := 0.00088800000000000001;
+stInitData.ModelParameters.param_robot.I_l7zz := 0.0011050000000000001;
+stInitData.ModelParameters.param_robot.n_1 := 160;
+stInitData.ModelParameters.param_robot.n_2 := 160;
+stInitData.ModelParameters.param_robot.n_3 := 160;
+stInitData.ModelParameters.param_robot.n_4 := 160;
+stInitData.ModelParameters.param_robot.n_5 := 100;
+stInitData.ModelParameters.param_robot.n_6 := 160;
+stInitData.ModelParameters.param_robot.n_7 := 160;
+stInitData.ModelParameters.param_robot.N[0] := 160;
+stInitData.ModelParameters.param_robot.N[1] := 0;
+stInitData.ModelParameters.param_robot.N[2] := 0;
+stInitData.ModelParameters.param_robot.N[3] := 0;
+stInitData.ModelParameters.param_robot.N[4] := 0;
+stInitData.ModelParameters.param_robot.N[5] := 0;
+stInitData.ModelParameters.param_robot.N[6] := 0;
+stInitData.ModelParameters.param_robot.N[7] := 0;
+stInitData.ModelParameters.param_robot.N[8] := 160;
+stInitData.ModelParameters.param_robot.N[9] := 0;
+stInitData.ModelParameters.param_robot.N[10] := 0;
+stInitData.ModelParameters.param_robot.N[11] := 0;
+stInitData.ModelParameters.param_robot.N[12] := 0;
+stInitData.ModelParameters.param_robot.N[13] := 0;
+stInitData.ModelParameters.param_robot.N[14] := 0;
+stInitData.ModelParameters.param_robot.N[15] := 0;
+stInitData.ModelParameters.param_robot.N[16] := 160;
+stInitData.ModelParameters.param_robot.N[17] := 0;
+stInitData.ModelParameters.param_robot.N[18] := 0;
+stInitData.ModelParameters.param_robot.N[19] := 0;
+stInitData.ModelParameters.param_robot.N[20] := 0;
+stInitData.ModelParameters.param_robot.N[21] := 0;
+stInitData.ModelParameters.param_robot.N[22] := 0;
+stInitData.ModelParameters.param_robot.N[23] := 0;
+stInitData.ModelParameters.param_robot.N[24] := 160;
+stInitData.ModelParameters.param_robot.N[25] := 0;
+stInitData.ModelParameters.param_robot.N[26] := 0;
+stInitData.ModelParameters.param_robot.N[27] := 0;
+stInitData.ModelParameters.param_robot.N[28] := 0;
+stInitData.ModelParameters.param_robot.N[29] := 0;
+stInitData.ModelParameters.param_robot.N[30] := 0;
+stInitData.ModelParameters.param_robot.N[31] := 0;
+stInitData.ModelParameters.param_robot.N[32] := 100;
+stInitData.ModelParameters.param_robot.N[33] := 0;
+stInitData.ModelParameters.param_robot.N[34] := 0;
+stInitData.ModelParameters.param_robot.N[35] := 0;
+stInitData.ModelParameters.param_robot.N[36] := 0;
+stInitData.ModelParameters.param_robot.N[37] := 0;
+stInitData.ModelParameters.param_robot.N[38] := 0;
+stInitData.ModelParameters.param_robot.N[39] := 0;
+stInitData.ModelParameters.param_robot.N[40] := 160;
+stInitData.ModelParameters.param_robot.N[41] := 0;
+stInitData.ModelParameters.param_robot.N[42] := 0;
+stInitData.ModelParameters.param_robot.N[43] := 0;
+stInitData.ModelParameters.param_robot.N[44] := 0;
+stInitData.ModelParameters.param_robot.N[45] := 0;
+stInitData.ModelParameters.param_robot.N[46] := 0;
+stInitData.ModelParameters.param_robot.N[47] := 0;
+stInitData.ModelParameters.param_robot.N[48] := 160;
+stInitData.ModelParameters.param_robot.I_r1xx := 0.000185;
+stInitData.ModelParameters.param_robot.I_r1yy := 0.000185;
+stInitData.ModelParameters.param_robot.I_r1zz := 0.00042316695312500003;
+stInitData.ModelParameters.param_robot.I_r2xx := 0.000185;
+stInitData.ModelParameters.param_robot.I_r2yy := 0.000185;
+stInitData.ModelParameters.param_robot.I_r2zz := 0.00042316695312500003;
+stInitData.ModelParameters.param_robot.I_r3xx := 0.00012899999999999999;
+stInitData.ModelParameters.param_robot.I_r3yy := 0.00012899999999999999;
+stInitData.ModelParameters.param_robot.I_r3zz := 0.0001910384375;
+stInitData.ModelParameters.param_robot.I_r4xx := 0.00012899999999999999;
+stInitData.ModelParameters.param_robot.I_r4yy := 0.00012899999999999999;
+stInitData.ModelParameters.param_robot.I_r4zz := 0.0001910384375;
+stInitData.ModelParameters.param_robot.I_r5xx := 7.4999999999999993e-05;
+stInitData.ModelParameters.param_robot.I_r5yy := 7.4999999999999993e-05;
+stInitData.ModelParameters.param_robot.I_r5zz := 0.00014709679999999999;
+stInitData.ModelParameters.param_robot.I_r6xx := 1.5e-05;
+stInitData.ModelParameters.param_robot.I_r6yy := 1.5e-05;
+stInitData.ModelParameters.param_robot.I_r6zz := 1.851125e-05;
+stInitData.ModelParameters.param_robot.I_r7xx := 1.5e-05;
+stInitData.ModelParameters.param_robot.I_r7yy := 1.5e-05;
+stInitData.ModelParameters.param_robot.I_r7zz := 1.851125e-05;
+stInitData.ModelParameters.param_robot.B[0] := 10.833074000000002;
+stInitData.ModelParameters.param_robot.B[1] := 0;
+stInitData.ModelParameters.param_robot.B[2] := 0;
+stInitData.ModelParameters.param_robot.B[3] := 0;
+stInitData.ModelParameters.param_robot.B[4] := 0;
+stInitData.ModelParameters.param_robot.B[5] := 0;
+stInitData.ModelParameters.param_robot.B[6] := 0;
+stInitData.ModelParameters.param_robot.B[7] := 0;
+stInitData.ModelParameters.param_robot.B[8] := 10.833074000000002;
+stInitData.ModelParameters.param_robot.B[9] := 0;
+stInitData.ModelParameters.param_robot.B[10] := 0;
+stInitData.ModelParameters.param_robot.B[11] := 0;
+stInitData.ModelParameters.param_robot.B[12] := 0;
+stInitData.ModelParameters.param_robot.B[13] := 0;
+stInitData.ModelParameters.param_robot.B[14] := 0;
+stInitData.ModelParameters.param_robot.B[15] := 0;
+stInitData.ModelParameters.param_robot.B[16] := 4.8905839999999996;
+stInitData.ModelParameters.param_robot.B[17] := 0;
+stInitData.ModelParameters.param_robot.B[18] := 0;
+stInitData.ModelParameters.param_robot.B[19] := 0;
+stInitData.ModelParameters.param_robot.B[20] := 0;
+stInitData.ModelParameters.param_robot.B[21] := 0;
+stInitData.ModelParameters.param_robot.B[22] := 0;
+stInitData.ModelParameters.param_robot.B[23] := 0;
+stInitData.ModelParameters.param_robot.B[24] := 4.8905839999999996;
+stInitData.ModelParameters.param_robot.B[25] := 0;
+stInitData.ModelParameters.param_robot.B[26] := 0;
+stInitData.ModelParameters.param_robot.B[27] := 0;
+stInitData.ModelParameters.param_robot.B[28] := 0;
+stInitData.ModelParameters.param_robot.B[29] := 0;
+stInitData.ModelParameters.param_robot.B[30] := 0;
+stInitData.ModelParameters.param_robot.B[31] := 0;
+stInitData.ModelParameters.param_robot.B[32] := 1.4709679999999998;
+stInitData.ModelParameters.param_robot.B[33] := 0;
+stInitData.ModelParameters.param_robot.B[34] := 0;
+stInitData.ModelParameters.param_robot.B[35] := 0;
+stInitData.ModelParameters.param_robot.B[36] := 0;
+stInitData.ModelParameters.param_robot.B[37] := 0;
+stInitData.ModelParameters.param_robot.B[38] := 0;
+stInitData.ModelParameters.param_robot.B[39] := 0;
+stInitData.ModelParameters.param_robot.B[40] := 0.47388799999999998;
+stInitData.ModelParameters.param_robot.B[41] := 0;
+stInitData.ModelParameters.param_robot.B[42] := 0;
+stInitData.ModelParameters.param_robot.B[43] := 0;
+stInitData.ModelParameters.param_robot.B[44] := 0;
+stInitData.ModelParameters.param_robot.B[45] := 0;
+stInitData.ModelParameters.param_robot.B[46] := 0;
+stInitData.ModelParameters.param_robot.B[47] := 0;
+stInitData.ModelParameters.param_robot.B[48] := 0.47388799999999998;
+stInitData.ModelParameters.param_robot.K_1 := 60000;
+stInitData.ModelParameters.param_robot.K_2 := 60000;
+stInitData.ModelParameters.param_robot.K_3 := 40000;
+stInitData.ModelParameters.param_robot.K_4 := 40000;
+stInitData.ModelParameters.param_robot.K_5 := 40000;
+stInitData.ModelParameters.param_robot.K_6 := 20000;
+stInitData.ModelParameters.param_robot.K_7 := 20000;
+stInitData.ModelParameters.param_robot.K[0] := 60000;
+stInitData.ModelParameters.param_robot.K[1] := 0;
+stInitData.ModelParameters.param_robot.K[2] := 0;
+stInitData.ModelParameters.param_robot.K[3] := 0;
+stInitData.ModelParameters.param_robot.K[4] := 0;
+stInitData.ModelParameters.param_robot.K[5] := 0;
+stInitData.ModelParameters.param_robot.K[6] := 0;
+stInitData.ModelParameters.param_robot.K[7] := 0;
+stInitData.ModelParameters.param_robot.K[8] := 60000;
+stInitData.ModelParameters.param_robot.K[9] := 0;
+stInitData.ModelParameters.param_robot.K[10] := 0;
+stInitData.ModelParameters.param_robot.K[11] := 0;
+stInitData.ModelParameters.param_robot.K[12] := 0;
+stInitData.ModelParameters.param_robot.K[13] := 0;
+stInitData.ModelParameters.param_robot.K[14] := 0;
+stInitData.ModelParameters.param_robot.K[15] := 0;
+stInitData.ModelParameters.param_robot.K[16] := 40000;
+stInitData.ModelParameters.param_robot.K[17] := 0;
+stInitData.ModelParameters.param_robot.K[18] := 0;
+stInitData.ModelParameters.param_robot.K[19] := 0;
+stInitData.ModelParameters.param_robot.K[20] := 0;
+stInitData.ModelParameters.param_robot.K[21] := 0;
+stInitData.ModelParameters.param_robot.K[22] := 0;
+stInitData.ModelParameters.param_robot.K[23] := 0;
+stInitData.ModelParameters.param_robot.K[24] := 40000;
+stInitData.ModelParameters.param_robot.K[25] := 0;
+stInitData.ModelParameters.param_robot.K[26] := 0;
+stInitData.ModelParameters.param_robot.K[27] := 0;
+stInitData.ModelParameters.param_robot.K[28] := 0;
+stInitData.ModelParameters.param_robot.K[29] := 0;
+stInitData.ModelParameters.param_robot.K[30] := 0;
+stInitData.ModelParameters.param_robot.K[31] := 0;
+stInitData.ModelParameters.param_robot.K[32] := 40000;
+stInitData.ModelParameters.param_robot.K[33] := 0;
+stInitData.ModelParameters.param_robot.K[34] := 0;
+stInitData.ModelParameters.param_robot.K[35] := 0;
+stInitData.ModelParameters.param_robot.K[36] := 0;
+stInitData.ModelParameters.param_robot.K[37] := 0;
+stInitData.ModelParameters.param_robot.K[38] := 0;
+stInitData.ModelParameters.param_robot.K[39] := 0;
+stInitData.ModelParameters.param_robot.K[40] := 20000;
+stInitData.ModelParameters.param_robot.K[41] := 0;
+stInitData.ModelParameters.param_robot.K[42] := 0;
+stInitData.ModelParameters.param_robot.K[43] := 0;
+stInitData.ModelParameters.param_robot.K[44] := 0;
+stInitData.ModelParameters.param_robot.K[45] := 0;
+stInitData.ModelParameters.param_robot.K[46] := 0;
+stInitData.ModelParameters.param_robot.K[47] := 0;
+stInitData.ModelParameters.param_robot.K[48] := 20000;
+stInitData.ModelParameters.param_robot.tau_max[0] := 320;
+stInitData.ModelParameters.param_robot.tau_max[1] := 0;
+stInitData.ModelParameters.param_robot.tau_max[2] := 0;
+stInitData.ModelParameters.param_robot.tau_max[3] := 0;
+stInitData.ModelParameters.param_robot.tau_max[4] := 0;
+stInitData.ModelParameters.param_robot.tau_max[5] := 0;
+stInitData.ModelParameters.param_robot.tau_max[6] := 0;
+stInitData.ModelParameters.param_robot.tau_max[7] := 0;
+stInitData.ModelParameters.param_robot.tau_max[8] := 320;
+stInitData.ModelParameters.param_robot.tau_max[9] := 0;
+stInitData.ModelParameters.param_robot.tau_max[10] := 0;
+stInitData.ModelParameters.param_robot.tau_max[11] := 0;
+stInitData.ModelParameters.param_robot.tau_max[12] := 0;
+stInitData.ModelParameters.param_robot.tau_max[13] := 0;
+stInitData.ModelParameters.param_robot.tau_max[14] := 0;
+stInitData.ModelParameters.param_robot.tau_max[15] := 0;
+stInitData.ModelParameters.param_robot.tau_max[16] := 176;
+stInitData.ModelParameters.param_robot.tau_max[17] := 0;
+stInitData.ModelParameters.param_robot.tau_max[18] := 0;
+stInitData.ModelParameters.param_robot.tau_max[19] := 0;
+stInitData.ModelParameters.param_robot.tau_max[20] := 0;
+stInitData.ModelParameters.param_robot.tau_max[21] := 0;
+stInitData.ModelParameters.param_robot.tau_max[22] := 0;
+stInitData.ModelParameters.param_robot.tau_max[23] := 0;
+stInitData.ModelParameters.param_robot.tau_max[24] := 176;
+stInitData.ModelParameters.param_robot.tau_max[25] := 0;
+stInitData.ModelParameters.param_robot.tau_max[26] := 0;
+stInitData.ModelParameters.param_robot.tau_max[27] := 0;
+stInitData.ModelParameters.param_robot.tau_max[28] := 0;
+stInitData.ModelParameters.param_robot.tau_max[29] := 0;
+stInitData.ModelParameters.param_robot.tau_max[30] := 0;
+stInitData.ModelParameters.param_robot.tau_max[31] := 0;
+stInitData.ModelParameters.param_robot.tau_max[32] := 110;
+stInitData.ModelParameters.param_robot.tau_max[33] := 0;
+stInitData.ModelParameters.param_robot.tau_max[34] := 0;
+stInitData.ModelParameters.param_robot.tau_max[35] := 0;
+stInitData.ModelParameters.param_robot.tau_max[36] := 0;
+stInitData.ModelParameters.param_robot.tau_max[37] := 0;
+stInitData.ModelParameters.param_robot.tau_max[38] := 0;
+stInitData.ModelParameters.param_robot.tau_max[39] := 0;
+stInitData.ModelParameters.param_robot.tau_max[40] := 40;
+stInitData.ModelParameters.param_robot.tau_max[41] := 0;
+stInitData.ModelParameters.param_robot.tau_max[42] := 0;
+stInitData.ModelParameters.param_robot.tau_max[43] := 0;
+stInitData.ModelParameters.param_robot.tau_max[44] := 0;
+stInitData.ModelParameters.param_robot.tau_max[45] := 0;
+stInitData.ModelParameters.param_robot.tau_max[46] := 0;
+stInitData.ModelParameters.param_robot.tau_max[47] := 0;
+stInitData.ModelParameters.param_robot.tau_max[48] := 40;
+stInitData.ModelParameters.param_robot.tau_saturation_max[0] := 160;
+stInitData.ModelParameters.param_robot.tau_saturation_max[1] := 160;
+stInitData.ModelParameters.param_robot.tau_saturation_max[2] := 88;
+stInitData.ModelParameters.param_robot.tau_saturation_max[3] := 88;
+stInitData.ModelParameters.param_robot.tau_saturation_max[4] := 55;
+stInitData.ModelParameters.param_robot.tau_saturation_max[5] := 20;
+stInitData.ModelParameters.param_robot.tau_saturation_max[6] := 20;
+stInitData.ModelParameters.param_robot.q_limit_upper[0] := 2.9670597283903604;
+stInitData.ModelParameters.param_robot.q_limit_upper[1] := 2.0943951023931953;
+stInitData.ModelParameters.param_robot.q_limit_upper[2] := 2.9670597283903604;
+stInitData.ModelParameters.param_robot.q_limit_upper[3] := 2.0943951023931953;
+stInitData.ModelParameters.param_robot.q_limit_upper[4] := 2.9670597283903604;
+stInitData.ModelParameters.param_robot.q_limit_upper[5] := 2.0943951023931953;
+stInitData.ModelParameters.param_robot.q_limit_upper[6] := 3.0543261909900763;
+stInitData.ModelParameters.param_robot.q_limit_lower[0] := -2.9670597283903604;
+stInitData.ModelParameters.param_robot.q_limit_lower[1] := -2.0943951023931953;
+stInitData.ModelParameters.param_robot.q_limit_lower[2] := -2.9670597283903604;
+stInitData.ModelParameters.param_robot.q_limit_lower[3] := -2.0943951023931953;
+stInitData.ModelParameters.param_robot.q_limit_lower[4] := -2.9670597283903604;
+stInitData.ModelParameters.param_robot.q_limit_lower[5] := -2.0943951023931953;
+stInitData.ModelParameters.param_robot.q_limit_lower[6] := -3.0543261909900763;
+stInitData.ModelParameters.param_robot.q_p_limit_upper[0] := 1.4835298641951802;
+stInitData.ModelParameters.param_robot.q_p_limit_upper[1] := 1.4835298641951802;
+stInitData.ModelParameters.param_robot.q_p_limit_upper[2] := 1.7453292519943295;
+stInitData.ModelParameters.param_robot.q_p_limit_upper[3] := 1.3089969389957472;
+stInitData.ModelParameters.param_robot.q_p_limit_upper[4] := 2.2689280275926285;
+stInitData.ModelParameters.param_robot.q_p_limit_upper[5] := 2.3561944901923448;
+stInitData.ModelParameters.param_robot.q_p_limit_upper[6] := 2.3561944901923448;
+stInitData.ModelParameters.param_robot.q_p_limit_lower[0] := -1.4835298641951802;
+stInitData.ModelParameters.param_robot.q_p_limit_lower[1] := -1.4835298641951802;
+stInitData.ModelParameters.param_robot.q_p_limit_lower[2] := -1.7453292519943295;
+stInitData.ModelParameters.param_robot.q_p_limit_lower[3] := -1.3089969389957472;
+stInitData.ModelParameters.param_robot.q_p_limit_lower[4] := -2.2689280275926285;
+stInitData.ModelParameters.param_robot.q_p_limit_lower[5] := -2.3561944901923448;
+stInitData.ModelParameters.param_robot.q_p_limit_lower[6] := -2.3561944901923448;
+stInitData.ModelParameters.positions.candle[0] := 0;
+stInitData.ModelParameters.positions.candle[1] := 0;
+stInitData.ModelParameters.positions.candle[2] := 1.3320000000000001;
+stInitData.ModelParameters.positions.start[0] := 0.40000000000000002;
+stInitData.ModelParameters.positions.start[1] := 0;
+stInitData.ModelParameters.positions.start[2] := 0.94999999999999996;
+stInitData.ModelParameters.positions.hand_over[0] := 0.40000000000000002;
+stInitData.ModelParameters.positions.hand_over[1] := 0;
+stInitData.ModelParameters.positions.hand_over[2] := 0.69999999999999996;
+stInitData.ModelParameters.positions.candle_p[0] := 0;
+stInitData.ModelParameters.positions.candle_p[1] := 0;
+stInitData.ModelParameters.positions.candle_p[2] := 0;
+stInitData.ModelParameters.positions.start_p[0] := 0;
+stInitData.ModelParameters.positions.start_p[1] := 0;
+stInitData.ModelParameters.positions.start_p[2] := 0;
+stInitData.ModelParameters.positions.hand_over_p[0] := 1;
+stInitData.ModelParameters.positions.hand_over_p[1] := 0;
+stInitData.ModelParameters.positions.hand_over_p[2] := 1;
+stInitData.ModelParameters.positions.T_candle[0] := 1;
+stInitData.ModelParameters.positions.T_candle[1] := 0;
+stInitData.ModelParameters.positions.T_candle[2] := 0;
+stInitData.ModelParameters.positions.T_candle[3] := 0;
+stInitData.ModelParameters.positions.T_candle[4] := 0;
+stInitData.ModelParameters.positions.T_candle[5] := 1;
+stInitData.ModelParameters.positions.T_candle[6] := 0;
+stInitData.ModelParameters.positions.T_candle[7] := 0;
+stInitData.ModelParameters.positions.T_candle[8] := 0;
+stInitData.ModelParameters.positions.T_candle[9] := 0;
+stInitData.ModelParameters.positions.T_candle[10] := 1;
+stInitData.ModelParameters.positions.T_candle[11] := 0;
+stInitData.ModelParameters.positions.T_candle[12] := 0;
+stInitData.ModelParameters.positions.T_candle[13] := 0;
+stInitData.ModelParameters.positions.T_candle[14] := 1.3320000000000001;
+stInitData.ModelParameters.positions.T_candle[15] := 1;
+stInitData.ModelParameters.estimator_init_struct.alpha0 := 1;
+stInitData.ModelParameters.estimator_init_struct.px_est_last[0] := 3.1016510000000004;
+stInitData.ModelParameters.estimator_init_struct.px_est_last[1] := 0;
+stInitData.ModelParameters.estimator_init_struct.Px_last[0] := 1;
+stInitData.ModelParameters.estimator_init_struct.Px_last[1] := 0;
+stInitData.ModelParameters.estimator_init_struct.Px_last[2] := 0;
+stInitData.ModelParameters.estimator_init_struct.Px_last[3] := 1;
+stInitData.ModelParameters.estimator_init_struct.py_est_last[0] := 0.66638799999999998;
+stInitData.ModelParameters.estimator_init_struct.py_est_last[1] := 0;
+stInitData.ModelParameters.estimator_init_struct.Py_last[0] := 1;
+stInitData.ModelParameters.estimator_init_struct.Py_last[1] := 0;
+stInitData.ModelParameters.estimator_init_struct.Py_last[2] := 0;
+stInitData.ModelParameters.estimator_init_struct.Py_last[3] := 1;
+stInitData.ModelParameters.estimator_init_struct.pz_est_last[0] := 0.241954;
+stInitData.ModelParameters.estimator_init_struct.pz_est_last[1] := 0;
+stInitData.ModelParameters.estimator_init_struct.Pz_last[0] := 1;
+stInitData.ModelParameters.estimator_init_struct.Pz_last[1] := 0;
+stInitData.ModelParameters.estimator_init_struct.Pz_last[2] := 0;
+stInitData.ModelParameters.estimator_init_struct.Pz_last[3] := 1;
+stInitData.ModelParameters.estimator_init_struct.q := 0.80000000000000004;
+stInitData.ModelParameters.estimator_init_struct.seed1 := 12772.557684885127;
+stInitData.ModelParameters.estimator_init_struct.seed2 := 5108.865216008141;
+stInitData.ModelParameters.estimator_init_struct.seed3 := 12578.915732383946;
+stInitData.ModelParameters.param_controller.g := 9.8100000000000005;
+stInitData.ModelParameters.param_controller.T_a := 0.000125;
+stInitData.ModelParameters.param_controller.singular_perturbation.K_tau[0] := 4;
+stInitData.ModelParameters.param_controller.singular_perturbation.K_tau[1] := 4;
+stInitData.ModelParameters.param_controller.singular_perturbation.K_tau[2] := 4;
+stInitData.ModelParameters.param_controller.singular_perturbation.K_tau[3] := 5;
+stInitData.ModelParameters.param_controller.singular_perturbation.K_tau[4] := 3;
+stInitData.ModelParameters.param_controller.singular_perturbation.K_tau[5] := 2.5;
+stInitData.ModelParameters.param_controller.singular_perturbation.K_tau[6] := 2.5;
+stInitData.ModelParameters.param_controller.singular_perturbation.D_tau[0] := 0.014999999999999999;
+stInitData.ModelParameters.param_controller.singular_perturbation.D_tau[1] := 0.014999999999999999;
+stInitData.ModelParameters.param_controller.singular_perturbation.D_tau[2] := 0.014999999999999999;
+stInitData.ModelParameters.param_controller.singular_perturbation.D_tau[3] := 0.02;
+stInitData.ModelParameters.param_controller.singular_perturbation.D_tau[4] := 0.01;
+stInitData.ModelParameters.param_controller.singular_perturbation.D_tau[5] := 0.01;
+stInitData.ModelParameters.param_controller.singular_perturbation.D_tau[6] := 0.01;
+stInitData.ModelParameters.timing.T_optitrack := 0.0040000000000000001;
+stInitData.ModelParameters.timing.T_iiwa := 0.000125;
+stInitData.ModelParameters.timing.T_optiTask := 5.0000000000000002e-05;
+stInitData.ModelParameters.timing.cycle_time_ratio := 80;
+stInitData.ModelParameters.filter_tau_p_slow_T_1[0] := 0.00079577471545947667;
+stInitData.ModelParameters.filter_tau_p_slow_T_1[1] := 0.00079577471545947667;
+stInitData.ModelParameters.filter_tau_p_slow_T_1[2] := 0.00079577471545947667;
+stInitData.ModelParameters.filter_tau_p_slow_T_1[3] := 0.00079577471545947667;
+stInitData.ModelParameters.filter_tau_p_slow_T_1[4] := 0.00079577471545947667;
+stInitData.ModelParameters.filter_tau_p_slow_T_1[5] := 0.00079577471545947667;
+stInitData.ModelParameters.filter_tau_p_slow_T_1[6] := 0.00079577471545947667;
+stInitData.ModelParameters.filter_tau_slow_T_1[0] := 0.00079577471545947667;
+stInitData.ModelParameters.filter_tau_slow_T_1[1] := 0.00079577471545947667;
+stInitData.ModelParameters.filter_tau_slow_T_1[2] := 0.00079577471545947667;
+stInitData.ModelParameters.filter_tau_slow_T_1[3] := 0.00079577471545947667;
+stInitData.ModelParameters.filter_tau_slow_T_1[4] := 0.00079577471545947667;
+stInitData.ModelParameters.filter_tau_slow_T_1[5] := 0.00079577471545947667;
+stInitData.ModelParameters.filter_tau_slow_T_1[6] := 0.00079577471545947667;
+stInitData.ModelParameters.filter_theta_p_slow_T_1[0] := 0.00079577471545947667;
+stInitData.ModelParameters.filter_theta_p_slow_T_1[1] := 0.00079577471545947667;
+stInitData.ModelParameters.filter_theta_p_slow_T_1[2] := 0.00079577471545947667;
+stInitData.ModelParameters.filter_theta_p_slow_T_1[3] := 0.00079577471545947667;
+stInitData.ModelParameters.filter_theta_p_slow_T_1[4] := 0.00079577471545947667;
+stInitData.ModelParameters.filter_theta_p_slow_T_1[5] := 0.00079577471545947667;
+stInitData.ModelParameters.filter_theta_p_slow_T_1[6] := 0.00079577471545947667;
+stInitData.ModelParameters.filter_theta_slow_T_1[0] := 0.00079577471545947667;
+stInitData.ModelParameters.filter_theta_slow_T_1[1] := 0.00079577471545947667;
+stInitData.ModelParameters.filter_theta_slow_T_1[2] := 0.00079577471545947667;
+stInitData.ModelParameters.filter_theta_slow_T_1[3] := 0.00079577471545947667;
+stInitData.ModelParameters.filter_theta_slow_T_1[4] := 0.00079577471545947667;
+stInitData.ModelParameters.filter_theta_slow_T_1[5] := 0.00079577471545947667;
+stInitData.ModelParameters.filter_theta_slow_T_1[6] := 0.00079577471545947667;
+stInitData.ModelParameters.height_of_catch := 0.90000000000000002;
+stInitData.ModelParameters.sensor_torque_offset[0] := 0.53000000000000003;
+stInitData.ModelParameters.sensor_torque_offset[1] := -0.095000000000000001;
+stInitData.ModelParameters.sensor_torque_offset[2] := -0.189;
+stInitData.ModelParameters.sensor_torque_offset[3] := 0.070000000000000007;
+stInitData.ModelParameters.sensor_torque_offset[4] := -0.058000000000000003;
+stInitData.ModelParameters.sensor_torque_offset[5] := 0.0025000000000000001;
+stInitData.ModelParameters.sensor_torque_offset[6] := -0.12;
+stInitData.ModelParameters.Constant21_Value := 0;
+stInitData.ModelParameters.Constant19_Value := 1;
+stInitData.ModelParameters.pd_Y0 := 0;
+stInitData.ModelParameters.pd_p_Y0 := 0;
+stInitData.ModelParameters.t_catch_pred_Y0 := 0;
+stInitData.ModelParameters.use_pred_Y0 := 0;
+stInitData.ModelParameters.pred_update_Y0 := 0;
+stInitData.ModelParameters.Throw_Constant_Value := 0;
+stInitData.ModelParameters.Constant25_Value := -0.080000000000000002;
+stInitData.ModelParameters.Constant26_Value := -0.10000000000000001;
+stInitData.ModelParameters.Constant30_Value := 0;
+stInitData.ModelParameters.Constant27_Value := 0;
+stInitData.ModelParameters.Constant28_Value := 0;
+stInitData.ModelParameters.Constant29_Value := 0;
+stInitData.ModelParameters.Constant1_Value := 3.6000000000000001;
+stInitData.ModelParameters.Constant17_Value := 0;
+stInitData.ModelParameters.Constant_Value := 100;
+stInitData.ModelParameters.Constant4_Value[0] := 0.40000000000000002;
+stInitData.ModelParameters.Constant4_Value[1] := 0;
+stInitData.ModelParameters.Constant4_Value[2] := 0.69999999999999996;
+stInitData.ModelParameters.Constant2_Value := 100;
+stInitData.ModelParameters.Constant3_Value := 0;
+stInitData.ModelParameters.Constant18_Value := 5;
+stInitData.ModelParameters.MotionEnableValue_Value := 0;
+stInitData.ModelParameters.MotionDisableValue_Value := 0;
+stInitData.ModelParameters.RigidBodyControllerSelector_Value := 2;
+stInitData.ModelParameters.ManualSwitch2_CurrentSetting := 0;
+stInitData.ModelParameters.ManualSwitch7_CurrentSetting := 0;
+stInitData.ContextInfoArr_0_TaskOidHdr.indexGroup := 0;
+stInitData.ContextInfoArr_0_TaskOidHdr.indexOffset := 16#03002060;
+stInitData.ContextInfoArr_0_TaskOidHdr.cbData := SIZEOF(stInitData.ContextInfoArr_0_TaskOid);
+stInitData.ContextInfoArr_0_TaskPriorityHdr.indexGroup := 0;
+stInitData.ContextInfoArr_0_TaskPriorityHdr.indexOffset := 16#03002070;
+stInitData.ContextInfoArr_0_TaskPriorityHdr.cbData := SIZEOF(stInitData.ContextInfoArr_0_TaskPriority);
+stInitData.ContextInfoArr_0_TaskCycleTimeNsHdr.indexGroup := 0;
+stInitData.ContextInfoArr_0_TaskCycleTimeNsHdr.indexOffset := 16#03002080;
+stInitData.ContextInfoArr_0_TaskCycleTimeNsHdr.cbData := SIZEOF(stInitData.ContextInfoArr_0_TaskCycleTimeNs);
+stInitData.ContextInfoArr_0_TaskPortHdr.indexGroup := 0;
+stInitData.ContextInfoArr_0_TaskPortHdr.indexOffset := 16#03002090;
+stInitData.ContextInfoArr_0_TaskPortHdr.cbData := SIZEOF(stInitData.ContextInfoArr_0_TaskPort);
+stInitData.ContextInfoArr_0_TaskSortOrderHdr.indexGroup := 0;
+stInitData.ContextInfoArr_0_TaskSortOrderHdr.indexOffset := 16#030020b0;
+stInitData.ContextInfoArr_0_TaskSortOrderHdr.cbData := SIZEOF(stInitData.ContextInfoArr_0_TaskSortOrder);
+stInitData.Header.cbData := SIZEOF(stInitData)-SIZEOF(stInitData.Header);
+stInitData.Header.uiElmCnt := 11;
+
+
+// set pointer to InitData structure
+SetInitDataInfo(ADR(stInitData));
+
+// set DataArea information
+SetDataAreaInfo(ADR(arrDataAreas),2);
+arrDataAreas[1].nDataAreaId := 0;
+arrDataAreas[1].nSize := SIZEOF(stInput);
+arrDataAreas[1].pPlcVar := ADR(stInput);
+arrDataAreas[1].pModuleProcImg := 0;
+arrDataAreas[1].eDataAreaType := E_TcMatSimDataAreaType.InputDst;
+arrDataAreas[2].nDataAreaId := 1;
+arrDataAreas[2].nSize := SIZEOF(stOutput);
+arrDataAreas[2].pPlcVar := ADR(stOutput);
+arrDataAreas[2].pModuleProcImg := 0;
+arrDataAreas[2].eDataAreaType := E_TcMatSimDataAreaType.OutputSrc;
+
+
+// initialize basic interface pointers and return
+FB_init := SUCCEEDED(Init(oid));
+                  </xhtml>
+                </ST>
+              </body>
+              <addData />
+            </Method>
+          </data>
+          <data name="http://www.3s-software.com/plcopenxml/method" handleUnknown="implementation">
+            <Method name="Execute">
+              <interface>
+                <returnType>
+                  <derived name="HRESULT" />
+                </returnType>
+              </interface>
+              <body>
+                <ST>
+                  <xhtml xmlns="http://www.w3.org/1999/xhtml">
+IF (SUCCEEDED(hResult)) THEN
+  hResult := VerifyParameters();
+END_IF
+
+// update DataArea information
+SetDataAreaInfo(ADR(arrDataAreas),2);
+arrDataAreas[1].nDataAreaId := 0;
+arrDataAreas[1].nSize := SIZEOF(stInput);
+arrDataAreas[1].pPlcVar := ADR(stInput);
+arrDataAreas[1].pModuleProcImg := 0;
+arrDataAreas[1].eDataAreaType := E_TcMatSimDataAreaType.InputDst;
+arrDataAreas[2].nDataAreaId := 1;
+arrDataAreas[2].nSize := SIZEOF(stOutput);
+arrDataAreas[2].pPlcVar := ADR(stOutput);
+arrDataAreas[2].pModuleProcImg := 0;
+arrDataAreas[2].eDataAreaType := E_TcMatSimDataAreaType.OutputSrc;
+
+	
+// call base method
+Execute := SUPER^.Execute();
+                  </xhtml>
+                </ST>
+              </body>
+              <addData />
+            </Method>
+          </data>
+          <data name="http://www.3s-software.com/plcopenxml/method" handleUnknown="implementation">
+            <Method name="VerifyParameters">
+              <interface>
+                <returnType>
+                  <derived name="HRESULT"/>
+                </returnType>
+                <localVars>
+                  <variable name="moduleCallByParam">
+                    <type>
+                      <derived name="TctModuleCallByType"/>
+                    </type>
+                  </variable>
+                </localVars>
+                <addData>
+                  <data name="http://www.3s-software.com/plcopenxml/accessmodifiers" handleUnknown="implementation">
+                    <AccessModifiers Private="true"/>
+                  </data>
+                  <data name="http://www.3s-software.com/plcopenxml/attributes" handleUnknown="implementation">
+                    <Attributes>
+                      <Attribute Name="object_name" Value="VerifyParameters"/>
+                    </Attributes>
+                  </data>
+                </addData>
+              </interface>
+              <body>
+                <ST>
+                  <xhtml xmlns="http://www.w3.org/1999/xhtml">
+IF (bParametersVerified) THEN
+  VerifyParameters := Tc2_System.E_HRESULTAdsErr.HRESULT_ADS_NOERROR;
+ELSE
+  VerifyParameters := GetObjPara(stInitData.CallByHdr.indexOffset,SIZEOF(moduleCallByParam),ADR(moduleCallByParam));
+  
+  // check the "CallBy" parameter to be set to "Module"
+  IF (SUCCEEDED(VerifyParameters) AND (moduleCallByParam &lt;&gt; TctModuleCallByType.Module)) THEN
+      VerifyParameters := Tc2_System.E_HRESULTAdsErr.INVALIDPARM;
+  END_IF
+  
+  // set the parameters verified flag
+  bParametersVerified := SUCCEEDED(VerifyParameters);
+END_IF
+                  </xhtml>
+                </ST>
+              </body>
+              <addData/>
+            </Method>
+          </data>
+          <data name="http://www.3s-software.com/plcopenxml/property" handleUnknown="implementation">
+            <Property name="InitData">
+              <interface>
+                <returnType>
+                  <derived name="ST_controller_ballcatcher_inv_kinInitData" />
+                </returnType>
+              </interface>
+              <SetAccessor>
+                <interface>
+                  <addData>
+                    <data name="http://www.3s-software.com/plcopenxml/attributes" handleUnknown="implementation">
+                      <Attributes>
+                        <Attribute Name="hide" Value="" />
+                      </Attributes>
+                    </data>
+                  </addData>
+                </interface>
+                <body>
+                  <ST>
+                    <xhtml xmlns="http://www.w3.org/1999/xhtml">stInitData := InitData;</xhtml>
+                  </ST>
+                </body>
+                <addData />
+              </SetAccessor>
+              <GetAccessor>
+                <interface>
+                  <addData>
+                    <data name="http://www.3s-software.com/plcopenxml/attributes" handleUnknown="implementation">
+                      <Attributes>
+                        <Attribute Name="hide" Value="" />
+                      </Attributes>
+                    </data>
+                  </addData>
+                </interface>
+                <body>
+                  <ST>
+                    <xhtml xmlns="http://www.w3.org/1999/xhtml">InitData := stInitData;</xhtml>
+                  </ST>
+                </body>
+                <addData />
+              </GetAccessor>
+              <addData />
+            </Property>
+          </data>
+        </addData>
+      </pou>
+    </pous>
+  </types>
+  <instances>
+    <configurations />
+  </instances>
+</project>

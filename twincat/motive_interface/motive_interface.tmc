@@ -1,0 +1,421 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TcModuleClass xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2009/05/TcModuleClass">
+	<Vendor>
+		<Name>C++ Module Vendor</Name>
+	</Vendor>
+	<DataTypes >
+		<DataType>
+			<Name GUID="{03010095-0000-0000-E000-000000000064}" TcBaseType="true">ITcIoUdpProtocolRecv</Name>
+			<BitSize X64="64">32</BitSize>
+			<BaseType GUID="{00000001-0000-0000-E000-000000000064}">ITcUnknown</BaseType>
+			<Method>
+				<Name>ReceiveData</Name>
+				<ReturnType GUID="{18071995-0000-0000-0000-000000000019}">HRESULT</ReturnType>
+				<ReturnBitSize>32</ReturnBitSize>
+				<Parameter>
+					<Name>ipAddr</Name>
+					<Type GUID="{18071995-0000-0000-0000-000000000008}">UDINT</Type>
+					<BitSize>32</BitSize>
+				</Parameter>
+				<Parameter>
+					<Name>udpDestPort</Name>
+					<Type GUID="{18071995-0000-0000-0000-000000000005}">UINT</Type>
+					<BitSize>16</BitSize>
+				</Parameter>
+				<Parameter>
+					<Name>udpSrcPort</Name>
+					<Type GUID="{18071995-0000-0000-0000-000000000005}">UINT</Type>
+					<BitSize>16</BitSize>
+				</Parameter>
+				<Parameter>
+					<Name>nData</Name>
+					<Type GUID="{18071995-0000-0000-0000-000000000008}">UDINT</Type>
+					<BitSize>32</BitSize>
+				</Parameter>
+				<Parameter>
+					<Name>pData</Name>
+					<Type GUID="{18071995-0000-0000-0000-000000000018}">PVOID</Type>
+					<BitSize X64="64">32</BitSize>
+				</Parameter>
+				<Parameter>
+					<Name>pVlan</Name>
+					<Type GUID="{478C4436-6F33-4F6F-B4A8-88074B54DCD4}" PointerTo="1" Optional="0">ETYPE_VLAN_HEADER</Type>
+					<BitSize X64="64">32</BitSize>
+				</Parameter>
+			</Method>
+		</DataType>
+		<DataType>
+			<Name GUID="{478C4436-6F33-4F6F-B4A8-88074B54DCD4}">ETYPE_VLAN_HEADER</Name>
+			<BitSize>32</BitSize>
+			<BaseType GUID="{18071995-0000-0000-0000-000000000008}">UDINT</BaseType>
+		</DataType>
+		<DataType>
+			<Name GUID="{03010097-0000-0000-E000-000000000064}" TcBaseType="true">ITcIoUdpProtocol</Name>
+			<BitSize X64="64">32</BitSize>
+			<BaseType GUID="{00000001-0000-0000-E000-000000000064}">ITcUnknown</BaseType>
+			<Method>
+				<Name>SendData</Name>
+				<ReturnType GUID="{18071995-0000-0000-0000-000000000019}">HRESULT</ReturnType>
+				<ReturnBitSize>32</ReturnBitSize>
+				<Parameter>
+					<Name>ipDestAddr</Name>
+					<Type GUID="{18071995-0000-0000-0000-000000000008}">UDINT</Type>
+					<BitSize>32</BitSize>
+				</Parameter>
+				<Parameter>
+					<Name>udpDestPort</Name>
+					<Type GUID="{18071995-0000-0000-0000-000000000005}">UINT</Type>
+					<BitSize>16</BitSize>
+				</Parameter>
+				<Parameter>
+					<Name>udpSrcPort</Name>
+					<Type GUID="{18071995-0000-0000-0000-000000000005}">UINT</Type>
+					<BitSize>16</BitSize>
+				</Parameter>
+				<Parameter>
+					<Name>nData</Name>
+					<Type GUID="{18071995-0000-0000-0000-000000000008}">UDINT</Type>
+					<BitSize>32</BitSize>
+				</Parameter>
+				<Parameter>
+					<Name>pData</Name>
+					<Type GUID="{18071995-0000-0000-0000-000000000018}">PVOID</Type>
+					<BitSize X64="64">32</BitSize>
+				</Parameter>
+				<Parameter>
+					<Name>bCalcUdpCheckSum</Name>
+					<Type GUID="{18071995-0000-0000-0000-000000000030}" Optional="0">BOOL</Type>
+					<BitSize>8</BitSize>
+				</Parameter>
+				<Parameter>
+					<Name>pVlan</Name>
+					<Type GUID="{478C4436-6F33-4F6F-B4A8-88074B54DCD4}" PointerTo="1" Optional="0">ETYPE_VLAN_HEADER</Type>
+					<BitSize X64="64">32</BitSize>
+				</Parameter>
+			</Method>
+			<Method>
+				<Name>CheckReceived</Name>
+				<ReturnType GUID="{18071995-0000-0000-0000-000000000019}">HRESULT</ReturnType>
+				<ReturnBitSize>32</ReturnBitSize>
+			</Method>
+			<Method>
+				<Name>RegisterReceiver</Name>
+				<ReturnType GUID="{18071995-0000-0000-0000-000000000019}">HRESULT</ReturnType>
+				<ReturnBitSize>32</ReturnBitSize>
+				<Parameter>
+					<Name>udpPort</Name>
+					<Type GUID="{18071995-0000-0000-0000-000000000005}">UINT</Type>
+					<BitSize>16</BitSize>
+				</Parameter>
+				<Parameter>
+					<Name>ipRecv</Name>
+					<Type GUID="{03010095-0000-0000-E000-000000000064}">ITcIoUdpProtocolRecv</Type>
+					<BitSize X64="64">32</BitSize>
+				</Parameter>
+			</Method>
+			<Method>
+				<Name>UnregisterReceiver</Name>
+				<ReturnType GUID="{18071995-0000-0000-0000-000000000019}">HRESULT</ReturnType>
+				<ReturnBitSize>32</ReturnBitSize>
+				<Parameter>
+					<Name>udpPort</Name>
+					<Type GUID="{18071995-0000-0000-0000-000000000005}">UINT</Type>
+					<BitSize>16</BitSize>
+				</Parameter>
+			</Method>
+		</DataType>
+		<DataType>
+			<Name GUID="{18071995-0000-0000-0000-00000000003E}" TcBaseType="true" HideSubItems="true">IPADDR</Name>
+			<BitSize>32</BitSize>
+			<BaseType GUID="{18071995-0000-0000-0000-000000000001}">BYTE</BaseType>
+			<ArrayInfo>
+				<LBound>0</LBound>
+				<Elements>4</Elements>
+			</ArrayInfo>
+			<Format>
+				<Printf>%d.%d.%d.%d</Printf>
+				<Parameter>[3]</Parameter>
+				<Parameter>[2]</Parameter>
+				<Parameter>[1]</Parameter>
+				<Parameter>[0]</Parameter>
+			</Format>
+		</DataType>
+		<DataType>
+			<Name GUID="{fcfcdc6d-b77d-7912-7398-4bc5686850ef}">RigidBody</Name>
+			<BitSize>640</BitSize>
+			<SubItem>
+				<Name>ID</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000009}">DINT</Type>
+				<BitSize>32</BitSize>
+				<BitOffs>0</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>x</Name>
+				<Type GUID="{18071995-0000-0000-0000-00000000000E}">LREAL</Type>
+				<BitSize>64</BitSize>
+				<BitOffs>64</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>y</Name>
+				<Type GUID="{18071995-0000-0000-0000-00000000000E}">LREAL</Type>
+				<BitSize>64</BitSize>
+				<BitOffs>128</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>z</Name>
+				<Type GUID="{18071995-0000-0000-0000-00000000000E}">LREAL</Type>
+				<BitSize>64</BitSize>
+				<BitOffs>192</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>qx</Name>
+				<Type GUID="{18071995-0000-0000-0000-00000000000E}">LREAL</Type>
+				<BitSize>64</BitSize>
+				<BitOffs>256</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>qy</Name>
+				<Type GUID="{18071995-0000-0000-0000-00000000000E}">LREAL</Type>
+				<BitSize>64</BitSize>
+				<BitOffs>320</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>qz</Name>
+				<Type GUID="{18071995-0000-0000-0000-00000000000E}">LREAL</Type>
+				<BitSize>64</BitSize>
+				<BitOffs>384</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>qw</Name>
+				<Type GUID="{18071995-0000-0000-0000-00000000000E}">LREAL</Type>
+				<BitSize>64</BitSize>
+				<BitOffs>448</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>MeanError</Name>
+				<Type GUID="{18071995-0000-0000-0000-00000000000E}">LREAL</Type>
+				<BitSize>64</BitSize>
+				<BitOffs>512</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>bTrackingValid</Name>
+				<Type GUID="{18071995-0000-0000-0000-00000000000E}">LREAL</Type>
+				<BitSize>64</BitSize>
+				<BitOffs>576</BitOffs>
+			</SubItem>
+		</DataType>
+		<DataType>
+			<Name GUID="{8ff1bb11-54ec-a46e-6b45-003256b9ad97}">Marker</Name>
+			<BitSize>576</BitSize>
+			<SubItem>
+				<Name>MarkerID</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000006}">INT</Type>
+				<BitSize>16</BitSize>
+				<BitOffs>0</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>ModelID</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000006}">INT</Type>
+				<BitSize>16</BitSize>
+				<BitOffs>16</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>x</Name>
+				<Type GUID="{18071995-0000-0000-0000-00000000000E}">LREAL</Type>
+				<BitSize>64</BitSize>
+				<BitOffs>64</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>y</Name>
+				<Type GUID="{18071995-0000-0000-0000-00000000000E}">LREAL</Type>
+				<BitSize>64</BitSize>
+				<BitOffs>128</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>z</Name>
+				<Type GUID="{18071995-0000-0000-0000-00000000000E}">LREAL</Type>
+				<BitSize>64</BitSize>
+				<BitOffs>192</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>markerSize</Name>
+				<Type GUID="{18071995-0000-0000-0000-00000000000E}">LREAL</Type>
+				<BitSize>64</BitSize>
+				<BitOffs>256</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>bOccluded</Name>
+				<Type GUID="{18071995-0000-0000-0000-00000000000E}">LREAL</Type>
+				<BitSize>64</BitSize>
+				<BitOffs>320</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>bPCSolved</Name>
+				<Type GUID="{18071995-0000-0000-0000-00000000000E}">LREAL</Type>
+				<BitSize>64</BitSize>
+				<BitOffs>384</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>bModelSolved</Name>
+				<Type GUID="{18071995-0000-0000-0000-00000000000E}">LREAL</Type>
+				<BitSize>64</BitSize>
+				<BitOffs>448</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>residualError</Name>
+				<Type GUID="{18071995-0000-0000-0000-00000000000E}">LREAL</Type>
+				<BitSize>64</BitSize>
+				<BitOffs>512</BitOffs>
+			</SubItem>
+		</DataType>
+	</DataTypes>
+	<Groups>
+		<Group SortOrder="701">
+			<Name>C++</Name>
+			<DisplayName>C++ Modules</DisplayName>
+		</Group>
+	</Groups>
+	<Modules>
+		<Module GUID="{625c7edf-c996-4e32-bcf2-38030545e47c}" Group="C++">
+			<Name>motive_interface_module</Name>
+			<CLSID ClassFactory="motive_interface">{625c7edf-c996-4e32-bcf2-38030545e47c}</CLSID>
+			<Licenses>
+				<License>
+					<LicenseId>{304D006A-8299-4560-AB79-438534B50288}</LicenseId>
+					<Comment>TC3 C++</Comment>
+				</License>
+			</Licenses>
+			<InitSequence>SO</InitSequence>
+			<Contexts>
+				<Context>
+					<Id>1</Id>
+				</Context>
+			</Contexts>
+			<Interfaces>
+				<Interface DisableCodeGeneration="true">
+					<Type GUID="{00000012-0000-0000-E000-000000000064}">ITComObject</Type>
+				</Interface>
+				<Interface>
+					<Type GUID="{03000010-0000-0000-E000-000000000064}">ITcCyclic</Type>
+				</Interface>
+				<Interface DisableCodeGeneration="true">
+					<Type GUID="{03000012-0000-0000-E000-000000000064}">ITcADI</Type>
+				</Interface>
+				<Interface DisableCodeGeneration="true">
+					<Type GUID="{03000018-0000-0000-E000-000000000064}">ITcWatchSource</Type>
+				</Interface>
+				<Interface>
+					<Type GUID="{03010095-0000-0000-e000-000000000064}">ITcIoUdpProtocolRecv</Type>
+				</Interface>
+			</Interfaces>
+			<Parameters>
+				<Parameter HideParameter="true">
+					<Name>TraceLevelMax</Name>
+					<Comment>Controls the amount of log messages.</Comment>
+					<BaseType GUID="{8007ae3b-86bb-40f2-b385-ef87fcc239a4}">TcTraceLevel</BaseType>
+					<PTCID>#x03002103</PTCID>
+					<ContextId>1</ContextId>
+				</Parameter>
+				<Parameter>
+					<Name>MotiveAddress</Name>
+					<Comment>
+						<![CDATA[IP-Address of Optitrack Motive]]>
+					</Comment>
+					<BaseType GUID="{18071995-0000-0000-0000-00000000003e}">IPADDR</BaseType>
+					<Unit>
+						<![CDATA[xxx.xxx.xxx.xxx]]>
+					</Unit>
+					<PTCID>#x00000002</PTCID>
+					<ContextId>1</ContextId>
+				</Parameter>
+			</Parameters>
+			<DataAreas >
+				<DataArea>
+					<AreaNo AreaType="OutputSrc">1</AreaNo>
+					<Name>Output</Name>
+					<ContextId>1</ContextId>
+					<Symbol CreateSymbol="true"><Name>FrameNumber</Name><BaseType GUID="{18071995-0000-0000-0000-000000000009}">DINT</BaseType></Symbol><Symbol CreateSymbol="true"><Name>DataClock</Name><BaseType GUID="{18071995-0000-0000-0000-000000000030}">BOOL</BaseType></Symbol><Symbol CreateSymbol="true"><Name>Timestamp</Name><BaseType GUID="{18071995-0000-0000-0000-00000000000e}">LREAL</BaseType></Symbol><Symbol CreateSymbol="true"><Name>CameraMidExposureTimestamp</Name><BaseType GUID="{18071995-0000-0000-0000-00000000000b}">ULINT</BaseType></Symbol><Symbol CreateSymbol="true">
+						<Name>RigidBodyCount</Name>
+						<BaseType GUID="{18071995-0000-0000-0000-000000000009}">DINT</BaseType>
+					</Symbol>
+					<Symbol CreateSymbol="true">
+						<Name>RigidBodyArray</Name>
+						<BaseType GUID="{fcfcdc6d-b77d-7912-7398-4bc5686850ef}">RigidBody</BaseType>
+						<ArrayInfo>
+							<LBound>0</LBound>
+							<Elements>5</Elements>
+						</ArrayInfo>
+					</Symbol>
+					<Symbol CreateSymbol="true">
+						<Name>LabeledMarkerCount</Name>
+						<BaseType GUID="{18071995-0000-0000-0000-000000000009}">DINT</BaseType>
+					</Symbol>
+					<Symbol CreateSymbol="true">
+						<Name>LabeledMarkerArray</Name>
+						<BaseType GUID="{8ff1bb11-54ec-a46e-6b45-003256b9ad97}">Marker</BaseType>
+						<ArrayInfo>
+							<LBound>0</LBound>
+							<Elements>20</Elements>
+						</ArrayInfo>
+					</Symbol>
+					<Symbol CreateSymbol="true">
+						<Name>SingleMarkerCount</Name>
+						<BaseType GUID="{18071995-0000-0000-0000-000000000009}">DINT</BaseType>
+					</Symbol>
+					<Symbol CreateSymbol="true">
+						<Name>SingleMarkerArray</Name>
+						<BaseType GUID="{8ff1bb11-54ec-a46e-6b45-003256b9ad97}">Marker</BaseType>
+						<ArrayInfo>
+							<LBound>0</LBound>
+							<Elements>20</Elements>
+						</ArrayInfo>
+					</Symbol>
+					<Symbol CreateSymbol="true">
+						<Name>SingleMarkerMatrix</Name><DisplayName TxtId="" />
+						<BaseType GUID="{18071995-0000-0000-0000-00000000000e}">LREAL</BaseType>
+						<ArrayInfo>
+							<LBound>0</LBound>
+							<Elements>3</Elements>
+						</ArrayInfo>
+						<ArrayInfo>
+							<LBound>0</LBound>
+							<Elements>20</Elements>
+						</ArrayInfo>
+					</Symbol>
+				</DataArea>
+			</DataAreas>
+			<InterfacePointers>
+				<InterfacePointer>
+					<PTCID>#x03002060</PTCID>
+					<Name>CyclicCaller</Name>
+					<Type GUID="{0300001e-0000-0000-e000-000000000064}">ITcCyclicCaller</Type>
+				</InterfacePointer>
+				<InterfacePointer>
+					<PTCID>#x00000001</PTCID>
+					<Name>UdpProt</Name>
+					<Type GUID="{03010097-0000-0000-e000-000000000064}">ITcIoUdpProtocol</Type>
+					<ContextId>1</ContextId>
+				</InterfacePointer>
+			</InterfacePointers>
+			<DataPointers />
+			<Deployment>
+				<FileEntry TargetPlatform="TwinCAT RT (x86)" RenameDestination="true">
+					<SourceFile>%SOLUTIONDEPLOYMENTPATH%TwinCAT RT (x86)\%CLASSFACTORYNAME%.sys</SourceFile>
+					<DestinationFile>%TC_DRIVERAUTOINSTALLPATH%%CLASSFACTORYNAME%.sys</DestinationFile>
+				</FileEntry>
+				<FileEntry TargetPlatform="TwinCAT RT (x86)" RenameDestination="true">
+					<SourceFile>%SOLUTIONDEPLOYMENTPATH%TwinCAT RT (x86)\%CLASSFACTORYNAME%.pdb</SourceFile>
+					<DestinationFile>%TC_DRIVERAUTOINSTALLPATH%%CLASSFACTORYNAME%.pdb</DestinationFile>
+				</FileEntry>
+				<FileEntry TargetPlatform="TwinCAT RT (x64)" RenameDestination="true">
+					<SourceFile>%SOLUTIONDEPLOYMENTPATH%TwinCAT RT (x64)\%CLASSFACTORYNAME%.sys</SourceFile>
+					<DestinationFile>%TC_DRIVERAUTOINSTALLPATH%%CLASSFACTORYNAME%.sys</DestinationFile>
+				</FileEntry>
+				<FileEntry TargetPlatform="TwinCAT RT (x64)" RenameDestination="true">
+					<SourceFile>%SOLUTIONDEPLOYMENTPATH%TwinCAT RT (x64)\%CLASSFACTORYNAME%.pdb</SourceFile>
+					<DestinationFile>%TC_DRIVERAUTOINSTALLPATH%%CLASSFACTORYNAME%.pdb</DestinationFile>
+				</FileEntry>
+			</Deployment>
+		</Module>
+	</Modules>
+</TcModuleClass>

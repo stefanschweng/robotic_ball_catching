@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectGuid>{a95739e1-fc71-49b7-b2ca-8641ad988fb6}</ProjectGuid>
+    <AssemblyName>measurement</AssemblyName>
+    <Name>measurement</Name>
+    <RootNamespace>measurement</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Include="D:\SCHWENG\Experiment Starter Pack\twincat\measurement\12102020_1.svdx">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="D:\SCHWENG\Experiment Starter Pack\twincat\measurement\All Axes1.svdx">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="D:\SCHWENG\Experiment Starter Pack\twincat\measurement\All Axes1.tcscopex" />
+    <Content Include="D:\SCHWENG\Experiment Starter Pack\twincat\measurement\All Axes1_1.svdx">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="D:\SCHWENG\Experiment Starter Pack\twincat\measurement\All Axes1_11.svdx">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="D:\SCHWENG\Experiment Starter Pack\twincat\measurement\All Axes1_13.svdx">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="D:\SCHWENG\Experiment Starter Pack\twincat\measurement\All Axes1_14.svdx">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="D:\SCHWENG\Experiment Starter Pack\twincat\measurement\All Axes1_15.svdx">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="D:\SCHWENG\Experiment Starter Pack\twincat\measurement\All Axes1_16.svdx">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="D:\SCHWENG\Experiment Starter Pack\twincat\measurement\All Axes1_17.svdx">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="D:\SCHWENG\Experiment Starter Pack\twincat\measurement\All Axes1_18.svdx">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="D:\SCHWENG\Experiment Starter Pack\twincat\measurement\All Axes1_19.svdx">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="D:\SCHWENG\Experiment Starter Pack\twincat\measurement\All Axes1_20.svdx">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="D:\SCHWENG\Experiment Starter Pack\twincat\measurement\ee_moved_up_recorded_motive.svdx">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="D:\SCHWENG\Experiment Starter Pack\twincat\measurement\good_movement_but_axis_vel_limit.svdx">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="D:\SCHWENG\Experiment Starter Pack\twincat\measurement\master_chief_7000.svdx">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="D:\SCHWENG\Experiment Starter Pack\twincat\measurement\motor_1_torque_limit.svdx">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="D:\SCHWENG\Experiment Starter Pack\twincat\measurement\motor_1_torque_limit2.svdx">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="D:\SCHWENG\Experiment Starter Pack\twincat\measurement\motot_1_torque_limit3.svdx">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="D:\SCHWENG\Experiment Starter Pack\twincat\measurement\observed_motive_marker_switch.svdx">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="D:\SCHWENG\Experiment Starter Pack\twincat\measurement\observed_motive_marker_switch2.svdx">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="D:\SCHWENG\Experiment Starter Pack\twincat\measurement\quit_good_to_the_right.svdx">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="D:\SCHWENG\Experiment Starter Pack\twincat\measurement\throw_into_cup_but_EE_moved_up.svdx">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="D:\SCHWENG\Experiment Starter Pack\twincat\measurement\wo_ee_orientation_quit_good.svdx">
+      <SubType>Content</SubType>
+    </Content>
+  </ItemGroup>
+</Project>

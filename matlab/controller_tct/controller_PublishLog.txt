@@ -1,0 +1,69 @@
+Microsoft (R) Build Engine version 14.0.25420.1
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+Build started 22/06/2020 12:41:43.
+Project "D:\SCHWENG\Experiment Starter Pack\matlab\controller_tct\controller.vcxproj" on node 1 (TcPublishModule target(s)).
+TcRemovePublishedModule:
+  Directory "C:\TwinCAT\3.1\CustomConfig\Modules\controller\" doesn't exist. Skipping.
+TcPublishModule:
+  Publishing module to folder 'C:\TwinCAT\3.1\CustomConfig\Modules\controller\' using module installation directory '%SOLUTIONMODULEINSTTPATH%'
+Project "D:\SCHWENG\Experiment Starter Pack\matlab\controller_tct\controller.vcxproj" (1) is building "D:\SCHWENG\Experiment Starter Pack\matlab\controller_tct\controller.vcxproj" (1:2) on node 1 (TcPublishModuleBinaries target(s)).
+CoreClean:
+  Creating directory "C:\TwinCAT\3.1\SDK\\_products\TwinCAT RT (x64)\Release\MATLAB_R2017b\controller\".
+PrepareForBuild:
+  Creating directory "C:\TwinCAT\3.1\SDK\\_products\TwinCAT RT (x64)\Release\MATLAB_R2017b\controller\controller.tlog\".
+InitializeBuildStatus:
+  Creating "C:\TwinCAT\3.1\SDK\\_products\TwinCAT RT (x64)\Release\MATLAB_R2017b\controller\controller.tlog\unsuccessfulbuild" because "AlwaysCreate" was specified.
+PreBuildEvent:
+  Description: "C:\TwinCAT\3.1\SDK\\Bin\ExtractVersionInfo" "controller" "C:\TwinCAT\3.1\SDK\\_products\TwinCAT RT (x64)\Release\MATLAB_R2017b\controller\\controller"
+  "C:\TwinCAT\3.1\SDK\\Bin\ExtractVersionInfo" "controller" "C:\TwinCAT\3.1\SDK\\_products\TwinCAT RT (x64)\Release\MATLAB_R2017b\controller\\controller"
+  :VCEnd
+  ExtractVersionInfo could not open header file "C:\TwinCAT\3.1\SDK\\_products\TwinCAT RT (x64)\Release\MATLAB_R2017b\controller\\controllerVersion.h" for read!
+ClCompile:
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\x86_amd64\CL.exe /c /I"D:\SCHWENG\Experiment Starter Pack\matlab\controller_tct\..\\" /I"C:\Program Files\MATLAB\R2017b\simulink\include\sf_runtime\\" /I"D:\SCHWENG\Experiment Starter Pack\matlab\controller_tct\\" /I"D:\GRANDER\Diplomarbeit\TwinCAT\KUKA LBR iiwa 14 R820\matlab\\" /I"C:\Program Files\MATLAB\R2017b\extern\include\\" /I"C:\Program Files\MATLAB\R2017b\simulink\include\\" /I"C:\Program Files\MATLAB\R2017b\rtw\c\src\\" /I"C:\Program Files\MATLAB\R2017b\rtw\c\src\ext_mode\common\\" /I"D:\SCHWENG\Experiment Starter Pack\matlab\controller_tct\TwinCAT RT (x64)\\" /I"D:\SCHWENG\Experiment Starter Pack\matlab\controller_tct\TwinCAT RT\\" /I"D:\SCHWENG\Experiment Starter Pack\matlab\controller_tct\TwinCAT RT\3.1\\" /I"D:\SCHWENG\Experiment Starter Pack\matlab\controller_tct\\" /I"C:\Program Files\MATLAB\R2017b\\rtw\c\src\ext_mode\common" /I"C:\Program Files\MATLAB\R2017b\\rtw\c\src" /I"C:\Program Files\MATLAB\R2017b\\simulink\include" /I"C:\Program Files\MATLAB\R2017b\\extern\include" /IC:\TwinCAT\3.1\SDK\\Include /IC:\TwinCAT\3.1\SDK\\Include\Io /IC:\TwinCAT\3.1\SDK\\Include\Nc /IC:\TwinCAT\3.1\SDK\\Include\CM /IC:\TwinCAT\3.1\SDK\\Include\Plc /IC:\TwinCAT\3.1\SDK\\Include\Stl\Stl /IC:\WinDDK\7600.16385.1\inc\ddk /IC:\WinDDK\7600.16385.1\inc\crt /IC:\WinDDK\7600.16385.1\inc\mfc42 /IC:\WinDDK\7600.16385.1\inc\api /I"C:\TwinCAT\3.1\SDK\\_products\TwinCAT RT (x64)\Release\MATLAB_R2017b\controller\\" /Zi /nologo /W3 /WX- /MP /O2 /Ob2 /Oy- /D "MODEL=\"controller\"" /D NUMST=1 /D NCSTATES=0 /D HAVESTDIO /D INTEGER_CODE=0 /D MT=0 /D CLASSIC_INTERFACE=1 /D ALLOCATIONFCN=0 /D ONESTEPFCN=0 /D TERMFCN=1 /D MULTI_INSTANCE_CODE=0 /D TID01EQ=0 /D RT=1 /D USE_RTMODEL /D TC_UNLIMITED_MAP_ENTRIES /D TCMATH_BLOCK_STANDARDLIB=0 /D TC_BUILD=4022 /D USE_CRT_OWN_IMPL /D _AMD64_ /D _X64_ /D _WIN64 /D STD_CALL /D CONDITION_HANDLING /D WIN32_LEAN_AND_MEAN /D _IDWBUILD /D IS_R0 /D WINNT /D _WDM_INCLUDED_ /D _WIN32_WINNT=_WIN32_WINNT_WINXP /D NTDDI_VERSION=NTDDI_WINXPSP2 /D TC_VER=301 /X /GF /Gm- /MT /GS- /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR- /Fo"C:\TwinCAT\3.1\SDK\\_products\TwinCAT RT (x64)\Release\MATLAB_R2017b\controller\\" /Fd"C:\TwinCAT\3.1\SDK\\_products\TwinCAT RT (x64)\Release\MATLAB_R2017b\controller\vc140.pdb" /Gz /TP /analyze- /errorReport:queue /kernel CcontrollerClassFactory.cpp Ccontroller.cpp CcontrollerDrv.cpp TcPch.cpp
+  CcontrollerClassFactory.cpp
+  Ccontroller.cpp
+  CcontrollerDrv.cpp
+  TcPch.cpp
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\x86_amd64\CL.exe /c /I"D:\SCHWENG\Experiment Starter Pack\matlab\controller_tct\..\\" /I"C:\Program Files\MATLAB\R2017b\simulink\include\sf_runtime\\" /I"D:\SCHWENG\Experiment Starter Pack\matlab\controller_tct\\" /I"D:\GRANDER\Diplomarbeit\TwinCAT\KUKA LBR iiwa 14 R820\matlab\\" /I"C:\Program Files\MATLAB\R2017b\extern\include\\" /I"C:\Program Files\MATLAB\R2017b\simulink\include\\" /I"C:\Program Files\MATLAB\R2017b\rtw\c\src\\" /I"C:\Program Files\MATLAB\R2017b\rtw\c\src\ext_mode\common\\" /I"D:\SCHWENG\Experiment Starter Pack\matlab\controller_tct\TwinCAT RT (x64)\\" /I"D:\SCHWENG\Experiment Starter Pack\matlab\controller_tct\TwinCAT RT\\" /I"D:\SCHWENG\Experiment Starter Pack\matlab\controller_tct\TwinCAT RT\3.1\\" /I"D:\SCHWENG\Experiment Starter Pack\matlab\controller_tct\\" /I"C:\Program Files\MATLAB\R2017b\\rtw\c\src\ext_mode\common" /I"C:\Program Files\MATLAB\R2017b\\rtw\c\src" /I"C:\Program Files\MATLAB\R2017b\\simulink\include" /I"C:\Program Files\MATLAB\R2017b\\extern\include" /IC:\TwinCAT\3.1\SDK\\Include /IC:\TwinCAT\3.1\SDK\\Include\Io /IC:\TwinCAT\3.1\SDK\\Include\Nc /IC:\TwinCAT\3.1\SDK\\Include\CM /IC:\TwinCAT\3.1\SDK\\Include\Plc /IC:\TwinCAT\3.1\SDK\\Include\Stl\Stl /IC:\WinDDK\7600.16385.1\inc\ddk /IC:\WinDDK\7600.16385.1\inc\crt /IC:\WinDDK\7600.16385.1\inc\mfc42 /IC:\WinDDK\7600.16385.1\inc\api /I"C:\TwinCAT\3.1\SDK\\_products\TwinCAT RT (x64)\Release\MATLAB_R2017b\controller\\" /Zi /nologo /W3 /WX- /MP /O2 /Ob2 /Oy- /D "MODEL=\"controller\"" /D NUMST=1 /D NCSTATES=0 /D HAVESTDIO /D INTEGER_CODE=0 /D MT=0 /D CLASSIC_INTERFACE=1 /D ALLOCATIONFCN=0 /D ONESTEPFCN=0 /D TERMFCN=1 /D MULTI_INSTANCE_CODE=0 /D TID01EQ=0 /D RT=1 /D USE_RTMODEL /D TC_UNLIMITED_MAP_ENTRIES /D TCMATH_BLOCK_STANDARDLIB=0 /D TC_BUILD=4022 /D USE_CRT_OWN_IMPL /D _AMD64_ /D _X64_ /D _WIN64 /D STD_CALL /D CONDITION_HANDLING /D WIN32_LEAN_AND_MEAN /D _IDWBUILD /D IS_R0 /D WINNT /D _WDM_INCLUDED_ /D _WIN32_WINNT=_WIN32_WINNT_WINXP /D NTDDI_VERSION=NTDDI_WINXPSP2 /D TC_VER=301 /X /GF /Gm- /MT /GS- /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR- /Fo"C:\TwinCAT\3.1\SDK\\_products\TwinCAT RT (x64)\Release\MATLAB_R2017b\controller\\" /Fd"C:\TwinCAT\3.1\SDK\\_products\TwinCAT RT (x64)\Release\MATLAB_R2017b\controller\vc140.pdb" /Gd /TP /analyze- /errorReport:queue /kernel controller.cpp controller_data.cpp rtGetInf.cpp rtGetNaN.cpp rt_nonfinite.cpp
+  controller.cpp
+  controller_data.cpp
+  rtGetInf.cpp
+  rtGetNaN.cpp
+  rt_nonfinite.cpp
+ResourceCompile:
+  C:\Program Files (x86)\Windows Kits\8.1\bin\x86\rc.exe /l"0x0409" /nologo /fo"C:\TwinCAT\3.1\SDK\\_products\TwinCAT RT (x64)\Release\MATLAB_R2017b\controller\controller.res" controller.rc 
+Link:
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\x86_amd64\link.exe /ERRORREPORT:QUEUE /OUT:"C:\TwinCAT\3.1\SDK\\_products\TwinCAT RT (x64)\Release\MATLAB_R2017b\controller.sys" /NOLOGO /LIBPATH:"C:\TwinCAT\3.1\..\Functions\TE1400-TargetForMatlabSimulink\Libraries\TwinCAT RT (x64)\R2017b\Release\\" /LIBPATH:"C:\TwinCAT\3.1\..\Functions\TE1400-TargetForMatlabSimulink\Libraries\TwinCAT RT (x64)\R2017b\\" /LIBPATH:"C:\TwinCAT\3.1\SDK\\lib\TwinCAT RT (x64)" /LIBPATH:"C:\TwinCAT\3.1\SDK\\_products\TwinCAT RT (x64)\Release\MATLAB_R2017b\\" TcMatSim.lib TcFramework.lib TcDdkHal.lib TcDdkKrnl.lib /NODEFAULTLIB /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\TwinCAT\3.1\SDK\\_products\TwinCAT RT (x64)\Release\MATLAB_R2017b\controller.pdb" /SUBSYSTEM:NATIVE /TLBID:1 /ENTRY:"DriverEntry" /DYNAMICBASE /NXCOMPAT:NO /IMPLIB:"C:\TwinCAT\3.1\SDK\\_products\TwinCAT RT (x64)\Release\MATLAB_R2017b\controller.lib" /MACHINE:X64 "C:\TwinCAT\3.1\SDK\\_products\TwinCAT RT (x64)\Release\MATLAB_R2017b\controller\controller.res"
+  "C:\TwinCAT\3.1\SDK\\_products\TwinCAT RT (x64)\Release\MATLAB_R2017b\controller\CcontrollerClassFactory.obj"
+  "C:\TwinCAT\3.1\SDK\\_products\TwinCAT RT (x64)\Release\MATLAB_R2017b\controller\Ccontroller.obj"
+  "C:\TwinCAT\3.1\SDK\\_products\TwinCAT RT (x64)\Release\MATLAB_R2017b\controller\controller.obj"
+  "C:\TwinCAT\3.1\SDK\\_products\TwinCAT RT (x64)\Release\MATLAB_R2017b\controller\controller_data.obj"
+  "C:\TwinCAT\3.1\SDK\\_products\TwinCAT RT (x64)\Release\MATLAB_R2017b\controller\rtGetInf.obj"
+  "C:\TwinCAT\3.1\SDK\\_products\TwinCAT RT (x64)\Release\MATLAB_R2017b\controller\rtGetNaN.obj"
+  "C:\TwinCAT\3.1\SDK\\_products\TwinCAT RT (x64)\Release\MATLAB_R2017b\controller\rt_nonfinite.obj"
+  "C:\TwinCAT\3.1\SDK\\_products\TwinCAT RT (x64)\Release\MATLAB_R2017b\controller\CcontrollerDrv.obj"
+  "C:\TwinCAT\3.1\SDK\\_products\TwinCAT RT (x64)\Release\MATLAB_R2017b\controller\TcPch.obj"
+CcontrollerClassFactory.obj : error LNK2001: unresolved external symbol "public: virtual long __cdecl CObjClassFactory::AddChildObject(struct ITcUnknown *)" (?AddChildObject@CObjClassFactory@@UEAAJPEAUITcUnknown@@@Z) [D:\SCHWENG\Experiment Starter Pack\matlab\controller_tct\controller.vcxproj]
+CcontrollerClassFactory.obj : error LNK2001: unresolved external symbol "public: virtual long __cdecl CObjClassFactory::RemoveChildObject(struct ITcUnknown *)" (?RemoveChildObject@CObjClassFactory@@UEAAJPEAUITcUnknown@@@Z) [D:\SCHWENG\Experiment Starter Pack\matlab\controller_tct\controller.vcxproj]
+CcontrollerClassFactory.obj : error LNK2001: unresolved external symbol "protected: virtual char const * __cdecl CObjClassFactory::GetRepositoryDriverIdName(void)" (?GetRepositoryDriverIdName@CObjClassFactory@@MEAAPEBDXZ) [D:\SCHWENG\Experiment Starter Pack\matlab\controller_tct\controller.vcxproj]
+C:\TwinCAT\3.1\SDK\\_products\TwinCAT RT (x64)\Release\MATLAB_R2017b\controller.sys : fatal error LNK1120: 3 unresolved externals [D:\SCHWENG\Experiment Starter Pack\matlab\controller_tct\controller.vcxproj]
+TcRemovePublishedModule:
+  Directory "C:\TwinCAT\3.1\CustomConfig\Modules\controller\" doesn't exist. Skipping.
+Done Building Project "D:\SCHWENG\Experiment Starter Pack\matlab\controller_tct\controller.vcxproj" (TcPublishModuleBinaries target(s)) -- FAILED.
+Done Building Project "D:\SCHWENG\Experiment Starter Pack\matlab\controller_tct\controller.vcxproj" (TcPublishModule target(s)) -- FAILED.
+
+Build FAILED.
+
+"D:\SCHWENG\Experiment Starter Pack\matlab\controller_tct\controller.vcxproj" (TcPublishModule target) (1) ->
+"D:\SCHWENG\Experiment Starter Pack\matlab\controller_tct\controller.vcxproj" (TcPublishModuleBinaries target) (1:2) ->
+(Link target) -> 
+  CcontrollerClassFactory.obj : error LNK2001: unresolved external symbol "public: virtual long __cdecl CObjClassFactory::AddChildObject(struct ITcUnknown *)" (?AddChildObject@CObjClassFactory@@UEAAJPEAUITcUnknown@@@Z) [D:\SCHWENG\Experiment Starter Pack\matlab\controller_tct\controller.vcxproj]
+  CcontrollerClassFactory.obj : error LNK2001: unresolved external symbol "public: virtual long __cdecl CObjClassFactory::RemoveChildObject(struct ITcUnknown *)" (?RemoveChildObject@CObjClassFactory@@UEAAJPEAUITcUnknown@@@Z) [D:\SCHWENG\Experiment Starter Pack\matlab\controller_tct\controller.vcxproj]
+  CcontrollerClassFactory.obj : error LNK2001: unresolved external symbol "protected: virtual char const * __cdecl CObjClassFactory::GetRepositoryDriverIdName(void)" (?GetRepositoryDriverIdName@CObjClassFactory@@MEAAPEBDXZ) [D:\SCHWENG\Experiment Starter Pack\matlab\controller_tct\controller.vcxproj]
+  C:\TwinCAT\3.1\SDK\\_products\TwinCAT RT (x64)\Release\MATLAB_R2017b\controller.sys : fatal error LNK1120: 3 unresolved externals [D:\SCHWENG\Experiment Starter Pack\matlab\controller_tct\controller.vcxproj]
+
+    0 Warning(s)
+    4 Error(s)
+
+Time Elapsed 00:00:13.84

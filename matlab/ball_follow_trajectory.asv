@@ -1,0 +1,102 @@
+function [Tf] = ball_follow_trajectory(pd,pd_p,use_pred,state,t_catch_period,t_in,traj_update,T0_in,max_ee_orientation,r_max)
+
+persistent Tf_;
+
+if isempty(Tf_)
+   Tf_ = zeros(4,4);
+   Tf_(1:3,1:3) = eye(3);
+end
+
+xd = pd(1);
+yd = pd(2);
+zd = pd(3);
+
+% coder.extrinsic('vrrotvec');
+% coder.extrinsic('vrrotvec2mat');
+
+if traj_update
+%     if norm(pd_p) > 0
+%         a = [0;0;1];
+%         b = pd_p;
+%         b = b/norm(b);
+%         rot = zeros(1,4);
+%         rot = vrrotvec(a,b);
+%         %rot(4) = rot(4)*0.4;
+%         if state == 2
+%           t_diff = t_in - t_catch_period(1);
+%           period_diff = t_catch_period(2) - t_catch_period(1);
+%           t_factor = ((t_diff/period_diff))*1;%*0.7937)^2; % 0.7937^2 = 0.63
+%           rot(4) = rot(4) * t_factor; 
+%         end
+%         mat = vrrotvec2mat(rot);
+%         Tf_(1:3,1:3) = mat;
+%     else
+%         Tf_(1:3,1:3) = eye(3);
+%     end
+%     
+    if norm(pd_p) > 0
+        v = [0;0;1];
+        w = pd_p/norm(pd_p);
+        
+        % if ball following state -> adapt gradient vector w to be less rotated over v
+        if state == 2
+            k = cross(v,w);
+            theta = acos(dot(v,w));
+            t_diff = t_in - t_catch_period(1);
+            period_diff = t_catch_period(2) - t_catch_period(1);
+            orientation_factor = (t_diff/period_diff)*max_ee_orientation;%*sqrt(0.63))^2;
+            theta_new = theta * orientation_factor;
+            w = v*(cos(theta_new)) + cross(k,v)*sin(theta_new) + k*dot(k,v)*(1-cos(theta_new)); % https://stackoverflow.com/a/32486205
+        end
+
+        rot = 2*(((v+w)*(v+w)')/((v+w)'*(v+w)))-eye(3); % https://math.stackexchange.com/a/2672702
+        rot(1:3,1:2)=rot(1:3,1:2)*(-1);
+        Tf_(1:3,1:3) = rot;
+    else
+        Tf_(1:3,1:3) = eye(3);
+    end
+
+%     if norm(pd_p) > 0
+%         v = [0;0;1];
+%         w = pd_p/norm(pd_p);
+%         
+%         % if ball following state -> adapt gradient vector w to be less rotated over v
+%         if state == 2
+%             k = cross(v,w);
+%             theta = acos(dot(v,w));
+%             t_diff = t_in - t_catch_period(1);
+%             period_diff = t_catch_period(2) - t_catch_period(1);
+%             orientation_factor = ((t_diff/period_diff))*0.63;%*sqrt(0.63))^2;
+%             theta_new = theta * orientation_factor;
+%             w = v*(cos(theta_new)) + cross(k,v)*sin(theta_new) + k*dot(k,v)*(1-cos(theta_new)); % https://stackoverflow.com/a/32486205
+%         end
+% 
+% %%% ==> der Fehler liegt also hier 
+% %         rot = 2*(((v+w)*(v+w)')/((v+w)'*(v+w)))-eye(3); % https://math.stackexchange.com/a/2672702
+% %         rot(1:3,1:2)=rot(1:3,1:2)*(-1);
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 
+%         rot = zeros(4,1);
+%         rot(1:3) = cross(v,w);
+%         rot(4) = acos(dot(v,w));
+%         mat = vrrotvec2mat(rot);
+%         Tf_(1:3,1:3) = mat;
+%     else
+%         Tf_(1:3,1:3) = eye(3);
+%     end
+    
+    if ((state == 2 && use_pred == 0) || xd < 0)
+        Tf_ = T0_in;
+    else
+        r = sqrt(xd^2+yd^2);
+        %r_max = 0.7;
+        if r > r_max
+            xd = r_max*(xd/r);
+            yd = r_max*(yd/r);
+        end
+        Tf_(1:3,4) = [xd;yd;zd];
+    end
+    
+end
+
+Tf = Tf_;

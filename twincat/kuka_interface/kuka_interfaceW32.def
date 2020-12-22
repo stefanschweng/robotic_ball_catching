@@ -1,0 +1,10 @@
+; KUKA_INTERFACEW32.def : Declares the module parameters.
+
+LIBRARY      "kuka_interfaceW32.DLL"
+
+EXPORTS
+	DllCanUnloadNow      PRIVATE
+	DllGetClassObject    PRIVATE
+	DllRegisterServer    PRIVATE
+	DllUnregisterServer	 PRIVATE
+	DllGetTcCtrl		 PRIVATE
