@@ -1,4 +1,4 @@
-function [Tf] = homogeneous_transformation_generation(pd,pd_p,use_pred,state,t_catch_period,t_in,traj_update,T0_in,max_ee_orientation,r_max)
+function [Tf] = homogeneous_transformation_generation(pd,pd_p,use_pred,state,t_catch_period,t_in,traj_update,T0_in,max_ee_orientation,r_max,t_start)
 
 persistent Tf_;
 
@@ -24,10 +24,10 @@ if traj_update
             k = cross(v,w);
             k = k/norm(k);
             theta = acos(dot(v,w));
-            t_diff = t_in - t_catch_period(1);
-            period_diff = t_catch_period(2) - t_catch_period(1);
-            orientation_factor = (t_diff/period_diff)*max_ee_orientation; % put more weight on the ee orientation over time (up to max_ee_orientation)
-            theta_new = theta * orientation_factor;
+%             t_diff = t_in - t_start;
+%             period_diff = t_catch_period(2) - t_start;
+%             orientation_factor = (t_diff/period_diff)*max_ee_orientation; % put more weight on the ee orientation over time (up to max_ee_orientation)
+            theta_new = theta * max_ee_orientation;
             w = v*(cos(theta_new)) + cross(k,v)*sin(theta_new) + k*dot(k,v)*(1-cos(theta_new)); % https://stackoverflow.com/a/32486205
             w = w/norm(w);
         end

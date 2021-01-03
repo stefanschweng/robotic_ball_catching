@@ -1,9 +1,9 @@
-height_of_catch = 0.9;
+height_of_catch = 0.8;
 
 % estimator struct
 estimator_init_struct = struct();
 
-estimator_init_struct.alpha0 = 1;%1e5;
+estimator_init_struct.alpha0 = 1e5;
 estimator_init_struct.px_est_last = [optitrack_data.x(1);0];%[1.7391;-1.8621];%zeros(2,1);
 estimator_init_struct.Px_last = estimator_init_struct.alpha0*eye(2);
 
@@ -14,7 +14,7 @@ estimator_init_struct.pz_est_last = [optitrack_data.z(1);0];%[1.4722;2.3980];%ze
 estimator_init_struct.Pz_last = estimator_init_struct.alpha0*eye(2);
 
 % "Vergessens-Faktor"
-estimator_init_struct.q = 0.8; % 0 < q < 1 (should be close to 1)
+estimator_init_struct.q = 1; % 0 < q < 1 (should be close to 1)
 
 % time when the robot starts to move
 %estimator_init_struct.t_move_start = 50*timing.T_optitrack;
