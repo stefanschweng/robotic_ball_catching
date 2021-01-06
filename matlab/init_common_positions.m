@@ -1,7 +1,7 @@
 positions=struct();
 
 positions.candle=[0;0;1.3320];
-positions.start=[0.4;0;0.95];
+positions.start=[0.4;0;0.9];
 positions.hand_over=[0.4;0;0.7];
 
 % direction of the endeffector z-axis
